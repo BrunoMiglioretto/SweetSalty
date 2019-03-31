@@ -16,10 +16,11 @@ $v = false;
 
 if(!isset($_SESSION["usuario"]))
     $v = true;
-
-$cliente = unserialize($_SESSION["usuario"]);
-
-$tipo = get_class($cliente);
-
-if(!($tipo == "ClientePadrao" || $tipo == "ClienteGoogleFacebook"))
-    $v = true;
+else{
+    $cliente = unserialize($_SESSION["usuario"]);
+    
+    $tipo = get_class($cliente);
+    
+    if(!($tipo == "ClientePadrao" || $tipo == "ClienteGoogleFacebook"))
+        $v = true;
+}

@@ -2,9 +2,15 @@
 
     include "../../controller/clienteController/verificacaoSessionClienteController.php";
     
-    if($v)
-        header("Location: ../logar.php");
-    
+    if($v){
+        echo "
+            <script>
+                window.location = '../logar.php';
+            </script>";
+        $nomeCompleto = "";
+    }else
+        $nomeCompleto = $cliente->getNomeCompleto();
+
 ?>
 
 <style>
@@ -36,7 +42,7 @@
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <a class="navbar-brand desktop" style="overflow:hidden; width:auto" href="../Cliente/index.php" title="Sweet Salty | Voltar para página inicial">
-        <h6 class='desktop-t'>Sweet Salty | Seja bem vindo(a), <?= $cliente->getNomeCompleto()?></h6>
+        <h6 class='desktop-t'>Sweet Salty | Seja bem vindo(a), <?= $nomeCompleto?></h6>
     </a>
     <a class="navbar-brand moble" href="../Cliente/index.php" title="Sweet Salty | Voltar para página inicial">
         <h6 class='moble-m'>Sweet Salty</h6>

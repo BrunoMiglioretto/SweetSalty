@@ -1,0 +1,28 @@
+.topo{
+    background-color: #71a140;
+}
+.titulo{
+    font-size: 50px;
+    padding: 15px 0px 15px 0px;
+    color: whitesmoke;
+    text-align: center;
+}
+.objeto{
+    background-color: white;
+    width: 130px;
+    height: 130px;
+    margin: 15px;
+    margin-top: 100px;
+    border: 0px;
+    border-radius: 20%;
+}
+@media (max-width: 780px){
+    .titulo{
+        font-size: 25px;
+    }
+    .objeto{
+        margin-top: 15px;
+        width: 160px;
+        height: 140px;
+    }
+}

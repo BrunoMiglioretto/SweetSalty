@@ -1,0 +1,43 @@
+.titulo{
+    position: relative;
+    top: 90px;
+    left: 50%;
+    font-size: 200;
+}
+.graficoGeral{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.grafico{
+    padding-top: 20px;
+    width: 650px;
+    margin: 0 auto;
+}
+.legenda{
+    border: 1px solid grey;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    height: 80px;
+    background-color:#F7F7F7;
+
+}
+.itemLegenda{
+    padding-left: 10%; 
+    padding-top: 5px;
+    line-height: 30px;
+    float: left;
+    text-align: center;
+}
+.ilegenda{
+    width: 400px;
+    margin: auto;
+}
+.selecao{
+    width: 120px;
+    border: 1px solid grey;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    background-color: #F7F7F7;
+}

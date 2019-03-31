@@ -1,0 +1,115 @@
+[12-Mar-2019 17:46:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php:8
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php on line 8
+[12-Mar-2019 17:46:40 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[12-Mar-2019 17:46:40 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/public_html/food_premium/Funcoes/Perfil_cliente.php:7
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/public_html/food_premium/Funcoes/Perfil_cliente.php on line 7
+[12-Mar-2019 19:16:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php:8
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php on line 8
+[12-Mar-2019 19:55:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php:8
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php on line 8
+[12-Mar-2019 19:55:30 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php:8
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php on line 8
+[12-Mar-2019 19:56:13 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php:8
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/public_html/food_premium/Funcoes/valida.php on line 8
+[13-Mar-2019 19:08:11 UTC] PHP Parse error:  syntax error, unexpected 'var_dump' (T_STRING) in /home4/sweets00/public_html/food_premium/Funcoes/conexao.php on line 7
+[13-Mar-2019 19:08:15 UTC] PHP Parse error:  syntax error, unexpected 'var_dump' (T_STRING) in /home4/sweets00/public_html/food_premium/Funcoes/conexao.php on line 7
+[13-Mar-2019 19:10:16 UTC] PHP Parse error:  syntax error, unexpected 'var_dump' (T_STRING) in /home4/sweets00/public_html/food_premium/Funcoes/conexao.php on line 7
+[13-Mar-2019 19:13:32 UTC] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING) in /home4/sweets00/public_html/food_premium/Funcoes/conexao.php on line 7
+[13-Mar-2019 19:15:44 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/conexao.php:4) in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 16
+[13-Mar-2019 19:16:37 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 19:16:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[13-Mar-2019 19:57:57 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 19:57:57 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[13-Mar-2019 19:58:16 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 19:58:16 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[13-Mar-2019 19:59:03 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 19:59:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[13-Mar-2019 19:59:14 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 19:59:14 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[13-Mar-2019 19:59:31 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 19:59:31 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[13-Mar-2019 19:59:41 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 19:59:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[13-Mar-2019 20:01:49 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 20:01:49 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[13-Mar-2019 20:02:22 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[13-Mar-2019 20:02:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[14-Mar-2019 11:42:41 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[14-Mar-2019 11:42:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[14-Mar-2019 17:38:44 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[14-Mar-2019 17:38:44 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[14-Mar-2019 17:50:24 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[14-Mar-2019 17:50:24 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[14-Mar-2019 19:20:07 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[14-Mar-2019 19:20:07 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[14-Mar-2019 19:20:21 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[14-Mar-2019 19:20:21 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 6
+[23-Mar-2019 18:35:46 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[23-Mar-2019 18:35:46 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 4
+[23-Mar-2019 18:37:34 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[23-Mar-2019 18:37:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 4
+[23-Mar-2019 18:38:16 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[23-Mar-2019 18:38:16 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 4
+[23-Mar-2019 18:43:22 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php on line 3
+[23-Mar-2019 18:43:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/sweets00/public_html/food_premium/Funcoes/Perfil_cliente.php:1) in /home4/sweets00/public_html/food_premium/Menu_Lateral/Menu_Cliente.php on line 4
+[27-Mar-2019 19:33:43 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:33:43 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:33:43 UTC] PHP Warning:  include(): Failed opening 'Funcoes/conexao.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:33:43 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/food_premium/Funcoes/valida.php:7
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 7
+[27-Mar-2019 19:35:48 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:35:48 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:35:48 UTC] PHP Warning:  include(): Failed opening 'Funcoes/conexao.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:35:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/food_premium/Funcoes/valida.php:7
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 7
+[27-Mar-2019 19:36:28 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:36:28 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:36:28 UTC] PHP Warning:  include(): Failed opening 'Funcoes/conexao.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:36:28 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/food_premium/Funcoes/valida.php:7
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 7
+[27-Mar-2019 19:37:57 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:37:57 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:37:57 UTC] PHP Warning:  include(): Failed opening 'Funcoes/conexao.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:37:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/food_premium/Funcoes/valida.php:7
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 7
+[27-Mar-2019 19:38:16 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:38:16 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:38:16 UTC] PHP Warning:  include(): Failed opening 'Funcoes/conexao.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:38:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/food_premium/Funcoes/valida.php:7
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 7
+[27-Mar-2019 19:38:46 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:38:46 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:38:46 UTC] PHP Warning:  include(): Failed opening 'Funcoes/conexao.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:38:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/food_premium/Funcoes/valida.php:7
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 7
+[27-Mar-2019 19:39:09 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:39:09 UTC] PHP Warning:  include(Funcoes/conexao.php): failed to open stream: No such file or directory in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:39:09 UTC] PHP Warning:  include(): Failed opening 'Funcoes/conexao.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 5
+[27-Mar-2019 19:39:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home4/sweets00/public_html/food_premium/Funcoes/valida.php:7
+Stack trace:
+#0 {main}
+  thrown in /home4/sweets00/public_html/food_premium/Funcoes/valida.php on line 7

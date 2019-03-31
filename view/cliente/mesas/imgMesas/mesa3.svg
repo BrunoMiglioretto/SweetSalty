@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="33.8666mm" height="33.8666mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 3387 3387"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <font id="FontID0" horiz-adv-x="667" font-variant="normal" style="fill-rule:nonzero" font-style="normal" font-weight="400">
+	<font-face 
+		font-family="Arial">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="3" horiz-adv-x="556"><path d="M42 190l88 12c10.1654,-50 27.1654,-86 51.3307,-108 24.1732,-22 53.8346,-33 89,-33 41.6693,0 76.8346,14.3307 105.173,43 28.3307,28.6693 42.4961,64.1654 42.4961,106.504 0,40.3307 -13.1654,73.6614 -39.6693,100 -26.3307,26.1654 -59.8268,39.3307 -100.661,39.3307 -16.6693,0 -37.3386,-3.33071 -62.1654,-9.83465l9.82677 77c5.83465,-0.669291 10.6693,-1 14.1732,-1 37.6614,0 71.3307,9.83465 101.496,29.3307 30,19.5039 45,49.5039 45,90 0,32.1732 -11,58.8346 -32.8346,80 -21.8346,21.1732 -50,31.6693 -84.4961,31.6693 -34.3386,0 -62.8346,-10.8346 -85.6693,-32.4961 -22.8346,-21.6693 -37.4961,-54.1732 -44,-97.5039l-88 16c10.8346,59 35.1654,104.835 73.3307,137.331 38,32.5039 85.5039,48.6693 142.173,48.6693 39,0 75,-8.33071 107.827,-25.1654 33,-16.6693 58.1732,-39.5039 75.5039,-68.3307 17.4961,-29 26.1654,-59.6693 26.1654,-92.1732 0,-30.8268 -8.33071,-58.8268 -24.8346,-84.1654 -16.6614,-25.3307 -41.3307,-45.4961 -73.8346,-60.4961 42.3386,-9.66929 75.1732,-30 98.6693,-60.8346 23.3307,-30.6693 35,-69.3307 35,-115.504 0,-62.4961 -22.8346,-115.661 -68.3307,-159.165 -45.6693,-43.4961 -103.339,-65.1654 -173,-65.1654 -62.8346,0 -115,18.8346 -156.504,56.3307 -41.6614,37.5039 -65.3307,86 -71.1654,145.669z"/></glyph>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
+    .str0 {stroke:#373435;stroke-width:20}
+    .fil2 {fill:#373435}
+    .fil0 {fill:#6A4328}
+    .fil1 {fill:#FFBA83}
+    .fnt0 {font-weight:normal;font-size:1270px;font-family:'Arial'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Camada_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0 str0" x="9" y="11" width="3373" height="3373" rx="484" ry="522"/>
+  <rect class="fil1 str0" x="233" y="228" width="2918" height="2934" rx="516" ry="559"/>
+  <text x="1303" y="2178"  class="fil2 fnt0">3</text>
+ </g>
+</svg>

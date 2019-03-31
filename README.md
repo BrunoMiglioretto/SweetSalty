@@ -1,0 +1,2 @@
+# SweetSalty
+Projeto escolar SENAI

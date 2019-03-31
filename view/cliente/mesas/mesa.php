@@ -5,7 +5,11 @@ session_start();
 # muda o diretorio para cliente
 chdir('../');
 
-include "../../controller/clienteController/verificacaoSessionCliente.php";
+include "../../controller/clienteController/verificacaoSessionClienteController.php";
+
+if($v)
+    header("Location: ../../logar.php");
+
 
 ?>
 

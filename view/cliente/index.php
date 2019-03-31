@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
@@ -25,7 +30,7 @@
                             <div class="row " >
                                 <div class="col-lg-4 col-md-4 col-sm-4 portfolio-item" style="margin-top:10px;">
                                     <div class="card h-100">
-                                        <a href="lista_bebidas.php"><img class="card-img-top" src="../img/bebidas.jpeg" alt=""></a>
+                                        <a href="lista_bebidas.php"><img class="card-img-top" src="img/comidaHome/bebidas.jpeg" alt=""></a>
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>
@@ -37,7 +42,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 portfolio-item" style="margin-top:10px;">
                                     <div class="card h-100">
-                                        <a href="lista_salgados.php"><img class="card-img-top" src="../img/salgado.png" alt=""></a>
+                                        <a href="lista_salgados.php"><img class="card-img-top" src="img/comidaHome/salgado.png" alt=""></a>
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>
@@ -49,7 +54,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 portfolio-item" style="margin-top:10px;">
                                     <div class="card h-100">
-                                        <a href="lista_doces.php"><img class="card-img-top" src="../img/doces.jpeg" alt=""></a>
+                                        <a href="lista_doces.php"><img class="card-img-top" src="img/comidaHome/doces.jpeg" alt=""></a>
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>

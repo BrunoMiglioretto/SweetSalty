@@ -2,7 +2,10 @@
 
 session_start();
 
-include "verificacaoSessionCliente.php";
+include "verificacaoSessionClienteController.php";
+if($v)
+    header("Location: ../../view/logar.php");
+
 include "../../model/Conexao.class.php";
 
 $mesa = $_GET["m"];

@@ -58,4 +58,4 @@ elseif ($tipo == "Cozinheiro")
 elseif ($tipo == "Garcom")
     echo "<script>window.location.href = '../food_premium/Garcom'</script>";
 elseif ($tipo == "Gerente")
-    echo "<script>window.location.href = '../food_premium/Gerente'</script>";
+    echo "<script>window.location.href = '../view/Gerente'</script>";

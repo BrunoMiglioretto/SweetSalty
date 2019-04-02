@@ -52,10 +52,10 @@ $tipo = get_class($usuario);
 if ($tipo == "ClientePadrao")
     echo "<script>window.location.href = '../view/cliente/mesas/mesa.php'</script>";
 elseif ($tipo == "Caixa")
-    echo "<script>window.location.href = '../food_premium/Caixa'</script>";
+    echo "<script>window.location.href = '../view/caixa/'</script>";
 elseif ($tipo == "Cozinheiro")
-    echo "<script>window.location.href = '../food_premium/Cozinha'</script>";
+    echo "<script>window.location.href = '../view/cozinha/'</script>";
 elseif ($tipo == "Garcom")
-    echo "<script>window.location.href = '../food_premium/Garcom'</script>";
+    echo "<script>window.location.href = '../view/garcom/'</script>";
 elseif ($tipo == "Gerente")
-    echo "<script>window.location.href = '../view/gerente'</script>";
+    echo "<script>window.location.href = '../view/gerente/'</script>";

@@ -5,48 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="../img/logo.png" type="image/x-icon">
         <title>Gráfico de estoque | Sweet Salty</title>
-        <!--------------------------------------------Logar------------------------------------------>
-	    <?php 
-	    session_start();
-	    $id = $_SESSION["id_funcionario"];
-			if(!isset($_SESSION['id_funcionario'])){
-				header("Location: ../Funcoes/logar.php");
-			}
-		?>
-		<?php
-			include "../Funcoes/conexao.php";
-			$sql = "SELECT COUNT(*) as Tipo_produto FROM tb_estoque";
-			$contatos = $fusca->prepare($sql);
-			$contatos->execute();
-			foreach($contatos as $contar){
-				$id_fu = $contar["Tipo_produto"];
-			}
-		?>
-		<?php
-			include "../Funcoes/conexao.php";
-			$sql = "SELECT Tipo_produto, COUNT(Tipo_produto) as 'QTD' FROM tb_estoque GROUP by Tipo_produto order by Tipo_produto asc";
-			$grafico = $fusca->prepare($sql);
-			$grafico->execute();
-		?>
-        <!-----------------------------------------Fim Logar----------------------------------------->
-        <!-----------------------------------------TODOS CSS----------------------------------------->
-        <!-- Bootstrap CSS-->
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!--Template-->
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <!-- Pageina CSS-->
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-        <!-- Estilo Template-->
         <link href="../css/sb-admin.css" rel="stylesheet">
         <link href="../css/grafico.css" rel="stylesheet">
 		<link href="styleGraficos.css" rel="stylesheet">	
-	    <!--------------------------------------FIM DE TODOS CSS-------------------------------------->
 	</head>
 	<body id="page-top">
-		<!--------------------------------------INCLUDE MENU---------------------------------------->
 		<?php include '../Menu_Lateral/Menu_Gerente.php'; ?>
-		<!----------------------------------------FIM INCLUDE--------------------------------------->
-		<!-------------------------------------------CONTEUDO--------------------------------------->
 		<div class="titulo">
 			<h1 class="h1">Gráfico</h1>
 		</div>
@@ -85,12 +52,9 @@
                 </div>
             </div>
         </div>
-		<!---------------------------------------FIM CONTEUDO--------------------------------------->
-		<!-------------------------------- Botão de voltar ao topo---------------------------------->
 		<a class="scroll-to-top rounded" href="#page-top" >
 		    <i class="fa fa-angle-up"></i>
 		</a>
-		<!-- Logout Modal-->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		    <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -108,26 +72,16 @@
                 </div>
             </div>
         </div>
-		<!------------------------------FIM Botão de voltar ao topo---------------------------------->
-		<!--------------------------------------INCLUDE FOOTER--------------------------------------->
 		<?php include '../Menu_Lateral/footer.html'; ?>	
-		<!----------------------------------------FIM INCLUDE---------------------------------------->
-		<!------------------------------------------- JAVA------------------------------------------->
-		<!-- Bootstrap core JavaScript-->
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<!-- Core plugin JavaScript-->
 		<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-		<!-- Page level plugin JavaScript-->
 		<script src="../vendor/chart.js/Chart.min.js"></script>
 		<script src="../vendor/datatables/jquery.dataTables.js"></script>
 		<script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
-		<!-- Custom scripts for all pages-->
 		<script src="../js/sb-admin.min.js"></script>
-		<!-- Custom scripts for this page-->
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
-		<!-------------Grafico--------------------->
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {'packages':['corechart']});
@@ -156,7 +110,6 @@
                 chart.draw(data, options);
             }
         </script>
-	    <!----------------------------------------FIM JAVA-------------------------------------------->
 	    <script type="text/javascript">
             var LHCChatOptions = {};
             LHCChatOptions.opt = {widget_height:340,widget_width:300,popup_height:520,popup_width:500};

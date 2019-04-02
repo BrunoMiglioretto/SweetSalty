@@ -1,26 +1,5 @@
-<?php 
-@session_start();
-
-  $id = $_SESSION['id_funcionario'];
-  if(!isset($_SESSION['id_funcionario'])){
-  header("Location:../logar.php");
-	}
-?>
-<?php
-/*
-  $fusca=new PDO("mysql:host=mysql.hostinger.com.br;dbname=u929326600_food","u929326600_ead","fOOd123");
-  $sql = "SELECT * FROM tb_funcionario WHERE id_funcionario =$id";
-  $contatos = $fusca -> prepare($sql);
-  $contatos-> execute();
-  
-  foreach($contatos as $lista){
-  	$nome 									= $lista["Nome"];
-  	$sobrenome 							= $lista["Sobrenome"];
-  	$cargo                  = $lista["Cargo"];
-  }*/
-?>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="../Gerente/index.php" title="Sweet Salty | Voltar para a página inicial"><?php echo "<h6>Sweet Salty | Seja bem vindo(a), ".$_SESSION['Nome']."</h6>"?></a>
+    <a class="navbar-brand" href="../Gerente/index.php" title="Sweet Salty | Voltar para a página inicial"><h6>Sweet Salty | Seja bem vindo(a), </h6></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"bottom="0" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,11 +11,6 @@
             <span class="nav-link-text">Perfil</span>
           </a>
         </li>
-        <!--<li class="nav-item" data-toggle="tooltip" data-placement="right" >-->
-        <!--  <a class="nav-link" href="../Chat/index.php" title="Acesse seu chat">-->
-        <!--    <i class="fa fa-envelope"></i>-->
-        <!--    <span class="nav-link-text">Chat</span>-->
-        <!--  </a>-->
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" >
           <a class="nav-link" href="../Gerente/Grafico_estoque.php" title="Acesse os gráficos">

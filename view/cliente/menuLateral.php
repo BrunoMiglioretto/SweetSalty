@@ -70,25 +70,43 @@
                     </li>
                 </ul>
             </li>
-            <li class='nav-item' data-toggle='tooltip' data-placement='right' title='Acesse seu pedido'>
+            <li class='nav-item' data-toggle='tooltip' data-placement='right'>
                 <a class='nav-link' href='../Cliente/pedidos.php' title='Pedido'>
                     <i class='fa fa-shopping-cart'></i>
                     <span class='nav-link-text'>Pedidos</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>
-            <li class='nav-item' data-toggle='tooltip' data-placement='right' title='Acesse seu pedido'>
+            <li class='nav-item' data-toggle='tooltip' data-placement='right'>
                 <a class='nav-link' href='../Cliente/pedido_pronto.php' title='Finalizar'>
                     <i class='fa fa-money'></i>
                     <span class='nav-link-text' >Finalizar</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Acesse seu perfil">
-                <a title="Acesse seu perfil" class="nav-link" href="perfilCliente.php">
-                    <i class="fa fa-user-circle-o"></i>
-                    <span class="nav-link-text">Perfil</span>
+            <li class='nav-item' data-toggle='tooltip' data-placement='right'>
+                <a class='nav-link' href='' title='De uma olhada no que estamos preparendo para você'>
+                    <i class='fa fa-camera'></i>
+                    <span class='nav-link-text' >Realidade Aumentada</span>
+                    <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Acesse mais informações">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" title="Mais informações" href="#collapseMais" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-plus" ></i>
+                    <span class="nav-link-text">Mais</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseMais">
+                    <li title="Perfil">
+                        <a href="">Perfil</a>
+                    </li>
+                    <li title="Mesas">
+                        <a href="">Mesas</a>
+                    </li>
+                    <li title="Manual do Usuário">
+                        <a href="">Manual do Usuário</a>
+                    </li>
+                </ul>
             </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">

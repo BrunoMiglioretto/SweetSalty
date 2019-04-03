@@ -17,4 +17,19 @@ $informacoes[7] = $_POST["confSenha"];
 
 $validacao = $cliente->editarPerfil($informacoes);
 
-var_dump($validacao);
+if(!$validacao){
+    echo "
+        <script>
+            alert('Algum dado foi consirado como invalido');
+            window.location = '../../view/cliente/';
+        </script>
+    ";
+}else{
+    $_SESSION["usuario"] = serialize($validacao);
+    echo "
+        <script>
+            alert('Perfil atualizado com sucesso!');
+            window.location = '../../view/cliente/';
+        </script>
+    ";
+}

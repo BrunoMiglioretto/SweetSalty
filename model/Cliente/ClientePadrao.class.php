@@ -74,9 +74,28 @@ class ClientePadrao extends Cliente{
         if($cb->getSenha() == false)
             return false;
 
-        return true;
+        $conexao = new Conexao();
+        $con = $conexao->conexao();
         
+        $sql1 = "UPDATE tb_cadastro SET nome_completo = '".$cb->getNomeCompleto()."', email = '".$cb->getEmail()."' WHERE id_cadastro = ".$this->getIdUsuario();
+        $cliente = $con->prepare($sql1);
+        $cliente->execute();
+        
+        $sql2 = "UPDATE tb_senha SET senha = '".$cb->getSenha()."' WHERE id_cadastro = ".$this->getIdUsuario();
+        $cliente = $con->prepare($sql2);
+        $cliente->execute();
+        
+        $sql3 = "UPDATE tb_cliente SET sexo = '".$cb->getSexo()."', data_nascimento = '".$cb->getDataNascimento()."' WHERE id_cadastro =".$this->getIdUsuario();
+        $cliente = $con->prepare($sql3);
+        $cliente->execute();
+        
+        $sql4 = "UPDATE tb_telefone SET ddd = ".$cb->getDdd().", numero = '".$cb->getNumeroTelefone()."' WHERE id_cadastro =".$this->getIdUsuario();
+        $cliente = $con->prepare($sql4);
+        $cliente->execute();
 
+        $cb->setIdUsuario($this->getIdUsuario());
+
+        return $cb;
     }
 
     public function renovarSenha($senha){

@@ -75,11 +75,7 @@
 		  		userToken:userToken
 		  	};
 		  	$.post('../controller/loginGFController.php', dados, function(retorna){
-		  		if(retorna === 'erro'){
-		  			var msg_erro = "Usuário não encotrado com esse email";
-		  			document.getElementById("mensagem").innerHTML = msg_erro;  
-		  		}else{
-		  			window.location.href = retorna;
+		  			window.location = retorna;
 		  		}  
 		  	});
 		  }

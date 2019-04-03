@@ -37,7 +37,7 @@ if(!$v){
             window.location.href = '../view/login.html';
         </script>";
 }else {
-    echo "../food_premium/cliente/mesas.php";
+    echo "mesas/mesas.php";
 }
 
 

@@ -50,8 +50,33 @@ class ClientePadrao extends Cliente{
         return true;
     }
     
-    public function atualizarPerfil($cliente){
+    public function editarPerfil($informacoes){
+        $cb = new ClientePadrao; // Cliente que irá servir de cobaia
+        $cb->setEmail($informacoes[0]);
+        if($cb->getEmail() == false)
+            return false;
+        $cb->setNomeCompleto($informacoes[1]);
+        if($cb->getNomeCompleto() == false)
+            return false;
+        $cb->setDdd($informacoes[2]);
+        if($cb->getDdd() == false)
+            return false;
+        $cb->setNumeroTelefone($informacoes[3]);
+        if($cb->getNumeroTelefone() == false)
+            return false;
+        $cb->setSexo($informacoes[4]);
+        if($cb->getSexo() == false)
+            return false;
+        $cb->setDataNascimento($informacoes[5]);
+        if($cb->getDataNascimento() == false)
+            return false;
+        $cb->setSenha($informacoes[6]);
+        if($cb->getSenha() == false)
+            return false;
+
+        return true;
         
+
     }
 
     public function renovarSenha($senha){

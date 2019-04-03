@@ -98,7 +98,17 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMais">
                     <li title="Perfil">
-                        <a href="">Perfil</a>
+                        <a 
+                            href="
+                                <?php
+                                    if($tipo == "ClientePadrao")
+                                        echo "perfilPadrao.php";
+                                    if($tipo == "ClienteGoogleFacebook")
+                                        echo "perfilGF.php";
+                                ?>
+                            "
+                        >Perfil
+                        </a>
                     </li>
                     <li title="Mesas">
                         <a href="">Mesas</a>

@@ -13,7 +13,7 @@ class ClienteGoogleFacebook extends Cliente{
         }
     }
     
-    public function atualizarPerfil($cliente){
+    public function editarPerfil($informacoes){
         
     }
 }

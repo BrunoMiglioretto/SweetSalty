@@ -4,7 +4,7 @@ abstract class Cliente extends Usuario{
     private $sexo;
     private $dataNascimento;
 
-    abstract public function atualizarPerfil(Cliente $cliente);
+    abstract public function editarPerfil($informacoes);
     
     public function escolherMesa($mesa){
         $sql = "INSERT INTO tb_mesa SET id_cadastro = ".$this->getIdUsuario().", id_mesa = $mesa";

@@ -2,13 +2,13 @@
 
 session_start();
 
-include "../model/Usuario.class.php";
+include "../../../model/Usuario.class.php";
 // Cliente
-include "../model/Cliente/Cliente.class.php";
-include "../model/Cliente/ClienteGoogleFacebook.class.php";
-include "../model/Cliente/ClientePadrao.class.php";
+include "../../../model/Cliente/Cliente.class.php";
+include "../../../model/Cliente/ClienteGoogleFacebook.class.php";
+include "../../../model/Cliente/ClientePadrao.class.php";
 
-include "../model/Conexao.class.php";
+include "../../../model/Conexao.class.php";
 
 // Pega todos os dados do formulario
 
@@ -27,7 +27,7 @@ if(!$cliente->cadastrar($informarcoes)){ // Retorna False se algum dado estiver 
 	echo "
 		<script>
 			alert('Algum dado está errado');
-			window.location = '../view/cadastro_cliente.php';
+			window.location = '../../../view/cadastro_cliente.php';
 		</script>";
 } 
 

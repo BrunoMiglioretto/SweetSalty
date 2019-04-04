@@ -8,11 +8,8 @@
 		<meta name="author" content="">
 		<title>Cadastro de cliente | Sweet Salty</title>
 		<link rel="icon" href="../food_premium/img/logo.png" type="image/x-icon">
-		<!-- Bootstrap core CSS-->
 		<link href="../food_premium/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<!-- Custom fonts for this template-->
 		<link href="../food_premium/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<!-- Custom styles for this template-->
 		<link href="../food_premium/css/sb-admin.css" rel="stylesheet">
 		    <style>
             .img{
@@ -21,64 +18,6 @@
             }
         </style>
 	</head>
-<?php
-	if(isset($_POST["salvar"])){
-		
-		$id_cliente  		=  ""; 
-		$nome  		      	=  $_POST["nome"]; 
-		$email              =  $_POST["email"];
-		$cargo              =  "Cliente";
-		$telefone_celular  	=  $_POST["telefone_celular"]; 
-		$data_nascimento    =  $_POST["data_nascimento"];
-		$senha              =  $_POST["senha"];
-		$senha_crip = md5($senha);
-		$sexo              	=  $_POST["sexo"];
-		$senhaConfirma 		=  $_POST["senha_confirma"];
-		$mesa 				=  0;
-		if(filter_var($email, FILTER_VALIDATE_EMAIL)){ // validação do email.
-			if(strlen($senha < 8)){ // validação da senha.
-				echo "<scritp> alert('Digite sua senha com no mínimo oito caracteres.') </script>";
-			}else {
-			include "Funcoes/conexao.php";
-			$comando_email = "SELECT Email FROM tb_clientes WHERE Email = '$email'";
-			$verifica_email = $fusca->prepare($comando_email);
-			$verifica_email->execute();
-			$contador_email = $verifica_email->rowCount();
-			$comando_email_funcionarios = "SELECT Email FROM tb_funcionario WHERE Email = '$email'";
-			$verifica_email_funcionario = $fusca->prepare($comando_email_funcionarios);
-			$verifica_email_funcionario->execute();
-			if($contador_email<1 && $contador_email_funcionario<1){
-				if ($senha == $senhaConfirma){
-					$sql = "INSERT INTO tb_clientes VALUES (?,?,?,?,?,?,?,?,?)";
-					$contatos = $fusca -> prepare($sql);	
-					$contatos -> execute(array($id_cliente,$nome,$email,$cargo,$telefone_celular,$data_nascimento,$senha_crip,$sexo,$mesa));
-		  			$fusca = NULL;
-		  			echo "	
-		  				<script>
-							alert('Cadastro realizado com sucesso!');
-							window.location.href='logar.php';
-						</script>";
-				}else{
-					$fusca = NULL;
-		            echo "	
-		            	<script>
-							alert('As senhas não conferem!');
-							
-						</script>";
-				}
-			}else{
-				$fusca = NULL;
-				echo "
-				<script>
-					alert('E-mail já em uso');
-				</script>";
-				}
-			}
-			
-		}
-	}
-	
-?>
 	<body class="">
 		<a href="logar.php"><nav id="nav"><img src="../food_premium/img/logo.png" class="img"></nav></a>
 		<br><center><h1>Cadastro de cliente</h1></center>
@@ -87,7 +26,7 @@
 				<div class="card-header">
 					<div class="card-body">
 						<div class="table-responsive">
-							<form method="POST" action="../controller/cadastrarClientePadraoController.php">
+							<form method="POST" action="../controller/clienteController/cadastro/cadastrarClientePadraoController.php">
 								<div class="col-sm-12">
 									<div class="row">
 										<div class="col-lg-6 col-sm-12 form-group">
@@ -121,7 +60,7 @@
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
 											<label>Confirmar senha</label>
-											<input type="password" id="senha_confirma" name="confSenha"  class="form-control" required>
+											<input type="password" id="confSenha" name="confSenha"  class="form-control" required>
 										</div>										
 									</div><br>
 									<center>
@@ -146,7 +85,6 @@
 			// 		else return true;
 			// 	}
 			// }
-			/*permite somente valores numéricos*/
 			function valTELEFONECELULAR(e,campo){
 				var tecla=(window.event)?event.keyCode:e.which;
 				if((tecla > 47 && tecla < 58)){
@@ -157,7 +95,6 @@
 					else return true;
 					}
 				}
-			/*cria a mascara*/
 			function mascara(src, mask){
 				var i = src.value.length;
 				var saida = mask.substring(1,2);
@@ -166,13 +103,6 @@
 					src.value += texto.substring(0,1);
 				}
 			}
-		</script>
-		<!-- Bootstrap core JavaScript-->
-		<script>
-			$('#myModal').modal({
-				backdrop: 'static',
-				keyboard: false
-			});
 		</script>
 		<script src="../food_premium/vendor/jquery/jquery.min.js"></script>
 		<script src="../food_premium/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -3,14 +3,17 @@
 class ClienteGoogleFacebook extends Cliente{
     
     public function cadastrar($informacoes){
-        foreach($informacoes as $carrega){
-            $this->setEmail($carrega["email"]);
-            $this->setNomeCompleto($carrega["nomeCompleto"]);
-            $this->setDdd($carrega["ddd"]);
-            $this->setNumeroTelefone($carrega["numero"]);
-            $this->setSexo($carrega["sexo"]);
-            $this->setDataNascimento($carrega["dataNascimento"]);
-        }
+
+        $conexao = new Conexao();
+        $con = $conexao->conexao();
+        
+        $sql1 = "INSERT INTO tb_cadastro SET nome_completo = '".$informacoes[0]."', email = '".$informacoes[1]."'";
+        $cliente = $con->prepare($sql1);
+        $cliente->execute();
+        
+        $sql2 = "INSERT INTO tb_cliente SET id_cadastro = LAST_INSERT_ID(), data_nascimento = '', sexo = ''";
+        $cliente = $con->prepare($sql2);
+        $cliente->execute();
     }
     
     public function editarPerfil($informacoes){

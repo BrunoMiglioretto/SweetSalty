@@ -23,8 +23,10 @@ $email = $_POST["email"];
 
 $login = new LoginGoogleFacebook($email);
 
-if(!$login->verificarEmailBD())
+if(!$login->verificarEmailBD()){
+    include "clienteController/cadastro/cadastrarClienteGFController.php";
     echo 1;
+}
 else{
     $v = $login->verificarCadastro();
     if(!$v)

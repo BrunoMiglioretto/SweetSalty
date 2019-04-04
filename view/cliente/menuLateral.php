@@ -60,13 +60,13 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                     <li title="Bebidas">
-                        <a href="../Cliente/lista_bebidas.php">Bebidas</a>
+                        <a href="listaBebidas.php">Bebidas</a>
                     </li>
                     <li title="Doces">
-                        <a href="../Cliente/lista_doces.php">Doces</a>
+                        <a href="listaDoces.php">Doces</a>
                     </li>
                     <li title="Salgados">
-                        <a href="../Cliente/lista_salgados.php">Salgados</a>
+                        <a href="listaSalgados.php">Salgados</a>
                     </li>
                 </ul>
             </li>

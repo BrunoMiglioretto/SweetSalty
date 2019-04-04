@@ -1,12 +1,14 @@
 <?php
 
-class Alimento{
+abstract class Alimento{
 	
 	private $idAlimento;
 	private $quant;
 	private $nome;
 	private $valorUnitario;
 	
+	abstract public static function visualizarAlimentos($tipo);
+
 	public function excluirAlimento(){
 		
 	}
@@ -15,7 +17,6 @@ class Alimento{
 		
 	}
 	
-	abstract public function visualizarAlimentos($tipo);
 	
 	public function attEstoque($estoque){
 		

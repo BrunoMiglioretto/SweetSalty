@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 31-Mar-2019 às 03:07
+-- Generation Time: 04-Abr-2019 às 08:06
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -67,7 +67,8 @@ INSERT INTO `tb_cadastro` (`id_cadastro`, `nome_completo`, `email`) VALUES
 (31, 'Willian', 'Willian@gmail.com'),
 (32, 'Willian', 'Willian@gmail.com'),
 (41, 'gabriel sousa', 'gabriel@gmail.com'),
-(43, 'Bruno', 'bruno@gmail.com');
+(43, 'Bruno', 'bruno@gmail.com'),
+(44, 'brenda', 'brenda@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -79,9 +80,51 @@ CREATE TABLE `tb_cardapio` (
   `id_cardapio` int(11) NOT NULL,
   `id_cardapio_subcat` int(6) DEFAULT NULL,
   `nome` varchar(25) DEFAULT NULL,
-  `quant` int(6) DEFAULT NULL,
-  `valor_unitario` float(9,2) DEFAULT NULL
+  `valor_unitario` float(9,2) DEFAULT NULL,
+  `peso_grama` varchar(15) DEFAULT NULL,
+  `calorias` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_cardapio`
+--
+
+INSERT INTO `tb_cardapio` (`id_cardapio`, `id_cardapio_subcat`, `nome`, `valor_unitario`, `peso_grama`, `calorias`) VALUES
+(81, 10, 'Sanduíche Natural G (pão ', 8.00, '800g', 314),
+(89, 4, 'Água com gás', 3.00, '500ml', 0),
+(90, 4, 'Água sem gás', 3.00, '500ml', 0),
+(91, 1, 'Laranja', 4.00, '350ml', 70),
+(95, 1, 'Limão', 4.00, '350ml', 70),
+(100, 1, 'Morango', 4.00, '350ml', 70),
+(101, 1, 'Abacaxi', 4.00, '350ml', 150),
+(102, 1, 'Banana', 4.00, '350ml', 120),
+(104, 1, 'Mamão', 4.00, '350ml', 120),
+(105, 1, 'Manga', 4.00, '350ml', 150),
+(107, 1, 'Açai', 4.00, '350ml', 200),
+(108, 3, 'Limão', 4.50, '350ml', 170),
+(109, 3, 'Laranja', 4.50, '350ml', 170),
+(112, 3, 'Morango', 4.50, '350ml', 170),
+(113, 3, 'Abacaxi', 4.50, '350ml', 250),
+(114, 3, 'Banana', 4.50, '350ml', 220),
+(116, 3, 'Mamão', 4.50, '350ml', 220),
+(117, 3, 'Manga', 4.50, '350ml', 250),
+(119, 3, 'Açai', 4.50, '350ml', 300),
+(121, 5, 'Chocolate', 7.00, '350ml', 200),
+(122, 5, 'Morango', 7.00, '350ml', 200),
+(123, 5, 'Baunilha', 7.00, '350ml', 200),
+(147, 6, 'Suco Detox', 5.00, '350ml', 250),
+(154, 9, 'Ricota', 5.00, '300g', 300),
+(155, 9, 'Carne', 5.00, '300g', 300),
+(156, 9, 'Presunto', 5.00, '300g', 300),
+(157, 9, 'Queijo branco com brócoli', 5.00, '300g', 300),
+(158, 12, 'Salada de frutas', 5.00, '400g', 50),
+(159, 12, 'Açaí com granola', 5.00, '350ml', 110),
+(160, 12, 'Barra de cereal', 5.00, '400g', 80),
+(161, 12, 'Cookies', 5.00, '150g', 12),
+(162, 8, '8 Assada de Frango com Ma', 5.00, '450g', 50),
+(164, 11, 'Frango', 5.00, '350g', 200),
+(165, 11, 'Palmito', 5.00, '350g', 200),
+(166, 11, 'Bacalhau', 5.00, '350g', 200);
 
 -- --------------------------------------------------------
 
@@ -94,6 +137,15 @@ CREATE TABLE `tb_cardapio_cat` (
   `nome_cardapio_cat` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `tb_cardapio_cat`
+--
+
+INSERT INTO `tb_cardapio_cat` (`id_cardapio_cat`, `nome_cardapio_cat`) VALUES
+(1, 'Bebidas'),
+(2, 'Salgados'),
+(3, 'Doces');
+
 -- --------------------------------------------------------
 
 --
@@ -103,8 +155,24 @@ CREATE TABLE `tb_cardapio_cat` (
 CREATE TABLE `tb_cardapio_subcat` (
   `id_cardapio_subcat` int(11) NOT NULL,
   `id_cardapio_cat` int(6) DEFAULT NULL,
-  `nome_cardapio_subcat` varchar(20) DEFAULT NULL
+  `nome_cardapio_subcat` varchar(35) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_cardapio_subcat`
+--
+
+INSERT INTO `tb_cardapio_subcat` (`id_cardapio_subcat`, `id_cardapio_cat`, `nome_cardapio_subcat`) VALUES
+(1, 1, 'Suco com água'),
+(3, 1, 'Suco com leite semi desnatado'),
+(4, 1, 'Água'),
+(5, 1, 'Shake Whey Protein'),
+(6, 1, 'Suco Detox'),
+(8, 2, 'Coxinha'),
+(9, 2, 'Pastal Assado'),
+(10, 2, 'Sanduíche Natural'),
+(11, 2, 'Empada'),
+(12, 3, 'Doces');
 
 -- --------------------------------------------------------
 
@@ -129,7 +197,8 @@ INSERT INTO `tb_cliente` (`id_cadastro`, `data_nascimento`, `sexo`) VALUES
 (31, '1222-12-12', 'M'),
 (32, '1222-12-12', 'M'),
 (41, '2002-02-11', 'M'),
-(43, '0000-00-00', 'M');
+(43, '0000-00-00', 'M'),
+(44, '0000-00-00', 'F');
 
 -- --------------------------------------------------------
 
@@ -208,6 +277,14 @@ CREATE TABLE `tb_mesa` (
   `id_mesa` int(11) NOT NULL,
   `id_cadastro` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_mesa`
+--
+
+INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
+(1, 43),
+(2, 43);
 
 -- --------------------------------------------------------
 
@@ -300,7 +377,8 @@ INSERT INTO `tb_senha` (`id_cadastro`, `senha`, `validar_email`, `token`) VALUES
 (31, '99999999999', 0, '5c9d9b969a'),
 (32, '99999999999', 0, '5c9d9babc1'),
 (41, '123456789', 0, '5c9e665a10'),
-(43, '123123123', 0, '5c9f92a464');
+(43, '123123123', 0, '5c9f92a464'),
+(44, '123123123', NULL, '5ca561cb74427');
 
 -- --------------------------------------------------------
 
@@ -326,7 +404,8 @@ INSERT INTO `tb_telefone` (`id_cadastro`, `ddd`, `numero`) VALUES
 (7, 41, 212121),
 (32, 55, 23231213),
 (41, 41, 0),
-(43, 41, 0);
+(43, 41, 0),
+(44, 41, 0);
 
 -- --------------------------------------------------------
 
@@ -472,25 +551,25 @@ ALTER TABLE `tb_tipo_ingrediente`
 -- AUTO_INCREMENT for table `tb_cadastro`
 --
 ALTER TABLE `tb_cadastro`
-  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio`
 --
 ALTER TABLE `tb_cardapio`
-  MODIFY `id_cardapio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cardapio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio_cat`
 --
 ALTER TABLE `tb_cardapio_cat`
-  MODIFY `id_cardapio_cat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cardapio_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio_subcat`
 --
 ALTER TABLE `tb_cardapio_subcat`
-  MODIFY `id_cardapio_subcat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cardapio_subcat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tb_historico_pedido`
@@ -508,7 +587,7 @@ ALTER TABLE `tb_ingrediente`
 -- AUTO_INCREMENT for table `tb_mesa`
 --
 ALTER TABLE `tb_mesa`
-  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_nota_fiscal`

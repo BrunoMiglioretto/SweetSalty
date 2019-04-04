@@ -3,6 +3,6 @@ Projeto escolar SENAI
 
 Alunos: 
 Bruno Assis Miglioretto;
-Vinicius Clemente da Silva Quintino;
+Vinicius Clemente;
 Felipe Augusto.
 

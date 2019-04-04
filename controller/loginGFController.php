@@ -17,27 +17,18 @@ include "../model/Login/LoginPadrao.class.php";
 
 include "../model/Conexao.class.php";
 
-$email =  filter_input(INPUT_POST,'userEmail', FILTER_SANITIZE_STRING);
+// $email =  filter_input(INPUT_POST,'userEmail', FILTER_SANITIZE_STRING);
+
+$email = $_POST["email"];
 
 $login = new LoginGoogleFacebook($email);
 
-if(!$login->verificarEmailBD()){
-    echo "
-        <script>
-            alert('Email não cadastrado');
-            window.location.href = '../view/login.html';
-        </script>";
+if(!$login->verificarEmailBD())
+    echo 1;
+else{
+    $v = $login->verificarCadastro();
+    if(!$v)
+        echo 2;
+    else 
+        echo 3;
 }
-
-$v = $login->verificarCadastro();
-if(!$v){
-    echo "
-        <script>
-            alert('Email não é de um cliente');
-            window.location.href = '../view/login.html';
-        </script>";
-}else {
-    echo "mesas/mesas.php";
-}
-
-

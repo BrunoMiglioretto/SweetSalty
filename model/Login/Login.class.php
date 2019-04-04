@@ -12,7 +12,6 @@ abstract class Login{
         $cadastro->execute();
         $conexao = NULL;
         $nUsuarios = $cadastro->rowCount();
-        if($nUsuarios == 1)
         return $nUsuarios == 1;
     }
     

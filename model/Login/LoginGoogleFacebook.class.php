@@ -8,8 +8,7 @@ class LoginGoogleFacebook extends Login{
 
     public function verificarCadastro(){
         $sql = "SELECT * FROM tb_cadastro INNER JOIN tb_cliente 
-                ON tb_cadastro.id_cadastro = tb_cliente.id_cadastro INNER JOIN tb_telefone
-                ON tb_cadastro.id_cadastro = tb_telefone.id_cadastro
+                ON tb_cadastro.id_cadastro = tb_cliente.id_cadastro 
                 WHERE tb_cadastro.email = '$this->email'";
         $conexao = new conexao;
         $c = $conexao->conexao();

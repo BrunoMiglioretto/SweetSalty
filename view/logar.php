@@ -8,11 +8,8 @@
         <meta name="author" content="">
         <title>Login | Sweet Salty</title>
         <link rel="icon" href="../food_premium/img/logo.png" type="image/x-icon">
-        <!-- Bootstrap core CSS-->
         <link href="../food_premium/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Custom fonts for this template-->
         <link href="../food_premium/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <!-- Custom styles for this template-->
         <link href="../food_premium/css/sb-admin.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i" rel="stylesheet">
@@ -57,33 +54,49 @@
                 </div>
             </div>
         </div>
-        <script>
-         function onSignIn(googleUser) { // esta função captura as informações do usuário e adiciona em variáveis. 
-		  var profile   = googleUser.getBasicProfile();
-		  var userId    = profile.getId();   
-		  var userName  = profile.getName();
-		  var userImage = profile.getImageUrl();
-		  var userEmail = profile.getEmail();
-		  var userToken = googleUser.getAuthResponse().id_token;
-		 
-		  if(userEmail !== ""){
-		  	var dados ={
-		  		userId:userId,
-		  		userName:userName,
-		  		userEmail:userEmail,
-		  		userImage:userImage,
-		  		userToken:userToken
-		  	};
-		  	$.post('../controller/loginGFController.php', dados, function(retorna){
-		  			window.location = retorna;
-		  		}  
-		  	});
-		  }
-		} // End onSignIn	
-        </script>
-        <!-- Bootstrap core JavaScript-->
         <script src="../food_premium/vendor/jquery/jquery.min.js"></script>
         <script src="../food_premium/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../food_premium/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script>
+            function onSignIn(googleUser) { // esta função captura as informações do usuário e adiciona em variáveis. 
+            var profile   = googleUser.getBasicProfile();
+            var userId    = profile.getId();   
+            var userName  = profile.getName();
+            var userImage = profile.getImageUrl();
+            var userEmail = profile.getEmail();
+            var userToken = googleUser.getAuthResponse().id_token;
+    
+                if(userEmail != ""){
+                    var dados ={
+                        userId:userId,
+                        userName:userName,
+                        userEmail:userEmail,
+                        userImage:userImage,
+                        userToken:userToken
+                    };
+                    $.ajax({
+                        method: "POST",
+                        data: { email:userEmail },
+                        url: "../controller/loginGFController.php"
+                    }).done(function(data){
+                        mudarPagina(data);
+                    });
+                }
+            }
+            function mudarPagina(situacao){
+                switch(situacao){
+                    case '1':
+                        alert('Email não cadastrado');
+                        window.location.href = 'logar.php';
+                        break;
+                    case '2':
+                        alert('Email não é de um cliente');
+                        window.location = 'logar.php';
+                        break;
+                    case '3':
+                        window.location = 'cliente/mesas/mesa.php';
+                }
+            }
+        </script>
     </body>
 </html>

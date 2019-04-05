@@ -49,8 +49,9 @@ $usuario = $login->verificarCadastro();
 
 $tipo = get_class($usuario);
 
-if ($tipo == "ClientePadrao")
+if ($tipo == "ClientePadrao"){
     echo "<script>window.location.href = '../view/cliente/mesas/mesa.php'</script>";
+}
 elseif ($tipo == "Caixa")
     echo "<script>window.location.href = '../view/caixa/'</script>";
 elseif ($tipo == "Cozinheiro")

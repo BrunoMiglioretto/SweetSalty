@@ -1,7 +1,13 @@
 <?php
     class ValidarEmail extends Validador {
         
-        public function EnviarEmail($email) {
+		public function __construct ($email) {
+			$this->setEmail($email);
+		}
+		
+        public function EnviarEmail() {
+			$email = $this->getEmail();
+			
             $assunto   = "Confirmação do seu cadastro."; #Variável para o assunto do E-mail.
             $mensagem = "
                 <div style='width: 1000px;height:300px;background-color: rgb(255, 255, 255)'>
@@ -24,21 +30,13 @@
             $headers .= "X-Priority: 1\n";
 
             if(!mail($email, $assunto, $mensagem, $headers ,"-r".$emailsender)){ 
-                $this->setEmail(false); // se não conseguir enviar o e-mail.
+                return false;
             }else{
                 $headers .= "Return-Path: " . $emailsender . $quebra_linha; 
                 mail($email, $assunto, $mensagem, $headers );
-                $this->setEmail($email); // se conseguir enviar o e-mail.
-                }
-            } //fim da função EnviarEmail   
-
-            public function guardarDados(){
-
-            } 
-
-            public function destruirDados() {
-
+                return true;
             }
+        } //fim da função EnviarEmail   
     }//fim da classe validarEmail. 
 
     //end class

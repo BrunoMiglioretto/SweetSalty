@@ -34,22 +34,21 @@ if(!$cliente->cadastrar($informarcoes)){ // Retorna False se algum dado estiver 
 		</script>";
 }else{
 	
-	echo "Cadastrado";
-} 
-// Se for inserido no banco, ele continua
+	echo "Cadastrado"; 
 
-// Instancia a classe ValidarEmail que esta herdando da classe Validador que por sua vez é uma classe abstrata.
-$cliente2 = new ValidarEmail;
-$cliente2->EnviarEmail($email);
-					  
-	if($cliente2->getEmail() == false){ 
+	// Se for inserido no banco, ele continua
+	// Instancia a classe ValidarEmail que esta herdando da classe Validador que por sua vez é uma classe abstrata.
+	
+	$cliente2 = new ValidarEmail($email);
+				  
+	if($cliente2->EnviarEmail()){ 
 		echo "<script>alert('Ocorreu algum erro no envio do e-mail, tente novamente.')</script>";
 		echo "<script>window.location ='../../../view/CadastroCliente.php'</script>";
 	}else {// se retornar um e-mail, foi possivel enviar para o usuário.
 		echo "<script>alert('enviamos um e-mail de confirmação, sertifique seu sua caixa de e-mails.)</script>"; 
 		echo "<script>window.location ='../../../view/logar.php'</script>";
 	}
-
+}
 
 
 

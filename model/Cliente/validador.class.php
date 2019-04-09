@@ -22,10 +22,6 @@
             // ...
         }
 
-        public function ValidarEmailBD() {
-            // ...
-        }
-
         //Métodos modificadores
         public function setSenhaValidador($senha) {
             $this->senha = $senha;

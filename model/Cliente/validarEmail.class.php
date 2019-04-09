@@ -39,5 +39,7 @@
             public function destruirDados() {
 
             }
-    }//fim da classe validarEmail.
+    }//fim da classe validarEmail. 
+
+    //end class
 ?>

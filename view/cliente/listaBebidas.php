@@ -373,7 +373,18 @@
         </script>
         <script>
             function addProduto(idProduto){
-                alert(idProduto);
+                let quantidade = $("input[id=" + idProduto + "]").val();
+                $.ajax({
+                    url: "../../controller/clienteController/addPedidoController.php",
+                    method : "POST",
+                    data : {
+                        idCardapio : idProduto,
+                        quant : quantidade
+                    }
+                }).done(function(retorno){
+                    alert(retorno);   
+                });
+                
             }
         </script>
     </body>

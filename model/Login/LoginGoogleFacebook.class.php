@@ -18,6 +18,8 @@ class LoginGoogleFacebook extends Login{
         $nCliente = $cliente->rowCount();
         if($nCliente == 1){
             $usuario = ClienteFactory::criarUsuario('GoogleFacebook', $cliente);
+            $carrinho = new Carrinho($usuario->getIdUsuario());
+            $_SESSION["carrinho"] = serialize($carrinho);
             $this->criarSession($usuario);
             return $usuario;
         }else{

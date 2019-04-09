@@ -7,6 +7,7 @@ include "../model/Usuario.class.php";
 include "../model/Cliente/Cliente.class.php";
 include "../model/Cliente/ClienteGoogleFacebook.class.php";
 include "../model/Cliente/ClientePadrao.class.php";
+include "../model/Cliente/Carrinho.class.php";
 // Factory
 include "../model/Factory/UsuarioFactory.class.php";
 include "../model/Factory/ClienteFactory.class.php";

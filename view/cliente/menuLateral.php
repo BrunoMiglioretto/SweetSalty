@@ -71,7 +71,7 @@
                 </ul>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
-                <a class='nav-link' href='../Cliente/pedidos.php' title='Pedido'>
+                <a class='nav-link' href='pedidos.php' title='Pedido'>
                     <i class='fa fa-shopping-cart'></i>
                     <span class='nav-link-text'>Pedidos</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>

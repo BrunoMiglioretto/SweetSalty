@@ -1,61 +1,22 @@
 <?php
     session_start();
-    $id_c = $_SESSION['id_cliente'];
-?>
-<?php
-    include "../Funcoes/conexao.php";
-    $sql = "SELECT SUM(Valor * Quantidade) as total FROM tb_pedidos WHERE id_cliente = '$id_c' and Situacao = 'N'";
-    $contatos = $fusca->prepare($sql);
-    $contatos->execute();			
-    foreach($contatos as $contar){
-        $id_ = $contar["total"];
-        $id_v =number_format($id_,2,',',' ');
-    }
-?>
-<?php
-	include "../Funcoes/conexao.php";
-	$sql = "SELECT * FROM tb_pedidos";
-	$contatos = $fusca -> prepare($sql);
-	$contatos -> execute();
-	foreach($contatos as $edita){
-		$si = $edita["Situacao"];
-		if(isset($_POST['Enviar'])){
-            $Situacao1      = $si;	
-            $Situacao       = "C"; 
-            $query 		    = "UPDATE tb_pedidos SET Situacao='C' WHERE id_cliente ='$id_c' and Situacao = 'N'";
-            $sql 		    = $fusca -> prepare($query);
-            $sql -> execute();			
-            $sql = null;
-            echo "
-                <script>
-                    window.location.href='pedido_pronto.php';
-                </script>";
-		}
-	}
+
 ?>		
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-----------------------------------------TODOS CSS----------------------------------------->
-        <!-- Bootstrap CSS-->
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!--Template-->
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <!-- Pageina CSS-->
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-        <!-- Estilo Template-->
         <link href="../css/sb-admin.css" rel="stylesheet">
         <link rel="icon" href="../img/logo.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">		
 		<title>Pedidos | Sweet Salty</title>
-	  <!--------------------------------------FIM DE TODOS CSS-------------------------------------->
 	    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
-	    <!-- Bootstrap core JavaScript-->
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<!-- Core plugin JavaScript-->
 		<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 	    <script>
             function editarQuantidade (e) {
@@ -117,13 +78,10 @@
         </style>
 	</head>
 	<body id="page-top">
-		<!--------------------------------------INCLUDE MENU---------------------------------------->
-        <?php include '../Menu_Lateral/Menu_Cliente.php'; ?>
+        <?php include 'menuLateral.php'?>
         <div class="pedido_N">
             <p>Pedido realizado com sucesso!</p>
         </div>
-		<!----------------------------------------FIM INCLUDE--------------------------------------->
-		<!-------------------------------------------CONTEUDO--------------------------------------->
         <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Meu Pedido</h1></center>
         <div class="content-wrapper">
             <div class="container-fluid">
@@ -147,11 +105,6 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                        $sql = "SELECT * FROM tb_pedidos WHERE id_cliente = '$id_c' and Situacao = 'N'";
-                                                        include "../Funcoes/conexao.php";
-                                                        $contatos = $fusca -> prepare($sql);
-                                                        $contatos-> execute();
-                                                        $i=0;
                                                         foreach($contatos as $lista){
                                                             $id 		    = $lista["id_pedido"];
                                                             $categoria 	    = $lista["cardapio_cat"];
@@ -162,7 +115,8 @@
                                                             $total=$valor * $quantidade;
                                                             echo "<tr>";
                                                             echo "<td>".$categoria."</td>";
-                                                            echo "<td>".$pedido."</td>";                                                            echo "<td onmouseover='editarQuantidade(\"".$i."\")' onmouseout='editarTempo1(\"".$i."\",\"".$id."\")'><input type='text' value='".$quantidade."' style='width:50px;display:none;padding: 0px;' id='".$i."'
+                                                            echo "<td>".$pedido."</td>";                                                            
+                                                            echo "<td onmouseover='editarQuantidade(\"".$i."\")' onmouseout='editarTempo1(\"".$i."\",\"".$id."\")'><input type='text' value='".$quantidade."' style='width:50px;display:none;padding: 0px;' id='".$i."'
                                                             ><span id='d".$i."'>".$quantidade."</span></td>";
                                                             echo "<td> R$ <span id='m".$i."'>".number_format($valor,2,",",".")."</span><input type='hidden' value='".$valor."' id='v".$i."'><input type='hidden' value='".$total."' id='t".$i."'></td>";
                                                             echo "<td>".$excluir."</td>";
@@ -227,12 +181,9 @@
                 </div>
             </div>
         </div><br><br>
-		<!---------------------------------------FIM CONTEUDO--------------------------------------->
-		<!-------------------------------- Botão de voltar ao topo---------------------------------->
 		<a class="scroll-to-top rounded" href="#page-top">
 		    <i class="fa fa-angle-up"></i>
 		</a>
-		<!-- Logout Modal-->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		    <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -250,18 +201,11 @@
                 </div>
             </div>
         </div>
-		<!------------------------------FIM Botão de voltar ao topo---------------------------------->
-		<!--------------------------------------INCLUDE FOOTER--------------------------------------->
-        <?php include '../Menu_Lateral/footer.html'; ?>	
-		<!----------------------------------------FIM INCLUDE---------------------------------------->
-		<!------------------------------------------- JAVA------------------------------------------->
-		<!-- Page level plugin JavaScript-->
+        <?php include '../footer.html'; ?>	
 		<script src="../vendor/chart.js/Chart.min.js"></script>
 		<script src="../vendor/datatables/jquery.dataTables.js"></script>
 		<script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
-		<!-- Custom scripts for all pages-->
 		<script src="../js/sb-admin.min.js"></script>
-		<!-- Custom scripts for this page-->
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
 			<script type="text/javascript">
@@ -289,6 +233,5 @@
             });
         </script>
 		<script src="atualizarValor.js"></script>
-		<!----------------------------------------FIM JAVA-------------------------------------------->
 	</body>
 </html>

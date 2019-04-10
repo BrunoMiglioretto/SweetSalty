@@ -20,6 +20,9 @@
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+		<script src="../alertifyjs/alertify.min.js"></script>
+		<link rel="stylesheet" href="../alertifyjs/css/alertify.min.css">
+		<link rel="stylesheet" href="../alertifyjs/css/themes/default.min.css">
 	</head>
 	<body id="page-top">
         <?php include 'menuLateral.php'?>	
@@ -70,7 +73,7 @@
                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_desc - $cardapio_subcategoria' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp R$<input class='input' type='text' name='cardapio_valor' style='width:80px; border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
+                                                                                    <?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_subcategoria - $cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp R$<input class='input' type='text' name='cardapio_valor' style='width:80px; border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
                                                                                     <p style="float:right;">
                                                                                         <input type="button" class="btn btn-primary" value="-" onclick="menos( '<?php echo $cardapio_id;?>' )">
                                                                                         <input type="text"  name="quantidade" id="<?php echo $cardapio_id;?>" value="1" size="1" readonly="readonly" />
@@ -78,7 +81,7 @@
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="modal-footer">
-                                                                                    <input type="button" class="btn btn-primary" name="salvar" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
+                                                                                    <input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
                                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                                                 </div>
                                                                             </div>
@@ -128,7 +131,7 @@
 																						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 																					</div>
 																					<div class="modal-body">
-																						<?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_desc - $cardapio_subcategoria' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
+																						<?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_subcategoria - $cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
 																						R$<input class='input' type='text' name='cardapio_valor' style='width:80px;border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
 																						<p style="float:right;">
 																							<input type="button" class="btn btn-primary" value="-" onclick="menos( '<?php echo $cardapio_id;?>' )">
@@ -137,7 +140,7 @@
 																						</p>
 																					</div>
 																					<div class="modal-footer">
-																						<input type="button" class="btn btn-primary" name="salvar" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
+																						<input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
 																						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 																					</div>
 																				</div>
@@ -187,7 +190,7 @@
                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_desc - $cardapio_subcategoria' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
+                                                                                    <?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_subcategoria - $cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
                                                                                     R$<input class='input' type='text' name='cardapio_valor' style='width:80px;border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
                                                                                     <p style="float:right;">
                                                                                         <input type="button" class="btn btn-primary" value="-" onclick="menos( '<?php echo $cardapio_id;?>' )">
@@ -196,7 +199,7 @@
                                                                                     </p>
                                                                                 </div>
                                                                                 <div class="modal-footer">
-                                                                                    <input type="button" class="btn btn-primary" name="salvar" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
+                                                                                    <input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
                                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                                                 </div>
                                                                             </div>
@@ -246,7 +249,7 @@
 																						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 																					</div>
 																					<div class="modal-body">
-																						<?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_desc - $cardapio_subcategoria' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
+																						<?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_subcategoria - $cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
 																						R$<input class='input' type='text' name='cardapio_valor' style='width:80px;border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
 																						<p style="float:right;">
 																							<input type="button" class="btn btn-primary" value="-" onclick="menos( '<?php echo $cardapio_id;?>' )">
@@ -255,7 +258,7 @@
 																						</p>
 																					</div>
 																					<div class="modal-footer">
-																						<input type="button" class="btn btn-primary" name="salvar" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
+																						<input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
 																						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 																					</div>
 																				</div>
@@ -332,8 +335,9 @@
                         idCardapio : idProduto,
                         quant : quantidade
                     }
-                }).done(function(retorno){
-                    alert(retorno);   
+                }).done(function(){
+                    alertify.set('notifier','position', 'bottom-center');
+                    alertify.success('Adicionado aos pedidos', 'success', 5);
                 });
                 
             }

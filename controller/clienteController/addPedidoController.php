@@ -17,4 +17,4 @@ $carrinho = unserialize($_SESSION["carrinho"]);
 
 $carrinho->colocarPedido($idCardapio, $quant, $cliente->getIdUsuario());
 
-echo "Completou";
+// echo "Completou";

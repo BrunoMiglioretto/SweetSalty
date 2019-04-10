@@ -78,7 +78,10 @@
         </style>
 	</head>
 	<body id="page-top">
-        <?php include 'menuLateral.php'?>
+        <?php   
+            include 'menuLateral.php';
+            include "../../controller/clienteController/visualizarPedidosController.php";
+        ?>
         <div class="pedido_N">
             <p>Pedido realizado com sucesso!</p>
         </div>
@@ -87,7 +90,7 @@
             <div class="container-fluid">
                 <div class="card mb-3">
         			<div class="card-header">
-          				<?php echo "<span id='valortotal'><input type='text' style='float:right;width:100px; background-color: #F7F7F7;height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' value='R$ $id_v ' readonly='readonly'></span><input type='text' readonly='readonly' value='Valor total:' style='float:right;width:100px;font-size:20px; background-color: #F7F7F7;height:50px;border-radius: 5px; font-family: `Raleway`, sans-serif; color:#F15821;border: 1px solid transparent;'>"?>
+          				<?php echo "<span id='valortotal'><input type='text' style='float:right;width:100px; background-color: #F7F7F7;height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' value='R$ $subtotal ' readonly='readonly'></span><input type='text' readonly='readonly' value='Valor total:' style='float:right;width:100px;font-size:20px; background-color: #F7F7F7;height:50px;border-radius: 5px; font-family: `Raleway`, sans-serif; color:#F15821;border: 1px solid transparent;'>"?>
         				<div class="card-body">
                             <div class="td">
                                 <div class="container-fluid" class='print'>
@@ -105,20 +108,20 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                        foreach($contatos as $lista){
+                                                        foreach($pedidos as $lista){
                                                             $id 		    = $lista["id_pedido"];
-                                                            $categoria 	    = $lista["cardapio_cat"];
-                                                            $pedido 		= $lista["Pedido"];
-                                                            $quantidade     = $lista["Quantidade"];
-                                                            $valor 			= $lista["Valor"];
+                                                            $categoria 	    = "Sem categoria por agora";
+                                                            $pedido 		= $lista["nome"];
+                                                            $quantidade     = $lista["quant"];
+                                                            $valor 			= $lista["valor_unitario"];
                                                             $excluir 		= "<center><a data-toggle='modal' data-target='#Modal$id'><img src='../img/excluir.png' title='Excluir'><a/></center>";
                                                             $total=$valor * $quantidade;
                                                             echo "<tr>";
                                                             echo "<td>".$categoria."</td>";
                                                             echo "<td>".$pedido."</td>";                                                            
-                                                            echo "<td onmouseover='editarQuantidade(\"".$i."\")' onmouseout='editarTempo1(\"".$i."\",\"".$id."\")'><input type='text' value='".$quantidade."' style='width:50px;display:none;padding: 0px;' id='".$i."'
-                                                            ><span id='d".$i."'>".$quantidade."</span></td>";
-                                                            echo "<td> R$ <span id='m".$i."'>".number_format($valor,2,",",".")."</span><input type='hidden' value='".$valor."' id='v".$i."'><input type='hidden' value='".$total."' id='t".$i."'></td>";
+                                                            echo "<td onmouseover='editarQuantidade()' onmouseout='editarTempo1()'><input type='text' value='".$quantidade."' style='width:50px;display:none;padding: 0px;'
+                                                            ><span id='d'>".$quantidade."</span></td>";
+                                                            echo "<td> R$ <span id='m'>".number_format($valor,2,",",".")."</span><input type='hidden' value='".$valor."' id='v'><input type='hidden' value='".$total."' id='t'></td>";
                                                             echo "<td>".$excluir."</td>";
                                                             echo "  <div class='modal fade' id='Modal$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
                                                                         <div class='modal-dialog modal-dialog-centered' role='document'>
@@ -140,15 +143,14 @@
                                                                         </div>
                                                                     </div>";//Modal
                                                             echo "</tr>";				
-                                                            $i++;
                                                         }
-                                                        echo "<input type='hidden' value='".$i."' id='totalcontador'>";
+                                                        echo "<input type='hidden' value='' id='totalcontador'>";
 													?>
 								                </tbody>
             							    </table>
           								</div>
           								<div style='float: right;'>
-          									<form method="POST" action="">
+          									<form method="POST" action=>
           									    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cozinha">
                                                     Enviar para Cozinha
                                                 </button>
@@ -208,7 +210,7 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
-			<script type="text/javascript">
+		<script type="text/javascript">
 			function id( el ){
 				return document.getElementById( el );
 			}

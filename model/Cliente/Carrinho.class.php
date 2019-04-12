@@ -82,8 +82,27 @@ class Carrinho{
 		return $subtotal;
 	}
 	
-	public function editarPedido($idCardapio, $quant){
-		
+	public function editarPedido($idCardapio, $quant, $idCliente){
+		// Pegar o pedido
+		$sql1= "SELECT tb_cardapio.valor_unitario, tb_alimento_pedido.quant, tb_alimento_pedido.id_pedido
+				FROM tb_cardapio INNER JOIN tb_alimento_pedido ON tb_cardapio.id_cardapio = tb_alimento_pedido.id_cardapio
+				WHERE tb_alimento_pedido.id_cardapio =".$idCardapio;
+		$conexao = new Conexao;
+		$c = $conexao->conexao();
+		$retirarValor = $c->prepare($sql1);
+		$retirarValor->execute();
+		foreach($retirarValor as $v){
+			$valor = $v["valor_unitario"];
+			$quantAtual = $v["quant"];
+			$idPedido = $v["id_pedido"];
+		}
+		$sql2 = "UPDATE tb_pedido SET subtotal = (subtotal - ".$valor * $quantAtual.") + ".$valor * $quant." WHERE id_pedido =".$idPedido;
+		$attValor = $c->prepare($sql2);
+		$attValor->execute();
+
+		$sql3 = "UPDATE tb_alimento_pedido SET quant = ".$quant." WHERE id_pedido =".$idPedido." and id_cardapio =".$idCardapio;
+		$attValor = $c->prepare($sql3);
+		$attValor->execute();
 	}
 	
 	public function excluirPedido($idCardapio, $idPedido){

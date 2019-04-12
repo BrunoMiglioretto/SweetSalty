@@ -31,8 +31,7 @@ foreach($pedidos as $lista){
     echo "<tr>";
     echo "<td>".$pedido."</td>";                                                            
     echo "<td>".$categoria."</td>";
-    echo "<td><input type='text' value='".$quantidade."' style='width:50px;display:none;padding: 0px;'
-    ><span id='d'>".$quantidade."</span></td>";
+    echo "<td><input id='".$id."' type='text' onblur='atualizarPedido(this, ".$idCardapio.")' value='".$quantidade."' class='inputQuant'></td>";
     echo "<td> R$ <span id='m'>".number_format($valor,2,",",".")."</span><input type='hidden' value='".$valor."' id='v'><input type='hidden' value='".$total."' id='t'></td>";
     echo "<td>".$excluir."</td>";
     echo "  <td><div class='modal fade' id='Modal$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>

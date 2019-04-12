@@ -30,12 +30,12 @@
                     }
                 }).done(function() {
                     setTimeout(function() {
-                        atualizarPedido();
+                        atualizarListaPedido();
                     }, 50);
                 });
             }
 
-            function atualizarPedido(){
+            function atualizarListaPedido(){
                 $.ajax({
                     url : "../../controller/clienteController/carrinho/visualizarPedidosController.php"
                 }).done(function(pedidos) {
@@ -46,65 +46,41 @@
                 });
             }
 
+            function atualizarPedido(campo, idCardapio){
+                quant = campo.value;
+                
+                $.ajax({
+                    url : "../../controller/clienteController/carrinho/attPedidoController.php",
+                    method : "POST",
+                    data : {
+                        quant : quant,
+                        idCardapio : idCardapio
+                    }
+                }).done(function(n) {
+                    atualizarListaPedido()
+                });
+
+            }
+
+
             $(document).ready(function() {
-                atualizarPedido();
+                atualizarListaPedido();
             });
 
-            function editarQuantidade (e) {
-                document.getElementById(e).style.display="block";
-                document.getElementById("d"+e).style.display="none";
-                document.getElementById(e).focus();
-            } 
-            function editarTempo1 (e,id) {
-                document.getElementById(e).style.display="none";
-                document.getElementById("d"+e).style.display="block";
-                var t = document.getElementById(e).value;
-                if(t >= 13){
-                    document.getElementById("d"+e).innerHTML= 13;
-                    document.getElementById(e).value = 13;
-                    t = 13;
-                }
-                else if(t <1){    
-                    document.getElementById("d"+e).innerHTML= 1;
-                    document.getElementById(e).value = 1;
-                    t = 1;
-                }else{
-                    document.getElementById("d"+e).innerHTML=t;
-                }
-                var v =document.getElementById("v"+e).value;
-                var total = t * v;
-                total = total.toFixed(2).replace(".",",");
-                document.getElementById("m"+e).innerHTML=total;
-      		    $.ajax({
-                    type:'POST',
-                    url:'ajaxQuantidade.php',
-                    data:'qtd='+t+"&id="+id,
-                    success:function(html){
-         	            $('#valortotal').html(html);
-                    }
-		  	    });
-		  	   
-            }
+            
         </script>
         <style>
     	    .dataTables_filter, .dataTables_length, .dataTables_info, .pagination{
     		    visibility: hidden!important;
     	    }
-        </style>
-        <style>
-            .pedido_N{
-                width: 250px;
-                padding: 20px 3px 20px 3px;
-                margin: 0px;
-                background-color: #F7F7F7;
-                border: 2px solid #F15821;
-                border-radius: 4px;
-                text-align: center;
-                position: fixed;
-                right: 50px;
-                top: 50px;
-                font-family: Raleway, sans-serif;
-                display: none;
+            .inputQuant{
+                border: 0;
+                background-color: transparent;
+                width: 100%;
+                padding-left: 3px;
+            }
+            .inputQuant:hover{
+                box-shadow: 0px 0px 2px;
             }
         </style>
 	</head>
@@ -112,9 +88,6 @@
         <?php   
             include 'menuLateral.php';
         ?>
-        <div class="pedido_N">
-            <p>Pedido realizado com sucesso!</p>
-        </div>
         <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Meu Pedido</h1></center>
         <div class="content-wrapper">
             <div class="container-fluid">
@@ -202,18 +175,5 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
-		<script type="text/javascript">
-			function id( el ){
-				return document.getElementById( el );
-			}
-			function menos( id_qnt ){
-				var qnt = parseInt( id( id_qnt ).value );
-				if( qnt > 1 )
-					id( id_qnt ).value = qnt - 1; 
-			}
-			function mais( id_qnt ){
-				id( id_qnt ).value = parseInt( id( id_qnt ).value ) + 1; 
-			} 
-		</script>
 	</body>
 </html>

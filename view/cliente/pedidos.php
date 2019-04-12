@@ -40,13 +40,14 @@
                     url : "../../controller/clienteController/carrinho/visualizarPedidosController.php"
                 }).done(function(pedidos) {
                     $("#tabelaPedidos").html(pedidos);
+                    campoSubtotal = document.getElementById("campoSubtotal");
+                    valor = document.getElementsByClassName("subtotal")[0].value;
+                    campoSubtotal.value = "Valor total: R$" + valor;
                 });
             }
 
             $(document).ready(function() {
                 atualizarPedido();
-                // campoSubtotal = $("#campoSubtotal");
-                // campoSubtotal.value = $("subtotal"[0]).val();
             });
 
             function editarQuantidade (e) {
@@ -119,7 +120,7 @@
             <div class="container-fluid">
                 <div class="card mb-3">
         			<div class="card-header">
-          				<?php echo "<span id='valortotal'><input type='text' style='float:right;width:100px; background-color: #F7F7F7;height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' id='campoSubtotal' readonly='readonly'></span><input type='text' readonly='readonly' value='Valor total:' style='float:right;width:100px;font-size:20px; background-color: #F7F7F7;height:50px;border-radius: 5px; font-family: `Raleway`, sans-serif; color:#F15821;border: 1px solid transparent;'>"?>
+                        <input type='text' id="campoSubtotal" value='Valor total:' style='padding: 20px 0px 5px 30px;font-size:20px; background-color: #F7F7F7;border-radius: 5px; font-family: `Raleway`, sans-serif; color:#F15821;border: 1px solid transparent;' disabled>
         				<div class="card-body">
                             <div class="td">
                                 <div class="container-fluid" class='print'>

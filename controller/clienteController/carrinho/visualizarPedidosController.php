@@ -57,3 +57,12 @@ foreach($pedidos as $lista){
             </div></td>
         </tr>";				
 }
+
+if($pedidos->rowCount() == 0){
+    echo "
+        <tr class='odd'>
+            <td valign='top' colspan='5' class='dataTables_empty'>Nenhum item adicionado
+                <input type='hidden' value='0.00' class='subtotal'>
+            </td>
+        </tr>";
+}

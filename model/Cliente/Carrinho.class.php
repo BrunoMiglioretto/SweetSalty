@@ -87,10 +87,28 @@ class Carrinho{
 	}
 	
 	public function excluirPedido($idCardapio, $idPedido){
-		$sql = "DELETE FROM tb_alimento_pedido WHERE id_cardapio =".$idCardapio." and id_pedido = ".$idPedido;
+		// Pegar o pedido
+		$sql1= "SELECT tb_cardapio.valor_unitario, tb_alimento_pedido.quant 
+				FROM tb_cardapio INNER JOIN tb_alimento_pedido ON tb_cardapio.id_cardapio = tb_alimento_pedido.id_cardapio
+				WHERE tb_alimento_pedido.id_cardapio =".$idCardapio;
 		$conexao = new Conexao;
 		$c = $conexao->conexao();
-		$pedidoExcluir = $c->prepare($sql);
+		$retirarValor = $c->prepare($sql1);
+		$retirarValor->execute();
+		foreach($retirarValor as $v){
+			$valor = $v["valor_unitario"];
+			$quant = $v["quant"];
+		}
+		// Diminuir subtotal
+		$sql2 = "UPDATE tb_pedido SET subtotal = subtotal - ".$valor * $quant." WHERE id_pedido =".$idPedido;
+		$attValor = $c->prepare($sql2);
+		$attValor->execute();
+
+		// Deletar item do pedido
+		$sql3 = "DELETE FROM tb_alimento_pedido WHERE id_cardapio =".$idCardapio." and id_pedido = ".$idPedido;
+		$conexao = new Conexao;
+		$c = $conexao->conexao();
+		$pedidoExcluir = $c->prepare($sql3);
 		$pedidoExcluir->execute();
 	}
 	

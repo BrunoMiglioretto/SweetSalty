@@ -29,6 +29,13 @@ class ClientePadrao extends Cliente{
         $conexao = new Conexao();
         $con = $conexao->conexao();
         
+        $verifEmail = "SELECT * FROM tb_cadastro WHERE  email = '".$this->getEmail()."'";
+        $cliente = $con->prepare($verifEmail);
+        $cliente->execute();
+        $contLinha = $cliente->rowCount();
+        if($contLinha > 0)
+            return false;
+     
         $sql1 = "INSERT INTO tb_cadastro SET nome_completo = '".$this->getNomeCompleto()."', email = '".$this->getEmail()."'";
         $cliente = $con->prepare($sql1);
         $cliente->execute();
@@ -45,7 +52,7 @@ class ClientePadrao extends Cliente{
         $cliente = $con->prepare($sql4);
         $cliente->execute();
         
-        echo "<br>Está no banco<br>";
+        echo "<br>Return true<br>";
     
         return true;
     }

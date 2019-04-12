@@ -22,7 +22,7 @@ $informarcoes[4] = $_POST["sexo"];
 $informarcoes[5] = $_POST["dataNascimento"];
 $informarcoes[6] = $_POST["senha"];
 $informarcoes[7] = $_POST["confSenha"];
-$email = $informarcoes[0];
+$email 			 = $informarcoes[0];
 
 
 $cliente = new ClientePadrao;
@@ -41,12 +41,12 @@ if(!$cliente->cadastrar($informarcoes)){ // Retorna False se algum dado estiver 
 	
 	$cliente2 = new ValidarEmail($email);
 				  
-	if($cliente2->EnviarEmail()){ 
+	if(!$cliente2->EnviarEmail()){ 
 		echo "<script>alert('Ocorreu algum erro no envio do e-mail, tente novamente.')</script>";
-		echo "<script>window.location ='../../../view/CadastroCliente.php'</script>";
+	 	echo "<script>window.location ='../../../view/CadastroCliente.php'</script>";
 	}else {// se retornar um e-mail, foi possivel enviar para o usuário.
 		echo "<script>alert('enviamos um e-mail de confirmação, sertifique seu sua caixa de e-mails.)</script>"; 
-		echo "<script>window.location ='../../../view/logar.php'</script>";
+	 	echo "<script>window.location ='../../../view/logar.php'</script>";
 	}
 }
 

@@ -41,7 +41,7 @@
                         </div>
                         <input class="btn btn-primary btn-block" type="submit" name="Salvar" value="Entrar"><br>
                         <div class="row text-center" style="margin-left: 50px;"> 
-                             <div class="g-signin2" data-onsuccess="onSignIn" style="width:200%; height:36px;"></div><p id='msg'></p>
+                             <div class="g-signin2" data-onsuccess="onSignIn" style="width:300%; height:40px; margin-left:-6%;"></div><p id='msg'></p>
                         </div>
                     </form>
                     <a href="cadastroCliente.php" style="text-decoration:none;"><button class="btn btn-primary btn-block"  type="button">Quero me cadastrar</button></a>

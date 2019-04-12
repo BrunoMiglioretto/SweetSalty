@@ -19,6 +19,7 @@ class Carrinho{
 	public function visualizarPedidos($idUsuario){
 		$sql = "SELECT * FROM tb_pedido INNER JOIN tb_alimento_pedido ON tb_pedido.id_pedido = tb_alimento_pedido.id_pedido 
 										INNER JOIN tb_cardapio ON tb_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio
+										INNER JOIN tb_cardapio_subcat ON tb_cardapio_subcat.id_cardapio_subcat = tb_cardapio.id_cardapio_subcat
 										WHERE id_cadastro =".$idUsuario." and situacao = 1";
 		$conexao = new Conexao;
 		$c = $conexao->conexao();
@@ -85,8 +86,12 @@ class Carrinho{
 		
 	}
 	
-	public function excluirPedido($idCardapio){
-		
+	public function excluirPedido($idCardapio, $idPedido){
+		$sql = "DELETE FROM tb_alimento_pedido WHERE id_cardapio =".$idCardapio." and id_pedido = ".$idPedido;
+		$conexao = new Conexao;
+		$c = $conexao->conexao();
+		$pedidoExcluir = $c->prepare($sql);
+		$pedidoExcluir->execute();
 	}
 	
 	public function enviarPedido($idUsuario){

@@ -19,6 +19,36 @@
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 	    <script>
+
+            function excluirPedido(idPedido, idCardapio){
+                $.ajax({
+                    url : "../../controller/clienteController/carrinho/excluirPedidoController.php",
+                    method : "POST",
+                    data : {
+                        idPedido : idPedido,
+                        idCardapio : idCardapio
+                    }
+                }).done(function() {
+                    setTimeout(function() {
+                        atualizarPedido();
+                    }, 50);
+                });
+            }
+
+            function atualizarPedido(){
+                $.ajax({
+                    url : "../../controller/clienteController/carrinho/visualizarPedidosController.php"
+                }).done(function(pedidos) {
+                    $("#tabelaPedidos").html(pedidos);
+                });
+            }
+
+            $(document).ready(function() {
+                atualizarPedido();
+                // campoSubtotal = $("#campoSubtotal");
+                // campoSubtotal.value = $("subtotal"[0]).val();
+            });
+
             function editarQuantidade (e) {
                 document.getElementById(e).style.display="block";
                 document.getElementById("d"+e).style.display="none";
@@ -80,7 +110,6 @@
 	<body id="page-top">
         <?php   
             include 'menuLateral.php';
-            include "../../controller/clienteController/visualizarPedidosController.php";
         ?>
         <div class="pedido_N">
             <p>Pedido realizado com sucesso!</p>
@@ -90,7 +119,7 @@
             <div class="container-fluid">
                 <div class="card mb-3">
         			<div class="card-header">
-          				<?php echo "<span id='valortotal'><input type='text' style='float:right;width:100px; background-color: #F7F7F7;height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' value='R$ $subtotal ' readonly='readonly'></span><input type='text' readonly='readonly' value='Valor total:' style='float:right;width:100px;font-size:20px; background-color: #F7F7F7;height:50px;border-radius: 5px; font-family: `Raleway`, sans-serif; color:#F15821;border: 1px solid transparent;'>"?>
+          				<?php echo "<span id='valortotal'><input type='text' style='float:right;width:100px; background-color: #F7F7F7;height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' id='campoSubtotal' readonly='readonly'></span><input type='text' readonly='readonly' value='Valor total:' style='float:right;width:100px;font-size:20px; background-color: #F7F7F7;height:50px;border-radius: 5px; font-family: `Raleway`, sans-serif; color:#F15821;border: 1px solid transparent;'>"?>
         				<div class="card-body">
                             <div class="td">
                                 <div class="container-fluid" class='print'>
@@ -99,53 +128,15 @@
             								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" class='print'>
                                                 <thead>
     							                	<tr>
-                                                        <th>Categoria</th>
                                                         <th>Pedido</th>
+                                                        <th>Categoria</th>
                                                         <th>Quantidade</th>
                                                         <th>Valor unitário</th>
                                                         <th>Excluir</th>
                                                    </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <?php
-                                                        foreach($pedidos as $lista){
-                                                            $id 		    = $lista["id_pedido"];
-                                                            $categoria 	    = "Sem categoria por agora";
-                                                            $pedido 		= $lista["nome"];
-                                                            $quantidade     = $lista["quant"];
-                                                            $valor 			= $lista["valor_unitario"];
-                                                            $excluir 		= "<center><a data-toggle='modal' data-target='#Modal$id'><img src='../img/excluir.png' title='Excluir'><a/></center>";
-                                                            $total=$valor * $quantidade;
-                                                            echo "<tr>";
-                                                            echo "<td>".$categoria."</td>";
-                                                            echo "<td>".$pedido."</td>";                                                            
-                                                            echo "<td onmouseover='editarQuantidade()' onmouseout='editarTempo1()'><input type='text' value='".$quantidade."' style='width:50px;display:none;padding: 0px;'
-                                                            ><span id='d'>".$quantidade."</span></td>";
-                                                            echo "<td> R$ <span id='m'>".number_format($valor,2,",",".")."</span><input type='hidden' value='".$valor."' id='v'><input type='hidden' value='".$total."' id='t'></td>";
-                                                            echo "<td>".$excluir."</td>";
-                                                            echo "  <div class='modal fade' id='Modal$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
-                                                                        <div class='modal-dialog modal-dialog-centered' role='document'>
-                                                                            <div class='modal-content'>
-                                                                                <div class='modal-header'>
-                                                                                    <h5 class='modal-t'itle' id'='exampleModalLongTitle'>Excluir</h5>
-                                                                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                                                                        <span aria-hidden='true'>&times;</span>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div class='modal-body'>
-                                                                                    Deseja excluir $pedido?
-                                                                                </div>
-                                                                                <div class='modal-footer'>
-                                                                                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-                                                                                    <a href='excluir_pedido.php?id_pedido=$id'><button type='button' class='btn btn-primary'>Excluir</button></a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>";//Modal
-                                                            echo "</tr>";				
-                                                        }
-                                                        echo "<input type='hidden' value='' id='totalcontador'>";
-													?>
+                                                <tbody id="tabelaPedidos">
+
 								                </tbody>
             							    </table>
           								</div>
@@ -223,17 +214,5 @@
 				id( id_qnt ).value = parseInt( id( id_qnt ).value ) + 1; 
 			} 
 		</script>
-		<script>
-            $(document).ready(function(){
-                let p_novo = <?php echo $_GET['p_novo'];?>;
-                if(p_novo == 1){
-                    $('.pedido_N').fadeIn(1000);
-                    $('.pedido_N').on('click', function(){
-                        $('.pedido_N').fadeOut(500);
-                    })
-                }
-            });
-        </script>
-		<script src="atualizarValor.js"></script>
 	</body>
 </html>

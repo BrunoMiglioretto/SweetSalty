@@ -329,7 +329,7 @@
             function addProduto(idProduto){
                 let quantidade = $("input[id=" + idProduto + "]").val();
                 $.ajax({
-                    url: "../../controller/clienteController/addPedidoController.php",
+                    url: "../../controller/clienteController/carrinho/addPedidoController.php",
                     method : "POST",
                     data : {
                         idCardapio : idProduto,

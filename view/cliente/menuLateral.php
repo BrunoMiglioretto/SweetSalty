@@ -135,17 +135,3 @@
         </ul>
     </div>
   </nav>
-    <script>
-    	$(document).ready(function(){
-    	    let n_temporario = -1;
-    	    let intervalo = setInterval(function(){
-        	 	$.post("intervalo.php", function(numero){
-        	 	    //alert(numero + '_' + n_temporario);
-        	 	    if(n_temporario != -1)
-        			    if(numero != n_temporario)
-        			        location.reload();
-                        n_temporario = numero;
-        	 	});
-    	    },3000);
-    	});
-    </script>

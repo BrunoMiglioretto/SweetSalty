@@ -6,7 +6,6 @@
 <html lang="PT-BR">
 	<head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -20,7 +19,16 @@
 		<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 	    <script>
 
-            function excluirPedido(idPedido, idCardapio){
+            function attDadosModal(idPedido, idCardapio, nome){
+                $("#idPedido").val(idPedido);
+                $("#idCardapio").val(idCardapio);
+                $("#nomeProdudoModal").html("Deseja mesmo excluir " + nome + "?");
+            }
+
+            function excluirPedido(){
+                idPedido = $("#idPedido").val();
+                idCardapio = $("#idCardapio").val();
+
                 $.ajax({
                     url : "../../controller/clienteController/carrinho/excluirPedidoController.php",
                     method : "POST",
@@ -151,6 +159,31 @@
 		<a class="scroll-to-top rounded" href="#page-top">
 		    <i class="fa fa-angle-up"></i>
 		</a>
+
+        <!-- Modal excluir produto -->
+        <div class='modal fade' id='ModalProduto' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+            <div class='modal-dialog modal-dialog-centered' role='document'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='exampleModalLongTitle'>Excluir</h5>
+                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                        </button>
+                    </div>
+                    <div class='modal-body'>
+                        <p id="nomeProdudoModal"></p>
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                        <a data-dismiss='modal'><button onclick='excluirPedido()' class='btn btn-primary'>Excluir</button></a>
+                        <input type="hidden" id='idPedido' value=''>
+                        <input type="hidden" id='idCardapio' value=''>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal sair -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		    <div class="modal-dialog" role="document">
 			    <div class="modal-content">

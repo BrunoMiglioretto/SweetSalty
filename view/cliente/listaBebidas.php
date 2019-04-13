@@ -361,19 +361,21 @@
         <script src="../js/sb-admin-charts.min.js"></script>
         <script src="js.js"></script>
         <script type="text/javascript">
-            function id( el ){
-                return document.getElementById( el );
-            }
-            function menos( id_qnt ){
-                var qnt = parseInt( id( id_qnt ).value );
-                if( qnt > 1)
-                    id( id_qnt ).value = qnt - 1; 
-            } 
-            function mais( id_qnt ){
-                if(id( id_qnt ).value < 13)
-                    id( id_qnt ).value = parseInt( id( id_qnt ).value ) + 1; 
-            }
-        </script>
+			function id( el ){
+				return document.getElementById( el );
+			}
+			function menos( id_qnt ) 
+			{
+				var qnt = parseInt( id( id_qnt ).value );
+				if( qnt > 1 )
+					id( id_qnt ).value = qnt - 1; 
+			} 
+			function mais( id_qnt )
+			{
+				if(id( id_qnt ).value < 13)
+					id( id_qnt ).value = parseInt( id( id_qnt ).value ) + 1; 
+			} 
+		</script>
         <script>
             function addProduto(idProduto){
                 let quantidade = $("input[id=" + idProduto + "]").val();

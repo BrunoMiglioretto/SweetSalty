@@ -26,35 +26,35 @@ foreach($pedidos as $lista){
     $quantidade     = $lista["quant"];
     $valor 			= $lista["valor_unitario"];
     $idCardapio     = $lista["id_cardapio"];
-    $excluir 		= "<center><a data-toggle='modal' data-target='#Modal$id'><img src='../img/excluir.png' title='Excluir'><a/></center>";
-    $total=$valor * $quantidade;
+    $selecionado[$quantidade] = "selected";
     echo "<tr>";
     echo "<td>".$pedido."</td>";                                                            
     echo "<td>".$categoria."</td>";
-    echo "<td><input id='".$id."' type='text' onblur='atualizarPedido(this, ".$idCardapio.")' value='".$quantidade."' class='inputQuant'></td>";
-    echo "<td> R$ <span id='m'>".number_format($valor,2,",",".")."</span><input type='hidden' value='".$valor."' id='v'><input type='hidden' value='".$total."' id='t'></td>";
-    echo "<td>".$excluir."</td>";
-    echo "  <td><div class='modal fade' id='Modal$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
-                <div class='modal-dialog modal-dialog-centered' role='document'>
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h5 class='modal-t'itle' id'='exampleModalLongTitle'>Excluir</h5>
-                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                <span aria-hidden='true'>&times;</span>
-                            </button>
-                        </div>
-                        <div class='modal-body'>
-                            Deseja excluir $pedido?
-                        </div>
-                        <div class='modal-footer'>
-                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-                            <a data-dismiss='modal'><button onclick='excluirPedido(".$id.",".$idCardapio.")' class='btn btn-primary'>Excluir</button></a>
-                            <input type='hidden' value='".$subtotal."' class='subtotal'>
-                        </div>
-                    </div>
-                </div>
-            </div></td>
-        </tr>";				
+    echo "
+        <td>
+            <select class='inputQuant' id='".$id."' onchange='atualizarPedido(this, ".$idCardapio.")' value='".$quantidade."'>
+                <option ".$selecionado[1]." value='1'>1</option>
+                <option ".$selecionado[2]." value='2'>2</option>
+                <option ".$selecionado[3]." value='3'>3</option>
+                <option ".$selecionado[4]." value='4'>4</option>
+                <option ".$selecionado[5]." value='5'>5</option>
+                <option ".$selecionado[6]." value='6'>6</option>
+                <option ".$selecionado[7]." value='7'>7</option>
+                <option ".$selecionado[8]." value='8'>8</option>
+                <option ".$selecionado[9]." value='9'>9</option>
+                <option ".$selecionado[10]." value='10'>10</option>
+            </select>
+        </td>";
+    echo "<td> R$ <span>".number_format($valor,2,",",".")."</span></td>";
+    echo "  <td>
+                <center>
+                    <div data-toggle='modal' data-target='#ModalProduto' onclick=\"attDadosModal(".$id." ,".$idCardapio.", '".$pedido."')\">
+                        <img src='../img/excluir.png' title='Excluir'>
+                    <div/>
+                </center>
+            </td>";
+    echo "</tr>";
+    $selecionado[$quantidade] = "";			
 }
 
 if($pedidos->rowCount() == 0){
@@ -65,3 +65,5 @@ if($pedidos->rowCount() == 0){
             </td>
         </tr>";
 }
+// Pegar o valor do subtotal
+echo "<input type='hidden' class='subtotal' value='".$subtotal."'>";

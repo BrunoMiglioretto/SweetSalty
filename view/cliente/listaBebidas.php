@@ -347,7 +347,7 @@
                     <div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
                         <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="../logout.php">Sair</a>
+                        <a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
                     </div>
                 </div>
             </div>
@@ -361,24 +361,26 @@
         <script src="../js/sb-admin-charts.min.js"></script>
         <script src="js.js"></script>
         <script type="text/javascript">
-            function id( el ){
-                return document.getElementById( el );
-            }
-            function menos( id_qnt ){
-                var qnt = parseInt( id( id_qnt ).value );
-                if( qnt > 1)
-                    id( id_qnt ).value = qnt - 1; 
-            } 
-            function mais( id_qnt ){
-                if(id( id_qnt ).value < 13)
-                    id( id_qnt ).value = parseInt( id( id_qnt ).value ) + 1; 
-            }
-        </script>
+			function id( el ){
+				return document.getElementById( el );
+			}
+			function menos( id_qnt ) 
+			{
+				var qnt = parseInt( id( id_qnt ).value );
+				if( qnt > 1 )
+					id( id_qnt ).value = qnt - 1; 
+			} 
+			function mais( id_qnt )
+			{
+				if(id( id_qnt ).value < 13)
+					id( id_qnt ).value = parseInt( id( id_qnt ).value ) + 1; 
+			} 
+		</script>
         <script>
             function addProduto(idProduto){
                 let quantidade = $("input[id=" + idProduto + "]").val();
                 $.ajax({
-                    url: "../../controller/clienteController/addPedidoController.php",
+                    url: "../../controller/clienteController/carrinho/addPedidoController.php",
                     method : "POST",
                     data : {
                         idCardapio : idProduto,

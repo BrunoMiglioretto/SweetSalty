@@ -114,7 +114,7 @@
 					<div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
 					<div class="modal-footer">
 						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-						<a class="btn btn-primary" href="../logout.php">Sair</a>
+						<a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
 					</div>
 				</div>
 			</div>
@@ -149,7 +149,7 @@
             function addProduto(idProduto){
                 let quantidade = $("input[id=" + idProduto + "]").val();
                 $.ajax({
-                    url: "../../controller/clienteController/addPedidoController.php",
+                    url: "../../controller/clienteController/carrinho/addPedidoController.php",
                     method : "POST",
                     data : {
                         idCardapio : idProduto,

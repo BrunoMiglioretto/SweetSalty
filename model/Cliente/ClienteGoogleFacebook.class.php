@@ -4,8 +4,8 @@ class ClienteGoogleFacebook extends Cliente{
     
     public function cadastrar($informacoes){
 
-        $conexao = new Conexao();
-        $con = $conexao->conexao();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
         
         $sql1 = "INSERT INTO tb_cadastro SET nome_completo = '".$informacoes[0]."', email = '".$informacoes[1]."'";
         $cliente = $con->prepare($sql1);
@@ -37,8 +37,8 @@ class ClienteGoogleFacebook extends Cliente{
         if($cb->getDataNascimento() == false)
             return false;
 
-        $conexao = new Conexao();
-        $con = $conexao->conexao();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
         
         $sql1 = "UPDATE tb_cadastro SET nome_completo = '".$cb->getNomeCompleto()."', email = '".$cb->getEmail()."' WHERE id_cadastro = ".$this->getIdUsuario();
         $cliente = $con->prepare($sql1);

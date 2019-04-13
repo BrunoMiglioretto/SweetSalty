@@ -26,6 +26,7 @@ $login = new LoginGoogleFacebook($email);
 
 if(!$login->verificarEmailBD()){
     include "clienteController/cadastro/cadastrarClienteGFController.php";
+    $login->verificarCadastro();
     echo 1;
 }
 else{

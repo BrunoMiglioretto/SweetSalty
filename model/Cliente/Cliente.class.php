@@ -9,7 +9,7 @@ abstract class Cliente extends Usuario{
     public function escolherMesa($mesa){
         $sql = "INSERT INTO tb_mesa SET id_cadastro = ".$this->getIdUsuario().", id_mesa = $mesa";
         $conexao = new Conexao;
-        $con = $conexao->conexao();
+        $con = $conexao->conexaoPDO();
         $mesa = $con->prepare($sql);
         $mesa->execute();
         $con = NULL;

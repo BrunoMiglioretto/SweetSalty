@@ -22,10 +22,14 @@ class ClienteFactory extends UsuarioFactory{
                 $cgf->setIdUsuario($carrega["id_cadastro"]);
                 $cgf->setNomeCompleto($carrega["nome_completo"]);
                 $cgf->setEmail($carrega["email"]);
-                $cgf->setDdd($carrega["ddd"]);
-                $cgf->setNumeroTelefone($carrega["numero"]);
-                $cgf->setDataNascimento($carrega["data_nascimento"]);
-                $cgf->setSexo($carrega["sexo"]);
+                if(isset($carrega["ddd"]))
+                    $cgf->setDdd($carrega["ddd"]);
+                if(isset($carrega["numero"]))
+                    $cgf->setNumeroTelefone($carrega["numero"]);
+                if(isset($carrega["data_nascimento"]))
+                    $cgf->setDataNascimento($carrega["data_nascimento"]);
+                if(isset($carrega["sexo"]))
+                    $cgf->setSexo($carrega["sexo"]);
             }
             return $cgf;
         }

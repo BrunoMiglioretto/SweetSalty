@@ -1,6 +1,6 @@
 <?php
     class Conexao{
-        public function conexao(){
+        public function conexaoPDO(){
             return new PDO("mysql:host=localhost;dbname=sweets00_sistema-bd","root","");
         }
     }

@@ -83,7 +83,6 @@
             function mudarPagina(situacao){
                 switch(situacao){
                     case '1':
-                        alert('Bem vindo a Sweet Salty');
                         window.location = 'cliente/mesas/mesa.php';
                         break;
                     case '2':
@@ -92,8 +91,10 @@
                         break;
                     case '3':
                         window.location = 'cliente/mesas/mesa.php';
+                        break;
                 }
             }
+
         </script>
     </body>
 </html>

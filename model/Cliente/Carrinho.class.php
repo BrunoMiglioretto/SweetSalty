@@ -5,7 +5,7 @@ class Carrinho{
 	public function __construct($idUsuario){
 		$sql1 = "SELECT id_pedido FROM tb_pedido WHERE id_cadastro =".$idUsuario;
 		$conexao = new Conexao;
-		$c = $conexao->conexao();
+		$c = $conexao->conexaoPDO();
 		$pedidoCliente = $c->prepare($sql1);
 		$pedidoCliente->execute();
 		if($pedidoCliente->rowCount() == 0){
@@ -25,7 +25,7 @@ class Carrinho{
 										INNER JOIN tb_cardapio_subcat ON tb_cardapio_subcat.id_cardapio_subcat = tb_cardapio.id_cardapio_subcat
 										WHERE id_cadastro =".$idUsuario." and situacao = 1";
 		$conexao = new Conexao;
-		$c = $conexao->conexao();
+		$c = $conexao->conexaoPDO();
 		$pedidos = $c->prepare($sql);
 		$pedidos->execute();
 		return $pedidos;
@@ -35,7 +35,7 @@ class Carrinho{
 		// Pega o valor do produto
 		$sql1 = "SELECT valor_unitario FROM tb_cardapio WHERE id_cardapio =".$idCardapio;
 		$conexao = new Conexao;
-		$c = $conexao->conexao();
+		$c = $conexao->conexaoPDO();
 		$valorCardapio = $c->prepare($sql1);
 		$valorCardapio->execute();
 		foreach($valorCardapio as $carregaValor){
@@ -44,7 +44,7 @@ class Carrinho{
 		// Adiciona o valor do produto no subtotal
 		$sql2 = "UPDATE tb_pedido SET subtotal = subtotal + ($quant * $valor) WHERE id_cadastro =".$idCliente;
 		$conexao = new Conexao;
-		$c = $conexao->conexao();
+		$c = $conexao->conexaoPDO();
 		$valorPedido = $c->prepare($sql2);
 		$valorPedido->execute();
 
@@ -77,7 +77,7 @@ class Carrinho{
 	public function pegarSubtotal($idCliente){
 		$sql = "SELECT subtotal FROM tb_pedido WHERE id_cadastro =".$idCliente;
 		$conexao = new Conexao;
-		$c = $conexao->conexao();
+		$c = $conexao->conexaoPDO();
 		$subtotal = $c->prepare($sql);
 		$subtotal->execute();
 		foreach($subtotal as $carregaSubtotal){
@@ -92,7 +92,7 @@ class Carrinho{
 				FROM tb_cardapio INNER JOIN tb_alimento_pedido ON tb_cardapio.id_cardapio = tb_alimento_pedido.id_cardapio
 				WHERE tb_alimento_pedido.id_cardapio =".$idCardapio;
 		$conexao = new Conexao;
-		$c = $conexao->conexao();
+		$c = $conexao->conexaoPDO();
 		$retirarValor = $c->prepare($sql1);
 		$retirarValor->execute();
 		foreach($retirarValor as $v){
@@ -115,7 +115,7 @@ class Carrinho{
 				FROM tb_cardapio INNER JOIN tb_alimento_pedido ON tb_cardapio.id_cardapio = tb_alimento_pedido.id_cardapio
 				WHERE tb_alimento_pedido.id_cardapio =".$idCardapio;
 		$conexao = new Conexao;
-		$c = $conexao->conexao();
+		$c = $conexao->conexaoPDO();
 		$retirarValor = $c->prepare($sql1);
 		$retirarValor->execute();
 		foreach($retirarValor as $v){
@@ -130,7 +130,7 @@ class Carrinho{
 		// Deletar item do pedido
 		$sql3 = "DELETE FROM tb_alimento_pedido WHERE id_cardapio =".$idCardapio." and id_pedido = ".$idPedido;
 		$conexao = new Conexao;
-		$c = $conexao->conexao();
+		$c = $conexao->conexaoPDO();
 		$pedidoExcluir = $c->prepare($sql3);
 		$pedidoExcluir->execute();
 	}

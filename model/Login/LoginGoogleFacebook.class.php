@@ -11,7 +11,7 @@ class LoginGoogleFacebook extends Login{
                 ON tb_cadastro.id_cadastro = tb_cliente.id_cadastro 
                 WHERE tb_cadastro.email = '$this->email'";
         $conexao = new conexao;
-        $c = $conexao->conexao();
+        $c = $conexao->conexaoPDO();
         $cliente = $c->prepare($sql);
         $cliente->execute();
         $c = NULL;

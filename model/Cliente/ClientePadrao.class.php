@@ -26,8 +26,8 @@ class ClientePadrao extends Cliente{
         if($this->getSenha() == false)
             return false;
         
-        $conexao = new Conexao();
-        $con = $conexao->conexao();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
         
         $verifEmail = "SELECT * FROM tb_cadastro WHERE  email = '".$this->getEmail()."'";
         $cliente = $con->prepare($verifEmail);
@@ -81,8 +81,8 @@ class ClientePadrao extends Cliente{
         if($cb->getSenha() == false)
             return false;
 
-        $conexao = new Conexao();
-        $con = $conexao->conexao();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
         
         $sql1 = "UPDATE tb_cadastro SET nome_completo = '".$cb->getNomeCompleto()."', email = '".$cb->getEmail()."' WHERE id_cadastro = ".$this->getIdUsuario();
         $cliente = $con->prepare($sql1);

@@ -18,7 +18,7 @@ class Cardapio extends Alimento{
 				ON tb_cardapio_subcat.id_cardapio_cat = tb_cardapio_cat.id_cardapio_cat 
 				WHERE nome_cardapio_subcat = '$tipo'";
 		$conexao = new Conexao;
-		$con = $conexao->conexao();
+		$con = $conexao->conexaoPDO();
 		$cardapio = $con->prepare($sql);
 		$cardapio->execute();
 		return $cardapio;

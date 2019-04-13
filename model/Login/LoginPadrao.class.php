@@ -14,7 +14,7 @@ class LoginPadrao extends Login{
                 ON tb_cadastro.id_cadastro = tb_senha.id_cadastro 
                 where email = '$this->email' and senha = '$this->senha'";
         $conexao = new Conexao;
-        $c = $conexao->conexao();
+        $c = $conexao->conexaoPDO();
         $cadastro = $c->prepare($sql);
         $cadastro->execute();
         $c = NULL;
@@ -37,7 +37,7 @@ class LoginPadrao extends Login{
                 ON tb_cadastro.id_cadastro = tb_telefone.id_cadastro
                 WHERE tb_cadastro.email = '$this->email'";
         $conexao = new conexao;
-        $c = $conexao->conexao();
+        $c = $conexao->conexaoPDO();
         $cliente = $c->prepare($sql);
         $cliente->execute();
         $c = NULL;
@@ -60,7 +60,7 @@ class LoginPadrao extends Login{
                 ON tb_cadastro.id_cadastro = tb_telefone.id_cadastro
                 WHERE tb_cadastro.email = '$this->email'";
         $conexao = new conexao;
-        $c = $conexao->conexao();
+        $c = $conexao->conexaoPDO();
         $funcionario = $c->prepare($sql);
         $funcionario->execute();
         $c = NULL;

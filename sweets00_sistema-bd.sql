@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 13-Abr-2019 às 03:05
--- Versão do servidor: 10.1.35-MariaDB
--- versão do PHP: 7.2.9
+-- Host: localhost:3306
+-- Generation Time: 13-Abr-2019 às 09:26
+-- Versão do servidor: 5.7.23-23
+-- versão do PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,7 +44,7 @@ CREATE TABLE `tb_alimento_pedido` (
 CREATE TABLE `tb_cadastro` (
   `id_cadastro` int(11) NOT NULL,
   `nome_completo` varchar(25) DEFAULT NULL,
-  `email` varchar(25) DEFAULT NULL
+  `email` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -56,20 +56,8 @@ INSERT INTO `tb_cadastro` (`id_cadastro`, `nome_completo`, `email`) VALUES
 (3, 'Caixa', 'caixa@gmail.com'),
 (4, 'Garçom', 'garcom@gmail.com'),
 (5, 'Cozinheiro', 'cozinheiro@gmail.com'),
-(6, 'vinicius clemente', 'viniciusclemente9680@gmai'),
-(7, 'Bruno Miglioretto', 'Brunomiglioretto@gmail.co'),
-(15, 'Bruno assis', 'Bruno@hotmail.com'),
-(16, 'Bruno assis', 'Bruno@hotmail.com'),
-(17, 'Bruno assis', 'Bruno@hotmail.com'),
-(18, 'Bruno assis', 'Bruno@hotmail.com'),
-(28, 'Illaoi', 'Illaoi@gmail.com'),
-(29, 'Willian', 'Willian@gmail.com'),
-(30, 'Willian', 'Willian@gmail.com'),
-(31, 'Willian', 'Willian@gmail.com'),
-(32, 'Willian', 'Willian@gmail.com'),
-(41, 'gabriel sousa', 'gabriel@gmail.com'),
-(43, 'Bruno', 'bruno@gmail.com'),
-(44, 'brenda', 'brenda@hotmail.com');
+(87, 'Bruno Miglioretto', 'brunomiglioretto@gmail.co'),
+(88, 'Bruno Miglioretto', 'brunomiglioretto@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -192,14 +180,8 @@ CREATE TABLE `tb_cliente` (
 --
 
 INSERT INTO `tb_cliente` (`id_cadastro`, `data_nascimento`, `sexo`) VALUES
-(NULL, '2000-11-20', 'M'),
-(29, '1222-12-12', 'M'),
-(30, '1222-12-12', 'M'),
-(31, '1222-12-12', 'M'),
-(32, '1222-12-12', 'M'),
-(41, '2002-02-11', 'M'),
-(43, '0000-00-00', 'M'),
-(44, '0000-00-00', 'F');
+(87, '0000-00-00', ''),
+(88, '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -284,9 +266,7 @@ CREATE TABLE `tb_mesa` (
 --
 
 INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
-(1, 43),
-(2, 43),
-(4, 44);
+(2, 88);
 
 -- --------------------------------------------------------
 
@@ -337,7 +317,7 @@ CREATE TABLE `tb_pedido` (
 --
 
 INSERT INTO `tb_pedido` (`id_pedido`, `id_cadastro`, `data_pedido`, `hora`, `subtotal`) VALUES
-(7, 43, '2019-04-12', '10:02:00', 0.00);
+(8, 88, '2019-04-13', '11:25:00', 0.00);
 
 -- --------------------------------------------------------
 
@@ -372,21 +352,7 @@ INSERT INTO `tb_senha` (`id_cadastro`, `senha`, `validar_email`, `token`) VALUES
 (2, '123', 0, NULL),
 (3, '123', 0, NULL),
 (4, '123', 0, NULL),
-(5, '123', 0, NULL),
-(15, '123', 0, NULL),
-(16, '123', 0, NULL),
-(17, '123', 0, NULL),
-(18, '123', 0, '5c9d90abef'),
-(28, 'illaoiolll', 0, '5c9d981f3e'),
-(28, 'illaoiolll', 0, '5c9d981f3e'),
-(28, 'illaoiolll', 0, '5c9d981f3e'),
-(29, '99999999999', 0, '5c9d9a3f26'),
-(30, '99999999999', 0, '5c9d9b3d05'),
-(31, '99999999999', 0, '5c9d9b969a'),
-(32, '99999999999', 0, '5c9d9babc1'),
-(41, '123456789', 0, '5c9e665a10'),
-(43, '123123123', 0, '5c9f92a464'),
-(44, '123123123', NULL, '5ca561cb74427');
+(5, '123', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -408,12 +374,7 @@ INSERT INTO `tb_telefone` (`id_cadastro`, `ddd`, `numero`) VALUES
 (2, 41, 322332),
 (3, 44, 32123),
 (4, 52, 515),
-(5, 55, 5454),
-(7, 41, 212121),
-(32, 55, 23231213),
-(41, 41, 0),
-(43, 41, 0),
-(44, 41, 0);
+(5, 55, 5454);
 
 -- --------------------------------------------------------
 
@@ -559,7 +520,7 @@ ALTER TABLE `tb_tipo_ingrediente`
 -- AUTO_INCREMENT for table `tb_cadastro`
 --
 ALTER TABLE `tb_cadastro`
-  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio`
@@ -613,7 +574,7 @@ ALTER TABLE `tb_pagamento`
 -- AUTO_INCREMENT for table `tb_pedido`
 --
 ALTER TABLE `tb_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_tipo_ingrediente`

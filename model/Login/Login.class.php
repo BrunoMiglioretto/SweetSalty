@@ -7,7 +7,7 @@ abstract class Login{
     public function verificarEmailBD(){
         $sql = "SELECT id_cadastro FROM tb_cadastro WHERE email = '$this->email'";
         $conexao = new Conexao;
-        $c = $conexao->conexao();
+        $c = $conexao->conexaoPDO();
         $cadastro = $c->prepare($sql);
         $cadastro->execute();
         $conexao = NULL;

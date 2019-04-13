@@ -9,7 +9,10 @@ class Carrinho{
 		$pedidoCliente = $c->prepare($sql1);
 		$pedidoCliente->execute();
 		if($pedidoCliente->rowCount() == 0){
-			$sql2 = "INSERT INTO tb_pedido SET situacao = '1', hora = '2019-05-01', id_cadastro = ".$idUsuario.", subtotal = 0";
+			date_default_timezone_set('America/Sao_Paulo');
+			$hora = date("h:i");
+			$data = date("Y-m-d");
+			$sql2 = "INSERT INTO tb_pedido SET hora = '".$hora."', data_pedido = '".$data."', id_cadastro = ".$idUsuario.", subtotal = 0";
 			$pedido = $c->prepare($sql2);
 			$pedido->execute();
 			$c = NULL;
@@ -38,6 +41,7 @@ class Carrinho{
 		foreach($valorCardapio as $carregaValor){
 			$valor = $carregaValor["valor_unitario"];
 		}
+		// Adiciona o valor do produto no subtotal
 		$sql2 = "UPDATE tb_pedido SET subtotal = subtotal + ($quant * $valor) WHERE id_cadastro =".$idCliente;
 		$conexao = new Conexao;
 		$c = $conexao->conexao();
@@ -62,7 +66,7 @@ class Carrinho{
 			$pedido = $c->prepare($sql5);
 			$pedido->execute();
 		}else{
-			$sql6 = "INSERT INTO tb_alimento_pedido SET id_pedido = ".$idPedidoC.", id_cardapio = ".$idCardapio.", quant = ". $quant;
+			$sql6 = "INSERT INTO tb_alimento_pedido SET id_pedido = ".$idPedidoC.", id_cardapio = ".$idCardapio.", quant = ". $quant.", situacao = 1";
 			$pedido = $c->prepare($sql6);
 			$pedido->execute();
 		}

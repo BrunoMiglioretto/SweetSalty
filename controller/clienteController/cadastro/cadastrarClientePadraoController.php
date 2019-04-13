@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel='stylesheet' href='../../../view/alertifyjs/css/alertify.min.css'>
+		<link rel='stylesheet' href='../../../view/alertifyjs/css/themes/bootstrap.css'>
+		<script type='text/javascript' src='../../../view/alertifyjs/alertify.min.js'></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>	
+	</head>
+</html>
 <?php
 
 session_start();
@@ -29,8 +38,7 @@ $cliente = new ClientePadrao;
 if(!$cliente->cadastrar($informarcoes)){ // Retorna False se algum dado estiver errado
 	echo "
 		<script>
-			alert('Algum dado está errado');
-			window.location = '../../../view/cadastro_cliente.php';
+			alertify.alert('Ocorreu um erro, tente novamente.',function(){window.location = '../../../view/CadastroCliente.php';})
 		</script>";
 }else{
 	
@@ -42,11 +50,17 @@ if(!$cliente->cadastrar($informarcoes)){ // Retorna False se algum dado estiver 
 	$cliente2 = new ValidarEmail($email);
 				  
 	if(!$cliente2->EnviarEmail()){ 
-		echo "<script>alert('Ocorreu algum erro no envio do e-mail, tente novamente.')</script>";
-	 	echo "<script>window.location ='../../../view/CadastroCliente.php'</script>";
+		echo "
+			<script>
+				alertify.alert('Ocorreu um erro, tente novamente.',function(){
+					window.location = '../../../view/CadastroCliente.php';})
+			</script>";
 	}else {// se retornar um e-mail, foi possivel enviar para o usuário.
-		echo "<script>alert('enviamos um e-mail de confirmação, sertifique seu sua caixa de e-mails.)</script>"; 
-	 	echo "<script>window.location ='../../../view/logar.php'</script>";
+		echo "
+			<script>
+				alertify.alert('enviamos um e-mail de confirmação, sertifique seu sua caixa de e-mails.),function(){
+					window.location ='../../../view/logar.php';})	
+			</script>"; 
 	}
 }
 

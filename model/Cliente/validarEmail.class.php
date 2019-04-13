@@ -17,11 +17,22 @@
                 <div style='width: 340px;height: 180px; background-color: white;margin-left: 380px'>
                     <p style='font-family: sans-serif;font-size:18px;text-align: center;color:rgb(41, 38, 38)'>Nova identificação na Sweetsalty</p>
                     <p style='font-family: sans-serif;font-size:14px;text-align: center;color:rgb(41, 38, 38)'>Para segurança adicional, por favor confirme esta identificação.</p>
-                    <button 
-                        style='width: 220px;height: 50px;text-align: center;margin-left:
-                        60px;margin-top:10px;border:none;border-radius:4px;font-size:16px;
-                        color:white;background-color:rgba(0, 255, 76, 0.774);cursor:pointer'>Confirma identificação
-                    </button>
+                    <a href='www.google.com'
+                        style='
+                        border-radius:4px;
+                        margin-left:27%;
+                        cursor:pointer;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        padding-right: 5px;
+                        padding-left: 5px;
+                        text-decoration:none;
+                        background-color:#47E74E;
+                        color:white;
+                        font-family: sans-serif;
+                        font-size:15px;
+                        '>Confirma identificação
+                    </a>
                 </div>
             </div>
             ";

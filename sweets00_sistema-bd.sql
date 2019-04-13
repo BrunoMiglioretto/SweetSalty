@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Abr-2019 às 08:06
+-- Generation Time: 13-Abr-2019 às 03:05
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -31,7 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `tb_alimento_pedido` (
   `id_pedido` int(6) DEFAULT NULL,
   `id_cardapio` int(6) DEFAULT NULL,
-  `quant` int(3) DEFAULT NULL
+  `quant` int(3) DEFAULT NULL,
+  `situacao` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -284,7 +285,8 @@ CREATE TABLE `tb_mesa` (
 
 INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
 (1, 43),
-(2, 43);
+(2, 43),
+(4, 44);
 
 -- --------------------------------------------------------
 
@@ -326,10 +328,16 @@ CREATE TABLE `tb_pedido` (
   `id_pedido` int(11) NOT NULL,
   `id_cadastro` int(6) DEFAULT NULL,
   `data_pedido` date DEFAULT NULL,
-  `hora` date DEFAULT NULL,
-  `subtotal` float(9,2) DEFAULT NULL,
-  `situacao` char(1) DEFAULT NULL
+  `hora` time DEFAULT NULL,
+  `subtotal` float(9,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_pedido`
+--
+
+INSERT INTO `tb_pedido` (`id_pedido`, `id_cadastro`, `data_pedido`, `hora`, `subtotal`) VALUES
+(7, 43, '2019-04-12', '10:02:00', 0.00);
 
 -- --------------------------------------------------------
 
@@ -551,7 +559,7 @@ ALTER TABLE `tb_tipo_ingrediente`
 -- AUTO_INCREMENT for table `tb_cadastro`
 --
 ALTER TABLE `tb_cadastro`
-  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio`
@@ -587,7 +595,7 @@ ALTER TABLE `tb_ingrediente`
 -- AUTO_INCREMENT for table `tb_mesa`
 --
 ALTER TABLE `tb_mesa`
-  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_nota_fiscal`
@@ -605,7 +613,7 @@ ALTER TABLE `tb_pagamento`
 -- AUTO_INCREMENT for table `tb_pedido`
 --
 ALTER TABLE `tb_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_tipo_ingrediente`

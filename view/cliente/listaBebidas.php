@@ -372,7 +372,7 @@
 			} 
 			function mais( id_qnt )
 			{
-				if(id( id_qnt ).value < 13)
+				if(id( id_qnt ).value < 10)
 					id( id_qnt ).value = parseInt( id( id_qnt ).value ) + 1; 
 			} 
 		</script>

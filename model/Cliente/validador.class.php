@@ -16,7 +16,7 @@
             }   
         }
 
-        abstract function EnviarEmail($email);
+        abstract function EnviarEmail();
 
         public function ValidarToken() {
             // ...
@@ -40,7 +40,7 @@
         }
 
         public function getEmail() {
-            return $this-> $email;
+            return $this->email;
         }
     }//fim da classe Validador.
 ?> 

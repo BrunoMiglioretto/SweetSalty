@@ -30,36 +30,36 @@
 								<div class="col-sm-12">
 									<div class="row">
 										<div class="col-lg-6 col-sm-12 form-group">
-											<label>Nome completo</label>
+											<label>Nome completo *</label>
 											<input type="text" name="nome" placeholder="" class="form-control" required autofocus>
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
-											<label>E-mail</label>
-											<input type="email" name="email" placeholder="" class="form-control">
+											<label>E-mail *</label>
+											<input type="email" name="email" placeholder="Insira seu e-mail" class="form-control">
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-4 col-sm-12 form-group">
-											<label>Sexo</label><br>
+											<label>Sexo *</label><br>
 											<input type="radio" name="sexo" value="F"required /> Feminino
 											<input type="radio" name="sexo" value="M"/> Masculino
 										</div>
 										<div class="col-lg-4 col-sm-6 form-group">
-											<label>Telefone celular</label>
-											<input type="text" name="numeroTelefone" placeholder="" class="form-control" required onkeypress="return valTELEFONECELULAR(event,this); return false;" maxlength="14" title="Telefone celular">
+											<label>Telefone celular *</label>
+											<input type="text" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" class="form-control" required onkeypress="return valTELEFONECELULAR(event,this); return false;" maxlength="14" title="Telefone celular">
 										</div>
 										<div class="col-lg-4 col-sm-6 form-group">
-											<label>Data de nascimento</label>
+											<label>Data de nascimento *</label>
 											<input type="date" name="dataNascimento" placeholder="" class="form-control" required>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-6 col-sm-12 form-group">
-											<label>Senha</label>
-											<input type="password" name="senha" placeholder="" class="form-control" maxlength="12" required>
+											<label>Senha *</label>
+											<input type="password" name="senha" placeholder="mínimo de 8 caracteres" class="form-control" maxlength="12" minlength="8" required>
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
-											<label>Confirmar senha</label>
+											<label>Confirmar senha *</label>
 											<input type="password" id="confSenha" name="confSenha"  class="form-control" required>
 										</div>										
 									</div><br>

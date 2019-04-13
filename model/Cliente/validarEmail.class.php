@@ -4,7 +4,9 @@
 		public function __construct ($email) {
 			$this->setEmail($email);
 		}
-		
+        
+        // $email2 = $this->getEmail();
+        
         public function EnviarEmail() {
 			$email = $this->getEmail();
 			
@@ -38,6 +40,4 @@
             }
         } //fim da função EnviarEmail   
     }//fim da classe validarEmail. 
-
-    //end class
 ?>

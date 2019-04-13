@@ -13,7 +13,7 @@
             $assunto   = "Confirmação do seu cadastro."; #Variável para o assunto do E-mail.
             $mensagem = "
                 <div style='width: 1000px;height:300px;background-color: rgb(255, 255, 255)'>
-                <img rel='icon' src='food_premium/img/logo.png' type='image/x-icon' style='width: 150px;height: 80px;padding-left:475px'>
+                <img rel='icon' src='www.sweetsalty.net.br/SweetSalty/food_premium/img/logo.png' type='image/x-icon' style='width: 150px;height: 80px;padding-left:475px'>
                 <div style='width: 340px;height: 180px; background-color: white;margin-left: 380px'>
                     <p style='font-family: sans-serif;font-size:18px;text-align: center;color:rgb(41, 38, 38)'>Nova identificação na Sweetsalty</p>
                     <p style='font-family: sans-serif;font-size:14px;text-align: center;color:rgb(41, 38, 38)'>Para segurança adicional, por favor confirme esta identificação.</p>

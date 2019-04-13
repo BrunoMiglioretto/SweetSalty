@@ -69,16 +69,17 @@
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
-                                                                                    <h4 class="modal-title" id="myModalLabel"><?php echo " Adicionar <input class='input' type='text' name='cardapio_cat' value='$cardapio_cat' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp "?></h4>
+                                                                                    <h4 class="modal-title" id="myModalLabel"><?php echo " Adicionar <input class='input' type='text' disabled name='cardapio_cat' value='$cardapio_cat' readonly='readonly' style='width:220px; border: 1px solid transparent;background-color: transparent;'/>&nbsp "?></h4>
                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_subcategoria - $cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp R$<input class='input' type='text' name='cardapio_valor' style='width:80px; border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
+                                                                                    <?php echo "<input class='input' type='text' disabled name='cardapio_desc' value='$cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;background-color: transparent;'/>&nbsp R$<input class='input' type='text' disabled name='cardapio_valor' style='width:80px; border:0px; background-color: transparent;' readonly='readonly'value=' $cardapio_valor'/>"?>
                                                                                     <p style="float:right;">
                                                                                         <input type="button" class="btn btn-primary" value="-" onclick="menos( '<?php echo $cardapio_id;?>' )">
                                                                                         <input type="text"  name="quantidade" id="<?php echo $cardapio_id;?>" value="1" size="1" readonly="readonly" />
                                                                                         <input type="button" class="btn btn-primary" value="+" onclick="mais( '<?php echo $cardapio_id;?>' )">
                                                                                     </p>
+																					<?= "<p>Tipo: ".$cardapio_subcategoria."</p>"?>
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
@@ -127,17 +128,18 @@
 																			<div class="modal-dialog">
 																				<div class="modal-content">
 																					<div class="modal-header">
-																						<h4 class="modal-title" id="myModalLabel"><?php echo " Adicionar <input class='input' type='text' name='cardapio_cat' value='$cardapio_cat' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp "?></h4>
+																						<h4 class="modal-title" id="myModalLabel"><?php echo " Adicionar <input class='input' type='text' disabled name='cardapio_cat' value='$cardapio_cat' readonly='readonly' style='width:220px; border: 1px solid transparent;background-color: transparent;'/>&nbsp "?></h4>
 																						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 																					</div>
 																					<div class="modal-body">
-																						<?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_subcategoria - $cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
-																						R$<input class='input' type='text' name='cardapio_valor' style='width:80px;border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
+																						<?php echo "<input class='input' type='text' disabled name='cardapio_desc' value='$cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;background-color: transparent;'/>&nbsp 
+																						R$<input class='input' type='text' disabled name='cardapio_valor' style='width:80px; border:0px; background-color: transparent;' readonly='readonly'value=' $cardapio_valor'/>"?>
 																						<p style="float:right;">
 																							<input type="button" class="btn btn-primary" value="-" onclick="menos( '<?php echo $cardapio_id;?>' )">
 																							<input type="text"  name="quantidade" id="<?php echo $cardapio_id;?>" value="1" size="1" readonly="readonly" />
 																							<input type="button" class="btn btn-primary" value="+" onclick="mais( '<?php echo $cardapio_id;?>' )">
 																						</p>
+																						<?= "<p>Tipo: ".$cardapio_subcategoria."</p>"?>
 																					</div>
 																					<div class="modal-footer">
 																						<input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
@@ -186,17 +188,18 @@
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
-                                                                                    <h4 class="modal-title" id="myModalLabel"><?php echo " Adicionar <input class='input' type='text' name='cardapio_cat' value='$cardapio_cat' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp "?></h4>
+                                                                                    <h4 class="modal-title" id="myModalLabel"><?php echo " Adicionar <input class='input' type='text' disabled name='cardapio_cat' value='$cardapio_cat' readonly='readonly' style='width:220px; border: 1px solid transparent;background-color: transparent;'/>&nbsp "?></h4>
                                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_subcategoria - $cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
-                                                                                    R$<input class='input' type='text' name='cardapio_valor' style='width:80px;border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
+                                                                                    <?php echo "<input class='input' type='text' disabled name='cardapio_desc' value='$cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;background-color: transparent;'/>&nbsp 
+                                                                                    R$<input class='input' type='text' disabled name='cardapio_valor' style='width:80px; border:0px; background-color: transparent;' readonly='readonly'value=' $cardapio_valor'/>"?>
                                                                                     <p style="float:right;">
                                                                                         <input type="button" class="btn btn-primary" value="-" onclick="menos( '<?php echo $cardapio_id;?>' )">
                                                                                         <input type="text"  name="quantidade" id="<?php echo $cardapio_id;?>" value="1" size="1" readonly="readonly" />
                                                                                         <input type="button" class="btn btn-primary" value="+" onclick="mais( '<?php echo $cardapio_id;?>' )">
                                                                                     </p>
+																					<?= "<p>Tipo: ".$cardapio_subcategoria."</p>"?>
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
@@ -245,17 +248,18 @@
 																			<div class="modal-dialog">
 																				<div class="modal-content">
 																					<div class="modal-header">
-																						<h4 class="modal-title" id="myModalLabel"><?php echo " Adicionar <input class='input' type='text' name='cardapio_cat' value='$cardapio_cat' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp "?></h4>
+																						<h4 class="modal-title" id="myModalLabel"><?php echo " Adicionar <input class='input' type='text' disabled name='cardapio_cat' value='$cardapio_cat' readonly='readonly' style='width:220px; border: 1px solid transparent;background-color: transparent;'/>&nbsp "?></h4>
 																						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 																					</div>
 																					<div class="modal-body">
-																						<?php echo "<input class='input' type='text' name='cardapio_desc' value='$cardapio_subcategoria - $cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;'/>&nbsp 
-																						R$<input class='input' type='text' name='cardapio_valor' style='width:80px;border:0px;' readonly='readonly'value=' $cardapio_valor'/>"?>
+																						<?php echo "<input class='input' type='text' disabled name='cardapio_desc' value='$cardapio_desc' readonly='readonly' style='width:220px; border: 1px solid transparent;background-color: transparent;'/>&nbsp 
+																						R$<input class='input' type='text' disabled name='cardapio_valor' style='width:80px; border:0px; background-color: transparent;' readonly='readonly'value=' $cardapio_valor'/>"?>
 																						<p style="float:right;">
 																							<input type="button" class="btn btn-primary" value="-" onclick="menos( '<?php echo $cardapio_id;?>' )">
 																							<input type="text"  name="quantidade" id="<?php echo $cardapio_id;?>" value="1" size="1" readonly="readonly" />
 																							<input type="button" class="btn btn-primary" value="+" onclick="mais( '<?php echo $cardapio_id;?>' )">
 																						</p>
+																						<?= "<p>Tipo: ".$cardapio_subcategoria."</p>"?>
 																					</div>
 																					<div class="modal-footer">
 																						<input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">

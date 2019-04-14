@@ -8,8 +8,9 @@ if($v)
 
 include "../../model/Conexao.class.php";
 
-$mesa = $_GET["m"];
+$mesa = $_POST["mesa"];
 
-$cliente->escolherMesa($mesa);
-
-header('Location: ../../view/cliente/');
+if($cliente->escolherMesa($mesa))
+    echo "true";
+else
+    echo "false";

@@ -21,6 +21,12 @@ if($v)
         <link rel="icon" href="../../img/logo.png" type="image/x-icon">
         <title>Mesas | Sweet Salty</title>
         <link href='mesaStyle.css' rel='stylesheet'>
+        <link rel="stylesheet" href="../../alertifyjs/css/alertify.min.css">
+		<link rel="stylesheet" href="../../alertifyjs/css/themes/default.min.css">
+        <script src="../../vendor/jquery/jquery.min.js"></script>
+        <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../../alertifyjs/alertify.min.js"></script>
     </head>
     <body style="background-color:#FFF">
         <div class="topo">
@@ -52,8 +58,25 @@ if($v)
         </div>
         <script>
             function enviarMesa(mesa){
-                url = '../../../controller/clienteController/escolherMesaController.php?m=' + mesa;
-                window.location = url; 
+                $.ajax({
+                    url : "../../../controller/clienteController/escolherMesaController.php",
+                    method : "POST",
+                    data : {
+                        mesa : mesa
+                    }
+                }).done(function(v) {
+                    if(v == "true")
+                        window.location = "../";
+                    else
+                        alertaMesaOcupada();
+                });
+            }
+
+            function alertaMesaOcupada() {
+                alertify.alert("Mesa ocupada", "Essa mesa já esta sendo usada ").set({
+                    transition : "zoom",
+                    'movable' : false
+                });
             }
         </script>
     </body>

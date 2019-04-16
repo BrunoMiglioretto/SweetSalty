@@ -4,10 +4,12 @@
         private $email;
         private $token;
         private $senha;
+        // private $tokenUrl;
 
         //funções.
         abstract function EnviarEmail(); //tenta enviar o e-mail;
 
+        abstract function buscarToken();
         //Métodos modificadores
         public function setSenhaValidador($senha) {
             $this->senha = $senha;
@@ -33,14 +35,6 @@
             return $this->email;
         }
 
-        public function buscarToken(){ // Busca o token no banco para consulta;
-            $conexao = new Conexao;
-            $con = $conexao->conexaoPDO();
-            $sql = "SELECT token FROM tb_senha INNER JOIN tb_cadastro ON tb_cadastro.id_cadastro = tb_senha.id_cadastro";
-            $cliente = $con->prepare($slq);
-            $cliente->execute();
-            $this->setSenhaValidador($cliente); // adiciona no atributo token.
-        }
 
     }//fim da classe Validador.
 ?> 

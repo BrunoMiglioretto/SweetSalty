@@ -12,9 +12,12 @@
             $cliente = $con->prepare($sql);
             $cliente->execute();
             $contLinha = $cliente->rowCount(); //verifica se existe um igual;
+            foreach($cliente as $valores){
+                $id = $valores['id_cadastro'];
+            }
 
             if($contLinha == 1){
-                $sql2 = "UPDATE tb_senha SET validar_email = '1' WHERE id_cadastro = '.$cliente['id_cadastro'].'"; //atualiza o valida_email para 1, ou seja, já foi confirmado o token.
+                $sql2 = "UPDATE tb_senha SET validar_email = '1' WHERE id_cadastro = '.$id.'"; //atualiza o valida_email para 1, ou seja, já foi confirmado o token.
                 $cliente = $con->prepare($sql2);
                 $cliente->execute();
                 return true;
@@ -23,12 +26,24 @@
             }
         }
         
-        public function buscarToken(); //já contem o token do bd.
-        $tokenUrl = $this->getToken(); //pega o token;
+        public function buscarToken(){
+            $conexao = new Conexao;
+            $con = $conexao->conexaoPDO();
+            $sql = "SELECT token FROM tb_senha INNER JOIN tb_cadastro ON tb_cadastro.id_cadastro = tb_senha.id_cadastro";
+            $cliente = $con->prepare($slq);
+            $cliente->execute();
+            foreach($cliente as $valor){
+                $token = $valor['token'];
+            }
+            $this->setTokenValidador($token); // adiciona no atributo token.
+        }
+        
+        //pega o token;
         
         public function EnviarEmail() {
 			$email = $this->getEmail();
-			
+			$tokenUrl = $this->getToken();
+            
             $assunto   = "Confirmação do seu cadastro."; #Variável para o assunto do E-mail.
             $mensagem = "
                 <div style='width: 1000px;height:300px;background-color: rgb(255, 255, 255)'>

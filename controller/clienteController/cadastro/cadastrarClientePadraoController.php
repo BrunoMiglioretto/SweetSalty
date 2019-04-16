@@ -48,6 +48,7 @@ if(!$cliente->cadastrar($informarcoes)){ // Retorna False se algum dado estiver 
 	// Instancia a classe ValidarEmail que esta herdando da classe Validador que por sua vez é uma classe abstrata.
 	
 	$cliente2 = new ValidarEmail($email);
+	$cliente2->buscarToken();
 				  
 	if(!$cliente2->EnviarEmail()){ 
 		echo "

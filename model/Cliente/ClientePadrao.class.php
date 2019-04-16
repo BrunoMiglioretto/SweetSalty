@@ -27,7 +27,7 @@ class ClientePadrao extends Cliente{
         if($this->getSenha() == false)
             return false;
         $this->setConfSenha($informacoes[7]);
-        if($this->getConfirmaSenha() != $this->getSenha()){
+        if($this->getConfirmaSenha() != $this->getSenha()){ 
             return false;
         }
         $this->encriptSenha($informacoes[6]);

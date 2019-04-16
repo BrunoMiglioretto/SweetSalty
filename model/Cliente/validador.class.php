@@ -6,21 +6,7 @@
         private $senha;
 
         //funções.
-        public function ValidadarSenha($senha, $confSenha) {
-            if($senha == $confSenha) {
-                $this->$setSenhaValidador($senha);
-                return true;
-            }
-            else{
-                return false;
-            }   
-        }
-
-        abstract function EnviarEmail();
-
-        public function ValidarToken() {
-            // ...
-        }
+        abstract function EnviarEmail(); //tenta enviar o e-mail;
 
         //Métodos modificadores
         public function setSenhaValidador($senha) {
@@ -39,8 +25,22 @@
             $this->email = $email;
         }
 
+        public function getToken(){
+            return $this->token;
+        }
+
         public function getEmail() {
             return $this->email;
         }
+
+        public function buscarToken(){ // Busca o token no banco para consulta;
+            $conexao = new Conexao;
+            $con = $conexao->conexaoPDO();
+            $sql = "SELECT token FROM tb_senha INNER JOIN tb_cadastro ON tb_cadastro.id_cadastro = tb_senha.id_cadastro";
+            $cliente = $con->prepare($slq);
+            $cliente->execute();
+            $this->setSenhaValidador($cliente); // adiciona no atributo token.
+        }
+
     }//fim da classe Validador.
 ?> 

@@ -16,8 +16,8 @@ $carrinho = unserialize($_SESSION["carrinho"]);
 
 $idCliente = $cliente->getIdUsuario();
 
-$pedidos = $carrinho->visualizarPedidos($idCliente);
-$subtotal = $carrinho->pegarSubtotal($idCliente);
+$pedidos = $carrinho->visualizarPedidos();
+$subtotal = $carrinho->pegarSubtotal();
 
 foreach($pedidos as $lista){
     $id 		    = $lista["id_pedido"];

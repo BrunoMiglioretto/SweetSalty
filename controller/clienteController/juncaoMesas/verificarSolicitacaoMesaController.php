@@ -7,16 +7,18 @@ include "../../../model/Usuario.class.php";
 include "../../../model/Cliente/Cliente.class.php";
 include "../../../model/Cliente/ClienteGoogleFacebook.class.php";
 include "../../../model/Cliente/ClientePadrao.class.php";
-include "../../../model/Cliente/Carrinho.class.php";
 
 include "../../../model/Conexao.class.php";
 
 $cliente = unserialize($_SESSION["usuario"]);
 
-$idCardapio = $_POST["idCardapio"];
-$quant = $_POST["quant"];
+$solicitacao = $cliente->verificarSolicitacaoMesa();
 
-$carrinho = unserialize($_SESSION["carrinho"]);
+if($solicitacao == 1)
+    header("location: ../../../view/cliente/juntarMesas.php");
+else if($solicitacao == 2)
+    header("location: ../../../view/cliente/aceitarJuncaoMesas.php");
+else if($solicitacao == 3)
+    header("location: ../../../view/cliente/aguardandoResposta.php");
 
-$carrinho->colocarPedido($idCardapio, $quant);
 

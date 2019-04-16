@@ -16,5 +16,5 @@ $idPedido = $_POST["idPedido"];
 
 $carrinho = unserialize($_SESSION["carrinho"]);
 
-$carrinho->excluirPedido($idCardapio, $idPedido);
+$carrinho->excluirPedido($idCardapio);
 

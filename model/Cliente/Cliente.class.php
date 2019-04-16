@@ -34,4 +34,5 @@ abstract class Cliente extends Usuario{
     public function setDataNascimento($dataNascimento){
         $this->dataNascimento = $dataNascimento;
     }
+
 } 

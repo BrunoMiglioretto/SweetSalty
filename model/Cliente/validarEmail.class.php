@@ -30,7 +30,7 @@
             $conexao = new Conexao;
             $con = $conexao->conexaoPDO();
             $sql = "SELECT token FROM tb_senha INNER JOIN tb_cadastro ON tb_cadastro.id_cadastro = tb_senha.id_cadastro";
-            $cliente = $con->prepare($slq);
+            $cliente = $con->prepare($sql);
             $cliente->execute();
             foreach($cliente as $valor){
                 $token = $valor['token'];

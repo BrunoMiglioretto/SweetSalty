@@ -10,6 +10,7 @@
         abstract function EnviarEmail(); //tenta enviar o e-mail;
 
         abstract function buscarToken();
+        
         //Métodos modificadores
         public function setSenhaValidador($senha) {
             $this->senha = $senha;

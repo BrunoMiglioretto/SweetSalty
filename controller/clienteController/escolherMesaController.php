@@ -14,3 +14,5 @@ if($cliente->escolherMesa($mesa))
     echo "true";
 else
     echo "false";
+
+$_SESSION["usuario"] = serialize($cliente);

@@ -3,13 +3,14 @@
 abstract class Cliente extends Usuario{
     private $sexo;
     private $dataNascimento;
+    private $mesa;
 
     abstract public function editarPerfil($informacoes);
     
-    public function escolherMesa($mesa){
+    public function escolherMesa($mesaE){
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();
-        $sql1 = "SELECT count(*) AS total FROM tb_mesa WHERE id_mesa =".$mesa." and id_cadastro !=".$this->getIdUsuario();
+        $sql1 = "SELECT count(*) AS total FROM tb_mesa WHERE id_mesa =".$mesaE." and id_cadastro !=".$this->getIdUsuario();
         $mesasUsadas = $con->prepare($sql1);
         $mesasUsadas->execute();
         foreach($mesasUsadas as $c){}
@@ -19,19 +20,20 @@ abstract class Cliente extends Usuario{
             $cadastros->execute();
             foreach($cadastros as $cad)
             if($cad["cadastros"] != 0)
-                $this->mudarMesa($mesa);
+                $this->mudarMesa($mesaE);
             else{
-                $sql3 = "INSERT INTO tb_mesa SET id_cadastro = ".$this->getIdUsuario().", id_mesa = $mesa";
+                $sql3 = "INSERT INTO tb_mesa SET id_cadastro = ".$this->getIdUsuario().", id_mesa = $mesaE";
                 $mesaEscolhida = $con->prepare($sql3);
                 $mesaEscolhida->execute();
             }
+            $this->setMesa($mesaE);
             return true;
         }else
             return false;
     }
 
-    private function mudarMesa($mesa){
-        $sql = "UPDATE tb_mesa SET id_mesa = $mesa WHERE id_cadastro =".$this->getIdUsuario();
+    private function mudarMesa($mesaE){
+        $sql = "UPDATE tb_mesa SET id_mesa = $mesaE WHERE id_cadastro =".$this->getIdUsuario();
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();
         $mudar = $con->prepare($sql);
@@ -73,25 +75,22 @@ abstract class Cliente extends Usuario{
         }
     }
 
-    public function solicitarJuncaoMesas($mesa){
-        $sql1 = "SELECT id_mesa FROM tb_mesa WHERE id_cadastro = ".$this->getIdUsuario();
+    public function solicitarJuncaoMesas($mesaE){
+        if($mesaE == $this->getMesa())
+            return 3;
+        $sql2 = "SELECT count(*) AS tem FROM tb_mesa WHERE id_mesa = $mesaE AND id_cadastro !=".$this->getIdUsuario();
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();
-        $idMesa = $con->prepare($sql1);
-        $idMesa->execute();
-        foreach($idMesa as $idM){}
-        
-        $sql2 = "SELECT count(*) AS tem FROM tb_mesa WHERE id_mesa = $mesa";
         $mesaSolicitada = $con->prepare($sql2);
         $mesaSolicitada->execute();
         foreach($mesaSolicitada as $ms){}
         if($ms["tem"] == 1){
-            $sql3 = "INSERT INTO tb_solicitacao_mesa SET id_cadastro_solicitante = ".$this->getIdUsuario().", id_mesa_solicitante = ".$idM["id_mesa"].", id_mesa_solicitada = $mesa, `status` = 0";
+            $sql3 = "INSERT INTO tb_solicitacao_mesa SET id_cadastro_solicitante = ".$this->getIdUsuario().", id_mesa_solicitante = ".$this->getMesa().", id_mesa_solicitada = $mesaE, `status` = 0";
             $solicitarMesa = $con->prepare($sql3);
             $solicitarMesa->execute();
-            return true;
+            return 1;
         }else
-            return false;
+            return 2;
             
     }
 
@@ -118,6 +117,25 @@ abstract class Cliente extends Usuario{
         return $tbs["id_pedido"];
     }
 
+    public function cancelarSolicitacao(){
+        $sql = "DELETE FROM tb_solicitacao_mesa WHERE id_mesa_solicitante = ".$this->getMesa()." OR id_mesa_solicitada = ".$this->getMesa();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $cancelar = $con->prepare($sql);
+        $cancelar->execute();
+    }
+
+    public function pegarSolicitacao(){
+        $sql = "SELECT * FROM tb_solicitacao_mesa INNER JOIN tb_cadastro 
+                ON tb_solicitacao_mesa.id_cadastro_solicitante = tb_cadastro.id_cadastro
+                WHERE id_mesa_solicitada = ".$this->getMesa()." OR id_mesa_solicitante = ".$this->getMesa();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $pegar = $con->prepare($sql);
+        $pegar->execute();
+        return $pegar;
+    }
+
     public function escolherPagamento($forma){
 
     }
@@ -126,16 +144,18 @@ abstract class Cliente extends Usuario{
     }
 
     public function desconectar(){
+        $this->cancelarSolicitacao();
         $sql = "DELETE FROM tb_mesa WHERE id_cadastro =".$this->getIdUsuario();
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();
-        $mesa = $con->prepare($sql);
-        $mesa->execute();
+        $mesaE = $con->prepare($sql);
+        $mesaE->execute();
     }
 
     public function getSexo(){
         return $this->sexo;
     }
+
     public function getDataNascimento(){
         return $this->dataNascimento;
     }
@@ -143,7 +163,16 @@ abstract class Cliente extends Usuario{
     public function setSexo($sexo){
         $this->sexo = $sexo;
     }
+
     public function setDataNascimento($dataNascimento){
         $this->dataNascimento = $dataNascimento;
+    }
+
+    public function getMesa(){
+        return $this->mesa;
+    }
+
+    public function setMesa($mesa){
+        $this->mesa = $mesa;
     }
 } 

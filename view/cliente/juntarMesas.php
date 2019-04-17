@@ -27,7 +27,7 @@
         <?php include "menuLateral.php"?>
         <div class="content-wrapper">
             <div class="container-fluid">
-                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:black;">Qual mesa deseja se juntar?</h1></center>
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Qual mesa deseja se juntar?</h1></center>
                 <br><br>
                 <div class="row" >
                     <div class="col-lg-3 col-sm-6 text-center">
@@ -92,10 +92,13 @@
                         mesa : mesa
                     }
                 }).done(function(v) {
-                    if(v == "true")
+                    if(v == 1)
                         alertaSolicitacaoEnviada();
-                    else
+                    else if(v == 2)
                         alertaMesaDesocupada();
+                    else if(v == 3)
+                        alertaMesmaMesa();
+                    console.log(v);
                 });
             }
 
@@ -106,9 +109,15 @@
                 });
             }
             function alertaSolicitacaoEnviada(){
-                alertify.alert("Solicitação enviada", "Espere até que a outra mesa aceite",function(){
-                    window.location = "index.php"; 
+                alertify.alert("Solicitação enviada", "Aguarde até a confirmação do pedido de junção",function(){
+                    window.location = "aguardandoResposta.php"; 
                 }).set({
+                    transition : "zoom",
+                    'movable' : false
+                });
+            }
+            function alertaMesmaMesa(){
+                alertify.alert("Mesa inválida", "Essa é a sua mesa!!").set({
                     transition : "zoom",
                     'movable' : false
                 });

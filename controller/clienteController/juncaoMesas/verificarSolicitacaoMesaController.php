@@ -20,5 +20,7 @@ else if($solicitacao == 2)
     header("location: ../../../view/cliente/aceitarJuncaoMesas.php");
 else if($solicitacao == 3)
     header("location: ../../../view/cliente/aguardandoResposta.php");
+else if($solicitacao == 4)
+    header("location: ../../../view/cliente/mesasJuntas.php");
 
 

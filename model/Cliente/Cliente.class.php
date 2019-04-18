@@ -125,6 +125,81 @@ abstract class Cliente extends Usuario{
         $cancelar->execute();
     }
 
+    public function desfazerJuncaoMesas($idPedido){
+        $sql1 = "SELECT * FROM tb_solicitacao_mesa WHERE id_mesa_solicitante =".$this->getMesa();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $situacao = $con->prepare($sql1);
+        $situacao->execute();
+        foreach($situacao as $solicitante){}
+        
+        $this->cancelarSolicitacao();
+
+        // Situação 1 (Cliente que solicitou a junção)
+        if($situacao->rowCount() == 1){
+            $sql2 = "SELECT * FROM tb_mesa WHERE id_mesa =".$solicitante["id_mesa_solicitada"];
+            $idSolicitado = $con->prepare($sql2);
+            $idSolicitado->execute();
+            
+            foreach($idSolicitado as $idSo){
+                $idS = $idSo["id_cadastro"]; // id do cliente solicitado
+            }
+
+            $sql3 = "SELECT id_pedido FROM tb_pedido WHERE id_cadastro = ".$idS;
+            $idPedidoS = $con->prepare($sql3);
+            $idPedidoS->execute();
+
+            foreach($idPedidoS as $idPS){}
+
+            // Deletar o pedido do solicitado
+            $sql4 = "SELECT count(*) AS total FROM tb_alimento_pedido WHERE id_pedido = ".$idPS["id_pedido"];
+            $alimentos = $con->prepare($sql4);
+            $alimentos->execute();
+            foreach($alimentos as $total){}
+            if($total["total"] != 0){
+                $sql5 = "DELETE FROM tb_alimento_pedido WHERE id_pedido =".$idPS["id_pedido"];
+                $deleteA = $con->prepare($sql5);
+                $deleteA->execute();
+            }
+            $sql6 = "DELETE FROM tb_pedido WHERE id_cadastro =".$idS;
+            $deleteP = $con->prepare($sql6);
+            $deleteP->execute();
+            
+
+            $sql7 = "UPDATE tb_pedido SET id_cadastro = $idS WHERE id_cadastro =".$this->getIdUsuario();
+            $mudarPedido = $con->prepare($sql7);
+            $mudarPedido->execute();
+
+            // Cria um novo pedido para o solicitante
+            date_default_timezone_set('America/Sao_Paulo');
+			$hora = date("h:i");
+			$data = date("Y-m-d");
+			$sql8 = "INSERT INTO tb_pedido SET hora = '".$hora."', data_pedido = '".$data."', id_cadastro = ".$this->getIdUsuario().", subtotal = 0";
+			$pedido = $con->prepare($sql8);
+            $pedido->execute();
+            
+            $sql9 = "SELECT id_pedido FROM tb_pedido WHERE id_cadastro =".$this->getIdUsuario();
+            $idP = $con->prepare($sql9);
+            $idP->execute();
+    
+            $info[0] = 1;
+            foreach($idP as $p){
+                $info[1] = $p["id_pedido"];
+            }
+            return $info;
+        }else{
+            $sql3 = "SELECT id_pedido FROM tb_pedido WHERE id_cadastro =".$this->getIdUsuario();
+            $idU = $con->prepare($sql3);
+            $idU->execute();
+            
+            foreach($idU as $id){}
+            $info[0] = 2;
+            $info[1] = $id["id_pedido"];
+
+            return $info;
+        }
+    }
+
     public function pegarSolicitacao(){
         $sql = "SELECT * FROM tb_solicitacao_mesa INNER JOIN tb_cadastro 
                 ON tb_solicitacao_mesa.id_cadastro_solicitante = tb_cadastro.id_cadastro

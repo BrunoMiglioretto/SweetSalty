@@ -2,6 +2,7 @@
 
 class ClientePadrao extends Cliente{
     private $senha;
+    private $confSenha;
 
     public function cadastrar($informacoes){ // Informações == vetor
         $this->setEmail($informacoes[0]);
@@ -25,10 +26,14 @@ class ClientePadrao extends Cliente{
         $this->setSenha($informacoes[6]);
         if($this->getSenha() == false)
             return false;
-        
+        $this->setConfSenha($informacoes[7]);
+        if($this->getConfirmaSenha() != $this->getSenha()){ 
+            return false;
+        }
+        $this->encriptSenha($informacoes[6]);
+
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();
-        
         $verifEmail = "SELECT * FROM tb_cadastro WHERE  email = '".$this->getEmail()."'";
         $cliente = $con->prepare($verifEmail);
         $cliente->execute();
@@ -80,6 +85,7 @@ class ClientePadrao extends Cliente{
         $cb->setSenha($informacoes[6]);
         if($cb->getSenha() == false)
             return false;
+        
 
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();
@@ -115,5 +121,15 @@ class ClientePadrao extends Cliente{
     public function setSenha($senha){
         if(!(strlen($senha) <= 7))
             $this->senha = $senha;
+    }
+    public function getConfirmaSenha(){
+        return $this->confSenha;
+    }
+    public function setConfSenha($confirmaSenha){
+        $this->confSenha = $confirmaSenha;
+    }
+    public function encriptSenha($senha){
+        $cript = md5($senha);
+        $this->setSenha($cript);
     }
 }

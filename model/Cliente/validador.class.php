@@ -4,24 +4,13 @@
         private $email;
         private $token;
         private $senha;
+        // private $tokenUrl;
 
         //funções.
-        public function ValidadarSenha($senha, $confSenha) {
-            if($senha == $confSenha) {
-                $this->$setSenhaValidador($senha);
-                return true;
-            }
-            else{
-                return false;
-            }   
-        }
+        abstract function EnviarEmail(); //tenta enviar o e-mail;
 
-        abstract function EnviarEmail();
-
-        public function ValidarToken() {
-            // ...
-        }
-
+        abstract function buscarToken();
+        
         //Métodos modificadores
         public function setSenhaValidador($senha) {
             $this->senha = $senha;
@@ -39,8 +28,14 @@
             $this->email = $email;
         }
 
+        public function getToken(){
+            return $this->token;
+        }
+
         public function getEmail() {
             return $this->email;
         }
+
+
     }//fim da classe Validador.
 ?> 

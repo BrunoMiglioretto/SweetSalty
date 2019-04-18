@@ -13,10 +13,11 @@ include "../../../model/Conexao.class.php";
 
 $cliente = unserialize($_SESSION["usuario"]);
 
-$idCardapio = $_POST["idCardapio"];
-$quant = $_POST["quant"];
+$solicitacao = $cliente->pegarSolicitacao();
 
-$carrinho = unserialize($_SESSION["carrinho"]);
-
-$carrinho->colocarPedido($idCardapio, $quant);
+foreach($solicitacao as $s){
+    echo "{\"id_mesa_solicitante\":".$s["id_mesa_solicitante"].",";
+    echo "\"id_mesa_solicitada\":".$s["id_mesa_solicitada"].",";
+    echo "\"nome\" :\"".$s["nome_completo"]."\"}";
+}
 

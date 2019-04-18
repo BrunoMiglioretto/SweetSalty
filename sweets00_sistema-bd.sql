@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: 13-Abr-2019 às 09:26
--- Versão do servidor: 5.7.23-23
--- versão do PHP: 7.2.7
+-- Host: 127.0.0.1
+-- Generation Time: 13-Abr-2019 às 20:15
+-- Versão do servidor: 10.1.35-MariaDB
+-- versão do PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,6 +35,13 @@ CREATE TABLE `tb_alimento_pedido` (
   `situacao` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `tb_alimento_pedido`
+--
+
+INSERT INTO `tb_alimento_pedido` (`id_pedido`, `id_cardapio`, `quant`, `situacao`) VALUES
+(8, 91, 4, '1');
+
 -- --------------------------------------------------------
 
 --
@@ -44,7 +51,7 @@ CREATE TABLE `tb_alimento_pedido` (
 CREATE TABLE `tb_cadastro` (
   `id_cadastro` int(11) NOT NULL,
   `nome_completo` varchar(25) DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL
+  `email` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -56,8 +63,7 @@ INSERT INTO `tb_cadastro` (`id_cadastro`, `nome_completo`, `email`) VALUES
 (3, 'Caixa', 'caixa@gmail.com'),
 (4, 'Garçom', 'garcom@gmail.com'),
 (5, 'Cozinheiro', 'cozinheiro@gmail.com'),
-(87, 'Bruno Miglioretto', 'brunomiglioretto@gmail.co'),
-(88, 'Bruno Miglioretto', 'brunomiglioretto@gmail.com');
+(75, 'Bruno Assis Miglioretto', 'brunoAssis@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -79,41 +85,41 @@ CREATE TABLE `tb_cardapio` (
 --
 
 INSERT INTO `tb_cardapio` (`id_cardapio`, `id_cardapio_subcat`, `nome`, `valor_unitario`, `peso_grama`, `calorias`) VALUES
-(81, 10, 'Sanduíche Natural G (pão ', 8.00, '800g', 314),
+(81, 10, 'Sanduíche Natural', 8.00, '800g', 314),
 (89, 4, 'Água com gás', 3.00, '500ml', 0),
 (90, 4, 'Água sem gás', 3.00, '500ml', 0),
-(91, 1, 'Laranja', 4.00, '350ml', 70),
-(95, 1, 'Limão', 4.00, '350ml', 70),
-(100, 1, 'Morango', 4.00, '350ml', 70),
-(101, 1, 'Abacaxi', 4.00, '350ml', 150),
-(102, 1, 'Banana', 4.00, '350ml', 120),
-(104, 1, 'Mamão', 4.00, '350ml', 120),
-(105, 1, 'Manga', 4.00, '350ml', 150),
-(107, 1, 'Açai', 4.00, '350ml', 200),
-(108, 3, 'Limão', 4.50, '350ml', 170),
-(109, 3, 'Laranja', 4.50, '350ml', 170),
-(112, 3, 'Morango', 4.50, '350ml', 170),
-(113, 3, 'Abacaxi', 4.50, '350ml', 250),
-(114, 3, 'Banana', 4.50, '350ml', 220),
-(116, 3, 'Mamão', 4.50, '350ml', 220),
-(117, 3, 'Manga', 4.50, '350ml', 250),
-(119, 3, 'Açai', 4.50, '350ml', 300),
-(121, 5, 'Chocolate', 7.00, '350ml', 200),
-(122, 5, 'Morango', 7.00, '350ml', 200),
-(123, 5, 'Baunilha', 7.00, '350ml', 200),
+(91, 1, 'Suco de laranja', 4.00, '350ml', 70),
+(95, 1, 'Suco de limão', 4.00, '350ml', 70),
+(100, 1, 'Suco de morango', 4.00, '350ml', 70),
+(101, 1, 'Suco de abacaxi', 4.00, '350ml', 150),
+(102, 1, 'Suco de banana', 4.00, '350ml', 120),
+(104, 1, 'Suco de mamão', 4.00, '350ml', 120),
+(105, 1, 'Suco de manga', 4.00, '350ml', 150),
+(107, 1, 'Suco de açai', 4.00, '350ml', 200),
+(108, 3, 'Suco de limão', 4.50, '350ml', 170),
+(109, 3, 'Suco de laranja', 4.50, '350ml', 170),
+(112, 3, 'Suco de morango', 4.50, '350ml', 170),
+(113, 3, 'Suco de abacaxi', 4.50, '350ml', 250),
+(114, 3, 'Suco de banana', 4.50, '350ml', 220),
+(116, 3, 'Suco de mamão', 4.50, '350ml', 220),
+(117, 3, 'Suco de manga', 4.50, '350ml', 250),
+(119, 3, 'Suco de açai', 4.50, '350ml', 300),
+(121, 5, 'Shake de chocolate', 7.00, '350ml', 200),
+(122, 5, 'Shake de morango', 7.00, '350ml', 200),
+(123, 5, 'Shake de baunilha', 7.00, '350ml', 200),
 (147, 6, 'Suco Detox', 5.00, '350ml', 250),
-(154, 9, 'Ricota', 5.00, '300g', 300),
-(155, 9, 'Carne', 5.00, '300g', 300),
-(156, 9, 'Presunto', 5.00, '300g', 300),
-(157, 9, 'Queijo branco com brócoli', 5.00, '300g', 300),
+(154, 9, 'Pastel de ricota', 5.00, '300g', 300),
+(155, 9, 'Pastel de carne', 5.00, '300g', 300),
+(156, 9, 'Pastel de presunto', 5.00, '300g', 300),
+(157, 9, 'Pastel de queijo branco ', 5.00, '300g', 300),
 (158, 12, 'Salada de frutas', 5.00, '400g', 50),
 (159, 12, 'Açaí com granola', 5.00, '350ml', 110),
 (160, 12, 'Barra de cereal', 5.00, '400g', 80),
 (161, 12, 'Cookies', 5.00, '150g', 12),
-(162, 8, '8 Assada de Frango com Ma', 5.00, '450g', 50),
-(164, 11, 'Frango', 5.00, '350g', 200),
-(165, 11, 'Palmito', 5.00, '350g', 200),
-(166, 11, 'Bacalhau', 5.00, '350g', 200);
+(162, 8, 'Coxinha Assada', 5.00, '450g', 50),
+(164, 11, 'Empada de frango', 5.00, '350g', 200),
+(165, 11, 'Empada de palmito', 5.00, '350g', 200),
+(166, 11, 'Empada de bacalhau', 5.00, '350g', 200);
 
 -- --------------------------------------------------------
 
@@ -180,8 +186,7 @@ CREATE TABLE `tb_cliente` (
 --
 
 INSERT INTO `tb_cliente` (`id_cadastro`, `data_nascimento`, `sexo`) VALUES
-(87, '0000-00-00', ''),
-(88, '0000-00-00', '');
+(75, '2002-02-24', 'F');
 
 -- --------------------------------------------------------
 
@@ -266,7 +271,7 @@ CREATE TABLE `tb_mesa` (
 --
 
 INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
-(2, 88);
+(1, 75);
 
 -- --------------------------------------------------------
 
@@ -317,7 +322,7 @@ CREATE TABLE `tb_pedido` (
 --
 
 INSERT INTO `tb_pedido` (`id_pedido`, `id_cadastro`, `data_pedido`, `hora`, `subtotal`) VALUES
-(8, 88, '2019-04-13', '11:25:00', 0.00);
+(8, 75, '2019-04-13', '10:18:00', 16.00);
 
 -- --------------------------------------------------------
 
@@ -352,7 +357,8 @@ INSERT INTO `tb_senha` (`id_cadastro`, `senha`, `validar_email`, `token`) VALUES
 (2, '123', 0, NULL),
 (3, '123', 0, NULL),
 (4, '123', 0, NULL),
-(5, '123', 0, NULL);
+(5, '123', 0, NULL),
+(75, '12345678', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -374,7 +380,8 @@ INSERT INTO `tb_telefone` (`id_cadastro`, `ddd`, `numero`) VALUES
 (2, 41, 322332),
 (3, 44, 32123),
 (4, 52, 515),
-(5, 55, 5454);
+(5, 55, 5454),
+(75, 20, 0);
 
 -- --------------------------------------------------------
 
@@ -520,7 +527,7 @@ ALTER TABLE `tb_tipo_ingrediente`
 -- AUTO_INCREMENT for table `tb_cadastro`
 --
 ALTER TABLE `tb_cadastro`
-  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio`

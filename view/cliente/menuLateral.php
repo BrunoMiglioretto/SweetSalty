@@ -110,8 +110,11 @@
                         >Perfil
                         </a>
                     </li>
-                    <li title="Mesas">
-                        <a href="">Mesas</a>
+                    <li title="Mudar de mesa">
+                        <a href="mesas/mesa.php">Mudar de mesa</a>
+                    </li>
+                    <li title="Juntar mesas">
+                        <a href="../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php">Juntar mesas</a>
                     </li>
                     <li title="Manual do Usuário">
                         <a href="">Manual do Usuário</a>

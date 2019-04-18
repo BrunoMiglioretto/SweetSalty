@@ -17,4 +17,4 @@ $quant = $_POST["quant"];
 $cliente = unserialize($_SESSION["usuario"]);
 $carrinho = unserialize($_SESSION["carrinho"]);
 
-$carrinho->editarPedido($idCardapio, $quant, $cliente->getIdUsuario());
+$carrinho->editarPedido($idCardapio, $quant);

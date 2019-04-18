@@ -25,29 +25,34 @@
 	          				<div class="table-responsive">
 								<form method="POST" action="../../controller/clienteController/editarPerfilGFController.php">
 									<div class="col-sm-12">
-										<div class="row">
-											<div class="col-lg-6 col-sm-12 form-group">
-												<label>Nome completo</label>
+									<div class="row">
+											<div class="col-12 col-lg-6 col-sm-12 form-group">
+												<label>Nome completo *</label>
 												<input type="text"  name="nomeCompleto" class="form-control" value="<?= $cliente->getNomeCompleto()?>" required>
 											</div>
-											<div class="col-lg-6 col-sm-12 form-group">
-												<label>E-mail</label>
-												<input type="email" name="email" class="form-control" class="form-control" required value="<?= $cliente->getEmail()?>">
+											<div class="col-12 col-lg-6 col-sm-12 form-group">
+												<label>E-mail *</label>
+												<input type="email" name="email" placeholder="Ex: exemplo@exemplo.com" class="form-control" class="form-control" required value="<?= $cliente->getEmail()?>">
 											</div>	
 										</div>					
 										<div class="row">
-											<div class="col-lg-4 col-sm-12 form-group">
-												<label>Sexo</label><br>
+											<div class="col-12 col-lg-4 col-sm-6 form-group">
+												<label>Data de Nascimento *</label>
+												<input type="date" name="dataNascimento"  class="form-control" required value="<?= $cliente->getDataNascimento()?>">
+											</div>
+											<div class="col-12 col-lg-4 col-sm-6 form-group">
+												<label>Telefone Celular *</label>
+												<input type="text" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" id="numeroTelefone" class="form-control" required value="<?= $cliente->getNumeroTelefone()?>" maxlenght="14">
+											</div>
+											<div class="col-12 col-lg-4 col-sm-12 form-group">
+												<label>Sexo *</label><br>
 												<input type="radio" name="sexo" <?php if($cliente->getSexo() == 'F') echo 'checked'?> value='F'>Feminino &nbsp&nbsp
 												<input  type="radio" name="sexo" <?php if($cliente->getSexo() == 'M') echo 'checked'?> value='M'>Masculino
 											</div>
-											<div class="col-lg-4 col-sm-6 form-group">
-												<label>Telefone Celular</label>
-												<input type="text" name="numeroTelefone" class="form-control" required value="<?= $cliente->getNumeroTelefone()?>" maxlenght="14">
-											</div>
-											<div class="col-lg-4 col-sm-6 form-group">
-												<label>Data de Nascimento</label>
-												<input type="date" name="dataNascimento"  class="form-control" required value="<?= $cliente->getDataNascimento()?>">
+										</div>
+										<div class="row">
+											<div class="col">
+												<p>*Obrigatório</p>
 											</div>
 										</div>
 										<center>
@@ -105,5 +110,9 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
+		<script src="../js/jquery.mask.min.js"></script>
+		<script>
+			$("#numeroTelefone").mask("(00)00000-0000");
+		</script>
 	</body>
 </html>

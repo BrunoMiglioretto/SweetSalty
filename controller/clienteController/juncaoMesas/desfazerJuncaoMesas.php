@@ -12,11 +12,10 @@ include "../../../model/Cliente/Carrinho.class.php";
 include "../../../model/Conexao.class.php";
 
 $cliente = unserialize($_SESSION["usuario"]);
-
-$idCardapio = $_POST["idCardapio"];
-$quant = $_POST["quant"];
-
 $carrinho = unserialize($_SESSION["carrinho"]);
 
-$carrinho->colocarPedido($idCardapio, $quant);
+$info = $cliente->desfazerJuncaoMesas($carrinho->getIdPedido());
 
+$carrinho->setIdPedido($info[1]);
+
+$_SESSION["carrinho"] = serialize($carrinho);

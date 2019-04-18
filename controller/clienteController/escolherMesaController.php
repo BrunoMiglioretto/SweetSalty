@@ -8,8 +8,11 @@ if($v)
 
 include "../../model/Conexao.class.php";
 
-$mesa = $_GET["m"];
+$mesa = $_POST["mesa"];
 
-$cliente->escolherMesa($mesa);
+if($cliente->escolherMesa($mesa))
+    echo "true";
+else
+    echo "false";
 
-header('Location: ../../view/cliente/');
+$_SESSION["usuario"] = serialize($cliente);

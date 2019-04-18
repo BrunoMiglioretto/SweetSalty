@@ -13,10 +13,4 @@ include "../../../model/Conexao.class.php";
 
 $cliente = unserialize($_SESSION["usuario"]);
 
-$idCardapio = $_POST["idCardapio"];
-$quant = $_POST["quant"];
-
-$carrinho = unserialize($_SESSION["carrinho"]);
-
-$carrinho->colocarPedido($idCardapio, $quant);
-
+$cliente->cancelarSolicitacao();

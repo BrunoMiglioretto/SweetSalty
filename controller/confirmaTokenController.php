@@ -14,9 +14,9 @@
 
     $verifacarToken = $_GET['token']; //pega o token pela URL
     
-    $cliente = new ValidarEmail;
+    $validarToken = unserialize($_SESSION["ValidarEmail"]);
     
-    if(! $cliente->validarToken($verifacarToken)){
+    if(! $validarToken->validarToken($verifacarToken)){
         echo "
             <script>
                 alert('Validação inclompleta');
@@ -26,6 +26,7 @@
     }else {
         echo "
             <script>
+                alert('Validou');
                 window.location = '../view/cliente/mesas/mesa.php';
             </script>
         ";

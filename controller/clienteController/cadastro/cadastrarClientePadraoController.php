@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel='stylesheet' href='../../../view/alertifyjs/css/alertify.min.css'>
-		<link rel='stylesheet' href='../../../view/alertifyjs/css/themes/bootstrap.css'>
-		<script type='text/javascript' src='../../../view/alertifyjs/alertify.min.js'></script>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>	
-	</head>
-</html>
 <?php
 
 session_start();
@@ -38,7 +29,8 @@ $cliente = new ClientePadrao;
 if(!$cliente->cadastrar($informarcoes)){ // Retorna False se algum dado estiver errado
 	echo "
 		<script>
-			alertify.alert('Ocorreu um erro, tente novamente.',function(){window.location = '../../../view/CadastroCliente.php';})
+			alert('Ocorreu um erro, tente novamente.');
+			window.location = '../../../view/cadastroCliente.php';
 		</script>";
 }else{
 	
@@ -48,19 +40,20 @@ if(!$cliente->cadastrar($informarcoes)){ // Retorna False se algum dado estiver 
 	// Instancia a classe ValidarEmail que esta herdando da classe Validador que por sua vez é uma classe abstrata.
 	
 	$cliente2 = new ValidarEmail($email);
+	
 	$cliente2->buscarToken();
 				  
 	if(!$cliente2->EnviarEmail()){ 
 		echo "
 			<script>
-				alertify.alert('Ocorreu um erro, tente novamente.',function(){
-					window.location = '../../../view/CadastroCliente.php';})
+				alert('Nao enviou');
 			</script>";
 	}else {// se retornar um e-mail, foi possivel enviar para o usuário.
+		$_SESSION["ValidarEmail"] = serialize($cliente2);
 		echo "
 			<script>
-				alertify.alert('enviamos um e-mail de confirmação, sertifique seu sua caixa de e-mails.),function(){
-					window.location ='../../../view/logar.php';})	
+				alert('enviamos um e-mail de confirmação, sertifique seu sua caixa de e-mails.');
+				window.location = '../../../view/logar.php';
 			</script>"; 
 	}
 }

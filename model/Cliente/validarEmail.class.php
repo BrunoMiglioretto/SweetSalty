@@ -8,7 +8,7 @@
         public function ValidarToken($token) { // Método para verificar o token, autenticidade dos dados;
             $conexao = new Conexao;
             $con = $conexao->conexaoPDO();
-            $sql = "SELECT * FROM tb_senha WHERE token = '.$token.'"; // verifica o token da url com o do bd;
+            $sql = "SELECT * FROM tb_senha WHERE token = '$token'"; // verifica o token da url com o do bd;
             $cliente = $con->prepare($sql);
             $cliente->execute();
             $contLinha = $cliente->rowCount(); //verifica se existe um igual;
@@ -17,7 +17,7 @@
             }
 
             if($contLinha == 1){
-                $sql2 = "UPDATE tb_senha SET validar_email = '1' WHERE id_cadastro = '.$id.'"; //atualiza o valida_email para 1, ou seja, já foi confirmado o token.
+                $sql2 = "UPDATE tb_senha SET validar_email = '1' WHERE id_cadastro = '".$id."'"; //atualiza o valida_email para 1, ou seja, já foi confirmado o token.
                 $cliente = $con->prepare($sql2);
                 $cliente->execute();
                 return true;
@@ -47,8 +47,8 @@
             $assunto   = "Confirmação do seu cadastro."; #Variável para o assunto do E-mail.
             $mensagem = "
                 <div style='width: 1000px;height:300px;background-color: rgb(255, 255, 255)'>
-                <img rel='icon' src='www.sweetsalty.net.br/SweetSalty/food_premium/img/logo.png' type='image/x-icon' style='width: 150px;height: 80px;padding-left:475px'>
-                <div style='width: 340px;height: 180px; background-color: white;margin-left: 380px'>
+                <img rel='icon' src='www.sweetsalty.net.br/SweetSalty/food_premium/img/logo.png' type='image/x-icon' style='width: 150px;height: 80px;padding-left:250px'>
+                <div style='width: 340px;height: 180px; background-color: white;margin-left: 155px'>
                     <p style='font-family: sans-serif;font-size:18px;text-align: center;color:rgb(41, 38, 38)'>Nova identificação na Sweetsalty</p>
                     <p style='font-family: sans-serif;font-size:14px;text-align: center;color:rgb(41, 38, 38)'>Para segurança adicional, por favor confirme esta identificação.</p>
                     <a href='www.sweetsalty.net.br/SweetSalty/controller/confirmaTokenController.php?token=$tokenUrl'

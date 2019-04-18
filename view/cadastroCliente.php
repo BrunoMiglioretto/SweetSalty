@@ -61,8 +61,10 @@
 										<div class="col-lg-6 col-sm-12 form-group">
 											<label>Confirmar senha *</label>
 											<input type="password" id="confSenha" name="confSenha"  class="form-control" required>
-										</div>										
-									</div><br>
+										</div>
+																		
+									</div>*Campo obrigatório<br>
+									
 									<center>
 										<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" type="submit" name="salvar" value="Salvar">				
 									</center>

@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 18-Abr-2019 às 05:20
--- Versão do servidor: 10.1.35-MariaDB
--- versão do PHP: 7.2.9
+-- Host: localhost:3306
+-- Generation Time: 18-Abr-2019 às 06:57
+-- Versão do servidor: 5.7.23-23
+-- versão do PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,7 +44,7 @@ CREATE TABLE `tb_alimento_pedido` (
 CREATE TABLE `tb_cadastro` (
   `id_cadastro` int(11) NOT NULL,
   `nome_completo` varchar(25) DEFAULT NULL,
-  `email` varchar(25) DEFAULT NULL
+  `email` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -56,9 +56,9 @@ INSERT INTO `tb_cadastro` (`id_cadastro`, `nome_completo`, `email`) VALUES
 (3, 'Caixa', 'caixa@gmail.com'),
 (4, 'Garçom', 'garcom@gmail.com'),
 (5, 'Cozinheiro', 'cozinheiro@gmail.com'),
-(75, 'Bruno AM', 'bruno@gmail.com'),
-(76, 'Jurema Assis', 'juremaafm@hotmail.com'),
-(77, 'aline', 'aline@gmail.com');
+(88, 'Bruno Miglioretto', 'brunomiglioretto@gmail.co'),
+(89, 'Bruno Miglioretto', 'brunomiglioretto@gmail.co'),
+(90, 'Bruno Miglioretto', 'brunomiglioretto@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -181,9 +181,9 @@ CREATE TABLE `tb_cliente` (
 --
 
 INSERT INTO `tb_cliente` (`id_cadastro`, `data_nascimento`, `sexo`) VALUES
-(75, '2002-02-24', 'F'),
-(76, '1212-12-12', 'F'),
-(77, '1212-12-12', 'F');
+(88, '0000-00-00', ''),
+(89, '0000-00-00', ''),
+(90, '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -307,6 +307,13 @@ CREATE TABLE `tb_pedido` (
   `subtotal` float(9,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `tb_pedido`
+--
+
+INSERT INTO `tb_pedido` (`id_pedido`, `id_cadastro`, `data_pedido`, `hora`, `subtotal`) VALUES
+(19, 90, '2019-04-18', '08:57:00', 0.00);
+
 -- --------------------------------------------------------
 
 --
@@ -340,10 +347,7 @@ INSERT INTO `tb_senha` (`id_cadastro`, `senha`, `validar_email`, `token`) VALUES
 (2, '123', 0, NULL),
 (3, '123', 0, NULL),
 (4, '123', 0, NULL),
-(5, '123', 0, NULL),
-(75, '123123123', NULL, NULL),
-(76, '123123123', NULL, '5cb253075cae0'),
-(77, '123123123', NULL, '5cb564885d313');
+(5, '123', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -378,10 +382,7 @@ INSERT INTO `tb_telefone` (`id_cadastro`, `ddd`, `numero`) VALUES
 (2, 41, 322332),
 (3, 44, 32123),
 (4, 52, 515),
-(5, 55, 5454),
-(75, 20, 0),
-(76, 41, 0),
-(77, 41, 0);
+(5, 55, 5454);
 
 -- --------------------------------------------------------
 
@@ -535,7 +536,7 @@ ALTER TABLE `tb_tipo_ingrediente`
 -- AUTO_INCREMENT for table `tb_cadastro`
 --
 ALTER TABLE `tb_cadastro`
-  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio`
@@ -589,7 +590,7 @@ ALTER TABLE `tb_pagamento`
 -- AUTO_INCREMENT for table `tb_pedido`
 --
 ALTER TABLE `tb_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tb_tipo_ingrediente`

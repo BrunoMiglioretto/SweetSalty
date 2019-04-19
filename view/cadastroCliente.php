@@ -11,6 +11,12 @@
 		<link href="../food_premium/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../food_premium/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="../food_premium/css/sb-admin.css" rel="stylesheet">
+		<link href="alertify/css/alertify.min.css" rel="stylesheet">
+		<link href="alertify/css/themes/default.min.css" rel="stylesheet">
+		<script src="alertify/alertify.min.js"></script>
+		<script src="../food_premium/vendor/jquery/jquery.min.js"></script>
+		<script src="../food_premium/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="../food_premium/vendor/jquery-easing/jquery.easing.min.js"></script>
 		    <style>
             .img{
                 margin: 10px;
@@ -60,13 +66,13 @@
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
 											<label>Confirmar senha *</label>
-											<input type="password" id="confSenha" name="confSenha"  class="form-control" required>
+											<input type="password" id="confSenha" name="confSenha"  class="form-control" maxlength='12' minlength='8'required>
 										</div>
 																		
 									</div>*Campo obrigatório<br>
 									
 									<center>
-										<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" type="submit" name="salvar" value="Salvar">				
+										<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" type="submit" name="salvar" value="Salvar" onclick='verificarFormulario()'>				
 									</center>
 								</div>
 							</form>
@@ -105,9 +111,52 @@
 					src.value += texto.substring(0,1);
 				}
 			}
+
+			function verificarFormulario(){
+				$.ajax({
+					url: '../controller/clienteController/cadastro/cadastrarClientePadraoController.php',
+					method: 'POST',
+					data: {
+						nome: $('input[name=nome]').val(),
+						email: $('input[name=email]').val(),
+						sexo:$('input[name=sexo]').val(),
+						numeroTelefone:$('input[name=numeroTelefone]').val(),
+						dataNascimento:$('input[name=dataNascimento]').val(),
+						senha:$('input[name=senha]').val(),
+						confSenha:$('input[name=confSenha]').val(),
+					}
+				}).done(function(resposta) {
+						if(resposta == 1)
+							alertaCadastroNaoRealizado();
+						else if(resposta == 2)	
+							alertaEmailBD();
+						else if(resposta == 3)
+							alertaEmailFalha();
+						else if(resposta == 4)
+							alertaEmailEnviado();
+					});
+			}
+
+			function alertaCadastroNaoRealizado(){
+				// alertify
+				 alert("Houve falhas ao se cadastrar, tente novamente.");
+			}
+
+			function alertaEmailBD(){
+				// alertify
+				  alert("Já há um e-mail igual no Banco de dados, tente novamente.");
+			}
+
+			function alertaEmailFalha(){
+				// alertify
+					alert("Falha ao enviar um e-mail de confirmação.");
+			}
+
+			function alertaEmailEnviado(){
+				// alertify
+					alert("Enviamos um e-mail para confirmação, verifique sua caixa de e-mais");
+			}
+
 		</script>
-		<script src="../food_premium/vendor/jquery/jquery.min.js"></script>
-		<script src="../food_premium/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="../food_premium/vendor/jquery-easing/jquery.easing.min.js"></script>
 	</body>
 </html>

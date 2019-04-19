@@ -77,11 +77,11 @@
             $headers .= "X-Priority: 1\n";
 
             if(!mail($email, $assunto, $mensagem, $headers ,"-r".$emailsender)){ 
-                return false;
+                return 4;
             }else{
                 $headers .= "Return-Path: " . $emailsender . $quebra_linha; 
                 mail($email, $assunto, $mensagem, $headers );
-                return true;
+                return 5;
             }
         } //fim da função EnviarEmail   
     }//fim da classe validarEmail. 

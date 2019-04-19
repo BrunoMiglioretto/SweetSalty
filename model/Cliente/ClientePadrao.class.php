@@ -7,28 +7,28 @@ class ClientePadrao extends Cliente{
     public function cadastrar($informacoes){ // Informações == vetor
         $this->setEmail($informacoes[0]);
         if($this->getEmail() == false)
-            return false;
+            return 1;
         $this->setNomeCompleto($informacoes[1]);
         if($this->getNomeCompleto() == false)
-            return false;
+            return 1;
         $this->setDdd($informacoes[2]);
         if($this->getDdd() == false)
-            return false;
+            return 1;
         $this->setNumeroTelefone($informacoes[3]);
         if($this->getNumeroTelefone() == false)
-            return false;
+            return 1;
         $this->setSexo($informacoes[4]);
         if($this->getSexo() == false)
-            return false;
+            return 1;
         $this->setDataNascimento($informacoes[5]);
         if($this->getDataNascimento() == false)
-            return false;
+            return 1;
         $this->setSenha($informacoes[6]);
         if($this->getSenha() == false)
-            return false;
+            return 1;
         $this->setConfSenha($informacoes[7]);
         if($this->getConfirmaSenha() != $this->getSenha()){ 
-            return false;
+            return 1;
         }
         $this->encriptSenha($informacoes[6]);
 
@@ -39,7 +39,7 @@ class ClientePadrao extends Cliente{
         $cliente->execute();
         $contLinha = $cliente->rowCount();
         if($contLinha > 0)
-            return false;
+            return 2;
      
         $sql1 = "INSERT INTO tb_cadastro SET nome_completo = '".$this->getNomeCompleto()."', email = '".$this->getEmail()."'";
         $cliente = $con->prepare($sql1);
@@ -57,9 +57,7 @@ class ClientePadrao extends Cliente{
         $cliente = $con->prepare($sql4);
         $cliente->execute();
         
-        echo "<br>Return true<br>";
-    
-        return true;
+        return 3;
     }
     
     public function editarPerfil($informacoes){

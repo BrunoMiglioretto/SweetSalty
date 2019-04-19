@@ -16,8 +16,7 @@ $carrinho = unserialize($_SESSION["carrinho"]);
 
 $idCliente = $cliente->getIdUsuario();
 
-$pedidos = $carrinho->visualizarPedidos();
-$subtotal = $carrinho->pegarSubtotal();
+$pedidos = $carrinho->visualizarPedidosEnviados();
 
 foreach($pedidos as $lista){
     $id 		    = $lista["id_pedido"];
@@ -26,13 +25,14 @@ foreach($pedidos as $lista){
     $quantidade     = $lista["quant"];
     $valor 			= $lista["valor_unitario"];
     $idCardapio     = $lista["id_cardapio"];
+    $situacao       = $lista["situacao"];
     $selecionado[$quantidade] = "selected";
     echo "<tr>";
     echo "<td>".$pedido."</td>";                                                            
     echo "<td>".$categoria."</td>";
     echo "
         <td>
-            <select class='inputQuant' id='".$id."' onchange='atualizarPedido(this, ".$idCardapio.")' value='".$quantidade."'>
+            <select class='inputQuant' id='".$id."' onchange='atualizarPedido(this, ".$idCardapio.")' value='".$quantidade."' disabled>
                 <option ".$selecionado[1]." value='1'>1</option>
                 <option ".$selecionado[2]." value='2'>2</option>
                 <option ".$selecionado[3]." value='3'>3</option>
@@ -46,13 +46,14 @@ foreach($pedidos as $lista){
             </select>
         </td>";
     echo "<td> R$ <span>".number_format($valor,2,",",".")."</span></td>";
-    echo "  <td>
-                <center>
-                    <div data-toggle='modal' data-target='#ModalProduto' onclick=\"attDadosModal(".$id." ,".$idCardapio.", '".$pedido."')\">
-                        <img src='../img/excluir.png' title='Excluir'>
-                    <div/>
-                </center>
-            </td>";
+    echo "<td>";
+
+    if($situacao == 2)
+        echo "Preparando";
+    if($situacao == 3)
+        echo "Preparado";
+    
+    echo "</td>";
     echo "</tr>";
     $selecionado[$quantidade] = "";			
 }
@@ -60,10 +61,6 @@ foreach($pedidos as $lista){
 if($pedidos->rowCount() == 0){
     echo "
         <tr class='odd'>
-            <td valign='top' colspan='5' value='1' class='dataTables_empty'>Nenhum item adicionado
-                <input type='hidden' value='".$subtotal."' class='subtotal'>
-            </td>
+            <td valign='top' colspan='5' class='dataTables_empty'><p style='text-align: center; margin: 0;'>Nenhum item enviado</p></td>
         </tr>";
 }
-// Pegar o valor do subtotal
-echo "<input type='hidden' class='subtotal' value='".$subtotal."'>";

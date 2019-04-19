@@ -39,6 +39,18 @@ class Carrinho{
 		$pedidos->execute();
 		return $pedidos;
 	}
+
+	public function visualizarPedidosEnviados(){
+		$sql = "SELECT * FROM tb_pedido INNER JOIN tb_alimento_pedido ON tb_pedido.id_pedido = tb_alimento_pedido.id_pedido 
+										INNER JOIN tb_cardapio ON tb_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio
+										INNER JOIN tb_cardapio_subcat ON tb_cardapio_subcat.id_cardapio_subcat = tb_cardapio.id_cardapio_subcat
+										WHERE tb_pedido.id_pedido = ".$this->getIdPedido()." and situacao != 1";
+		$conexao = new Conexao;
+		$c = $conexao->conexaoPDO();
+		$pedidos = $c->prepare($sql);
+		$pedidos->execute();
+		return $pedidos;
+	}
 	
 	public function colocarPedido($idCardapio, $quant){
 		// Pega o valor do produto
@@ -135,8 +147,24 @@ class Carrinho{
 		$pedidoExcluir->execute();
 	}
 	
-	public function enviarPedido($idUsuario){
+	public function enviarPedido(){
+		$sql1 = "SELECT count(*) AS total FROM tb_alimento_pedido WHERE id_pedido =".$this->getIdPedido()." and situacao = 1";
+		$conexao = new Conexao;
+		$con = $conexao->conexaoPDO();
+		$quantPedidos = $con->prepare($sql1);
+		$quantPedidos->execute();
+		foreach($quantPedidos as $qp){}
 		
+		if($qp["total"] == 0)
+			return false;
+
+		date_default_timezone_set('America/Sao_Paulo');
+		$hora = date("h:i");
+		$sql2 = "UPDATE tb_alimento_pedido SET situacao = 2, hora_envio = '$hora' WHERE id_pedido =".$this->getIdPedido();
+		$enviar = $con->prepare($sql2);
+		$enviar->execute();
+
+		return true;
 	}
 
 	public function getIdPedido(){
@@ -146,5 +174,4 @@ class Carrinho{
 		$this->idPedido = $idPedido;
 	}
 
-	
 }

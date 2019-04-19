@@ -16,6 +16,6 @@ $carrinho = unserialize($_SESSION["carrinho"]);
 
 $info = $cliente->desfazerJuncaoMesas($carrinho->getIdPedido());
 
-$carrinho->setIdPedido($info[1]);
+$carrinho->setIdPedido($info);
 
 $_SESSION["carrinho"] = serialize($carrinho);

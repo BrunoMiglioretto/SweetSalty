@@ -93,12 +93,20 @@
                     }
                 }).done(function(v) {
                     if(v == 1)
-                        alertaSolicitacaoEnviada();
+                        alertaMesmaMesa();
                     else if(v == 2)
                         alertaMesaDesocupada();
                     else if(v == 3)
-                        alertaMesmaMesa();
-                    console.log(v);
+                         alertaPedidoEnviado();
+                    else if(v == 4)
+                        alertaSolicitacaoEnviada();
+                });
+            }
+
+            function alertaPedidoEnviado(){
+                alertify.alert("Pedidos já em andamento", "Não é possível juntar mesas se alguma delas já terem enviado pedidos para cozinha").set({
+                    transition : "zoom",
+                    'movable' : false
                 });
             }
 

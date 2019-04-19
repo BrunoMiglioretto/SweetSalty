@@ -26,24 +26,12 @@ foreach($pedidos as $lista){
     $valor 			= $lista["valor_unitario"];
     $idCardapio     = $lista["id_cardapio"];
     $situacao       = $lista["situacao"];
-    $selecionado[$quantidade] = "selected";
     echo "<tr>";
     echo "<td>".$pedido."</td>";                                                            
     echo "<td>".$categoria."</td>";
     echo "
         <td>
-            <select class='inputQuant' id='".$id."' onchange='atualizarPedido(this, ".$idCardapio.")' value='".$quantidade."' disabled>
-                <option ".$selecionado[1]." value='1'>1</option>
-                <option ".$selecionado[2]." value='2'>2</option>
-                <option ".$selecionado[3]." value='3'>3</option>
-                <option ".$selecionado[4]." value='4'>4</option>
-                <option ".$selecionado[5]." value='5'>5</option>
-                <option ".$selecionado[6]." value='6'>6</option>
-                <option ".$selecionado[7]." value='7'>7</option>
-                <option ".$selecionado[8]." value='8'>8</option>
-                <option ".$selecionado[9]." value='9'>9</option>
-                <option ".$selecionado[10]." value='10'>10</option>
-            </select>
+            <input type='text' class='inputQuant' value='".$quantidade."' disabled>
         </td>";
     echo "<td> R$ <span>".number_format($valor,2,",",".")."</span></td>";
     echo "<td>";
@@ -51,7 +39,9 @@ foreach($pedidos as $lista){
     if($situacao == 2)
         echo "Preparando";
     if($situacao == 3)
-        echo "Preparado";
+        echo "Pronto";
+    if($situacao == 5)
+        echo "Entregue";
     
     echo "</td>";
     echo "</tr>";

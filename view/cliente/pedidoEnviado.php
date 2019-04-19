@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <p class="lead" style="padding-bottom: 50px;">
-
+                            Seu pedido foi enviado para a cozinha. Agora, que tal ver os seus pedidos em realidade aumentada enquanto eles são preparedos?
                         </p>
                     </div>
                 </div>

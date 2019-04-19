@@ -14,12 +14,10 @@ include "../../../model/Conexao.class.php";
 $cliente = unserialize($_SESSION["usuario"]);
 $carrinho = unserialize($_SESSION["carrinho"]);
 
-$idPedido = $cliente->juntarMesas();
+$idPedido = $cliente->juntarMesas($carrinho->getIdPedido());
+
+echo $idPedido;
 
 $carrinho->setIdPedido($idPedido);
-
-
-echo "idPedido = $idPedido; ";
-echo "Carrinho idPedido = ".$carrinho->getIdPedido();
 
 $_SESSION["carrinho"] = serialize($carrinho);

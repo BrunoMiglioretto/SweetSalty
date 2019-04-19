@@ -70,7 +70,7 @@ class Carrinho{
 		$valorPedido->execute();
 
 		// Verificar se já tem um item no banco para não coloca-lo denovo
-		$sql3 = "SELECT quant FROM tb_alimento_pedido WHERE id_pedido =".$this->getIdPedido()." and id_cardapio =".$idCardapio;
+		$sql3 = "SELECT quant FROM tb_alimento_pedido WHERE id_pedido =".$this->getIdPedido()." and id_cardapio =".$idCardapio." and situacao = 1";
 		$pedido = $c->prepare($sql3);
 		$pedido->execute();
 		if($pedido->rowCount() != 0){

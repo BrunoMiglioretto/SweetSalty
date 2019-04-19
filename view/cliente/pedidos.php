@@ -97,7 +97,7 @@
 
             $(document).ready(function() {
                 atualizarListaPedido();
-                mostrarPedidosEnviados();
+                // mostrarPedidosEnviados();
             });
             
         </script>
@@ -179,7 +179,7 @@
 
 <!---------------------------- Pedidos já enviados ---------------------------->
 
-                <br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Itens já enviados</h1></center>
+                <!-- <br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Itens já enviados</h1></center>
                 <div class="card mb-3">
         			<div class="card-header">
         				<div class="card-body">
@@ -207,7 +207,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div><br><br>
 		<a class="scroll-to-top rounded" href="#page-top">

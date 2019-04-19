@@ -78,9 +78,9 @@
                 </a>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
-                <a class='nav-link' href='../Cliente/pedido_pronto.php' title='Finalizar'>
-                    <i class='fa fa-money'></i>
-                    <span class='nav-link-text' >Finalizar</span>
+                <a class='nav-link' href='pedidosEnviados.php' title='Pedidos enviados'>
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span class='nav-link-text'>Pedidos Enviados</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>
@@ -88,6 +88,13 @@
                 <a class='nav-link' href='' title='De uma olhada no que estamos preparendo para você'>
                     <i class='fa fa-camera'></i>
                     <span class='nav-link-text' >Realidade Aumentada</span>
+                    <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
+                </a>
+            </li>
+            <li class='nav-item' data-toggle='tooltip' data-placement='right'>
+                <a class='nav-link' href='../Cliente/pedido_pronto.php' title='Finalizar'>
+                    <i class='fa fa-money'></i>
+                    <span class='nav-link-text' >Finalizar</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>

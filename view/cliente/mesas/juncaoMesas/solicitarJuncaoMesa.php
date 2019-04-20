@@ -3,7 +3,7 @@
 session_start();
 
 # muda o diretorio para cliente
-chdir('../');
+chdir('../../');
 
 include "../../controller/clienteController/verificacaoSessionClienteController.php";
 
@@ -17,6 +17,7 @@ if($v)
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
+        <base href="../">
         <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="icon" href="../../img/logo.png" type="image/x-icon">
         <title>Mesas | Sweet Salty</title>

@@ -1,11 +1,14 @@
 <?php
 	session_start();
 
+	chdir("../");
+
 ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
 		<meta charset="utf-8">
+		<base href="../">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="icon" href="../img/logo.png" type="image/x-icon">
 		<title>Perfil | Sweet Salty</title>

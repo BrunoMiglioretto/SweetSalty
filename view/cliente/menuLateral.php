@@ -44,10 +44,9 @@
     <a class="navbar-brand desktop" style="overflow:hidden; width:auto" href="../cliente/index.php" title="Sweet Salty | Voltar para página inicial">
         <h6 class='desktop-t'>Sweet Salty | Seja bem vindo(a), <?= $nomeCompleto?></h6>
     </a>
-    <a class="navbar-brand moble" href="../Cliente/index.php" title="Sweet Salty | Voltar para página inicial">
+    <a class="navbar-brand moble" href="" title="Sweet Salty | Voltar para página inicial">
         <h6 class='moble-m'>Sweet Salty</h6>
     </a>
-    <i id="preparo" style="display:block" class="i">Em preparo</i>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"bottom="0" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
     </button>
@@ -60,25 +59,25 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                     <li title="Bebidas">
-                        <a href="listaBebidas.php">Bebidas</a>
+                        <a href="listasCardapio/listaBebidas.php">Bebidas</a>
                     </li>
                     <li title="Doces">
-                        <a href="listaDoces.php">Doces</a>
+                        <a href="listasCardapio/listaDoces.php">Doces</a>
                     </li>
                     <li title="Salgados">
-                        <a href="listaSalgados.php">Salgados</a>
+                        <a href="listasCardapio/listaSalgados.php">Salgados</a>
                     </li>
                 </ul>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
-                <a class='nav-link' href='pedidos.php' title='Pedido'>
+                <a class='nav-link' href='pedidos/pedidos.php' title='Pedido'>
                     <i class='fa fa-shopping-cart'></i>
                     <span class='nav-link-text'>Pedidos</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
-                <a class='nav-link' href='pedidosEnviados.php' title='Pedidos enviados'>
+                <a class='nav-link' href='pedidos/pedidosEnviados.php' title='Pedidos enviados'>
                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                     <span class='nav-link-text'>Pedidos Enviados</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
@@ -92,7 +91,7 @@
                 </a>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
-                <a class='nav-link' href='../Cliente/pedido_pronto.php' title='Finalizar'>
+                <a class='nav-link' href='' title='Finalizar'>
                     <i class='fa fa-money'></i>
                     <span class='nav-link-text' >Finalizar</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
@@ -109,9 +108,9 @@
                             href="
                                 <?php
                                     if($tipo == "ClientePadrao")
-                                        echo "perfilPadrao.php";
+                                        echo "perfil/perfilPadrao.php";
                                     if($tipo == "ClienteGoogleFacebook")
-                                        echo "perfilGF.php";
+                                        echo "perfil/perfilGF.php";
                                 ?>
                             "
                         >Perfil
@@ -144,6 +143,5 @@
             </li>
         </ul>
     </div>
-
   </nav>
  

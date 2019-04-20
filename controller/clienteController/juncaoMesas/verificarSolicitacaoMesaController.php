@@ -15,12 +15,12 @@ $cliente = unserialize($_SESSION["usuario"]);
 $solicitacao = $cliente->verificarSolicitacaoMesa();
 
 if($solicitacao == 1)
-    header("location: ../../../view/cliente/juntarMesas.php");
+    header("location: ../../../view/cliente/mesas/juncaoMesas/juntarMesas.php");
 else if($solicitacao == 2)
-    header("location: ../../../view/cliente/aceitarJuncaoMesas.php");
+    header("location: ../../../view/cliente/mesas/juncaoMesas/aceitarJuncaoMesas.php");
 else if($solicitacao == 3)
-    header("location: ../../../view/cliente/aguardandoResposta.php");
+    header("location: ../../../view/cliente/mesas/juncaoMesas/aguardandoResposta.php");
 else if($solicitacao == 4)
-    header("location: ../../../view/cliente/mesasJuntas.php");
+    header("location: ../../../view/cliente/mesas/juncaoMesas/mesasJuntas.php");
 
 

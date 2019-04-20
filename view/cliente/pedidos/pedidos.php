@@ -1,11 +1,13 @@
 <?php
     session_start();
 
+    chdir("../");
 ?>		
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
         <meta charset="utf-8">
+        <base href="../">
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -86,7 +88,7 @@
                     url : "../../controller/clienteController/carrinho/enviarParaCozinhaController.php"
                 }).done(function(n) {
                     if(n == "true")
-                        window.location = "pedidoEnviado.php";
+                        window.location = "pedidos/pedidoEnviado.php";
                     else{
                         alertify.alert("Sem itens","Adicione itens para enviar para cozinha").setting({
                             'transition' : 'zoom'

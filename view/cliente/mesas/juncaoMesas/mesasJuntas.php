@@ -1,12 +1,15 @@
 <?php
     session_start();
 
+    chdir("../../");
+
 ?>
 
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
         <meta charset="utf-8">
+        <base href="../../">
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -27,19 +30,19 @@
 		
         <div class="content-wrapper">
             <div class="container-fluid">
-                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Seu pedido está sendo preparado</h1></center>
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Mesas juntas</h1></center>
                 <br><br>
                 <div class="row">
                     <div class="col-12 text-center">
                         <p class="lead" style="padding-bottom: 50px;">
-                            Seu pedido foi enviado para a cozinha. Agora, que tal ver os seus pedidos em realidade aumentada enquanto eles são preparedos?
+
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-center">
                         <div>
-                            <button type="button" class="btn btn-primary btn-lg">Ver realidade aumentada!</button>
+                            <button onclick="cancelar()" type="button" class="btn btn-secondary btn-lg">Desfazer junção</button>
                         </div>
                     </div>
                 </div>
@@ -69,5 +72,34 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
+        <script>
+            function cancelar(){
+                $.ajax({
+                    url : "../../controller/clienteController/juncaoMesas/desfazerJuncaoMesas.php"
+                }).done(function() {
+                    console.log();
+                    alertify.alert("Desfeita a junção", "Clique em Ok para voltar", function() {
+                        window.location = "index.php";
+                    }).set({
+                        transition : "zoom",
+                        'movable' : false
+                    });      
+                });
+            }
+
+            function pegarSolicitacao(){
+                $.ajax({
+                    url : "../../controller/clienteController/juncaoMesas/pegarSolicitacaoController.php"
+                }).done(function(n) {
+                    dados = JSON.parse(n);
+                    $(".lead").html(`Atualmente as mesas ${dados.id_mesa_solicitante} e ${dados.id_mesa_solicitada} estão juntas`);
+                });
+            }
+
+            $(document).ready(function() {
+                pegarSolicitacao()
+            });
+
+        </script>
 	</body>
 </html>

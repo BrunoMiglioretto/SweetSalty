@@ -59,7 +59,7 @@ if($v)
         <script>
             function enviarMesa(mesa){
                 $.ajax({
-                    url : "../../../controller/clienteController/escolherMesaController.php",
+                    url : "../../../controller/clienteController/mesa/escolherMesaController.php",
                     method : "POST",
                     data : {
                         mesa : mesa
@@ -69,6 +69,7 @@ if($v)
                         window.location = "../";
                     else
                         alertaMesaOcupada();
+                    console.log(v);
                 });
             }
 

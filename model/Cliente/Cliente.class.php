@@ -3,42 +3,8 @@
 abstract class Cliente extends Usuario{
     private $sexo;
     private $dataNascimento;
-    private $mesa;
 
     abstract public function editarPerfil($informacoes);
-    
-    public function escolherMesa($mesaE){
-        $conexao = new Conexao;
-        $con = $conexao->conexaoPDO();
-        $sql1 = "SELECT count(*) AS total FROM tb_mesa WHERE id_mesa =".$mesaE." and id_cadastro !=".$this->getIdUsuario();
-        $mesasUsadas = $con->prepare($sql1);
-        $mesasUsadas->execute();
-        foreach($mesasUsadas as $c){}
-        if($c["total"] == 0){
-            $sql2 = "SELECT count(*) AS cadastros FROM tb_mesa WHERE id_cadastro =".$this->getIdUsuario();
-            $cadastros = $con->prepare($sql2);
-            $cadastros->execute();
-            foreach($cadastros as $cad)
-            if($cad["cadastros"] != 0)
-                $this->mudarMesa($mesaE);
-            else{
-                $sql3 = "INSERT INTO tb_mesa SET id_cadastro = ".$this->getIdUsuario().", id_mesa = $mesaE";
-                $mesaEscolhida = $con->prepare($sql3);
-                $mesaEscolhida->execute();
-            }
-            $this->setMesa($mesaE);
-            return true;
-        }else
-            return false;
-    }
-
-    private function mudarMesa($mesaE){
-        $sql = "UPDATE tb_mesa SET id_mesa = $mesaE WHERE id_cadastro =".$this->getIdUsuario();
-        $conexao = new Conexao;
-        $con = $conexao->conexaoPDO();
-        $mudar = $con->prepare($sql);
-        $mudar->execute();
-    }
 
     public function verificarSolicitacaoMesa(){
         $sql1 = "SELECT id_mesa FROM tb_mesa WHERE id_cadastro = ".$this->getIdUsuario();
@@ -326,13 +292,8 @@ abstract class Cliente extends Usuario{
 
     }
 
-    public function desconectar(){
-        $this->cancelarSolicitacao();
-        $sql = "DELETE FROM tb_mesa WHERE id_cadastro =".$this->getIdUsuario();
-        $conexao = new Conexao;
-        $con = $conexao->conexaoPDO();
-        $mesaE = $con->prepare($sql);
-        $mesaE->execute();
+    public function sair(){
+        
     }
 
     public function getSexo(){
@@ -351,11 +312,4 @@ abstract class Cliente extends Usuario{
         $this->dataNascimento = $dataNascimento;
     }
 
-    public function getMesa(){
-        return $this->mesa;
-    }
-
-    public function setMesa($mesa){
-        $this->mesa = $mesa;
-    }
 } 

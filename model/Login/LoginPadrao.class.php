@@ -45,7 +45,9 @@ class LoginPadrao extends Login{
         if($nCliente == 1){
             $usuario = ClienteFactory::criarUsuario('Padrao', $cliente);
             $carrinho = new Carrinho($usuario->getIdUsuario());
+            $mesa = new Mesa($usuario->getIdUsuario());
             $_SESSION["carrinho"] = serialize($carrinho);
+            $_SESSION["mesa"] = serialize($mesa);
             $this->criarSession($usuario);
             return $usuario;
         }else{

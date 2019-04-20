@@ -117,7 +117,7 @@
                         </a>
                     </li>
                     <li title="Mudar de mesa">
-                        <a href="mesas/mesa.php">Mudar de mesa</a>
+                        <a href="mesas/mudarMesa.php">Mudar de mesa</a>
                     </li>
                     <li title="Juntar mesas">
                         <a href="../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php">Juntar mesas</a>

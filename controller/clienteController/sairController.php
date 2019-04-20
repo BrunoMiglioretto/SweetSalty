@@ -3,9 +3,12 @@
 session_start();
 
 include "verificacaoSessionClienteController.php";
+include "../../model/Cliente/Mesa.class.php";
 include "../../model/Conexao.class.php";
 
-$cliente->desconectar();
+$mesa = unserialize($_SESSION["mesa"]);
+
+$mesa->sairMesa();
 
 session_destroy();
 

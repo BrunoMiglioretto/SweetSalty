@@ -94,10 +94,12 @@
                         mesa : mesa
                     }
                 }).done(function(v) {
-                    if(v == 1)
+                    if(v == 0)
                         alertaMesmaMesa();
-                    else if(v == 2)
+                    else if(v == 1)
                         alertaMesaDesocupada();
+                    else if(v == 2)
+                        alertaTemUmaSolicitacao();
                     else if(v == 3)
                          alertaPedidoEnviado();
                     else if(v == 4)
@@ -105,29 +107,36 @@
                 });
             }
 
+            function alertaTemUmaSolicitacao() {
+                alertify.alert("Outra solicitação", "Tem uma outra solicitação em andamento para a mesa que selecionou.").set({
+                    transition : "zoom",
+                    'movable' : false
+                });
+            }
+
             function alertaPedidoEnviado(){
-                alertify.alert("Pedidos já em andamento", "Não é possível juntar mesas se alguma delas já terem enviado pedidos para cozinha").set({
+                alertify.alert("Pedidos já em andamento", "Não é possível juntar mesas se alguma delas já terem enviado pedidos para cozinha.").set({
                     transition : "zoom",
                     'movable' : false
                 });
             }
 
             function alertaMesaDesocupada() {
-                alertify.alert("Mesa desocupada", "Essa mesa não está sendo usada").set({
+                alertify.alert("Mesa desocupada", "Essa mesa não está sendo usada.").set({
                     transition : "zoom",
                     'movable' : false
                 });
             }
             function alertaSolicitacaoEnviada(){
-                alertify.alert("Solicitação enviada", "Aguarde até a confirmação do pedido de junção",function(){
-                    window.location = "aguardandoResposta.php"; 
+                alertify.alert("Solicitação enviada", "Aguarde até a confirmação do pedido de junção.",function(){
+                    window.location = "mesas/juncaoMesas/aguardandoResposta.php"; 
                 }).set({
                     transition : "zoom",
                     'movable' : false
                 });
             }
             function alertaMesmaMesa(){
-                alertify.alert("Mesa inválida", "Essa é a sua mesa!!").set({
+                alertify.alert("Mesa inválida", "Essa é a sua mesa!").set({
                     transition : "zoom",
                     'movable' : false
                 });

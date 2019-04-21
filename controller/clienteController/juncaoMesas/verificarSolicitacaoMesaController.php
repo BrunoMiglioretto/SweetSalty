@@ -7,12 +7,21 @@ include "../../../model/Usuario.class.php";
 include "../../../model/Cliente/Cliente.class.php";
 include "../../../model/Cliente/ClienteGoogleFacebook.class.php";
 include "../../../model/Cliente/ClientePadrao.class.php";
+include "../../../model/Cliente/Mesa.class.php";
+include "../../../model/Cliente/JuntadorMesas.class.php";
 
 include "../../../model/Conexao.class.php";
 
-$cliente = unserialize($_SESSION["usuario"]);
+$mesa = unserialize($_SESSION["mesa"]);
 
-$solicitacao = $cliente->verificarSolicitacaoMesa();
+if(!isset($_SESSION["juntadorMesas"]))
+    $juntadorMesas = new JuntadorMesas;
+else
+    $juntadorMesas = unserialize($_SESSION["juntadorMesas"]);
+
+$solicitacao = $juntadorMesas->verificarSolicitacao($mesa->getNumeroMesa());
+
+$_SESSION["juntadorMesas"] = serialize($juntadorMesas);
 
 if($solicitacao == 1)
     header("location: ../../../view/cliente/mesas/juncaoMesas/juntarMesas.php");
@@ -22,5 +31,3 @@ else if($solicitacao == 3)
     header("location: ../../../view/cliente/mesas/juncaoMesas/aguardandoResposta.php");
 else if($solicitacao == 4)
     header("location: ../../../view/cliente/mesas/juncaoMesas/mesasJuntas.php");
-
-

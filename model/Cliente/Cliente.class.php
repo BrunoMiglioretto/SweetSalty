@@ -6,81 +6,6 @@ abstract class Cliente extends Usuario{
 
     abstract public function editarPerfil($informacoes);
 
-    public function verificarSolicitacaoMesa(){
-        $sql1 = "SELECT id_mesa FROM tb_mesa WHERE id_cadastro = ".$this->getIdUsuario();
-        $conexao = new Conexao;
-        $con = $conexao->conexaoPDO();
-        $idMesa = $con->prepare($sql1);
-        $idMesa->execute();
-        foreach($idMesa as $idM){}
-
-        // Ver se ele já solicitou e está agradando a resposta
-        $sql2 = "SELECT `status` FROM tb_solicitacao_mesa WHERE id_mesa_solicitante =".$idM["id_mesa"];
-        $solicitador = $con->prepare($sql2);
-        $solicitador->execute();
-
-        if($solicitador->rowCount() == 0){
-            // Ver se ele é quem está sendo solicitado
-            $sql3 = "SELECT `status` FROM tb_solicitacao_mesa WHERE id_mesa_solicitada = ".$idM["id_mesa"];
-            $solicitado = $con->prepare($sql3);
-            $solicitado->execute();
-            if($solicitado->rowCount() == 0)
-                return 1;
-
-            foreach($solicitado as $soli){}
-            if($soli["status"] == 0)
-                return 2;
-            else
-                return 4;
-        }else{
-            foreach($solicitador as $dor){}
-            if($dor["status"] == 0)
-                return 3;
-            else
-                return 4;
-        }
-    }
-
-    public function solicitarJuncaoMesas($mesaE){
-        if($mesaE == $this->getMesa())
-            return 1;
-        $sql2 = "SELECT count(*) AS tem FROM tb_mesa WHERE id_mesa = $mesaE AND id_cadastro !=".$this->getIdUsuario();
-        $conexao = new Conexao;
-        $con = $conexao->conexaoPDO();
-        $mesaSolicitada = $con->prepare($sql2);
-        $mesaSolicitada->execute();
-        foreach($mesaSolicitada as $ms){}
-        if($ms["tem"] == 1){
-            // Pega o id_cadastro da mesa do cliente solicitado
-            $sqlSolicitacao = " SELECT tb_pedido.id_cadastro FROM tb_pedido INNER JOIN tb_mesa ON
-                                tb_pedido.id_cadastro = tb_mesa.id_cadastro 
-                                WHERE tb_mesa.id_mesa = $mesaE";
-            $solicitacao = $con->prepare($sqlSolicitacao);
-            $solicitacao->execute();
-            foreach($solicitacao as $s){
-                $idCadastroSolicitado = $s["id_cadastro"];
-            }
-            
-            // Verifica se tem algum pedido já enviado para cozinha, tanto do solicitante como o solicitado
-            $sqlPedidosEnviados = " SELECT count(*) AS total FROM tb_alimento_pedido INNER JOIN tb_pedido ON 
-                                    tb_alimento_pedido.id_pedido = tb_pedido.id_pedido WHERE (id_cadastro = $idCadastroSolicitado OR 
-                                    id_cadastro = ".$this->getIdUsuario().") AND situacao > 1";
-            $pedidosEnviados = $con->prepare($sqlPedidosEnviados);
-            $pedidosEnviados->execute();
-            foreach($pedidosEnviados as $pe){}
-            
-            if($pe["total"] != 0)
-                return 3;
-            
-            $sql3 = "INSERT INTO tb_solicitacao_mesa SET id_cadastro_solicitante = ".$this->getIdUsuario().", id_mesa_solicitante = ".$this->getMesa().", id_mesa_solicitada = $mesaE, `status` = 0";
-            $solicitarMesa = $con->prepare($sql3);
-            $solicitarMesa->execute();
-            return 4;
-        }else
-            return 2;
-            
-    }
-
     public function juntarMesas($idPedido){
         // Pega o id_mesa do cliente na mesa solicitada
         $sql1 = "SELECT id_mesa FROM tb_mesa WHERE id_cadastro =".$this->getIdUsuario();
@@ -272,17 +197,6 @@ abstract class Cliente extends Usuario{
             }
             return $info;
         }
-    }
-
-    public function pegarSolicitacao(){
-        $sql = "SELECT * FROM tb_solicitacao_mesa INNER JOIN tb_cadastro 
-                ON tb_solicitacao_mesa.id_cadastro_solicitante = tb_cadastro.id_cadastro
-                WHERE id_mesa_solicitada = ".$this->getMesa()." OR id_mesa_solicitante = ".$this->getMesa();
-        $conexao = new Conexao;
-        $con = $conexao->conexaoPDO();
-        $pegar = $con->prepare($sql);
-        $pegar->execute();
-        return $pegar;
     }
 
     public function escolherPagamento($forma){

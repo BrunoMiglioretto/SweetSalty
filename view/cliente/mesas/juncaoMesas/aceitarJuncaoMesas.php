@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                     <p class="lead" style="padding-bottom: 50px;">
-                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+
                     </p>
                     </div>
                 </div>
@@ -108,6 +108,7 @@
                 $.ajax({
                     url : "../../controller/clienteController/juncaoMesas/pegarSolicitacaoController.php"
                 }).done(function(n) {
+                    // console.log(n);
                     dados = JSON.parse(n);
                     $(".lead").html(`${dados.nome}, da mesa ${dados.id_mesa_solicitante}, fez uma solicitação para se juntar a sua mesa`);
                 });

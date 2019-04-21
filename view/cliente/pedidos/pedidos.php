@@ -87,11 +87,36 @@
                 $.ajax({
                     url : "../../controller/clienteController/carrinho/enviarParaCozinhaController.php"
                 }).done(function(n) {
+                    console.log(n);
                     if(n == "true")
                         window.location = "pedidos/pedidoEnviado.php";
-                    else{
+                    else if(n == "false"){
                         alertify.alert("Sem itens","Adicione itens para enviar para cozinha").setting({
                             'transition' : 'zoom'
+                        });
+                    }else if(n == "2"){
+                        alertify.confirm('Solicitação de junção', 'Há uma solicitação de junção de mesa, responda ela e em seguida envie para a cozinha', function() { 
+                                window.location = "mesas/juncaoMesas/aceitarJuncaoMesas.php";
+                            }, function() {}).set({
+                                'transition' : 'zoom',
+                                'defaultFocus' : '',
+                                'movable': false,
+                                labels:{
+                                    ok: 'Ver Solicitação',
+                                    cancel: 'Fechar'            
+                                }
+                        });
+                    }else if(n == 3){
+                        alertify.confirm('Junção de mesas', 'Não é possível enviar para cozinha enquanto há uma solicitação de junção de mesas', function() { 
+                                window.location = "mesas/juncaoMesas/aguardandoResposta.php";
+                            }, function() {}).set({
+                                'transition' : 'zoom',
+                                'defaultFocus' : '',
+                                'movable': false,
+                                labels:{
+                                    ok: 'Ver Solicitação',
+                                    cancel: 'Fechar'            
+                                }
                         });
                     }
                 });

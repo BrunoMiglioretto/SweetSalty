@@ -159,6 +159,14 @@ class JuntadorMesas{
         $cancelar->execute();
     }
 
+    public function juntarMesas(){
+        
+    }
+
+    private function juntarPedidos(){
+
+    }
+
     public function getNumeroMesaSolicitante(){
         return $this->numeroMesaSolicitante;
     }

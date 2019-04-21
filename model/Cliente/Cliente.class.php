@@ -86,14 +86,6 @@ abstract class Cliente extends Usuario{
         return $tbs["id_pedido"];
     }
 
-    public function cancelarSolicitacao(){
-        $sql = "DELETE FROM tb_solicitacao_mesa WHERE id_mesa_solicitante = ".$this->getMesa()." OR id_mesa_solicitada = ".$this->getMesa();
-        $conexao = new Conexao;
-        $con = $conexao->conexaoPDO();
-        $cancelar = $con->prepare($sql);
-        $cancelar->execute();
-    }
-
     public function desfazerJuncaoMesas($idPedido){
         $sql1 = "SELECT * FROM tb_solicitacao_mesa WHERE id_mesa_solicitante =".$this->getMesa();
         $conexao = new Conexao;

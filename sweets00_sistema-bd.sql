@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: 18-Abr-2019 às 06:57
--- Versão do servidor: 5.7.23-23
--- versão do PHP: 7.2.7
+-- Host: 127.0.0.1
+-- Generation Time: 22-Abr-2019 às 01:12
+-- Versão do servidor: 10.1.35-MariaDB
+-- versão do PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,8 +32,17 @@ CREATE TABLE `tb_alimento_pedido` (
   `id_pedido` int(6) DEFAULT NULL,
   `id_cardapio` int(6) DEFAULT NULL,
   `quant` int(3) DEFAULT NULL,
-  `situacao` char(1) DEFAULT NULL
+  `situacao` char(1) DEFAULT NULL,
+  `hora_envio` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_alimento_pedido`
+--
+
+INSERT INTO `tb_alimento_pedido` (`id_pedido`, `id_cardapio`, `quant`, `situacao`, `hora_envio`) VALUES
+(58, 91, 1, '1', NULL),
+(59, 91, 1, '2', '08:09:00');
 
 -- --------------------------------------------------------
 
@@ -56,9 +65,9 @@ INSERT INTO `tb_cadastro` (`id_cadastro`, `nome_completo`, `email`) VALUES
 (3, 'Caixa', 'caixa@gmail.com'),
 (4, 'Garçom', 'garcom@gmail.com'),
 (5, 'Cozinheiro', 'cozinheiro@gmail.com'),
-(88, 'Bruno Miglioretto', 'brunomiglioretto@gmail.co'),
-(89, 'Bruno Miglioretto', 'brunomiglioretto@gmail.co'),
-(90, 'Bruno Miglioretto', 'brunomiglioretto@gmail.com');
+(91, 'Bruno Assis Miglioretto', 'bruno@gmail.com'),
+(92, 'Aline Assis', 'aline@gmail.com'),
+(93, 'ana', 'ana@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -181,9 +190,9 @@ CREATE TABLE `tb_cliente` (
 --
 
 INSERT INTO `tb_cliente` (`id_cadastro`, `data_nascimento`, `sexo`) VALUES
-(88, '0000-00-00', ''),
-(89, '0000-00-00', ''),
-(90, '0000-00-00', '');
+(91, '1212-12-12', 'M'),
+(92, '1212-12-12', 'F'),
+(93, '2121-02-21', 'F');
 
 -- --------------------------------------------------------
 
@@ -217,7 +226,8 @@ INSERT INTO `tb_funcionario` (`id_cadastro`, `rg`, `cpf`, `cargo`) VALUES
 CREATE TABLE `tb_historico_alimento_pedido` (
   `id_historico_pedido` int(6) DEFAULT NULL,
   `id_cardapio` int(6) DEFAULT NULL,
-  `quant` int(3) DEFAULT NULL
+  `quant` int(3) DEFAULT NULL,
+  `hora_envio` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -262,6 +272,16 @@ CREATE TABLE `tb_mesa` (
   `id_mesa` int(11) NOT NULL,
   `id_cadastro` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tb_mesa`
+--
+
+INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
+(2, NULL),
+(4, NULL),
+(1, 91),
+(3, 92);
 
 -- --------------------------------------------------------
 
@@ -312,7 +332,9 @@ CREATE TABLE `tb_pedido` (
 --
 
 INSERT INTO `tb_pedido` (`id_pedido`, `id_cadastro`, `data_pedido`, `hora`, `subtotal`) VALUES
-(19, 90, '2019-04-18', '08:57:00', 0.00);
+(58, 91, '2019-04-21', '09:45:00', 4.00),
+(59, 92, '2019-04-21', '09:45:00', 24.00),
+(60, 93, '2019-04-21', '11:28:00', 0.00);
 
 -- --------------------------------------------------------
 
@@ -347,7 +369,10 @@ INSERT INTO `tb_senha` (`id_cadastro`, `senha`, `validar_email`, `token`) VALUES
 (2, '123', 0, NULL),
 (3, '123', 0, NULL),
 (4, '123', 0, NULL),
-(5, '123', 0, NULL);
+(5, '123', 0, NULL),
+(91, '123123123', NULL, '5cb90d0a248b0'),
+(92, '123123123', NULL, '5cb9e9a855ae5'),
+(93, '123123123', NULL, '5cbc7dea9be4b');
 
 -- --------------------------------------------------------
 
@@ -356,7 +381,6 @@ INSERT INTO `tb_senha` (`id_cadastro`, `senha`, `validar_email`, `token`) VALUES
 --
 
 CREATE TABLE `tb_solicitacao_mesa` (
-  `id_cadastro_solicitante` int(6) DEFAULT NULL,
   `id_mesa_solicitante` int(6) DEFAULT NULL,
   `id_mesa_solicitada` int(6) DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL
@@ -382,7 +406,10 @@ INSERT INTO `tb_telefone` (`id_cadastro`, `ddd`, `numero`) VALUES
 (2, 41, 322332),
 (3, 44, 32123),
 (4, 52, 515),
-(5, 55, 5454);
+(5, 55, 5454),
+(91, 20, 0),
+(92, 20, 0),
+(93, 20, 0);
 
 -- --------------------------------------------------------
 
@@ -512,7 +539,6 @@ ALTER TABLE `tb_senha`
 -- Indexes for table `tb_solicitacao_mesa`
 --
 ALTER TABLE `tb_solicitacao_mesa`
-  ADD KEY `id_cadastro_solicitante` (`id_cadastro_solicitante`),
   ADD KEY `id_mesa_solicitante` (`id_mesa_solicitante`),
   ADD KEY `id_mesa_solicitada` (`id_mesa_solicitada`);
 
@@ -536,7 +562,7 @@ ALTER TABLE `tb_tipo_ingrediente`
 -- AUTO_INCREMENT for table `tb_cadastro`
 --
 ALTER TABLE `tb_cadastro`
-  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio`
@@ -572,7 +598,7 @@ ALTER TABLE `tb_ingrediente`
 -- AUTO_INCREMENT for table `tb_mesa`
 --
 ALTER TABLE `tb_mesa`
-  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_nota_fiscal`
@@ -590,7 +616,7 @@ ALTER TABLE `tb_pagamento`
 -- AUTO_INCREMENT for table `tb_pedido`
 --
 ALTER TABLE `tb_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `tb_tipo_ingrediente`
@@ -695,7 +721,6 @@ ALTER TABLE `tb_senha`
 -- Limitadores para a tabela `tb_solicitacao_mesa`
 --
 ALTER TABLE `tb_solicitacao_mesa`
-  ADD CONSTRAINT `tb_solicitacao_mesa_ibfk_1` FOREIGN KEY (`id_cadastro_solicitante`) REFERENCES `tb_cadastro` (`id_cadastro`),
   ADD CONSTRAINT `tb_solicitacao_mesa_ibfk_2` FOREIGN KEY (`id_mesa_solicitante`) REFERENCES `tb_mesa` (`id_mesa`),
   ADD CONSTRAINT `tb_solicitacao_mesa_ibfk_3` FOREIGN KEY (`id_mesa_solicitada`) REFERENCES `tb_mesa` (`id_mesa`);
 

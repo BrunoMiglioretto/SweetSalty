@@ -96,7 +96,7 @@
                         });
                     }else if(n == "2"){
                         alertify.confirm('Solicitação de junção', 'Há uma solicitação de junção de mesa, responda ela e em seguida envie para a cozinha', function() { 
-                                window.location = "mesas/juncaoMesas/aceitarJuncaoMesas.php";
+                                window.location = "../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php";
                             }, function() {}).set({
                                 'transition' : 'zoom',
                                 'defaultFocus' : '',
@@ -108,7 +108,7 @@
                         });
                     }else if(n == 3){
                         alertify.confirm('Junção de mesas', 'Não é possível enviar para cozinha enquanto há uma solicitação de junção de mesas', function() { 
-                                window.location = "mesas/juncaoMesas/aguardandoResposta.php";
+                                window.location = "../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php";
                             }, function() {}).set({
                                 'transition' : 'zoom',
                                 'defaultFocus' : '',

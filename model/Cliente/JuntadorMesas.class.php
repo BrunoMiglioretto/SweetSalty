@@ -18,7 +18,7 @@ class JuntadorMesas{
         if($solicitado["tem"] == 0)
             return 1;
         
-        $queryStatusSolicitacao = "SELECT 'status' FROM tb_solicitacao_mesa WHERE id_mesa_solicitante = $numeroMesaAtual OR id_mesa_solicitada = $numeroMesaAtual";
+        $queryStatusSolicitacao = "SELECT `status` FROM tb_solicitacao_mesa WHERE id_mesa_solicitante = $numeroMesaAtual OR id_mesa_solicitada = $numeroMesaAtual";
         $statusSolicitacao = $con->prepare($queryStatusSolicitacao);
         $statusSolicitacao->execute();
 
@@ -160,11 +160,95 @@ class JuntadorMesas{
     }
 
     public function juntarMesas(){
-        
+        $queryAttStatus = "UPDATE tb_solicitacao_mesa SET `status` = 1 WHERE id_mesa_solicitada = ".$this->getNumeroMesaSolicitada();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $attStatus = $con->prepare($queryAttStatus);
+        $attStatus->execute();
+
+        return $this->juntarPedidos();
     }
 
     private function juntarPedidos(){
+        $queryPegarIdPedidoSolicitante = "SELECT id_pedido FROM tb_pedido WHERE id_cadastro = ".$this->getidClienteSolicitante();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $PegarIdPedidoSolicitante = $con->prepare($queryPegarIdPedidoSolicitante);
+        $PegarIdPedidoSolicitante->execute();
 
+        foreach($PegarIdPedidoSolicitante as $idPedido) {
+            $idPedidoSolicitante = $idPedido["id_pedido"];
+        }
+        
+        $queryItensClienteSolicitante = "SELECT * FROM tb_alimento_pedido WHERE id_pedido = $idPedidoSolicitante";
+        $itensClienteSolicitante = $con->prepare($queryItensClienteSolicitante);
+        $itensClienteSolicitante->execute();
+
+        $queryPegarIdPedidoSolicitado = "SELECT id_pedido FROM tb_pedido WHERE id_cadastro = ".$this->getidClienteSolicitado();
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $PegarIdPedidoSolicitado = $con->prepare($queryPegarIdPedidoSolicitado);
+        $PegarIdPedidoSolicitado->execute();
+
+        foreach($PegarIdPedidoSolicitado as $idPedido) {
+            $idPedidoSolicitado = $idPedido["id_pedido"];
+        }
+
+        $queryItensClienteSolicitado = "SELECT * FROM tb_alimento_pedido WHERE id_pedido = $idPedidoSolicitado";
+        $itensClienteSolicitado = $con->prepare($queryItensClienteSolicitado);
+        $itensClienteSolicitado->execute();
+
+        if($itensClienteSolicitado->rowCount() != 0){
+            foreach($itensClienteSolicitado as $itens) {
+                $queryVerificarItem = "SELECT * FROM tb_alimento_pedido WHERE id_cardapio = ".$itens["id_cardapio"]." AND id_pedido = $idPedidoSolicitante";
+                $verificarItem = $con->prepare($queryVerificarItem);
+                $verificarItem->execute();
+                
+                if($verificarItem->rowCount() == 1){
+                    foreach($queryVerificarItem as $itemSolicitante) {}
+                    foreach($verificarItem as $juntarItem) {}
+
+                    $novaQuant = $itemSolicitante["quant"] + $juntarItem["quant"];
+
+                    $queryAttQuant = "UPDATE tb_alimento_pedido SET quant = $novaQuant WHERE id_cardapio = ".$itens["id_cardapio"]." AND id_pedido = $idPedidoSolicitante";
+                    $attQuant = $con->prepare($queryAttQuant);
+                    $attQuant->execute();
+                }else{
+                    $queryAttPedido = "UPDATE tb_alimento_pedido SET id_pedido = $idPedidoSolicitante WHERE id_cardapio = ".$itens["id_cardapio"]." AND id_pedido = $idPedidoSolicitado";
+                    $attPedido = $con->prepare($queryAttPedido);
+                    $attPedido->execute();
+                }
+            }
+
+            $this->refazerSubtotal($idPedidoSolicitante);
+        }
+
+        return $idPedidoSolicitante;
+    
+    }
+
+    private function refazerSubtotal($idPedido){
+        $subtotal = 0.00;
+        
+        $queryItensPedido = "SELECT id_cardapio, quant FROM tb_alimento_pedido WHERE id_pedido = $idPedido";
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $itensPedido = $con->prepare($queryItensPedido);
+        $itensPedido->execute();
+
+        foreach($itensPedido as $item) {
+            $queryPrecoCardapio = "SELECT valor_unitario FROM tb_cardapio WHERE id_cardapio = ".$item["id_cardapio"];
+            $precoCardapio = $con->prepare($queryPrecoCardapio);
+            $precoCardapio->execute();
+
+            foreach($precoCardapio as $preco) {
+                $subtotal += $preco["valor_unitario"] * $item["quant"];
+            }
+        }
+
+        $queryAttSubtotal = "UPDATE tb_pedido SET subtotal = $subtotal WHERE id_pedido = $idPedido";
+        $attSubtotal = $con->prepare($queryAttSubtotal);
+        $attSubtotal->execute();
     }
 
     public function getNumeroMesaSolicitante(){

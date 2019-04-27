@@ -19,7 +19,7 @@
   			</div>
     		<div class="card-body" class='print'>
     			<div class="table-responsive" class='print' style="margin-top: 15px;">
-        			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" class='print'>
+        			<table class="table table-bordered" id="tabela" width="100%" cellspacing="0" class='print'>
 						<thead>
               				<tr>
 								<th>Vez</th>
@@ -30,7 +30,7 @@
 				       		</tr>
 			     		</thead>
 					    <tbody>
-							<!-- Conteudo -->
+							
             			</tbody>
     				</table>
   				</div>
@@ -38,21 +38,21 @@
 		</div>
 		<br><br><br><br>
 
-		<div class='modal fade' id='' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+		<div class='modal fade' id='modalFinalizar' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
 			<div class='modal-dialog modal-dialog-centered' role='document'>
 				<div class='modal-content'>
 					<div class='modal-header'>
-						<h5 class='modal-title' id='exampleModalLongTitle'>Finalizar</h5>
+						<h5 class='modal-title' id='tituloModal'>Finalizar</h5>
 						<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 							<span aria-hidden='true'>&times;</span>
 						</button>
 					</div>
-					<div class='modal-body'>
-						Deseja finalizar pedido?
+					<div class='modal-body' id="mensagemModal">
+
 					</div>
 					<div class='modal-footer'>
 						<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-						<button type='button' class='btn btn-primary' data-dismiss='modal'>Finalizar</button>
+						<button type='button' class='btn btn-primary' data-dismiss='modal' onclick="marcarComoPronto()">Confirmar</button>
 					</div>
 				</div>
 			</div>
@@ -70,17 +70,71 @@
 		<script src="../js/sb-admin-charts.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				setTimeout(function() {
-					pegarPedidos();
-				}, 1000);
+				pegarPedidos();
 			});
 
 			function pegarPedidos(){
-				$.ajax({
-					url : "../../controller/cozinheiroController/visualizarPedidosController.php"
-				}).done(function(pedidos) {
-					$("tbody").html(pedidos);
+				tabela = $("#tabela").DataTable({
+					language :{
+						"decimal":        "",
+						"emptyTable":     "Nenhum pedido",
+						"info":           "Mostrando _START_ to _END_ of _TOTAL_ pedidos",
+						"infoEmpty":      "Mostrando 0 de 0 dos 0 pedidos",
+						"infoFiltered":   "(filtered from _MAX_ total entries)",
+						"infoPostFix":    "",
+						"thousands":      ".",
+						"lengthMenu":     "Mostando _MENU_ pedidos",
+						"loadingRecords": "Carregando...",
+						"processing":     "Processando...",
+						"search":         "Perquisar:",
+						"zeroRecords":    "Nenhum registro correspondente encontrado",
+						"paginate": {
+							"first":      "Primeiro",
+							"last":       "Ultimo",
+							"next":       "Próximo",
+							"previous":   "Anterior"
+						},
+						"aria": {
+							"sortAscending":  ": activate to sort column ascending",
+							"sortDescending": ": activate to sort column descending"
+						}
+					},
+					"ajax" : {
+						"method" : "POST",
+						"url" : "../../controller/cozinheiroController/visualizarPedidosController.php"
+					},
+					columns: [
+						{ data : 'vez'},
+						{ data : 'nome'},
+						{ data : 'quant'},
+						{ data : 'peso_grama'},
+						{ data : 'botao'}
+					]
 				});
+			}
+
+			function marcarComoPronto(){
+				$.ajax({
+					url : "../../controller/cozinheiroController/marcarComoProntoController.php",
+					method : "POST",
+					data : {
+						idCardapio : idCardapio,
+						idPedido : idPedido
+					}
+				}).done(function() {
+					tabela.ajax.reload();
+				});
+			}
+
+			function guardarIdCardapio(idCardapioSelecionado, idPedidoSelecionado, nome){
+				idCardapio = idCardapioSelecionado;
+				idPedido = idPedidoSelecionado;
+
+				titulo = "Finalizar " + nome.toLowerCase();
+				mensagem = `Marcar como pronto o pedido de ${nome}?`;
+
+				$("#tituloModal").html(titulo);
+				$("#mensagemModal").html(mensagem);
 			}
 
 		</script>

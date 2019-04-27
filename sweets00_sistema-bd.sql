@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Abr-2019 às 01:12
+-- Generation Time: 27-Abr-2019 às 03:00
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -41,8 +41,7 @@ CREATE TABLE `tb_alimento_pedido` (
 --
 
 INSERT INTO `tb_alimento_pedido` (`id_pedido`, `id_cardapio`, `quant`, `situacao`, `hora_envio`) VALUES
-(58, 91, 1, '1', NULL),
-(59, 91, 1, '2', '08:09:00');
+(85, 158, 2, '2', '09:42:00');
 
 -- --------------------------------------------------------
 
@@ -278,10 +277,10 @@ CREATE TABLE `tb_mesa` (
 --
 
 INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
+(1, NULL),
 (2, NULL),
-(4, NULL),
-(1, 91),
-(3, 92);
+(3, NULL),
+(4, NULL);
 
 -- --------------------------------------------------------
 
@@ -332,9 +331,8 @@ CREATE TABLE `tb_pedido` (
 --
 
 INSERT INTO `tb_pedido` (`id_pedido`, `id_cadastro`, `data_pedido`, `hora`, `subtotal`) VALUES
-(58, 91, '2019-04-21', '09:45:00', 4.00),
-(59, 92, '2019-04-21', '09:45:00', 24.00),
-(60, 93, '2019-04-21', '11:28:00', 0.00);
+(85, 91, '2019-04-26', '09:07:00', 10.00),
+(87, 92, '2019-04-26', '09:39:00', 0.00);
 
 -- --------------------------------------------------------
 
@@ -616,7 +614,7 @@ ALTER TABLE `tb_pagamento`
 -- AUTO_INCREMENT for table `tb_pedido`
 --
 ALTER TABLE `tb_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `tb_tipo_ingrediente`

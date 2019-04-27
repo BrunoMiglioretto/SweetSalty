@@ -8,6 +8,7 @@ include "../model/Cliente/Cliente.class.php";
 include "../model/Cliente/ClienteGoogleFacebook.class.php";
 include "../model/Cliente/ClientePadrao.class.php";
 include "../model/Cliente/Carrinho.class.php";
+include "../model/Cliente/Mesa.class.php";
 // Funcionario
 include "../model/Funcionario/Funcionario.class.php";
 include "../model/Funcionario/Caixa.class.php";
@@ -51,7 +52,7 @@ $usuario = $login->verificarCadastro();
 $tipo = get_class($usuario);
 
 if ($tipo == "ClientePadrao"){
-    echo "<script>window.location.href = '../view/cliente/mesas/mesa.php'</script>";
+    echo "<script>window.location.href = '../view/cliente/mesas/escolherMesa.php'</script>";
 }
 elseif ($tipo == "Caixa")
     echo "<script>window.location.href = '../view/caixa/'</script>";

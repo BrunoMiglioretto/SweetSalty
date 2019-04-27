@@ -1,12 +1,14 @@
 <?php
     session_start();
 
+    chdir("../");
 ?>
 
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
         <meta charset="utf-8">
+        <base href="../">
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -27,27 +29,27 @@
         <?php include "menuLateral.php"?>
         <div class="content-wrapper">
             <div class="container-fluid">
-                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Qual mesa deseja se juntar?</h1></center>
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Mudar de mesa</h1></center>
                 <br><br>
                 <div class="row" >
                     <div class="col-lg-3 col-sm-6 text-center">
                         <div class="mesaJuntar">
-                            <img src="mesas/imgMesas/mesa1.svg" onclick="enviarSolicitacao(1)">
+                            <img src="mesas/imgMesas/mesa1.svg" onclick="mudarMesa(1)">
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 text-center">
                         <div class="mesaJuntar">
-                            <img src="mesas/imgMesas/mesa2.svg" onclick="enviarSolicitacao(2)">
+                            <img src="mesas/imgMesas/mesa2.svg" onclick="mudarMesa(2)">
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 text-center">
                         <div class="mesaJuntar">
-                            <img src="mesas/imgMesas/mesa3.svg" onclick="enviarSolicitacao(3)">
+                            <img src="mesas/imgMesas/mesa3.svg" onclick="mudarMesa(3)">
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 text-center">
                         <div class="mesaJuntar">
-                            <img src="mesas/imgMesas/mesa4.svg" onclick="enviarSolicitacao(4)">
+                            <img src="mesas/imgMesas/mesa4.svg" onclick="mudarMesa(4)">
                         </div>
                     </div>
                 </div>
@@ -84,40 +86,23 @@
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
         <script>
-            function enviarSolicitacao(mesa){
+            function mudarMesa(mesa){
                 $.ajax({
-                    url : "../../controller/clienteController/juncaoMesas/solicitarJuncaoMesaController.php",
+                    url : "../../controller/clienteController/mesa/mudarMesaController.php",
                     method : "POST",
                     data : {
                         mesa : mesa
                     }
                 }).done(function(v) {
-                    if(v == 1)
-                        alertaSolicitacaoEnviada();
-                    else if(v == 2)
-                        alertaMesaDesocupada();
-                    else if(v == 3)
-                        alertaMesmaMesa();
-                    console.log(v);
+                    if(v == "true")
+                        window.location = "index.php";
+                    if(v == "false")
+                        alertaMesaOcupada();
                 });
             }
 
-            function alertaMesaDesocupada() {
-                alertify.alert("Mesa desocupada", "Essa mesa não está sendo usada").set({
-                    transition : "zoom",
-                    'movable' : false
-                });
-            }
-            function alertaSolicitacaoEnviada(){
-                alertify.alert("Solicitação enviada", "Aguarde até a confirmação do pedido de junção",function(){
-                    window.location = "aguardandoResposta.php"; 
-                }).set({
-                    transition : "zoom",
-                    'movable' : false
-                });
-            }
-            function alertaMesmaMesa(){
-                alertify.alert("Mesa inválida", "Essa é a sua mesa!!").set({
+            function alertaMesaOcupada() {
+                alertify.alert("Mesa ocupada", "Essa mesa já esta sendo usada ").set({
                     transition : "zoom",
                     'movable' : false
                 });

@@ -1,11 +1,13 @@
 <?php
     session_start();
 
+    chdir("../");
 ?>		
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
         <meta charset="utf-8">
+        <base href="../">
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -17,6 +19,9 @@
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../alertifyjs/alertify.min.js"></script>
+		<link rel="stylesheet" href="../alertifyjs/css/alertify.min.css">
+		<link rel="stylesheet" href="../alertifyjs/css/themes/default.min.css">
 	    <script>
 
             function attDadosModal(idPedido, idCardapio, nome){
@@ -54,6 +59,14 @@
                 });
             }
 
+            function mostrarPedidosEnviados(){
+                $.ajax({
+                    url : "../../controller/clienteController/carrinho/visualizarPedidosEnviadosController.php"
+                }).done(function(pedidos) {
+                    $("#tabelaPedidosEnviados").html(pedidos);
+                });
+            }
+
             function atualizarPedido(campo, idCardapio){
                 quant = campo.value;
                 
@@ -70,11 +83,49 @@
 
             }
 
+            function enviarPedidos(){
+                $.ajax({
+                    url : "../../controller/clienteController/carrinho/enviarParaCozinhaController.php"
+                }).done(function(n) {
+                    console.log(n);
+                    if(n == "true")
+                        window.location = "pedidos/pedidoEnviado.php";
+                    else if(n == "false"){
+                        alertify.alert("Sem itens","Adicione itens para enviar para cozinha").setting({
+                            'transition' : 'zoom'
+                        });
+                    }else if(n == "2"){
+                        alertify.confirm('Solicitação de junção', 'Há uma solicitação de junção de mesa, responda ela e em seguida envie para a cozinha', function() { 
+                                window.location = "../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php";
+                            }, function() {}).set({
+                                'transition' : 'zoom',
+                                'defaultFocus' : '',
+                                'movable': false,
+                                labels:{
+                                    ok: 'Ver Solicitação',
+                                    cancel: 'Fechar'            
+                                }
+                        });
+                    }else if(n == 3){
+                        alertify.confirm('Junção de mesas', 'Não é possível enviar para cozinha enquanto há uma solicitação de junção de mesas', function() { 
+                                window.location = "../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php";
+                            }, function() {}).set({
+                                'transition' : 'zoom',
+                                'defaultFocus' : '',
+                                'movable': false,
+                                labels:{
+                                    ok: 'Ver Solicitação',
+                                    cancel: 'Fechar'            
+                                }
+                        });
+                    }
+                });
+            }
 
             $(document).ready(function() {
                 atualizarListaPedido();
+                // mostrarPedidosEnviados();
             });
-
             
         </script>
         <style>
@@ -96,9 +147,9 @@
         <?php   
             include 'menuLateral.php';
         ?>
-        <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Meu Pedido</h1></center>
         <div class="content-wrapper">
             <div class="container-fluid">
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Meu Pedido</h1></center>
                 <div class="card mb-3">
         			<div class="card-header">
                         <input type='text' id="campoSubtotal" value='Valor total:' style='padding: 20px 0px 5px 30px;font-size:20px; background-color: #F7F7F7;border-radius: 5px; font-family: `Raleway`, sans-serif; color:#F15821;border: 1px solid transparent;' disabled>
@@ -123,30 +174,28 @@
             							    </table>
           								</div>
           								<div style='float: right;'>
-          									<form method="POST" action=>
-          									    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cozinha">
-                                                    Enviar para Cozinha
-                                                </button>
-          										<div class="modal fade" id="cozinha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Enviar</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Deseja mesmo enviar para a cozinha?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                                                <input type="submit" value="Enviar" name="Enviar" class="btn btn-secondary" style="background-color:#71a140">
-                                                            </div>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cozinha">
+                                                Enviar para Cozinha
+                                            </button>
+                                            <div class="modal fade" id="cozinha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Enviar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Deseja mesmo enviar para a cozinha?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                                            <button type="button" class="btn btn-primary" onclick="enviarPedidos()" data-dismiss="modal">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </div>
-          									</form>
+                                            </div>
         								</div>
                                     </div>
                                 </div><br>
@@ -154,6 +203,38 @@
                         </div>
                     </div>
                 </div>
+
+<!---------------------------- Pedidos já enviados ---------------------------->
+
+                <!-- <br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Itens já enviados</h1></center>
+                <div class="card mb-3">
+        			<div class="card-header">
+        				<div class="card-body">
+                            <div class="td">
+                                <div class="container-fluid" class='print'>
+                                    <div class="card-body" class='print'>
+	          							<div class="table-responsive" class='print'>
+            								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" class='print'>
+                                                <thead>
+    							                	<tr>
+                                                        <th>Pedido</th>
+                                                        <th>Categoria</th>
+                                                        <th>Quantidade</th>
+                                                        <th>Valor unitário</th>
+                                                        <th>Situação</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody id="tabelaPedidosEnviados">
+                                                    
+								                </tbody>
+            							    </table>
+          								</div>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div><br><br>
 		<a class="scroll-to-top rounded" href="#page-top">

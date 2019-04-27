@@ -30,11 +30,11 @@
 				       		</tr>
 			     		</thead>
 					    <tbody>
-							<div class='modal fade' id='Modal$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+							<div class='modal fade' id='' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
 								<div class='modal-dialog modal-dialog-centered' role='document'>
 									<div class='modal-content'>
 										<div class='modal-header'>
-											<h5 class='modal-t'itle' id'='exampleModalLongTitle'>Finalizar</h5>
+											<h5 class='modal-title' id='exampleModalLongTitle'>Finalizar</h5>
 											<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 												<span aria-hidden='true'>&times;</span>
 											</button>
@@ -44,9 +44,7 @@
 										</div>
 										<div class='modal-footer'>
 											<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-											<form action='Finalizar_pedido.php?id=$id' method='POST'>
-												<button type='submit' class='btn btn-primary'>Finalizar</button>
-											</form>
+											<button type='button' class='btn btn-primary' data-dismiss='modal'>Finalizar</button>
 										</div>
 									</div>
 								</div>
@@ -55,27 +53,8 @@
     				</table>
   				</div>
 			</div>
-		</div><br><br><br><br>			
-		<a class="scroll-to-top rounded" href="#page-top">
-		  	<i class="fa fa-angle-up"></i>
-		</a>
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
-						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
-					<div class="modal-footer">
-						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-						<a class="btn btn-primary" href="../logout.php">Sair</a>
-					</div>
-				</div>
-			</div>
 		</div>
+		<br><br><br><br>			
 		<?php include '../footer.html'?>	
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -86,21 +65,5 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
-		<script>
-			<?php
-				$contador = $contatos->rowCount();
-			?>
-			const linhas_1 = <?php echo $contador;?>;
-			let intervalo = setInterval(function(){
-			 	$.post("intervalo.php", function(linhas){
-        			//alert("Data: " + linhas);
-    				linhas_2 = linhas;
-			 		if(linhas_1 != linhas_2){
-    					location.reload();
-    				}
-			 	});
-    			//alert(linhas_1 == linhas_2);
-			},3000);
-		</script>
 	</body>
 </html>

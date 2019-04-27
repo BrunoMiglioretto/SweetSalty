@@ -1,0 +1,104 @@
+<?php
+    session_start();
+
+    chdir("../../");
+
+?>
+
+<!DOCTYPE html>
+<html lang="PT-BR">
+	<head>
+        <meta charset="utf-8">
+        <base href="../../">
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="../css/sb-admin.css" rel="stylesheet">
+        <script type="text" src="Cliente/pace.min.js"></script>
+        <title>Página Inicial | Sweet Salty</title>
+        <link rel="stylesheet" href="../alertifyjs/css/alertify.min.css">
+		<link rel="stylesheet" href="../alertifyjs/css/themes/default.min.css">
+        <link rel="icon" href="../img/logo.png" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		<script src="../vendor/jquery/jquery.min.js"></script>
+		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../alertifyjs/alertify.min.js"></script>
+		<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+	</head>
+	<body id="page-top">
+        <?php include "menuLateral.php"?>
+		
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Mesas juntas</h1></center>
+                <br><br>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="lead" style="padding-bottom: 50px;">
+
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div>
+                            <button onclick="cancelar()" type="button" class="btn btn-secondary btn-lg">Desfazer junção</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		    <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			        <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+			        </div>
+			        <div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
+			        <div class="modal-footer">
+				        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+				        <a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
+			        </div>
+    		    </div>
+	    	</div>
+		</div>
+        <?php include '../footer.html'?>	
+		<script src="../vendor/chart.js/Chart.min.js"></script>
+		<script src="../vendor/datatables/jquery.dataTables.js"></script>
+		<script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+		<script src="../js/sb-admin.min.js"></script>
+		<script src="../js/sb-admin-datatables.min.js"></script>
+		<script src="../js/sb-admin-charts.min.js"></script>
+        <script>
+            function cancelar(){
+                $.ajax({
+                    url : "../../controller/clienteController/juncaoMesas/desfazerJuncaoMesas.php"
+                }).done(function() {
+                    alertify.alert("Desfeita a junção", "Clique em Ok para voltar", function() {
+                        window.location = "index.php";
+                    }).set({
+                        transition : "zoom",
+                        'movable' : false
+                    });      
+                });
+            }
+
+            function pegarSolicitacao(){
+                $.ajax({
+                    url : "../../controller/clienteController/juncaoMesas/pegarSolicitacaoController.php"
+                }).done(function(n) {
+                    dados = JSON.parse(n);
+                    $(".lead").html(`Atualmente as mesas ${dados.id_mesa_solicitante} e ${dados.id_mesa_solicitada} estão juntas`);
+                });
+            }
+
+            $(document).ready(function() {
+                pegarSolicitacao()
+            });
+
+        </script>
+	</body>
+</html>

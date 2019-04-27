@@ -3,15 +3,21 @@
 class Cozinheiro extends Funcionario{
     
     public function visualizarPedidos(){
+        $sql = "SELECT * FROM tb_alimento_pedido WHERE situacao = 2";
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $pedidos = $con->prepare($sql);
+        $pedidos->execute();
+
         return $pedidos;
     }
 
     public function concluirPedido($idPedido){
-        return $resultado;
+        
     }
 
     public function concluirTodosPedido(){
-        return $resultado;
+        
     }
 
     private function baixaEstoque($idCardapio){

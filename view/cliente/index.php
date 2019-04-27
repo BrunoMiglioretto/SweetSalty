@@ -30,11 +30,11 @@
                             <div class="row " >
                                 <div class="col-lg-4 col-md-4 col-sm-4 portfolio-item" style="margin-top:10px;">
                                     <div class="card h-100">
-                                        <a href="listaBebidas.php"><img class="card-img-top" src="img/comidaHome/bebidas.jpeg" alt=""></a>
+                                        <a href="listasCardapio/listaBebidas.php"><img class="card-img-top" src="img/comidaHome/bebidas.jpeg" alt=""></a>
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>
-                                                    <a href="listaBebidas.php" style="color:#71A140;">Bebidas</a>
+                                                    <a href="listasCardapio/listaBebidas.php" style="color:#71A140;">Bebidas</a>
                                                 </center>
                                             </h4>
                                         </div>
@@ -42,11 +42,11 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 portfolio-item" style="margin-top:10px;">
                                     <div class="card h-100">
-                                        <a href="listaSalgados.php"><img class="card-img-top" src="img/comidaHome/salgado.png" alt=""></a>
+                                        <a href="listasCardapio/listaSalgados.php"><img class="card-img-top" src="img/comidaHome/salgado.png" alt=""></a>
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>
-                                                    <a href="listaSalgados.php" style="color:#71A140;">Salgados</a>
+                                                    <a href="listasCardapio/listaSalgados.php" style="color:#71A140;">Salgados</a>
                                                 </center>
                                             </h4>
                                         </div>
@@ -54,11 +54,11 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 portfolio-item" style="margin-top:10px;">
                                     <div class="card h-100">
-                                        <a href="listaDoces.php"><img class="card-img-top" src="img/comidaHome/doces.jpeg" alt=""></a>
+                                        <a href="listasCardapio/listaDoces.php"><img class="card-img-top" src="img/comidaHome/doces.jpeg" alt=""></a>
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>
-                                                    <a href="listaDoces.php" style="color:#71A140;">Doces</a>
+                                                    <a href="listasCardapio/listaDoces.php" style="color:#71A140;">Doces</a>
                                                 </center>
                                             </h4>
                                         </div>

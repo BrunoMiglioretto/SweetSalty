@@ -77,7 +77,6 @@
                 $.ajax({
                     url : "../../controller/clienteController/juncaoMesas/desfazerJuncaoMesas.php"
                 }).done(function() {
-                    console.log();
                     alertify.alert("Desfeita a junção", "Clique em Ok para voltar", function() {
                         window.location = "index.php";
                     }).set({

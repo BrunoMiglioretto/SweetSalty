@@ -251,6 +251,47 @@ class JuntadorMesas{
         $attSubtotal->execute();
     }
 
+    public function desfazerJuncao($idCliente){
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+
+        $this->cancelarSolicitacao();
+
+        $queryDeletarItemPedidoClienteSolicitado = "DELETE tb_alimento_pedido, tb_pedido FROM tb_alimento_pedido INNER JOIN tb_pedido 
+        ON tb_alimento_pedido.id_pedido = tb_pedido.id_pedido WHERE tb_pedido.id_cadastro = ".$this->getIdClienteSolicitado();
+        $deletarItemPedidoClienteSolicitado = $con->prepare($queryDeletarItemPedidoClienteSolicitado);
+        $deletarItemPedidoClienteSolicitado->execute();
+
+        $queryDeletarPedidoClienteSolicitado = "DELETE FROM tb_pedido WHERE id_cadastro = ".$this->getIdClienteSolicitado();
+        $deletarPedidoClienteSolicitado = $con->prepare($queryDeletarPedidoClienteSolicitado);
+        $deletarPedidoClienteSolicitado->execute();
+
+        if($idCliente == $this->getIdClienteSolicitante()) {    
+            $queryAttIdPedido = "UPDATE tb_pedido SET id_cadastro = ".$this->idClienteSolicitado." WHERE id_cadastro = ".$this->idClienteSolicitante;
+            $attIdPedido = $con->prepare($queryAttIdPedido);
+            $attIdPedido->execute();
+            
+            $idCliente = $this->getIdClienteSolicitante();
+        }else{
+            $idCliente = $this->getIdClienteSolicitado();
+        }
+
+        date_default_timezone_set('America/Sao_Paulo');
+        $hora = date("h:i");
+        $data = date("Y-m-d");
+        $queryCriarNovoPedido = "INSERT INTO tb_pedido SET hora = '$hora', data_pedido = '$data', id_cadastro = $idCliente, subtotal = 0";
+        $criarNovoPedido = $con->prepare($queryCriarNovoPedido);
+        $criarNovoPedido->execute();
+        
+        $queryPegarIdNovoPedido = "SELECT id_pedido FROM tb_pedido WHERE id_cadastro = $idCliente";
+        $idNovoPedido = $con->prepare($queryPegarIdNovoPedido);
+        $idNovoPedido->execute();
+
+        foreach($idNovoPedido as $idPedido) {}
+
+        return $idPedido["id_pedido"];
+    }
+
     public function getNumeroMesaSolicitante(){
         return $this->numeroMesaSolicitante;
     }

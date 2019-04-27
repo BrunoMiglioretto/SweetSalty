@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include "../../model/Usuario.class.php";
 // Cliente
 include "../../model/Cliente/Cliente.class.php";

@@ -159,8 +159,8 @@ class Carrinho{
 			return false;
 
 		date_default_timezone_set('America/Sao_Paulo');
-		$hora = date("h:i");
-		$sql2 = "UPDATE tb_alimento_pedido SET situacao = 2, hora_envio = '$hora' WHERE id_pedido =".$this->getIdPedido();
+		$hora = date("H:i");
+		$sql2 = "UPDATE tb_alimento_pedido SET situacao = 2, hora_envio = '$hora' WHERE id_pedido =".$this->getIdPedido()." AND situacao = 1";
 		$enviar = $con->prepare($sql2);
 		$enviar->execute();
 

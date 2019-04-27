@@ -22,7 +22,7 @@
         			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" class='print'>
 						<thead>
               				<tr>
-								<th>Numero</th>
+								<th>Vez</th>
 								<th>Pedido</th>
 								<th>Quantidade</th>
 								<th>Unidade</th>
@@ -30,31 +30,34 @@
 				       		</tr>
 			     		</thead>
 					    <tbody>
-							<div class='modal fade' id='' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
-								<div class='modal-dialog modal-dialog-centered' role='document'>
-									<div class='modal-content'>
-										<div class='modal-header'>
-											<h5 class='modal-title' id='exampleModalLongTitle'>Finalizar</h5>
-											<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-												<span aria-hidden='true'>&times;</span>
-											</button>
-										</div>
-										<div class='modal-body'>
-											Deseja finalizar $Pedido?
-										</div>
-										<div class='modal-footer'>
-											<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-											<button type='button' class='btn btn-primary' data-dismiss='modal'>Finalizar</button>
-										</div>
-									</div>
-								</div>
-							</div>
+							<!-- Conteudo -->
             			</tbody>
     				</table>
   				</div>
 			</div>
 		</div>
-		<br><br><br><br>			
+		<br><br><br><br>
+
+		<div class='modal fade' id='' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+			<div class='modal-dialog modal-dialog-centered' role='document'>
+				<div class='modal-content'>
+					<div class='modal-header'>
+						<h5 class='modal-title' id='exampleModalLongTitle'>Finalizar</h5>
+						<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							<span aria-hidden='true'>&times;</span>
+						</button>
+					</div>
+					<div class='modal-body'>
+						Deseja finalizar pedido?
+					</div>
+					<div class='modal-footer'>
+						<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+						<button type='button' class='btn btn-primary' data-dismiss='modal'>Finalizar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<?php include '../footer.html'?>	
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -65,5 +68,21 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				setTimeout(function() {
+					pegarPedidos();
+				}, 1000);
+			});
+
+			function pegarPedidos(){
+				$.ajax({
+					url : "../../controller/cozinheiroController/visualizarPedidosController.php"
+				}).done(function(pedidos) {
+					$("tbody").html(pedidos);
+				});
+			}
+
+		</script>
 	</body>
 </html>

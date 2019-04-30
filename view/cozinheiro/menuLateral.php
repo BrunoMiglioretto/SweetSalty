@@ -1,6 +1,10 @@
+<?php
+	include "../../controller/cozinheiroController/verificacaoSessionCozinheiroController.php";
+
+?>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
 	<a class="navbar-brand" href="" title="Sweet Salty | Cozinha">
-		<h6>Sweet Salty | </h6>
+		<h6>Sweet Salty | <?= $cozinheiro->getNomeCompleto()?></h6>
 	</a>
 	<ul class="navbar-nav ml-auto">
 		<li class="nav-item">
@@ -21,7 +25,7 @@
 			<div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
 			<div class="modal-footer">
 				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-				<a class="btn btn-primary" href="">Sair</a>
+				<a class="btn btn-primary" href="../../controller/sairFuncionarioController.php">Sair</a>
 			</div>
 		</div>
 	</div>

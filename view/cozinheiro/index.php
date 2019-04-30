@@ -9,6 +9,9 @@
 		<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 		<link href="../css/sb-admin.css" rel="stylesheet">
+		<link rel="stylesheet" href="../alertifyjs/css/alertify.min.css">
+		<link rel="stylesheet" href="../alertifyjs/css/themes/default.min.css">
+		<script src="../alertifyjs/alertify.min.js"></script>
 	</head>
 	<body>
 		<?php include 'menuLateral.php'?>	
@@ -71,6 +74,9 @@
 		<script>
 			$(document).ready(function() {
 				pegarPedidos();
+				setInterval(function() {
+					tabela.ajax.reload();
+				}, 2000);
 			});
 
 			function pegarPedidos(){
@@ -123,6 +129,7 @@
 					}
 				}).done(function() {
 					tabela.ajax.reload();
+					alertify.notify("Marcado como pronto", "success");
 				});
 			}
 

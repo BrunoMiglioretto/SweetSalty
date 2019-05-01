@@ -59,14 +59,6 @@
                 });
             }
 
-            function mostrarPedidosEnviados(){
-                $.ajax({
-                    url : "../../controller/clienteController/carrinho/visualizarPedidosEnviadosController.php"
-                }).done(function(pedidos) {
-                    $("#tabelaPedidosEnviados").html(pedidos);
-                });
-            }
-
             function atualizarPedido(campo, idCardapio){
                 quant = campo.value;
                 
@@ -77,17 +69,15 @@
                         quant : quant,
                         idCardapio : idCardapio
                     }
-                }).done(function(n) {
+                }).done(function() {
                     atualizarListaPedido()
                 });
-
             }
 
             function enviarPedidos(){
                 $.ajax({
                     url : "../../controller/clienteController/carrinho/enviarParaCozinhaController.php"
                 }).done(function(n) {
-                    console.log(n);
                     if(n == "true")
                         window.location = "pedidos/pedidoEnviado.php";
                     else if(n == "false"){
@@ -124,7 +114,6 @@
 
             $(document).ready(function() {
                 atualizarListaPedido();
-                // mostrarPedidosEnviados();
             });
             
         </script>
@@ -158,7 +147,7 @@
                                 <div class="container-fluid" class='print'>
                                     <div class="card-body" class='print'>
 	          							<div class="table-responsive" class='print' id="atualiza">
-            								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" class='print'>
+            								<table class="table table-bordered" width="100%" cellspacing="0" class='print'>
                                                 <thead>
     							                	<tr>
                                                         <th>Pedido</th>
@@ -203,38 +192,6 @@
                         </div>
                     </div>
                 </div>
-
-<!---------------------------- Pedidos já enviados ---------------------------->
-
-                <!-- <br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Itens já enviados</h1></center>
-                <div class="card mb-3">
-        			<div class="card-header">
-        				<div class="card-body">
-                            <div class="td">
-                                <div class="container-fluid" class='print'>
-                                    <div class="card-body" class='print'>
-	          							<div class="table-responsive" class='print'>
-            								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" class='print'>
-                                                <thead>
-    							                	<tr>
-                                                        <th>Pedido</th>
-                                                        <th>Categoria</th>
-                                                        <th>Quantidade</th>
-                                                        <th>Valor unitário</th>
-                                                        <th>Situação</th>
-                                                   </tr>
-                                                </thead>
-                                                <tbody id="tabelaPedidosEnviados">
-                                                    
-								                </tbody>
-            							    </table>
-          								</div>
-                                    </div>
-                                </div><br>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div><br><br>
 		<a class="scroll-to-top rounded" href="#page-top">

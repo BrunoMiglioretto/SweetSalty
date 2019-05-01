@@ -15,21 +15,30 @@ $informacoes[5] = $_POST["dataNascimento"];
 $informacoes[6] = $_POST["senha"];
 $informacoes[7] = $_POST["confSenha"];
 
-$validacao = $cliente->editarPerfil($informacoes);
-
-if(!$validacao){
+if($informacoes[6] != $informacoes[7]){
     echo "
         <script>
-            alert('Algum dado foi consirado como invalido');
-            window.location = '../../view/cliente/';
+            alert('Senhas não são iguais');
+            window.history.back();
         </script>
     ";
 }else{
-    $_SESSION["usuario"] = serialize($validacao);
-    echo "
-        <script>
-            alert('Perfil atualizado com sucesso!');
-            window.location = '../../view/cliente/';
-        </script>
-    ";
+    $validacao = $cliente->editarPerfil($informacoes);
+    
+    if(!$validacao){
+        echo "
+            <script>
+                alert('Algum dado foi consirado como invalido');
+                window.location = '../../view/cliente/';
+            </script>
+        ";
+    }else{
+        $_SESSION["usuario"] = serialize($validacao);
+        echo "
+            <script>
+                alert('Perfil atualizado com sucesso!');
+                window.location = '../../view/cliente/';
+            </script>
+        ";
+    }
 }

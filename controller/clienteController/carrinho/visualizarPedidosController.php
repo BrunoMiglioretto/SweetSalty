@@ -60,7 +60,7 @@ foreach($pedidos as $lista){
 if($pedidos->rowCount() == 0){
     echo "
         <tr class='odd'>
-            <td valign='top' colspan='5' value='1' class='dataTables_empty'>Nenhum item adicionado
+            <td valign='top' colspan='5' value='1' class='dataTables_empty'><p style='text-align:center; margin: 0;;'>Nenhum item adicionado</p>
                 <input type='hidden' value='".$subtotal."' class='subtotal'>
             </td>
         </tr>";

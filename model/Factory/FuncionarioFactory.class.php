@@ -17,7 +17,7 @@ class FuncionarioFactory extends UsuarioFactory{
         return $funcionario;
     }
 
-    private function escolherTipo($tipo){
+    private static function escolherTipo($tipo){
         if($tipo == 'Gerente'){
             $f = new Gerente;
             $f->setCargo($tipo);

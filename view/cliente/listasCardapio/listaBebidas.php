@@ -278,7 +278,7 @@
                                             <div class="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                                 <h5 class="mb-0">
                                                     <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse"  aria-expanded="false">
-                                                        Suco Detox
+                                                        Suco Detox (350 ml)
                                                     </button>
                                                 </h5>
                                             </div>

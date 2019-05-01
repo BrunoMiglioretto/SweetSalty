@@ -1,7 +1,3 @@
-<?php
-	include "../../controller/cozinheiroController/verificacaoSessionCozinheiroController.php";
-
-?>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
 	<a class="navbar-brand" href="" title="Sweet Salty | Cozinha">
 		<h6>Sweet Salty | <?= $cozinheiro->getNomeCompleto()?></h6>

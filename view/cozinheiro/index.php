@@ -1,3 +1,7 @@
+<?php
+	include "../../controller/cozinheiroController/verificacaoSessionCozinheiroController.php";
+
+?>
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>

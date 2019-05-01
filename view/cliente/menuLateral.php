@@ -84,7 +84,7 @@
                 </a>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
-                <a class='nav-link' href='' title='De uma olhada no que estamos preparendo para você'>
+                <a class='nav-link' href='' title='Realidade Aumentada'>
                     <i class='fa fa-camera'></i>
                     <span class='nav-link-text' >Realidade Aumentada</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
@@ -98,7 +98,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Acesse mais informações">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" title="Mais informações" href="#collapseMais" data-parent="#exampleAccordion">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" title="Mais botões" href="#collapseMais" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-plus" ></i>
                     <span class="nav-link-text">Mais</span>
                 </a>
@@ -130,7 +130,7 @@
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
-                <a class="nav-link text-center" id="sidenavToggler" title="Fechar menu lateral">
+                <a class="nav-link text-center" id="sidenavToggler" title="Fechar/Abrir Menu">
                     <i class="fa fa-fw fa-angle-left"></i>
                 </a>
             </li>

@@ -13,6 +13,7 @@
         <meta charset="utf-8">
 		<base href="../">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="icon" href="../img/logo.png" type="image/x-icon">
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">

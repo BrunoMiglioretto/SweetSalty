@@ -53,7 +53,7 @@ class ClientePadrao extends Cliente{
         $cliente = $con->prepare($sql3);
         $cliente->execute();
         
-        $sql4 = "INSERT INTO tb_telefone SET id_cadastro = LAST_INSERT_ID(), ddd = ".$this->getDdd().", numero = '".$this->getNumeroTelefone()."'";
+        $sql4 = "INSERT INTO tb_telefone SET id_cadastro = LAST_INSERT_ID(), ddd = '".$this->getDdd()."', numero = '".$this->getNumeroTelefone()."'";
         $cliente = $con->prepare($sql4);
         $cliente->execute();
         

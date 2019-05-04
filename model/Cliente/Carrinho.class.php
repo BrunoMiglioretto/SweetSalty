@@ -53,6 +53,30 @@ class Carrinho{
 	}
 	
 	public function colocarPedido($idCardapio, $quant){
+
+		$conexao = new Conexao;
+		$c = $conexao->conexaoPDO();
+
+		// Verificar se já tem um item no banco para não coloca-lo denovo
+		$sql3 = "SELECT quant FROM tb_alimento_pedido WHERE id_pedido =".$this->getIdPedido()." and id_cardapio =".$idCardapio." and situacao = 1";
+		$pedido = $c->prepare($sql3);
+		$pedido->execute();
+
+		if($pedido->rowCount() != 0){
+			foreach($pedido as $carregaQuant){$quantBD = $carregaQuant["quant"];}
+			
+			if(($quantBD + $quant) > 10)
+				return false;
+
+			$quantidade = $quant + $quantBD;
+			$sql4 = "UPDATE tb_alimento_pedido SET quant = ".$quantidade." WHERE id_cardapio =".$idCardapio." AND id_pedido =".$this->getIdPedido();
+			$pedido = $c->prepare($sql4);
+			$pedido->execute();
+		}else{
+			$sql5 = "INSERT INTO tb_alimento_pedido SET id_pedido = ".$this->getIdPedido().", id_cardapio = ".$idCardapio.", quant = ". $quant.", situacao = 1";
+			$pedido = $c->prepare($sql5);
+			$pedido->execute();
+		}
 		// Pega o valor do produto
 		$sql1 = "SELECT valor_unitario FROM tb_cardapio WHERE id_cardapio =".$idCardapio;
 		$conexao = new Conexao;
@@ -64,26 +88,9 @@ class Carrinho{
 		}
 		// Adiciona o valor do produto no subtotal
 		$sql2 = "UPDATE tb_pedido SET subtotal = subtotal + ($quant * $valor) WHERE id_pedido =".$this->getIdPedido();
-		$conexao = new Conexao;
-		$c = $conexao->conexaoPDO();
 		$valorPedido = $c->prepare($sql2);
 		$valorPedido->execute();
 
-		// Verificar se já tem um item no banco para não coloca-lo denovo
-		$sql3 = "SELECT quant FROM tb_alimento_pedido WHERE id_pedido =".$this->getIdPedido()." and id_cardapio =".$idCardapio." and situacao = 1";
-		$pedido = $c->prepare($sql3);
-		$pedido->execute();
-		if($pedido->rowCount() != 0){
-			foreach($pedido as $carregaQuant){$quantBD = $carregaQuant["quant"];}
-			$quantidade = $quant + $quantBD;
-			$sql4 = "UPDATE tb_alimento_pedido SET quant = ".$quantidade." WHERE id_cardapio =".$idCardapio;
-			$pedido = $c->prepare($sql4);
-			$pedido->execute();
-		}else{
-			$sql5 = "INSERT INTO tb_alimento_pedido SET id_pedido = ".$this->getIdPedido().", id_cardapio = ".$idCardapio.", quant = ". $quant.", situacao = 1";
-			$pedido = $c->prepare($sql5);
-			$pedido->execute();
-		}
 		return true;
 	}
 

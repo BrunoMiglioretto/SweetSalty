@@ -159,9 +159,18 @@
                         idCardapio : idProduto,
                         quant : quantidade
                     }
-                }).done(function(){
-					alertify.set('notifier','position', 'bottom-center');
-                    alertify.success('Adicionado aos pedidos', 'success', 5);
+                }).done(function(itemColocado){
+
+					if(itemColocado == "true"){
+                        alertify.set('notifier','position', 'bottom-center');
+                        alertify.success('Adicionado aos pedidos', 'success', 5);
+                    }else{
+                        alertify.alert("").setting({
+                            transition : 'zoom',
+                            title : "Quantidade Limite",
+                            message : "Não é permitido colocar mais de 10 unidades por item"
+                        });
+                    }
                 });
                 
             }

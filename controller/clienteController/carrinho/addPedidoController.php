@@ -18,5 +18,7 @@ $quant = $_POST["quant"];
 
 $carrinho = unserialize($_SESSION["carrinho"]);
 
-$carrinho->colocarPedido($idCardapio, $quant);
+$itemColocado = $carrinho->colocarPedido($idCardapio, $quant);
 
+if($itemColocado)
+    echo "true";

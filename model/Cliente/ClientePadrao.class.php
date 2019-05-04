@@ -61,6 +61,7 @@ class ClientePadrao extends Cliente{
     }
     
     public function editarPerfil($informacoes){
+
         $cb = new ClientePadrao; // Cliente que irá servir de cobaia
         $cb->setEmail($informacoes[0]);
         if($cb->getEmail() == false)
@@ -83,7 +84,7 @@ class ClientePadrao extends Cliente{
         $cb->setSenha($informacoes[6]);
         if($cb->getSenha() == false)
             return false;
-        
+
 
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();

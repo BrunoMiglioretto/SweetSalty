@@ -8,26 +8,16 @@ include "../../model/Conexao.class.php";
 
 $informacoes[0] = $_POST["email"];
 $informacoes[1] = $_POST["nomeCompleto"];
-$informacoes[2] = 20;
+$informacoes[2] = $_POST["ddd"];
 $informacoes[3] = $_POST["numeroTelefone"];
 $informacoes[4] = $_POST["sexo"];
 $informacoes[5] = $_POST["dataNascimento"];
 
 $validacao = $cliente->editarPerfil($informacoes);
 
-if(!$validacao){
-    echo "
-        <script>
-            alert('Algum dado foi consirado como invalido');
-            window.location = '../../view/cliente/';
-        </script>
-    ";
-}else{
+if(!$validacao)
+    echo "false";
+else{
     $_SESSION["usuario"] = serialize($validacao);
-    echo "
-        <script>
-            alert('Perfil atualizado com sucesso!');
-            window.location = '../../view/cliente/';
-        </script>
-    ";
+    echo "true";
 }

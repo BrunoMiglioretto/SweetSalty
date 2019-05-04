@@ -16,6 +16,9 @@
 		<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 		<link href="../css/sb-admin.css" rel="stylesheet">
+		<link rel="stylesheet" href="../alertifyjs/css/alertify.min.css">
+		<link rel="stylesheet" href="../alertifyjs/css/themes/default.min.css">
+		<script src="../alertifyjs/alertify.min.js"></script>
 	</head>
 	<body>
 		<?php include 'menuLateral.php'?>	
@@ -26,59 +29,57 @@
 	        		<div class="card-header">
 	        			<div class="card-body">
 	          				<div class="table-responsive">
-								<form method="POST" action="../../controller/clienteController/editarPerfilPadraoController.php">
-									<div class="col-sm-12">
-										<div class="row">
-											<div class="col-12 col-lg-6 col-sm-6 form-group">
-												<label>Nome completo *</label>
-												<input type="text"  name="nomeCompleto" class="form-control" value="<?= $cliente->getNomeCompleto()?>" required>
-											</div>
-											<div class="col-12 col-lg-6 col-sm-6 form-group">
-												<label>E-mail *</label>
-												<input type="email" name="email" placeholder="Ex: exemplo@exemplo.com" class="form-control" class="form-control" required value="<?= $cliente->getEmail()?>">
-											</div>	
-										</div>					
-										<div class="row">
-											<div class="col-12 col-lg-4 col-sm-6 form-group">
-												<label>Data de Nascimento *</label>
-												<input type="date" name="dataNascimento"  class="form-control" required value="<?= $cliente->getDataNascimento()?>">
-											</div>
-											<div class="col-12 col-lg-4 col-sm-6 form-group">
-												<label>Telefone Celular *</label>
-												<input type="text" id="numeroTelefone" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" class="form-control" required value="<?= $cliente->getNumeroTelefone()?>" maxlenght="14">
-											</div>
-											<div class="col-12 col-lg-4 col-sm-6 form-group">
-												<label>Sexo *</label><br>
-												<input type="radio" name="sexo" <?php if($cliente->getSexo() == 'F') echo 'checked'?> value='F'>Feminino &nbsp&nbsp
-												<input  type="radio" name="sexo" <?php if($cliente->getSexo() == 'M') echo 'checked'?> value='M'>Masculino
-											</div>
+								<div class="col-sm-12">
+									<div class="row">
+										<div class="col-12 col-lg-6 col-sm-6 form-group">
+											<label>Nome completo *</label>
+											<input type="text"  name="nomeCompleto" class="form-control" value="<?= $cliente->getNomeCompleto()?>" required>
 										</div>
-										<div class="row">
-											<div class="col-12 col-lg-6 col-sm-6 form-group">
-												<label>Senha *</label>
-												<input type="password" id="senha" placeholder="mínimo de 8 caracteres" name="senha" minlength="8" maxlength="12" class="form-control" required>
-											</div>
-											<div class="col-12 col-lg-6 col-sm-6 form-group">
-												<label>Confirmar senha *</label>
-												<input type="password" id="senha_confirma" name="confSenha" minlength="8" maxlength="12" class="form-control" required>
-											</div>
+										<div class="col-12 col-lg-6 col-sm-6 form-group">
+											<label>E-mail *</label>
+											<input type="email" name="email" placeholder="Ex: exemplo@exemplo.com" class="form-control" class="form-control" required value="<?= $cliente->getEmail()?>">
+										</div>	
+									</div>					
+									<div class="row">
+										<div class="col-12 col-lg-4 col-sm-6 form-group">
+											<label>Data de Nascimento *</label>
+											<input type="date" name="dataNascimento"  class="form-control" required value="<?= $cliente->getDataNascimento()?>">
 										</div>
-										<div class="row">
-											<div class="col">
-												<p>*Obrigatório</p>
-											</div>
+										<div class="col-12 col-lg-4 col-sm-6 form-group">
+											<label>Telefone Celular *</label>
+											<input type="text" id="numeroTelefone" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" class="form-control" required value="<?= $cliente->getDdd(), $cliente->getNumeroTelefone()?>" maxlenght="14">
 										</div>
-										<center>
-											<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" type="submit" name="salvar" value="Salvar">	
-										</center>
-									</form>
+										<div class="col-12 col-lg-4 col-sm-6 form-group">
+											<label>Sexo *</label><br>
+											<input type="radio" name="sexo" <?php if($cliente->getSexo() == 'F') echo 'checked'?> value='F'>Feminino &nbsp&nbsp
+											<input  type="radio" name="sexo" <?php if($cliente->getSexo() == 'M') echo 'checked'?> value='M'>Masculino
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12 col-lg-6 col-sm-6 form-group">
+											<label>Senha *</label>
+											<input type="password" id="senha" placeholder="mínimo de 8 caracteres" name="senha" minlength="8" maxlength="12" class="form-control" required>
+										</div>
+										<div class="col-12 col-lg-6 col-sm-6 form-group">
+											<label>Confirmar senha *</label>
+											<input type="password" id="senha_confirma" name="confSenha" minlength="8" maxlength="12" class="form-control" required>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<p>*Obrigatório</p>
+										</div>
+									</div>
+									<center>
+										<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" type="submit" onclick="enviarMundacasPerfil()" value="Salvar">	
+									</center>
 								</div>
 							</div>
 						</div>
    					</div>
 	    		</div>
 	    	</div>
-    	</div><br><br><br>
+    	</div><br><br>
 		<style>
 			@media print {
 				.print{
@@ -126,6 +127,56 @@
 		<script src="../js/jquery.mask.min.js"></script>
 		<script>
 			$("#numeroTelefone").mask("(00)00000-0000");
+
+			function enviarMundacasPerfil() {
+
+				numeroTodo = $("#numeroTelefone").val();
+				
+				var regExp = /\(\d{2}\)/;
+				var ddd = regExp.exec(numeroTodo);
+				// console.log(ddd);
+
+				var regExp2 = /\s\d{4}-\d{4}/;
+				var numero = $('input[name=numeroTelefone]').val();
+				var numeroTel = regExp2.exec(numeroTodo);
+				// console.log(numeroTel);
+
+				$.ajax({
+					url: '../../controller/clienteController/editarPerfilPadraoController.php',
+					method: 'POST',
+					data: {
+						nomeCompleto : $('input[name=nomeCompleto').val(),
+						email : $('input[name=email]').val(),
+						sexo : $("input:checked").val(),
+						ddd : 41,
+						numeroTel : "1111-11111",
+						dataNascimento : $('input[name=dataNascimento]').val(),
+						senha : $('input[name=senha]').val(),
+						confSenha : $('input[name=confSenha]').val()
+					}
+				}).done(function(n) {
+					if(n == "true") {
+						alertify.alert("Editado com Sucesso","Seu perfil foi editado com sucesso!", function() {
+							window.location = "index.php";
+						}).setting({
+							transition : "zoom"
+						});
+					}else if(n == "senha") {
+						alertify.alert("").setting({
+							transition : "zoom",
+							title :	"Senhas não iguais",
+							message : "O campo de senha não está igual a do confirmar senha"
+						});
+					}else{
+						alertify.alert("").setting({
+							transition : "zoom",
+							title : "Campo(s) incorretos",
+							message : "Algum campo está errado"
+						});
+					}
+				});
+			}
+
 		</script>
 	</body>
 </html>

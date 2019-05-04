@@ -90,13 +90,6 @@
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>
-            <li class='nav-item' data-toggle='tooltip' data-placement='right'>
-                <a class='nav-link' href='' title='Finalizar'>
-                    <i class='fa fa-money'></i>
-                    <span class='nav-link-text' >Finalizar</span>
-                    <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
-                </a>
-            </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Acesse mais informações">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" title="Mais botões" href="#collapseMais" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-plus" ></i>

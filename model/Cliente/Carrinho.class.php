@@ -174,6 +174,61 @@ class Carrinho{
 		return true;
 	}
 
+	public function colocarPedidoHistorico() {
+		$conexao = new Conexao;
+		$con = $conexao->conexaoPDO();
+		
+		$queryPedido = "SELECT * FROM tb_pedido WHERE id_pedido = ".$this->getIdPedido();
+		$pedido = $con->prepare($queryPedido);
+		$pedido->execute();
+
+		foreach($pedido as $dadosPedido) {
+			$idPedido = $dadosPedido["id_pedido"];
+			$idCadastro = $dadosPedido["id_cadastro"];
+			$subtotal = $dadosPedido["subtotal"];
+			$dataPedido = $dadosPedido["data_pedido"];
+			$hora = $dadosPedido["hora"];
+		}
+
+		$queryColocarHistorico = "INSERT INTO tb_historico_pedido SET 
+			id_historico_pedido = $idPedido, 
+			id_cadastro = $idCadastro, 
+			hora = '$hora',
+			date_historico = '$dataPedido',
+			subtotal = $subtotal";
+
+		$colocarHistorico = $con->prepare($queryColocarHistorico);
+		$colocarHistorico->execute();
+
+		$queryItensPedido = "SELECT * FROM tb_alimento_pedido WHERE id_pedido = ".$this->getIdPedido();
+		$itensPedido = $con->prepare($queryItensPedido);
+		$itensPedido->execute();
+
+		foreach($itensPedido as $item) {
+			$idHistoricoPedido = $item["id_pedido"];
+			$idCardapio = $item["id_cardapio"];
+			$quant = $item["quant"];
+			$horaEnvio = $item["hora_envio"];
+
+			$queryColocarItemHistorico = "INSERT INTO tb_historico_alimento_pedido SET
+				id_historico_pedido = $idHistoricoPedido,
+				id_cardapio = $idCardapio,
+				quant = $quant,
+				hora_envio = '$horaEnvio'";
+
+			$colocarItemHistorico = $con->prepare($queryColocarItemHistorico);
+			$colocarItemHistorico->execute();
+		}
+
+		$queryDeleteItensPedido = "DELETE FROM tb_alimento_pedido WHERE id_pedido = ".$this->getIdPedido();
+		$deleteItensPedido = $con->prepare($queryDeleteItensPedido);
+		$deleteItensPedido->execute();
+
+		$queryDeletePedido = "DELETE FROM tb_pedido WHERE id_pedido = ".$this->getIdPedido();
+		$deletePedido = $con->prepare($queryDeletePedido);
+		$deletePedido->execute();
+	}
+
 	public function getIdPedido(){
 		return $this->idPedido;
 	}

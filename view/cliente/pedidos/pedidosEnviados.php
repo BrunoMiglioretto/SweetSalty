@@ -16,6 +16,9 @@
         <link href="../css/sb-admin.css" rel="stylesheet">
         <link rel="icon" href="../img/logo.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <script src="../alertifyjs/alertify.min.js"></script>
+		<link rel="stylesheet" href="../alertifyjs/css/alertify.min.css">
+		<link rel="stylesheet" href="../alertifyjs/css/themes/default.min.css">
         <style>
             .inputQuant{
                 border: 0;
@@ -34,7 +37,7 @@
                     <div class='card-header'>
                         <div class="row mb-3">
                             <div class="col-6">
-                                <button type='button' class='btn btn-primary' style='position:absolute;bottom: 0;left: 30px;'>Finalizar Pedido</button>
+                                <button type='button' class='btn btn-primary' style='position:absolute;bottom: 0;left: 30px;' onclick="validarFecharConta()">Finalizar Pedido</button>
                             </div>
                             <div class="col-6">
                                 <input type='text' readonly='readonly' id='campoTotal' value='' style='float:right;width:100px;color:#F15821; height:50px; background-color: #F7F7F7;font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
@@ -86,6 +89,29 @@
 			    </div>
 		    </div>
 		</div>
+        <div class="modal fade" id="modalFormasPagamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			        <div class="modal-header">
+			            <h5 class="modal-title" id="exampleModalLabel">Selecione a forma de pagamento</h5>
+			            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			                <span aria-hidden="true">&times;</span>
+			            </button>
+			        </div>
+			        <div class="modal-body" style="float:right;">
+			      	    <p>
+                            <button style="padding:16px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('m')"><img src="img/pagamento/dinheiro.png">&nbsp Dinheiro</button>
+                            <button style="padding:16px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('d')"><img src='img/pagamento/debito.png'>&nbsp Débito</button>
+                            <button style="padding:16px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('c')"><img src="img/pagamento/credito.png">&nbsp Crédito</button>
+                            <button style="padding:16px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('r')"><img src="img/pagamento/alimentacao.png">&nbsp Refeição</button>
+                        </p>
+			        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+		</div>
         <?php include '../footer.html'; ?>	
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -112,7 +138,55 @@
                         "emptyTable":     "Nenhum pedido enviado"
                     }
                 });
-            })
+            });
+
+            function validarFecharConta() {
+                $.ajax({
+                    url : "../../controller/clienteController/pagamento/finalizarPedidoController.php"
+                }).done(function(resposta) {
+                    if(resposta == 0)
+                        alertNaoTemItem();
+                    else if(resposta == 1)
+                        alertEmPreparo();
+                    else
+                        alertModoPagamento();
+                });
+            }
+
+            function alertNaoTemItem() {
+                alertify.alert("").setting({
+                    transition : "zoom",
+                    title : "Finalizar",
+                    message : "Não é possível finalizar o seu pedido pois ainda não há nenhum item para pagar.",
+                    movable : false
+                });
+            }
+
+            function alertEmPreparo() {
+                alertify.alert("").setting({
+                    transition : "zoom",
+                    title : "Finalizar",
+                    message : "Não é possível finalizar o seu pedido pois ainda há itens a serem entregues.",
+                    movable : false
+                });
+            }
+
+            function alertModoPagamento() {
+                $("#modalFormasPagamento").modal();
+            }
+
+            function enviarSolicitacaoDeFinalizar(forma) {
+                $.ajax({
+                    url : "../../controller/clienteController/pagamento/definirFormaPagamentoController.php",
+                    method : "POST",
+                    data : {
+                        forma : forma
+                    }
+                }).done(function() {
+                    window.location = "pedidos/pedidoFinalizado.php";
+                });
+            }
+
         </script>
 	</body>
 </html>

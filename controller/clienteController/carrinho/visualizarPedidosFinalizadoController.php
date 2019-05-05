@@ -34,7 +34,7 @@ foreach($pedidos as $lista){
     echo "Preparando";
     if($situacao == 3)
     echo "Pronto";
-    if($situacao == 5)
+    if($situacao == 4)
     echo "Entregue";
     
     echo "</td>";

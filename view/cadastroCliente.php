@@ -84,12 +84,12 @@
 			$('.phone_with_ddd').mask('(00) 0000-0000')
 			function verificarFormulario(){
 				
-				var regExp = /\(\d{2}\)/;
+				var regExp = /\d{2}/;
 				var telefone = $('input[name=numeroTelefone]').val();
 				var ddd = regExp.exec(telefone);
 				console.log(ddd);
 
-				var regExp2 = /\s\d{4}-\d{4}/;
+				var regExp2 = /\d{4}-\d{4}/;
 				var numero = $('input[name=numeroTelefone]').val();
 				var numeroTel = regExp2.exec(numero);
 				console.log(numeroTel);

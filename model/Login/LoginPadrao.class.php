@@ -5,8 +5,9 @@ class LoginPadrao extends Login{
     private $senha;
 
     public function __construct($email, $senha){
+        $cript = md5($senha);
         $this->setEmail($email);
-        $this->setSenha($senha);
+        $this->setSenha($cript);
     }
     
     public function verificarSenha(){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Maio-2019 às 00:45
+-- Generation Time: 08-Maio-2019 às 04:22
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -344,14 +344,6 @@ CREATE TABLE `tb_historico_alimento_pedido` (
   `hora_envio` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `tb_historico_alimento_pedido`
---
-
-INSERT INTO `tb_historico_alimento_pedido` (`id_historico_pedido`, `id_cardapio`, `quant`, `hora_envio`) VALUES
-(92, 91, 1, '19:34:00'),
-(92, 161, 2, '19:34:00');
-
 -- --------------------------------------------------------
 
 --
@@ -361,17 +353,10 @@ INSERT INTO `tb_historico_alimento_pedido` (`id_historico_pedido`, `id_cardapio`
 CREATE TABLE `tb_historico_pedido` (
   `id_cadastro` int(6) DEFAULT NULL,
   `date_historico` date DEFAULT NULL,
-  `hora` date DEFAULT NULL,
+  `hora` time DEFAULT NULL,
   `subtotal` float(7,2) DEFAULT NULL,
   `id_historico_pedido` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `tb_historico_pedido`
---
-
-INSERT INTO `tb_historico_pedido` (`id_cadastro`, `date_historico`, `hora`, `subtotal`, `id_historico_pedido`) VALUES
-(91, '2019-05-05', '0000-00-00', 14.00, 92);
 
 -- --------------------------------------------------------
 
@@ -408,9 +393,9 @@ CREATE TABLE `tb_mesa` (
 
 INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
 (2, NULL),
-(3, NULL),
 (1, 91),
-(4, 92);
+(4, 92),
+(3, 93);
 
 -- --------------------------------------------------------
 
@@ -423,7 +408,7 @@ CREATE TABLE `tb_nota_fiscal` (
   `id_cadastro` int(6) DEFAULT NULL,
   `id_pagamento` int(6) DEFAULT NULL,
   `data_hora` date DEFAULT NULL,
-  `hora` date DEFAULT NULL
+  `hora` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -437,17 +422,9 @@ CREATE TABLE `tb_pagamento` (
   `id_cadastro` int(6) DEFAULT NULL,
   `id_pedido` int(6) DEFAULT NULL,
   `forma_pagamento` char(1) DEFAULT NULL,
-  `valor_pagamento` float(6,2) DEFAULT NULL,
   `troco` float(6,2) DEFAULT NULL,
   `situacao_pagamento` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `tb_pagamento`
---
-
-INSERT INTO `tb_pagamento` (`id_pagamento`, `id_cadastro`, `id_pedido`, `forma_pagamento`, `valor_pagamento`, `troco`, `situacao_pagamento`) VALUES
-(4, 91, 92, 'c', 0.00, 0.00, '0');
 
 -- --------------------------------------------------------
 
@@ -819,7 +796,7 @@ ALTER TABLE `tb_cardapio_subcat`
 -- AUTO_INCREMENT for table `tb_historico_pedido`
 --
 ALTER TABLE `tb_historico_pedido`
-  MODIFY `id_historico_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id_historico_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_ingrediente`
@@ -843,13 +820,13 @@ ALTER TABLE `tb_nota_fiscal`
 -- AUTO_INCREMENT for table `tb_pagamento`
 --
 ALTER TABLE `tb_pagamento`
-  MODIFY `id_pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_pedido`
 --
 ALTER TABLE `tb_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_tipo_ingrediente`

@@ -13,7 +13,6 @@ abstract class Cliente extends Usuario{
         $queryPagamento = "INSERT INTO tb_pagamento SET 
         id_cadastro = ".$this->getIdUsuario().",
         forma_pagamento = '$forma',
-        valor_pagamento = 0,
         troco = 0,
         id_pedido = $idPedido,
         situacao_pagamento = 0";
@@ -21,6 +20,7 @@ abstract class Cliente extends Usuario{
         $pagamento = $con->prepare($queryPagamento);
         $pagamento->execute();
     }
+
     public function fecharConta($idPedido){
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();
@@ -45,6 +45,30 @@ abstract class Cliente extends Usuario{
         else
             return 2;
     }
+
+    public function definirQuantiaDinheiro($quantia, $idPedido) {
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        
+        $queryTotal = "SELECT subtotal FROM tb_historico_pedido WHERE id_historico_pedido = $idPedido";
+        $total = $con->prepare($queryTotal);
+        $total->execute();
+
+        foreach($total as $valor) {
+            $subtotal = $valor["subtotal"];
+        }
+
+        if($subtotal > $quantia)
+            return $subtotal;
+        
+        $troco = $quantia - $subtotal;
+
+        $queryAtualizarTroco = "UPDATE tb_pagamento SET troco = $troco, situacao = 1 WHERE id_pedido = $idPedido";
+        $atualizarTroco = $con->prepare($queryAtualizarTroco);
+        $atualizarTroco->execute();
+ 
+        return "true";
+    } 
 
     public function sair(){
         

@@ -182,8 +182,12 @@
                     data : {
                         forma : forma
                     }
-                }).done(function() {
-                    window.location = "pedidos/pedidoFinalizado.php";
+                }).done(function(forma) {
+                    console.log(forma);
+                    if(forma == "m")
+                        window.location = "pedidos/definirQuantiaDinheiro.php";
+                    else
+                        window.location = "pedidos/pedidoFinalizado.php";
                 });
             }
 

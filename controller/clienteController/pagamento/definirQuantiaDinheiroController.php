@@ -7,14 +7,11 @@ chdir("../");
 include "verificacaoSessionClienteController.php";
 include "../../model/Conexao.class.php";
 
-$formaPagamento = $_POST["forma"];
+$quantia = $_POST["quantia"];
 
 $carrinho = unserialize($_SESSION["carrinho"]);
 
-$carrinho->colocarPedidoHistorico();
+$validado = $cliente->definirQuantiaDinheiro($quantia, $carrinho->getIdPedido());
 
-$cliente->escolherPagamento($formaPagamento, $carrinho->getIdPedido());
-
-echo $formaPagamento;
-
+echo $validado;
 

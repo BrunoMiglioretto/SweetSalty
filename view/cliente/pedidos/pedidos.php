@@ -55,7 +55,7 @@
                     $("#tabelaPedidos").html(pedidos);
                     campoSubtotal = document.getElementById("campoSubtotal");
                     valor = document.getElementsByClassName("subtotal")[0].value;
-                    campoSubtotal.value = "Valor total: R$" + valor;
+                    campoSubtotal.value = "R$ " + valor;
                 });
             }
 
@@ -133,15 +133,18 @@
         </style>
 	</head>
 	<body id="page-top">
-        <?php   
-            include 'menuLateral.php';
-        ?>
+        <?php include 'menuLateral.php' ?>
         <div class="content-wrapper">
             <div class="container-fluid">
                 <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Meu Pedido</h1></center>
                 <div class="card mb-3">
         			<div class="card-header">
-                        <input type='text' id="campoSubtotal" value='Valor total:' style='padding: 20px 0px 5px 30px;font-size:20px; background-color: #F7F7F7;border-radius: 5px; font-family: `Raleway`, sans-serif; color:#F15821;border: 1px solid transparent;' disabled>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <input type='text' readonly='readonly' id='campoSubtotal' value='' style='float:right;width:100px;color:#F15821; height:50px; background-color: #F7F7F7;font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
+                                <input type='text' value='Valor total:' readonly='readonly' style='background-color: #F7F7F7;float:right;width:100px; height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
+                            </div>
+                        </div>
         				<div class="card-body">
                             <div class="td">
                                 <div class="container-fluid" class='print'>

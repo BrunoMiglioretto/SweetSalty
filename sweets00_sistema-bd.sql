@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Maio-2019 às 04:22
+-- Generation Time: 10-Maio-2019 às 00:58
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -36,6 +36,24 @@ CREATE TABLE `tb_alimento_pedido` (
   `hora_envio` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `tb_alimento_pedido`
+--
+
+INSERT INTO `tb_alimento_pedido` (`id_pedido`, `id_cardapio`, `quant`, `situacao`, `hora_envio`) VALUES
+(23, 91, 7, '3', '15:01:00'),
+(23, 162, 10, '3', '15:02:00'),
+(22, 147, 2, '3', '16:22:00'),
+(22, 154, 1, '3', '16:22:00'),
+(22, 156, 3, '3', '16:22:00'),
+(22, 108, 1, '3', '16:27:00'),
+(27, 121, 10, '3', '16:43:00'),
+(30, 160, 3, '3', '16:51:00'),
+(31, 91, 10, '3', '16:54:00'),
+(32, 90, 10, '3', '16:57:00'),
+(32, 89, 1, '3', '16:57:00'),
+(31, 158, 5, '3', '17:01:00');
+
 -- --------------------------------------------------------
 
 --
@@ -57,70 +75,17 @@ INSERT INTO `tb_cadastro` (`id_cadastro`, `nome_completo`, `email`) VALUES
 (3, 'Caixa', 'caixa@gmail.com'),
 (4, 'Garçom', 'garcom@gmail.com'),
 (5, 'Cozinheiro', 'cozinheiro@gmail.com'),
-(91, 'Bruno', 'bruno@gmail.com'),
-(92, 'Aline Assis', 'aline@gmail.com'),
-(93, 'ana', 'ana@gmail.com'),
-(94, 'asdf', 'asdfasdf@gmail.com'),
-(95, 'asdf ', 'asdf@gmail.com'),
-(96, 'asdf ', 'asdasdfff@gmail.com'),
-(97, 'vinicius', 'viniciusclemnete@gmail.com'),
-(98, 'asdfasdfasd', 'asdfffasdf@gmail.com'),
-(99, 'asdfasdf', 'vteste503@gmail.com'),
-(100, 'asdfasdf', 'vtestasdfasdfe503@gmail.com'),
-(101, 'kkkkkkkkkk', 'kkkkkkk@gmail.com'),
-(102, 'kkkkkkkkkk', 'kkkkkkkasd@gmail.com'),
-(103, 'kkkkkkkkkka', 'kkkkkkkaasdfasdfasdfd@gmail.com'),
-(104, 'kkkkkkkkkka', 'kkkkkkkaxasdfasdfasdfd@gmail.com'),
-(105, 'kkkkkkkkkka', 'kkkkkkkaxasdsdfasdffasdfasdfd@gmail.com'),
-(106, 'kkkkkkkkkka', 'kzsd@gmail.com'),
-(107, 'kkkkkkkkkka', 'kzsaa@gmail.com'),
-(108, 'kkkkkkkkkka', 'kzsaafff@gmail.com'),
-(109, 'kkkkkkkkkka', 'kzsaafasdfff@gmail.com'),
-(110, 'kkkkkkkkkka', 'aaaaaaadaaaaasdfaaaaaa@gmail.com'),
-(111, 'kkkkkkkkkka', 'aaaaaabbbbbbbbbbbbbbbbb@gmail.com'),
-(112, 'kkkkkkkkkka', 'ppppppppppppppp@gmail.com'),
-(113, 'kkkkkkkkkka', 'ppppppppppppasdfasdfppp@gmail.com'),
-(114, 'vdd', 'vvvvvvvvvvvvvvvvvvv@gmail.com'),
-(115, 'vddasdf', 'oooooooooo@gmail.com'),
-(116, 'vddasdf', 'jjjjjjjjjjjjjjjjjjjjjjjj@gmail.com'),
-(117, 'vddasdf', 'gggggggggggggggg@gmail.com'),
-(118, 'vddasdf', 'gggggaaaggggggaaaaaaaaaggggg@gmail.com'),
-(119, 'vddasdf', 'naaaaaaaaaaaaaaaaaaaaaaa@gmail.com'),
-(120, 'vddasdf', 'fffaddd@gmail.com'),
-(121, 'vddasdf', 'fffaddaad@gmail.com'),
-(122, 'vddasdf', 'fffaddaaaaad@gmail.com'),
-(123, 'vddasdf', 'gagaaaaaaaaaaaa@gmail.com'),
-(124, 'vddasdf', 'gagaaaaaaaadaaaaaa@gmail.com'),
-(125, 'vddasdf', 'gagaaaaaafasdfasdfaaadaaaaaa@gmail.com'),
-(126, 'vddasdf', 'raaaaaaaraa@gmail.com'),
-(127, 'vddasdf', 'vaaavaa@gmail.com'),
-(128, 'vddasdf', 'vaaavasdfaaa@gmail.com'),
-(129, 'vddasdf', 'vaaavasdfaaasdfa@gmail.com'),
-(130, 'vddasdf', 'vaaavasdadfaaasdfa@gmail.com'),
-(131, 'vddasdf', 'vaaadfaaasdfa@gmail.com'),
-(132, 'vddasdf', 'vaaadfaaasdfada@gmail.com'),
-(133, 'vddasdf', 'vaaadfaaasdfaaaaaadaa@gmail.com'),
-(134, 'vddasdf', 'vaaadfaaasdfaaaaaaadaa@gmail.com'),
-(135, 'vddasdf', 'haahaha@gmail.com'),
-(136, 'vddasdf', 'haahahaff@gmail.com'),
-(137, 'vddasdf', 'haahahaffasdfff@gmail.com'),
-(138, 'Array', 'haahahaffasdasdfasafff@gmail.com'),
-(139, 'Array', 'taaaaaaaaaaaaaaaaaaa@gmail.com'),
-(140, 'Array', 'taaaaaaaaaaaaaaaaaaaa@gmail.com'),
-(141, 'Array', 'taaaaaaaaaaaaaaaaasdfaaaa@gmail.com'),
-(142, 'vddasdf', 'gagagagagaa@gmail.com'),
-(143, 'vddasdf', 'gagagaaaaaaaagagaa@gmail.com'),
-(144, 'vddasdf', 'gagagaaaaaffasdaaaaagagaa@gmail.com'),
-(145, 'vddasdf', 'gaaagagaaaaaffasdaaaaagagaa@gmail.com'),
-(146, 'vddasdf', 'gaaagagaaaaaaaaaaaaffasdaaaaagagaa@gmail.com'),
-(147, 'vddasdf', 'aagaaagagaaaaaaaaaaaaffasdaaaaagagaa@gmail.com'),
-(148, 'vddasdf', 'deu@gmail.com'),
-(149, 'vddasdf', 'Meuno@gmail.com'),
-(150, 'vddasdf', 'Meuffasnaaaoa@gmail.com'),
-(151, 'vddasdf', 'Meuffasnaaaaoa@gmail.com'),
-(152, 'vddasdf', 'Meuffasnaaaaaaaaaaaaaoa@gmail.com'),
-(153, 'vddasdf', 'Meuffasnaaaaaaaaaaaaaaaoa@gmail.com'),
-(154, 'Ð£Ð±ÐµÐ¹ Ð¼ÐµÐ½Ñ', 'juremaafm@hotmail.com');
+(164, 'bruno', 'bruno@gmail.com'),
+(165, 'vinicius clemente', 'viniciusclemente9680@gmail.com'),
+(166, 'Rafael K C', 'rafael@gmail.com'),
+(167, 'Rafael Kcre', 'rafaelkcre@gmail.com'),
+(168, 'jorge victor bencke gasta', 'jvb.gastaldi@hotmail.com'),
+(169, 'Jorge Victor B.G.', 'ginabencke@hotmail.com'),
+(170, 'vinicius', 'vincius@gmail.com'),
+(171, 'Matheus Ribeiro', 'metheusribeiro@hotmail.com'),
+(172, 'vitoria messias', 'vitoriam.messias@gmail.com'),
+(173, 'Matheus Ribeiro', 'cafungacarequinhas@gmail.com'),
+(174, 'Guilherme Liz', 'guilherme.liz14@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -243,70 +208,17 @@ CREATE TABLE `tb_cliente` (
 --
 
 INSERT INTO `tb_cliente` (`id_cadastro`, `data_nascimento`, `sexo`) VALUES
-(91, '2222-02-22', 'M'),
-(92, '1212-12-12', 'F'),
-(93, '2121-02-21', 'F'),
-(94, '4444-04-04', 'F'),
-(95, '0000-00-00', 'F'),
-(96, '0000-00-00', 'F'),
-(97, '4444-04-04', 'F'),
-(98, '4444-04-14', 'F'),
-(99, '1233-03-12', 'F'),
-(100, '1233-03-12', 'F'),
-(101, '1233-03-12', 'F'),
-(102, '1233-03-12', 'F'),
-(103, '1233-03-12', 'F'),
-(104, '1233-03-12', 'F'),
-(105, '1233-03-12', 'F'),
-(106, '1233-03-12', 'F'),
-(107, '1233-03-12', 'F'),
-(108, '1233-03-12', 'F'),
-(109, '1233-03-12', 'F'),
-(110, '1233-03-12', 'F'),
-(111, '1233-03-12', 'F'),
-(112, '1233-03-12', 'F'),
-(113, '1233-03-12', 'F'),
-(114, '1233-03-12', 'F'),
-(115, '1233-03-12', 'F'),
-(116, '1233-03-12', 'F'),
-(117, '1233-03-12', 'F'),
-(118, '1233-03-12', 'F'),
-(119, '1233-03-12', 'F'),
-(120, '1233-03-12', 'F'),
-(121, '1233-03-12', 'F'),
-(122, '1233-03-12', 'F'),
-(123, '1233-03-12', 'F'),
-(124, '1233-03-12', 'F'),
-(125, '1233-03-12', 'F'),
-(126, '1233-03-12', 'F'),
-(127, '1233-03-12', 'F'),
-(128, '1233-03-12', 'F'),
-(129, '1233-03-12', 'F'),
-(130, '1233-03-12', 'F'),
-(131, '1233-03-12', 'F'),
-(132, '1233-03-12', 'F'),
-(133, '1233-03-12', 'F'),
-(134, '1233-03-12', 'F'),
-(135, '1233-03-12', 'F'),
-(136, '1233-03-12', 'F'),
-(137, '1233-03-12', 'F'),
-(138, '1233-03-12', 'F'),
-(139, '1233-03-12', 'F'),
-(140, '1233-03-12', 'F'),
-(141, '1233-03-12', 'F'),
-(142, '1233-03-12', 'F'),
-(143, '1233-03-12', 'F'),
-(144, '1233-03-12', 'F'),
-(145, '1233-03-12', 'F'),
-(146, '1233-03-12', 'F'),
-(147, '1233-03-12', 'F'),
-(148, '1233-03-12', 'F'),
-(149, '1233-03-12', 'F'),
-(150, '1233-03-12', 'F'),
-(151, '1233-03-12', 'F'),
-(152, '1233-03-12', 'F'),
-(153, '1233-03-12', 'F'),
-(154, '1212-12-12', 'F');
+(164, '1111-11-11', 'F'),
+(165, '1211-03-12', 'F'),
+(166, '2019-05-01', 'F'),
+(167, '0000-00-00', ''),
+(168, '2003-08-05', 'F'),
+(169, '0000-00-00', ''),
+(170, '0220-07-02', 'F'),
+(171, '1995-02-03', 'F'),
+(172, '2019-05-16', 'F'),
+(173, '0000-00-00', ''),
+(174, '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -392,10 +304,10 @@ CREATE TABLE `tb_mesa` (
 --
 
 INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
-(2, NULL),
-(1, 91),
-(4, 92),
-(3, 93);
+(1, NULL),
+(4, NULL),
+(3, 170),
+(2, 173);
 
 -- --------------------------------------------------------
 
@@ -440,6 +352,23 @@ CREATE TABLE `tb_pedido` (
   `subtotal` float(9,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `tb_pedido`
+--
+
+INSERT INTO `tb_pedido` (`id_pedido`, `id_cadastro`, `data_pedido`, `hora`, `subtotal`) VALUES
+(22, 164, '2019-05-08', '02:43:00', 34.50),
+(23, 166, '2019-05-08', '02:58:00', 78.00),
+(24, 167, '2019-05-08', '03:21:00', 0.00),
+(25, 168, '2019-05-08', '04:04:00', 0.00),
+(26, 165, '2019-05-08', '04:07:00', 0.00),
+(27, 169, '2019-05-08', '04:08:00', 70.00),
+(28, 170, '2019-05-08', '04:37:00', 0.00),
+(29, 171, '2019-05-08', '04:49:00', 0.00),
+(30, 172, '2019-05-08', '04:50:00', 15.00),
+(31, 173, '2019-05-08', '04:51:00', 65.00),
+(32, 174, '2019-05-08', '04:56:00', 33.00);
+
 -- --------------------------------------------------------
 
 --
@@ -460,7 +389,7 @@ CREATE TABLE `tb_receita` (
 
 CREATE TABLE `tb_senha` (
   `id_cadastro` int(6) DEFAULT NULL,
-  `senha` varchar(20) DEFAULT NULL,
+  `senha` char(32) DEFAULT NULL,
   `validar_email` tinyint(1) DEFAULT NULL,
   `token` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -470,74 +399,17 @@ CREATE TABLE `tb_senha` (
 --
 
 INSERT INTO `tb_senha` (`id_cadastro`, `senha`, `validar_email`, `token`) VALUES
-(2, '123', 0, NULL),
-(3, '123', 0, NULL),
-(4, '123', 0, NULL),
-(5, '123', 0, NULL),
-(91, '123123123', NULL, '5cb90d0a248b0'),
-(92, '123123123', NULL, '5cb9e9a855ae5'),
-(93, '123123123', NULL, '5cbc7dea9be4b'),
-(94, 'a95c530a7af5f492a744', NULL, '5cc9d51d7597e'),
-(95, 'f5bb0c8de146c67b44ba', NULL, '5cc9eec20cc42'),
-(96, 'f5bb0c8de146c67b44ba', NULL, '5cc9eef2b3159'),
-(97, 'f5bb0c8de146c67b44ba', NULL, '5cc9f2b32d4b1'),
-(98, 'bbb8aae57c104cda40c9', NULL, '5cc9f71ec82c6'),
-(99, 'f5bb0c8de146c67b44ba', NULL, '5cc9f9ea9ba30'),
-(100, 'f5bb0c8de146c67b44ba', NULL, '5cc9ff0623b6c'),
-(101, 'f5bb0c8de146c67b44ba', NULL, '5cca00d59d175'),
-(102, 'f5bb0c8de146c67b44ba', NULL, '5cca00fa64ff1'),
-(103, 'f5bb0c8de146c67b44ba', NULL, '5cca01222ea72'),
-(104, 'f5bb0c8de146c67b44ba', NULL, '5cca013dbff21'),
-(105, 'f5bb0c8de146c67b44ba', NULL, '5cca01fd763e2'),
-(106, 'f5bb0c8de146c67b44ba', NULL, '5cca04c74175e'),
-(107, '6a204bd89f3c8348afd5', NULL, '5cca0818284c2'),
-(108, '6a204bd89f3c8348afd5', NULL, '5cca0831bf372'),
-(109, '6a204bd89f3c8348afd5', NULL, '5cca093d60102'),
-(110, '45e4812014d83dde5666', NULL, '5cca0f01386d6'),
-(111, '6a204bd89f3c8348afd5', NULL, '5cca0f7ab420e'),
-(112, '6a204bd89f3c8348afd5', NULL, '5cca15a7acb91'),
-(113, '6a204bd89f3c8348afd5', NULL, '5cca1639727f7'),
-(114, '45e4812014d83dde5666', NULL, '5cca18f86b1d8'),
-(115, '45e4812014d83dde5666', NULL, '5cca19f802fe8'),
-(116, '45e4812014d83dde5666', NULL, '5cca1d59b8328'),
-(117, '45e4812014d83dde5666', NULL, '5cca1eca42af9'),
-(118, '45e4812014d83dde5666', NULL, '5cca1f5da66b2'),
-(119, '45e4812014d83dde5666', NULL, '5cca1f92ef1e4'),
-(120, '45e4812014d83dde5666', NULL, '5cca22c4bd9a5'),
-(121, '45e4812014d83dde5666', NULL, '5cca231710058'),
-(122, '45e4812014d83dde5666', NULL, '5cca2388b4693'),
-(123, '45e4812014d83dde5666', NULL, '5cca23bbadf38'),
-(124, '45e4812014d83dde5666', NULL, '5cca240403635'),
-(125, '45e4812014d83dde5666', NULL, '5cca24e895c07'),
-(126, '45e4812014d83dde5666', NULL, '5cca25a0a9094'),
-(127, '45e4812014d83dde5666', NULL, '5cca261157704'),
-(128, '45e4812014d83dde5666', NULL, '5cca27261a17f'),
-(129, '45e4812014d83dde5666', NULL, '5cca27c36186d'),
-(130, '45e4812014d83dde5666', NULL, '5cca27f7161c5'),
-(131, '45e4812014d83dde5666', NULL, '5cca28dda1bae'),
-(132, '45e4812014d83dde5666', NULL, '5cca295fea763'),
-(133, '45e4812014d83dde5666', NULL, '5cca2aa13317d'),
-(134, '45e4812014d83dde5666', NULL, '5cca2b6d27228'),
-(135, '45e4812014d83dde5666', NULL, '5cca2bcbd0e77'),
-(136, '45e4812014d83dde5666', NULL, '5cca2c2d48174'),
-(137, '45e4812014d83dde5666', NULL, '5cca2c5800e48'),
-(138, '45e4812014d83dde5666', NULL, '5cca2d018f5da'),
-(139, '45e4812014d83dde5666', NULL, '5cca2d21e1d90'),
-(140, '45e4812014d83dde5666', NULL, '5cca2d5faa8d9'),
-(141, '45e4812014d83dde5666', NULL, '5cca2d817071f'),
-(142, '45e4812014d83dde5666', NULL, '5cca2db3c6eee'),
-(143, '45e4812014d83dde5666', NULL, '5cca2dd83a56b'),
-(144, '45e4812014d83dde5666', NULL, '5cca2e00f3a89'),
-(145, '45e4812014d83dde5666', NULL, '5cca2e50848fd'),
-(146, '45e4812014d83dde5666', NULL, '5cca2ecfcb55c'),
-(147, '45e4812014d83dde5666', NULL, '5cca2eeecb533'),
-(148, '593c9b4a9390551d53e5', NULL, '5cca2f1e98ef1'),
-(149, '593c9b4a9390551d53e5', NULL, '5cca2fdbe68c3'),
-(150, '45e4812014d83dde5666', NULL, '5cca3076caeec'),
-(151, '45e4812014d83dde5666', NULL, '5cca309a7e696'),
-(152, '45e4812014d83dde5666', NULL, '5cca316b1630c'),
-(153, '45e4812014d83dde5666', NULL, '5cca31882a5fa'),
-(154, 'f5bb0c8de146c67b44ba', NULL, '5ccdbdb81d83a');
+(2, 'f5bb0c8de146c67b44babbf4e6584cc0', 0, NULL),
+(3, 'f5bb0c8de146c67b44babbf4e6584cc0', 0, NULL),
+(4, 'f5bb0c8de146c67b44babbf4e6584cc0', 0, NULL),
+(5, 'f5bb0c8de146c67b44babbf4e6584cc0', 0, NULL),
+(164, 'f5bb0c8de146c67b44babbf4e6584cc0', NULL, '5cd3146d8137d'),
+(165, 'f5bb0c8de146c67b44babbf4e6584cc0', NULL, '5cd315ec44ee2'),
+(166, '25d55ad283aa400af464c76d713c07ad', NULL, '5cd318b3a925e'),
+(168, 'fengsuave', NULL, '5cd327f61ed5a'),
+(170, 'f5bb0c8de146c67b44babbf4e6584cc0', NULL, '5cd32fd70de3c'),
+(171, 'e1fcd8ae8148ed5fcdb8f2481d4428ba', NULL, '5cd33254cad00'),
+(172, '12345678', NULL, '5cd332bd9e30e');
 
 -- --------------------------------------------------------
 
@@ -572,54 +444,13 @@ INSERT INTO `tb_telefone` (`id_cadastro`, `ddd`, `numero`) VALUES
 (3, '44', '32123'),
 (4, '52', '515'),
 (5, '55', '5454'),
-(91, '41', '1111-11111'),
-(92, '20', '0'),
-(93, '20', '0'),
-(94, '41', '4444444'),
-(95, '41', '41111111'),
-(96, '41', '41111111'),
-(97, '41', '0'),
-(98, '41', '0'),
-(99, '41', '0'),
-(100, '41', '0'),
-(105, '41', '0'),
-(106, '41', '0'),
-(116, '/(d{', '/sd{4}-d{4'),
-(117, '', '/sd{4}-d{4'),
-(118, '', '/sd{4}-d{4'),
-(119, '/(d{', '/sd{4}-d{4'),
-(121, 'Arra', 'Array'),
-(122, 'Arra', 'Array'),
-(123, 'Arra', 'Array'),
-(124, 'Arra', 'Array'),
-(127, 'Arra', 'Array'),
-(128, 'Arra', 'Array'),
-(129, 'Arra', 'Array'),
-(130, 'Arra', 'Array'),
-(131, 'Arra', 'Array'),
-(132, 'Arra', 'Array'),
-(133, 'Arra', 'Array'),
-(134, 'Arra', 'Array'),
-(135, 'Arra', 'Array'),
-(136, 'Arra', 'Array'),
-(137, 'Arra', 'Array'),
-(138, 'Arra', ' 9689-0565'),
-(139, 'Arra', ' 9689-0565'),
-(140, 'Arra', ' 9689-0565'),
-(141, 'Arra', ' 9689-0565'),
-(142, 'Arra', 'Array'),
-(143, 'Arra', 'Array'),
-(144, 'Arra', 'Array'),
-(145, 'Arra', 'Array'),
-(146, 'Arra', 'Array'),
-(147, '(41)', ' 9689-0565'),
-(148, '(41)', ' 0000-0000'),
-(149, '(77)', ' 7777-7777'),
-(150, '(77)', ' 7777-7777'),
-(151, 'Arra', 'Array'),
-(152, '(77)', ' 7777-7777'),
-(153, '(41)', ' 4444-4444'),
-(154, '(11)', ' 1111-1111');
+(164, '41', '1111-1111'),
+(165, '41', '9999-9999'),
+(166, '41', '9928-1274'),
+(168, '41', '1111-11111'),
+(170, '41', '9992-4176'),
+(171, '41', '9956-4673'),
+(172, '41', '1111-11111');
 
 -- --------------------------------------------------------
 
@@ -772,7 +603,7 @@ ALTER TABLE `tb_tipo_ingrediente`
 -- AUTO_INCREMENT for table `tb_cadastro`
 --
 ALTER TABLE `tb_cadastro`
-  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio`
@@ -796,7 +627,7 @@ ALTER TABLE `tb_cardapio_subcat`
 -- AUTO_INCREMENT for table `tb_historico_pedido`
 --
 ALTER TABLE `tb_historico_pedido`
-  MODIFY `id_historico_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_historico_pedido` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_ingrediente`
@@ -820,13 +651,13 @@ ALTER TABLE `tb_nota_fiscal`
 -- AUTO_INCREMENT for table `tb_pagamento`
 --
 ALTER TABLE `tb_pagamento`
-  MODIFY `id_pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pagamento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_pedido`
 --
 ALTER TABLE `tb_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tb_tipo_ingrediente`

@@ -83,14 +83,14 @@
             function mudarPagina(situacao){
                 switch(situacao){
                     case '1':
-                        window.location = 'cliente/mesas/mesa.php';
+                        window.location = 'cliente/mesas/escolherMesa.php';
                         break;
                     case '2':
                         alert('Email não é de um cliente');
                         window.location = 'logar.php';
                         break;
                     case '3':
-                        window.location = 'cliente/mesas/mesa.php';
+                        window.location = 'cliente/mesas/escolherMesa.php';
                         break;
                 }
             }

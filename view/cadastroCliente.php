@@ -83,7 +83,7 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-		
+
 			$('.phone_with_ddd').mask('(00) 00000-0000');
 
 			form = $("#formCadastro");
@@ -95,11 +95,10 @@
 				var telefone = $('input[name=numeroTelefone]').val();
 				var ddd = regExp.exec(telefone);
 				
-				var regExp2 = /\d{4}-\d{4}/;
+				var regExp2 = /\d{5}-\d{4}/;
 				var numero = $('input[name=numeroTelefone]').val();
 				var telefone = regExp2.exec(numero);
 
-				
 				$.ajax({
 					url: '../controller/clienteController/cadastro/cadastrarClientePadraoController.php',
 					method: 'POST',
@@ -121,22 +120,13 @@
 						alertaCadastroNaoRealizado();
 					else if(resposta == 2)	
 						alertaEmailBD();
-					else if(resposta == 3)
-						alertaEmailFalha();
 					else if(resposta == 4)
+						alertaEmailFalha();
+					else if(resposta == 5)
 						alertaEmailEnviado();
 				});
 			});
-
-			function alertCompoIncompleto() {
-				alertify.alert("").setting({
-					transition : "zoom",
-					title : "Senhas não iguais",
-					message : "O campo de senha e confirma senha não estão iguais.",
-					movable : false
-				});
-			}
-
+			
 			function alertSenhaDesiguais() {
 				alertify.alert("").setting({
 					transition : "zoom",
@@ -147,20 +137,40 @@
 			}
 
 			function alertaCadastroNaoRealizado(){
-				 alertify.error("Houve falhas ao se cadastrar, tente novamente.");
+				 alertify.error("Algum campo foi inserido de forma errada, tente novamente.");
 			}
 
 			function alertaEmailBD(){
-				 alertify.error("Já há um e-mail igual no Banco de dados, tente novamente.");
+				alertify.alert("").setting({
+					transition : "zoom",
+					title : "E-mail já cadastrado",
+					message : "Esse e-mail já está cadastrado.",
+					movable : false
+				});
+			}
+
+			function alertCompoIncompleto() {
+				alertify.alert("").setting({
+					transition : "zoom",
+					title : "Senhas não iguais",
+					message : "O campo de senha e confirma senha não estão iguais.",
+					movable : false
+				});
 			}
 
 			function alertaEmailFalha(){
 				alertify.error("Falha ao enviar um e-mail de confirmação.");
 			}
 
-			function alertaEmailEnviado(){
-				alertify.success("Enviamos um e-mail para confirmação, verifique sua caixa de e-mais");
+			function alertaEmailEnviado() {
+				alertify.alert("").setting({
+					transition : "zoom",
+					title : "E-mail enviado",
+					message : "Um e-mail de confirmação foi enviado, aceite-o para ativar a sua conta.",
+					movable : false
+				});
 			}
+
 		</script>
 	</body>
 </html>

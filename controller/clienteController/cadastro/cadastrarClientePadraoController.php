@@ -13,9 +13,6 @@ include "../../../model/Cliente/validarEmail.class.php";
 
 include "../../../model/Conexao.class.php";
 
-$mostar;
-
-// Pega todos os dados do formulario
 
 $informarcoes[0] = $_POST["email"];
 $informarcoes[1] = $_POST["nome"];
@@ -25,8 +22,8 @@ $informarcoes[4] = $_POST["sexo"];
 $informarcoes[5] = $_POST["dataNascimento"];
 $informarcoes[6] = $_POST["senha"];
 $informarcoes[7] = $_POST["confSenha"];
-$email 			 = $informarcoes[0];
 
+$email = $informarcoes[0];
 $senha = $informarcoes[6];
 $confirmarSenha = $informarcoes[7];
 
@@ -34,26 +31,15 @@ $confirmarSenha = $informarcoes[7];
 if($senha != $confirmarSenha)
 	$mostrar = 0;
 else{
-	print_r($informarcoes);
+	$cliente = new ClientePadrao;
+	$mostrar = $cliente->cadastrar($informarcoes);
 
+	if($mostrar == 3){
+		$validarEmail = new ValidarEmail($email);
+		$validarEmail->buscarToken();
+					
+		echo $validarEmail->EnviarEmail();
+		$_SESSION["ValidarEmail"] = serialize($validarEmail);
+	}else
+		echo $mostrar;
 }
-
-
-// $cliente = new ClientePadrao; // Retorna False se algum dado estiver errado
-
-// $validado = $cliente->cadastrar($informarcoes);
-
-// if(){
-
-// }else{
-// 	// Se for inserido no banco, ele continua
-// 	// Instancia a classe ValidarEmail que esta herdando da classe Validador que por sua vez é uma classe abstrata.
-// 	$cliente2 = new ValidarEmail($email);
-// 	$cliente2->buscarToken();
-				  
-// 	echo $cliente2->EnviarEmail();
-// 	$_SESSION["ValidarEmail"] = serialize($cliente2);
-// }
-
-
-

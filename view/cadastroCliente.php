@@ -163,7 +163,9 @@
 			}
 
 			function alertaEmailEnviado() {
-				alertify.alert("").setting({
+				alertify.alert("", function() {
+					window.location = "logar.php";
+				}).setting({
 					transition : "zoom",
 					title : "E-mail enviado",
 					message : "Um e-mail de confirmação foi enviado, aceite-o para ativar a sua conta.",

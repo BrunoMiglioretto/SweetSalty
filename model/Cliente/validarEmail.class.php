@@ -51,7 +51,7 @@
                 <div style='width: 340px;height: 180px; background-color: white;margin-left: 155px'>
                     <p style='font-family: sans-serif;font-size:18px;text-align: center;color:rgb(41, 38, 38)'>Nova identificação na Sweetsalty</p>
                     <p style='font-family: sans-serif;font-size:14px;text-align: center;color:rgb(41, 38, 38)'>Para segurança adicional, por favor confirme esta identificação.</p>
-                    <a href='www.sweetsalty.net.br/SweetSalty/controller/confirmaTokenController.php?token=$tokenUrl'
+                    <a href='www.sweetsalty.net.br/controller/confirmaTokenController.php?token=$tokenUrl'
                         style='
                         border-radius:4px;
                         margin-left:27%;

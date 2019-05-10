@@ -33,107 +33,99 @@
 				<div class="card-header">
 					<div class="card-body">
 						<div class="table-responsive">
-							<div class="col-sm-12">
-								<div class="row">
-									<div class="col-lg-6 col-sm-12 form-group">
-										<label>Nome completo *</label>
-										<input type="text" name="nome" placeholder="" class="form-control" required autofocus>
+							<form id="formCadastro" method="POST" action="">
+								<div class="col-sm-12">
+									<div class="row">
+										<div class="col-lg-6 col-sm-12 form-group">
+											<label>Nome completo *</label>
+											<input type="text" name="nome" placeholder="" class="form-control" required autofocus>
+										</div>
+										<div class="col-lg-6 col-sm-12 form-group">
+											<label>E-mail *</label>
+											<input type="email" name="email" placeholder="Insira seu e-mail" class="form-control">
+										</div>
 									</div>
-									<div class="col-lg-6 col-sm-12 form-group">
-										<label>E-mail *</label>
-										<input type="email" name="email" placeholder="Insira seu e-mail" class="form-control">
+									<div class="row">
+										<div class="col-lg-4 col-sm-12 form-group">
+											<label>Sexo *</label><br>
+											<input type="radio" name="sexo" value="F"required /> Feminino
+											<input type="radio" name="sexo" value="M"/> Masculino
+										</div>
+										<div class="col-lg-4 col-sm-6 form-group">
+											<label>Telefone celular *</label>
+											<input type="tel" pattern="\(..\) [0-9]{5}-[0-9]{4}" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" class="form-control phone_with_ddd" title="Telefone celular">
+										</div>
+										<div class="col-lg-4 col-sm-6 form-group">
+											<label>Data de nascimento *</label>
+											<input type="date" min="1900-01-01" max="<?= date("Y-m-d", strtotime('-10 year', time())) ?>" name="dataNascimento" placeholder="" class="form-control" required>
+										</div>
 									</div>
+									<div class="row">
+										<div class="col-lg-6 col-sm-12 form-group">
+											<label>Senha *</label>
+											<input type="password" name="senha" placeholder="mínimo de 8 caracteres" class="form-control" maxlength="12" minlength="8" required>
+										</div>
+										<div class="col-lg-6 col-sm-12 form-group">
+											<label>Confirmar senha *</label>
+											<input type="password" id="confSenha" name="confSenha"  class="form-control" maxlength='12' minlength='8'required>
+										</div>
+																		
+									</div>*Campo obrigatório<br>
+									
+									<center>
+										<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" type="submit" id="salvar" value="Salvar">				
+									</center>
 								</div>
-								<div class="row">
-									<div class="col-lg-4 col-sm-12 form-group">
-										<label>Sexo *</label><br>
-										<input type="radio" name="sexo" value="F"required /> Feminino
-										<input type="radio" name="sexo" value="M"/> Masculino
-									</div>
-									<div class="col-lg-4 col-sm-6 form-group">
-										<label>Telefone celular *</label>
-										<input type="text" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" class="form-control phone_with_ddd" maxlength="14" title="Telefone celular">
-									</div>
-									<div class="col-lg-4 col-sm-6 form-group">
-										<label>Data de nascimento *</label>
-										<input type="date" name="dataNascimento" placeholder="" class="form-control" required>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-6 col-sm-12 form-group">
-										<label>Senha *</label>
-										<input type="password" name="senha" placeholder="mínimo de 8 caracteres" class="form-control" maxlength="12" minlength="8" required>
-									</div>
-									<div class="col-lg-6 col-sm-12 form-group">
-										<label>Confirmar senha *</label>
-										<input type="password" id="confSenha" name="confSenha"  class="form-control" maxlength='12' minlength='8'required>
-									</div>
-																	
-								</div>*Campo obrigatório<br>
-								
-								<center>
-									<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" type="submit" id="salvar" value="Salvar">				
-								</center>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
+		
 			$('.phone_with_ddd').mask('(00) 00000-0000');
 
-			$("#salvar").click(function(){
-				
+			form = $("#formCadastro");
+
+			$(form).submit(function(evento){
+				evento.preventDefault();
+
 				var regExp = /\d{2}/;
 				var telefone = $('input[name=numeroTelefone]').val();
-				var dddArray = regExp.exec(telefone);
+				var ddd = regExp.exec(telefone);
 				
 				var regExp2 = /\d{4}-\d{4}/;
 				var numero = $('input[name=numeroTelefone]').val();
-				var numeroTelArray = regExp2.exec(numero);
+				var telefone = regExp2.exec(numero);
 
-				let nome = $('input[name=nome]').val();
-				let email = $('input[name=email]').val();
-				let sexo = $('input[name=sexo]').val();
-				if(dddArray[0] == )
-				let ddd = dddArray[0];
-				let numeroTel = numeroTelArray[0];
-				let dataNascimento = $('input[name=dataNascimento]').val();
-				let senha = $('input[name=senha]').val();
-				let confSenha = $('input[name=confSenha]').val();
-
-				if( nome == "" || email == "" || sexo == "" || ddd == "" || numeroTel == "" || dataNascimento == "" || senha == "" || confSenha == "")
-					console.log("alertCompoIncompleto");
-				else{
-					$.ajax({
-						url: '../controller/clienteController/cadastro/cadastrarClientePadraoController.php',
-						method: 'POST',
-						data: {
-							nome: $('input[name=nome]').val(),
-							email: $('input[name=email]').val(),
-							sexo: $('input[name=sexo]').val(),
-							ddd : ddd,
-							numeroTel : numeroTel,
-							dataNascimento:$('input[name=dataNascimento]').val(),
-							senha:$('input[name=senha]').val(),
-							confSenha:$('input[name=confSenha]').val()
-						}
-					}).done(function(resposta) {
-						console.log(resposta);
-						if(resposta == 0)
-							alertSenhaDesiguais();		
-						else if(resposta == 1)
-							alertaCadastroNaoRealizado();
-						else if(resposta == 2)	
-							alertaEmailBD();
-						else if(resposta == 3)
-							alertaEmailFalha();
-						else if(resposta == 4)
-							alertaEmailEnviado();
-					});
-				}
-
+				
+				$.ajax({
+					url: '../controller/clienteController/cadastro/cadastrarClientePadraoController.php',
+					method: 'POST',
+					data: {
+						nome: $('input[name=nome]').val(),
+						email: $('input[name=email]').val(),
+						sexo: $('input[name=sexo]').val(),
+						ddd : ddd[0],
+						numeroTel : telefone[0],
+						dataNascimento:$('input[name=dataNascimento]').val(),
+						senha:$('input[name=senha]').val(),
+						confSenha:$('input[name=confSenha]').val()
+					}
+				}).done(function(resposta) {
+					console.log(resposta);
+					if(resposta == 0)
+						alertSenhaDesiguais();		
+					else if(resposta == 1)
+						alertaCadastroNaoRealizado();
+					else if(resposta == 2)	
+						alertaEmailBD();
+					else if(resposta == 3)
+						alertaEmailFalha();
+					else if(resposta == 4)
+						alertaEmailEnviado();
+				});
 			});
 
 			function alertCompoIncompleto() {

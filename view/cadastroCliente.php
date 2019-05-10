@@ -17,7 +17,7 @@
 		<script src="../food_premium/vendor/jquery/jquery.min.js"></script>
 		<script src="../food_premium/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="../food_premium/vendor/jquery-easing/jquery.easing.min.js"></script>
-		<script src="vendor/jquery.mask.min.js"></script>
+		<script src="vendor/jquery.mask.min.js"></script>		
 		    <style>
             .img{
                 margin: 10px;
@@ -52,7 +52,7 @@
 									</div>
 									<div class="col-lg-4 col-sm-6 form-group">
 										<label>Telefone celular *</label>
-										<input type="text" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" class="form-control phone_with_ddd" maxlength="14" title="Telefone celular">
+										<input type="text" name="numeroTelefone" placeholder="Ex: (41) 99999-9999" class="form-control phone_with_ddd" maxlength="14" title="Telefone celular">
 									</div>
 									<div class="col-lg-4 col-sm-6 form-group">
 										<label>Data de nascimento *</label>
@@ -89,9 +89,10 @@
 				var telefone = $('input[name=numeroTelefone]').val();
 				var dddArray = regExp.exec(telefone);
 				
-				var regExp2 = /\d{4}-\d{4}/;
+				var regExp2 = /\d{5}-\d{4}/;
 				var numero = $('input[name=numeroTelefone]').val();
 				var numeroTelArray = regExp2.exec(numero);
+				console.log(regExp2.exec(numero));
 
 				let nome = $('input[name=nome]').val();
 				let email = $('input[name=email]').val();

@@ -17,7 +17,7 @@
 		<script src="../food_premium/vendor/jquery/jquery.min.js"></script>
 		<script src="../food_premium/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="../food_premium/vendor/jquery-easing/jquery.easing.min.js"></script>
-		<script src="vendor/jquery.mask.min.js"></script>
+		<script src="vendor/jquery.mask.min.js"></script>		
 		    <style>
             .img{
                 margin: 10px;

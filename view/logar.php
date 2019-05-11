@@ -36,15 +36,13 @@
                         <div class="form-group">
                             <input class="form-control" id="exampleInputPassword1" name="senha" type="password" placeholder="Senha" required>
                         </div>
-                        <div class="form-group">
-                            <a href="esqueci_senha.php" style="color:#5C4C33;align:right;"><label>Esqueci minha senha</label></a>
-                        </div>
                         <input class="btn btn-primary btn-block" type="submit" name="Salvar" value="Entrar"><br>
                         <div class="row text-center" style="margin-left: 50px;"> 
                              <div class="g-signin2" data-onsuccess="onSignIn" style="width:300%; height:40px; margin-left:-6%;"></div><p id='msg'></p>
                         </div>
                     </form>
-                    <a href="cadastroCliente.php" style="text-decoration:none;"><button class="btn btn-primary btn-block"  type="button">Quero me cadastrar</button></a>
+                    <a href="cadastroCliente.php" style="text-decoration:none;"><button class="btn btn-primary btn-block"  type="button">Quero me cadastrar</button></a><br>
+                    <a href="manualUsuario/manualUsuario.php" style="text-decoration:none;"><button class="btn btn-primary btn-block"  type="button">Manual do usuário</button></a>
                 </div>
             </div>
         </div>

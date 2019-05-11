@@ -35,6 +35,8 @@ if(!$login->verificarEmailBD())
     echo 1;
 elseif(!$login->verificarSenha())
     echo 2;
+elseif(!$login->verificarEmailValidado())
+    echo 3;
 else{
     $usuario = $login->verificarCadastro();
     

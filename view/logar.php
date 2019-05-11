@@ -73,6 +73,8 @@
                             alertaContaNaoCadastrada();
                         else if(n == 2)
                             alertaSenhaEmailErrado();
+                        else if(n == 3)
+                            alertaEmailNaoValidado();
                         else if(n == "ClientePadrao")
                             window.location = '../view/cliente/mesas/escolherMesa.php';
                         else if(n == "Caixa")
@@ -102,6 +104,15 @@
                     transition : "zoom",
                     title : "E-mail e/ou senha inválido",
                     message : "O e-mail e/ou senha não correspondem a uma conta",
+                    movable : false
+                });
+            }
+
+            function alertaEmailNaoValidado() {
+                alertify.alert("").setting({
+                    transition : "zoom",
+                    title : "E-mail não validado",
+                    message : "O e-mail cadastrado ainda não foi validado.",
                     movable : false
                 });
             }

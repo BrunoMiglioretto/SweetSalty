@@ -20,23 +20,24 @@ include "../model/Login/LoginPadrao.class.php";
 
 include "../model/Conexao.class.php";
 
-$token = $_GET['token'];
+$token = $_GET["token"];
+$email = $_GET["email"];
+$senha = "senha";
 
-$validarEmail = unserialize($_SESSION["ValidarEmail"]);
-$email = $_SESSION["email"];
-$senha = $_SESSION["senha"];
 
-if(! $validarEmail->validarToken($token)){
+$validarEmail = new ValidarEmail($email);
 
-    $login = new LoginPadrao($email, $senha);
-    $login->verificarCadastro();
-
+if(!$validarEmail->validarToken($token)){
     echo "
         <script>
             window.location = '../view/logar.php';
         </script>
     ";
 }else {
+
+    $login = new LoginPadrao($email, $senha);
+    $login->verificarCadastro();
+
     echo "
         <script>
             window.location = '../view/cliente/mesas/escolherMesa.php';

@@ -39,9 +39,6 @@ else{
 		$validarEmail->buscarToken();
 					
 		echo $validarEmail->EnviarEmail();
-		$_SESSION["ValidarEmail"] = serialize($validarEmail);
-		$_SESSION["email"] = $email;
-		$_SESSION["senha"] = $senha;
 	}else
 		echo $mostrar;
 }

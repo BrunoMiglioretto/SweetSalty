@@ -45,7 +45,7 @@ class ClientePadrao extends Cliente{
         $cliente = $con->prepare($sql1);
         $cliente->execute();
         
-        $sql2 = "INSERT INTO tb_senha SET id_cadastro =  LAST_INSERT_ID(), senha = '".$this->getSenha()."', token = '".uniqid()."' validar_email = 0";
+        $sql2 = "INSERT INTO tb_senha SET id_cadastro =  LAST_INSERT_ID(), senha = '".$this->getSenha()."', token = '".uniqid()."', validar_email = 0";
         $cliente = $con->prepare($sql2);
         $cliente->execute();
         

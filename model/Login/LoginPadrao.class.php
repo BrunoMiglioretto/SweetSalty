@@ -77,6 +77,22 @@ class LoginPadrao extends Login{
         }
     }
 
+    public function verificarEmailValidado() {
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        
+        $queryValidacaoEmail = "SELECT validar_email FROM tb_senha INNER JOIN tb_cadastro ON 
+            tb_senha.id_cadastro = tb_cadastro.id_cadastro WHERE
+            tb_cadastro.email = '".$this->getEmail()."'";
+
+        $validacaoEmail = $con->prepare($queryValidacaoEmail);
+        $validacaoEmail->execute();
+
+        foreach($validacaoEmail as $validado) {}
+
+        return $validado["validar_email"] == 1;
+    }
+
     public function getSenha(){
         return $this->senha;
     }

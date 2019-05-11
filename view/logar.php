@@ -11,6 +11,9 @@
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/sb-admin.css" rel="stylesheet">
+        <link href="alertifyjs/css/alertify.min.css" rel="stylesheet">
+		<link href="alertifyjs/css/themes/default.min.css" rel="stylesheet">
+		<script src="alertifyjs/alertify.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i" rel="stylesheet">
         <script src="https://apis.google.com/js/platform.js" async defer></script><!-- Do Google-->
@@ -29,7 +32,7 @@
             <div class="card card-login mx-auto mt-5">
                 <center><div class="card-header">Entre com e-mail e senha</div></center>
                 <div class="card-body" style="padding: 30px 15px 20px 15px">
-                    <form action="../controller/loginPadraoController.php" method="POST">
+                    <form id="form_login" action="" method="POST">
                         <div class="form-group">
                             <input class="form-control" id="exampleInputEmail1" name="email" type="text" aria-describedby="emailHelp" placeholder="E-mail" autofocus required>
                         </div>
@@ -50,7 +53,71 @@
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
         <script>
-            function onSignIn(googleUser) { // esta função captura as informações do usuário e adiciona em variáveis. 
+
+            $(document).ready(function() {
+                $("#form_login").submit(function(evento) {
+                    evento.preventDefault();
+
+                    email = $("input[name=email]").val();
+                    senha = $("input[name=senha]").val();
+
+                    $.ajax({
+                        url : "../controller/loginPadraoController.php",
+                        method : "POST",
+                        data : {
+                            email : email,
+                            senha : senha
+                        }
+                    }).done(function(n) {
+                        if(n == 1)
+                            alertaContaNaoCadastrada();
+                        else if(n == 2)
+                            alertaSenhaEmailErrado();
+                        else if(n == 3)
+                            alertaEmailNaoValidado();
+                        else if(n == "ClientePadrao")
+                            window.location = '../view/cliente/mesas/escolherMesa.php';
+                        else if(n == "Caixa")
+                            window.location = '../view/caixa/';
+                        else if(n == "Cozinheiro")
+                            window.location = '../view/cozinheiro/';
+                        else if(n == "Garcom")
+                            window.location = '../view/garcom/';
+                        else if(n == "Gerente")
+                            window.location = '../view/gerente/';
+                    });
+
+                });
+            });
+
+            function alertaContaNaoCadastrada() {
+                alertify.alert("").setting({
+                    transition : "zoom",
+                    title : "Conta não cadastrada",
+                    message : "O e-mail inserido não está cadastrado.",
+                    movable : false
+                });
+            }
+
+            function alertaSenhaEmailErrado() {
+                alertify.alert("").setting({
+                    transition : "zoom",
+                    title : "E-mail e/ou senha inválido",
+                    message : "O e-mail e/ou senha não correspondem a uma conta",
+                    movable : false
+                });
+            }
+
+            function alertaEmailNaoValidado() {
+                alertify.alert("").setting({
+                    transition : "zoom",
+                    title : "E-mail não validado",
+                    message : "O e-mail cadastrado ainda não foi validado.",
+                    movable : false
+                });
+            }
+
+            function onSignIn(googleUser) {
             var profile   = googleUser.getBasicProfile();
             var userId    = profile.getId();   
             var userName  = profile.getName();

@@ -31,34 +31,25 @@ $senha = $_POST["senha"];
 
 $login = new LoginPadrao($email, $senha);
 
-if(!$login->verificarEmailBD()){
-    echo "
-        <script>
-            alert('Email não cadastrado');
-            window.location.href = '../view/logar.php';
-        </script>";
+if(!$login->verificarEmailBD())
+    echo 1;
+elseif(!$login->verificarSenha())
+    echo 2;
+elseif(!$login->verificarEmailValidado())
+    echo 3;
+else{
+    $usuario = $login->verificarCadastro();
+    
+    $tipo = get_class($usuario);
+    
+    if ($tipo == "ClientePadrao")
+        echo "ClientePadrao";
+    elseif ($tipo == "Caixa")
+        echo "Caixa";
+    elseif ($tipo == "Cozinheiro")
+        echo "Cozinheiro";
+    elseif ($tipo == "Garcom")
+        echo "Garcom";
+    elseif ($tipo == "Gerente")
+        echo "Gerente";
 }
-
-if(!$login->verificarSenha()){
-    echo "
-        <script>
-            alert('Email e/ou senha incorreto');
-            window.location.href = '../view/logar.php';
-        </script>";
-}
-
-$usuario = $login->verificarCadastro();
-
-$tipo = get_class($usuario);
-
-if ($tipo == "ClientePadrao"){
-    echo "<script>window.location.href = '../view/cliente/mesas/escolherMesa.php'</script>";
-}
-elseif ($tipo == "Caixa")
-    echo "<script>window.location.href = '../view/caixa/'</script>";
-elseif ($tipo == "Cozinheiro")
-    echo "<script>window.location.href = '../view/cozinheiro/'</script>";
-elseif ($tipo == "Garcom")
-    echo "<script>window.location.href = '../view/garcom/'</script>";
-elseif ($tipo == "Gerente")
-    echo "<script>window.location.href = '../view/gerente/'</script>";

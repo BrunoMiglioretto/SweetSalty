@@ -47,11 +47,11 @@
             $assunto   = "Confirmação do seu cadastro."; #Variável para o assunto do E-mail.
             $mensagem = "
                 <div style='width: 1000px;height:300px;background-color: rgb(255, 255, 255)'>
-                <img rel='icon' src='www.sweetsalty.net.br/SweetSalty/food_premium/img/logo.png' type='image/x-icon' style='width: 150px;height: 80px;padding-left:250px'>
+                <img src='www.sweetsalty.net.br/view/img/logo.png'style='width: 150px;height: 80px;padding-left:250px'>
                 <div style='width: 340px;height: 180px; background-color: white;margin-left: 155px'>
                     <p style='font-family: sans-serif;font-size:18px;text-align: center;color:rgb(41, 38, 38)'>Nova identificação na Sweetsalty</p>
                     <p style='font-family: sans-serif;font-size:14px;text-align: center;color:rgb(41, 38, 38)'>Para segurança adicional, por favor confirme esta identificação.</p>
-                    <a href='www.sweetsalty.net.br/SweetSalty/controller/confirmaTokenController.php?token=$tokenUrl'
+                    <a href='www.sweetsalty.net.br/controller/confirmaTokenController.php?token=$tokenUrl&email=$email'
                         style='
                         border-radius:4px;
                         margin-left:27%;
@@ -83,6 +83,6 @@
                 mail($email, $assunto, $mensagem, $headers );
                 return 5;
             }
-        } //fim da função EnviarEmail   
-    }//fim da classe validarEmail. 
+        }  
+    }
 ?>

@@ -9,6 +9,8 @@ include "../model/Cliente/ClienteGoogleFacebook.class.php";
 include "../model/Cliente/ClientePadrao.class.php";
 include "../model/Cliente/validador.class.php";
 include "../model/Cliente/validarEmail.class.php";
+include "../model/Cliente/Carrinho.class.php";
+include "../model/Cliente/Mesa.class.php";
 // Factory
 include "../model/Factory/UsuarioFactory.class.php";
 include "../model/Factory/ClienteFactory.class.php";
@@ -23,7 +25,6 @@ include "../model/Conexao.class.php";
 $token = $_GET["token"];
 $email = $_GET["email"];
 $senha = "senha";
-
 
 $validarEmail = new ValidarEmail($email);
 

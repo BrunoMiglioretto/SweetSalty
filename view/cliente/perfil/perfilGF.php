@@ -46,7 +46,7 @@
 										</div>
 										<div class="col-12 col-lg-4 col-sm-6 form-group">
 											<label>Telefone Celular *</label>
-											<input type="text" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" id="numeroTelefone" class="form-control" required value="<?= $cliente->getNumeroTelefone()?>" maxlenght="14">
+											<input type="text" name="numeroTelefone" placeholder="Ex: (41) 99999-9999" class="form-control" required value="<?= $cliente->getNumeroTelefone()?>" maxlenght="15">
 										</div>
 										<div class="col-12 col-lg-4 col-sm-12 form-group">
 											<label>Sexo *</label><br>
@@ -115,17 +115,17 @@
 		<script src="../js/sb-admin-charts.min.js"></script>
 		<script src="../js/jquery.mask.min.js"></script>
 		<script>
-			$("#numeroTelefone").mask("(00)00000-0000");
+			$("input[name=numeroTelefone]").mask("(00) 00000-0000");
 
 			function enviarMundacasPerfil() {
 
 				numeroTodo = $("#numeroTelefone").val();
 
-				var regExp = /\(\d{2}\)/;
+				var regExp = /\d{2}/;
 				var ddd = regExp.exec(numeroTodo);
 				// console.log(ddd);
 
-				var regExp2 = /\s\d{4}-\d{4}/;
+				var regExp2 = /\d{5}-\d{4}/;
 				var numero = $('input[name=numeroTelefone]').val();
 				var numeroTel = regExp2.exec(numeroTodo);
 				// console.log(numeroTel);
@@ -137,8 +137,8 @@
 						nomeCompleto : $('input[name=nomeCompleto').val(),
 						email : $('input[name=email]').val(),
 						sexo : $("input:checked").val(),
-						ddd : 41,
-						numeroTelefone : "1111-11111",
+						ddd : ddd,
+						numeroTel : numeroTel,
 						dataNascimento : $('input[name=dataNascimento]').val(),
 					}
 				}).done(function(n) {

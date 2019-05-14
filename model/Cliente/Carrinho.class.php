@@ -178,7 +178,9 @@ class Carrinho{
 		$conexao = new Conexao;
 		$con = $conexao->conexaoPDO();
 		
-		$queryPedido = "SELECT * FROM tb_pedido WHERE id_pedido = ".$this->getIdPedido();
+		$queryPedido = "SELECT * FROM tb_pedido INNER JOIN tb_mesa 
+		ON tb_pedido.id_cadastro = tb_mesa.id_cadastro
+		WHERE id_pedido = ".$this->getIdPedido();
 		$pedido = $con->prepare($queryPedido);
 		$pedido->execute();
 
@@ -188,6 +190,7 @@ class Carrinho{
 			$subtotal = $dadosPedido["subtotal"];
 			$dataPedido = $dadosPedido["data_pedido"];
 			$hora = $dadosPedido["hora"];
+			$mesa = $dadosPedido["id_mesa"];
 		}
 
 		$queryColocarHistorico = "INSERT INTO tb_historico_pedido SET 
@@ -195,7 +198,8 @@ class Carrinho{
 			id_cadastro = $idCadastro, 
 			hora = '$hora',
 			date_historico = '$dataPedido',
-			subtotal = $subtotal";
+			subtotal = $subtotal,
+			mesa = $mesa";
 
 		$colocarHistorico = $con->prepare($queryColocarHistorico);
 		$colocarHistorico->execute();

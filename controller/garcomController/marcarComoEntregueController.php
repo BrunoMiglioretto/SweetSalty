@@ -1,10 +1,10 @@
 <?php
 
-include "verificacaoSessionCozinheiroController.php";
+include "verificacaoSessionGarcomController.php";
 include "../../model/Conexao.class.php";
 
 $idCardapio = $_POST["idCardapio"];
 $idPedido = $_POST["idPedido"];
 
-$cozinheiro->concluirPedido($idPedido, $idCardapio);
+$garcom->marcarPedidoEntregue($idPedido, $idCardapio);
 

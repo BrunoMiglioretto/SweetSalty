@@ -13,8 +13,12 @@ class Cozinheiro extends Funcionario{
         return $pedidos;
     }
 
-    public function concluirPedido($idPedido){
-        
+    public function concluirPedido($idPedido, $idCardapio){
+        $queryAttSituacao = "UPDATE tb_alimento_pedido SET situacao = 3 WHERE id_cardapio = $idCardapio AND id_pedido = $idPedido";
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $attSituacao = $con->prepare($queryAttSituacao);
+        $attSituacao->execute();
     }
 
     public function concluirTodosPedido(){

@@ -88,7 +88,7 @@
 					language :{
 						"decimal":        "",
 						"emptyTable":     "Nenhum pedido",
-						"info":           "Mostrando _START_ to _END_ of _TOTAL_ pedidos",
+						"info":           "Mostrando _START_ de _END_ dos _TOTAL_ pedidos",
 						"infoEmpty":      "Mostrando 0 de 0 dos 0 pedidos",
 						"infoFiltered":   "(filtered from _MAX_ total entries)",
 						"infoPostFix":    "",

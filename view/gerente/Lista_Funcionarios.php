@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
+        <!-- <base href="../"> -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="../img/logo.png" type="image/x-icon">
         <title>Colaborador | Sweet Salty</title>
         <!--------------------------------------------Logar------------------------------------------>
-        <?php 
+       <!--  <?php 
             session_start();
             if(!isset($_SESSION['id_funcionario'])){
                 header("Location: ../logar.php");
             }
-        ?>
+        ?> -->
         <!-----------------------------------------Fim Logar----------------------------------------->
         <!-----------------------------------------TODOS CSS----------------------------------------->
         <!-- Bootstrap CSS-->

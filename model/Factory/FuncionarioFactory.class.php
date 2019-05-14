@@ -21,7 +21,7 @@ class FuncionarioFactory extends UsuarioFactory{
         if($tipo == 'Gerente'){
             $f = new Gerente;
             $f->setCargo($tipo);
-        }elseif($tipo == 'Garçom'){
+        }elseif($tipo == 'Garcom'){
             $f = new Garcom;
             $f->setCargo($tipo);
         }elseif($tipo == 'Cozinheiro'){

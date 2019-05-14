@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10-Maio-2019 às 00:58
+-- Generation Time: 14-Maio-2019 às 03:13
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -36,24 +36,6 @@ CREATE TABLE `tb_alimento_pedido` (
   `hora_envio` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `tb_alimento_pedido`
---
-
-INSERT INTO `tb_alimento_pedido` (`id_pedido`, `id_cardapio`, `quant`, `situacao`, `hora_envio`) VALUES
-(23, 91, 7, '3', '15:01:00'),
-(23, 162, 10, '3', '15:02:00'),
-(22, 147, 2, '3', '16:22:00'),
-(22, 154, 1, '3', '16:22:00'),
-(22, 156, 3, '3', '16:22:00'),
-(22, 108, 1, '3', '16:27:00'),
-(27, 121, 10, '3', '16:43:00'),
-(30, 160, 3, '3', '16:51:00'),
-(31, 91, 10, '3', '16:54:00'),
-(32, 90, 10, '3', '16:57:00'),
-(32, 89, 1, '3', '16:57:00'),
-(31, 158, 5, '3', '17:01:00');
-
 -- --------------------------------------------------------
 
 --
@@ -85,7 +67,10 @@ INSERT INTO `tb_cadastro` (`id_cadastro`, `nome_completo`, `email`) VALUES
 (171, 'Matheus Ribeiro', 'metheusribeiro@hotmail.com'),
 (172, 'vitoria messias', 'vitoriam.messias@gmail.com'),
 (173, 'Matheus Ribeiro', 'cafungacarequinhas@gmail.com'),
-(174, 'Guilherme Liz', 'guilherme.liz14@gmail.com');
+(174, 'Guilherme Liz', 'guilherme.liz14@gmail.com'),
+(175, 'bruno', 'brunoa@gmail.com'),
+(176, 'bruno', 'bruno@gmail.comb'),
+(177, 'bruno', 'brunom@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -208,7 +193,7 @@ CREATE TABLE `tb_cliente` (
 --
 
 INSERT INTO `tb_cliente` (`id_cadastro`, `data_nascimento`, `sexo`) VALUES
-(164, '1111-11-11', 'F'),
+(164, '1111-11-11', 'M'),
 (165, '1211-03-12', 'F'),
 (166, '2019-05-01', 'F'),
 (167, '0000-00-00', ''),
@@ -218,7 +203,10 @@ INSERT INTO `tb_cliente` (`id_cadastro`, `data_nascimento`, `sexo`) VALUES
 (171, '1995-02-03', 'F'),
 (172, '2019-05-16', 'F'),
 (173, '0000-00-00', ''),
-(174, '0000-00-00', '');
+(174, '0000-00-00', ''),
+(175, '2009-05-02', 'F'),
+(176, '2009-05-08', 'F'),
+(177, '2000-02-02', 'F');
 
 -- --------------------------------------------------------
 
@@ -240,7 +228,7 @@ CREATE TABLE `tb_funcionario` (
 INSERT INTO `tb_funcionario` (`id_cadastro`, `rg`, `cpf`, `cargo`) VALUES
 (2, 321561, 646546, 'Gerente'),
 (3, 32131, 58978, 'Caixa'),
-(4, 545, 5544, 'Garçom'),
+(4, 545, 5544, 'Garcom'),
 (5, 55, 555, 'Cozinheiro');
 
 -- --------------------------------------------------------
@@ -267,7 +255,8 @@ CREATE TABLE `tb_historico_pedido` (
   `date_historico` date DEFAULT NULL,
   `hora` time DEFAULT NULL,
   `subtotal` float(7,2) DEFAULT NULL,
-  `id_historico_pedido` int(11) NOT NULL
+  `id_historico_pedido` int(11) NOT NULL,
+  `mesa` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -305,9 +294,9 @@ CREATE TABLE `tb_mesa` (
 
 INSERT INTO `tb_mesa` (`id_mesa`, `id_cadastro`) VALUES
 (1, NULL),
-(4, NULL),
-(3, 170),
-(2, 173);
+(2, NULL),
+(3, NULL),
+(4, NULL);
 
 -- --------------------------------------------------------
 
@@ -352,23 +341,6 @@ CREATE TABLE `tb_pedido` (
   `subtotal` float(9,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `tb_pedido`
---
-
-INSERT INTO `tb_pedido` (`id_pedido`, `id_cadastro`, `data_pedido`, `hora`, `subtotal`) VALUES
-(22, 164, '2019-05-08', '02:43:00', 34.50),
-(23, 166, '2019-05-08', '02:58:00', 78.00),
-(24, 167, '2019-05-08', '03:21:00', 0.00),
-(25, 168, '2019-05-08', '04:04:00', 0.00),
-(26, 165, '2019-05-08', '04:07:00', 0.00),
-(27, 169, '2019-05-08', '04:08:00', 70.00),
-(28, 170, '2019-05-08', '04:37:00', 0.00),
-(29, 171, '2019-05-08', '04:49:00', 0.00),
-(30, 172, '2019-05-08', '04:50:00', 15.00),
-(31, 173, '2019-05-08', '04:51:00', 65.00),
-(32, 174, '2019-05-08', '04:56:00', 33.00);
-
 -- --------------------------------------------------------
 
 --
@@ -399,17 +371,20 @@ CREATE TABLE `tb_senha` (
 --
 
 INSERT INTO `tb_senha` (`id_cadastro`, `senha`, `validar_email`, `token`) VALUES
-(2, 'f5bb0c8de146c67b44babbf4e6584cc0', 0, NULL),
-(3, 'f5bb0c8de146c67b44babbf4e6584cc0', 0, NULL),
-(4, 'f5bb0c8de146c67b44babbf4e6584cc0', 0, NULL),
-(5, 'f5bb0c8de146c67b44babbf4e6584cc0', 0, NULL),
-(164, 'f5bb0c8de146c67b44babbf4e6584cc0', NULL, '5cd3146d8137d'),
-(165, 'f5bb0c8de146c67b44babbf4e6584cc0', NULL, '5cd315ec44ee2'),
-(166, '25d55ad283aa400af464c76d713c07ad', NULL, '5cd318b3a925e'),
-(168, 'fengsuave', NULL, '5cd327f61ed5a'),
-(170, 'f5bb0c8de146c67b44babbf4e6584cc0', NULL, '5cd32fd70de3c'),
-(171, 'e1fcd8ae8148ed5fcdb8f2481d4428ba', NULL, '5cd33254cad00'),
-(172, '12345678', NULL, '5cd332bd9e30e');
+(2, 'f5bb0c8de146c67b44babbf4e6584cc0', 1, NULL),
+(3, 'f5bb0c8de146c67b44babbf4e6584cc0', 1, NULL),
+(4, 'f5bb0c8de146c67b44babbf4e6584cc0', 1, NULL),
+(5, 'f5bb0c8de146c67b44babbf4e6584cc0', 1, NULL),
+(164, '123123123', 1, '5cd3146d8137d'),
+(165, 'f5bb0c8de146c67b44babbf4e6584cc0', 1, '5cd315ec44ee2'),
+(166, '25d55ad283aa400af464c76d713c07ad', 1, '5cd318b3a925e'),
+(168, 'fengsuave', 1, '5cd327f61ed5a'),
+(170, 'f5bb0c8de146c67b44babbf4e6584cc0', 1, '5cd32fd70de3c'),
+(171, 'e1fcd8ae8148ed5fcdb8f2481d4428ba', 1, '5cd33254cad00'),
+(172, '12345678', 1, '5cd332bd9e30e'),
+(175, '593c9b4a9390551d53e5cacf28ebd638', 1, '5cd4c5550d46f'),
+(176, '593c9b4a9390551d53e5cacf28ebd638', 1, '5cd4c7c31ac23'),
+(177, 'f5bb0c8de146c67b44babbf4e6584cc0', 1, '5cd9f77a1e4d6');
 
 -- --------------------------------------------------------
 
@@ -440,17 +415,20 @@ CREATE TABLE `tb_telefone` (
 --
 
 INSERT INTO `tb_telefone` (`id_cadastro`, `ddd`, `numero`) VALUES
-(2, '41', '322332'),
-(3, '44', '32123'),
-(4, '52', '515'),
-(5, '55', '5454'),
-(164, '41', '1111-1111'),
-(165, '41', '9999-9999'),
-(166, '41', '9928-1274'),
-(168, '41', '1111-11111'),
-(170, '41', '9992-4176'),
-(171, '41', '9956-4673'),
-(172, '41', '1111-11111');
+(2, '41', '222222222'),
+(3, '44', '222222222'),
+(4, '52', '222222222'),
+(5, '55', '222222222'),
+(164, '41', '1111-11111'),
+(165, '41', '222222222'),
+(166, '41', '222222222'),
+(168, '41', '222222222'),
+(170, '41', '222222222'),
+(171, '41', '222222222'),
+(172, '41', '222222222'),
+(175, '12', '222222222'),
+(176, '32', '222222222'),
+(177, '11', '11111-1111');
 
 -- --------------------------------------------------------
 
@@ -603,7 +581,7 @@ ALTER TABLE `tb_tipo_ingrediente`
 -- AUTO_INCREMENT for table `tb_cadastro`
 --
 ALTER TABLE `tb_cadastro`
-  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+  MODIFY `id_cadastro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `tb_cardapio`
@@ -627,7 +605,7 @@ ALTER TABLE `tb_cardapio_subcat`
 -- AUTO_INCREMENT for table `tb_historico_pedido`
 --
 ALTER TABLE `tb_historico_pedido`
-  MODIFY `id_historico_pedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_historico_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tb_ingrediente`
@@ -651,13 +629,13 @@ ALTER TABLE `tb_nota_fiscal`
 -- AUTO_INCREMENT for table `tb_pagamento`
 --
 ALTER TABLE `tb_pagamento`
-  MODIFY `id_pagamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_pedido`
 --
 ALTER TABLE `tb_pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tb_tipo_ingrediente`

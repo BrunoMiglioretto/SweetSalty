@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
 	<a class="navbar-brand" href="" title="Sweet Salty | Cozinha">
-		<h6>Sweet Salty | <?= $caixa->getNomeCompleto()?></h6>
+		<h6>Sweet Salty | <?= $garcom->getNomeCompleto()?></h6>
 	</a>
 	<ul class="navbar-nav ml-auto">
 		<li class="nav-item">

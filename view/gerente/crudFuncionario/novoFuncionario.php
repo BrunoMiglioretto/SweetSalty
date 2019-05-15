@@ -17,6 +17,9 @@
 		<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 		<link href="../css/sb-admin.css" rel="stylesheet">
+		<link href="../alertifyjs/css/alertify.min.css" rel="stylesheet">
+		<link href="../alertifyjs/css/themes/default.min.css" rel="stylesheet">
+		<script src="../alertifyjs/alertify.min.js"></script>
 		<style>
 			.btn{
 				float:right;
@@ -34,7 +37,7 @@
         			<div class="card-header">
         				<div class="card-body">
           					<div class="table-responsive">
-								<form method="POST" action="">
+								<form method="POST" action="" id="formCadastro">
 									<div class="col-sm-12">
 										<div class="row">
 											<div class="col-sm-6 form-group">
@@ -49,15 +52,15 @@
 										<div class="row">
 											<div class="col-sm-4 form-group">
 												<label>Telefone</label>
-												<input type="text" name="numero" placeholder="Ex: (41) 9999-9999" class="form-control" onkeypress="return valTELEFONECELULAR(event,this); return false;" maxlength="14" title="(##)#####-####">
+												<input type="tel" name="numeroTelefone" pattern="\(..\) [0-9]{5}-[0-9]{4}" placeholder="Ex: (41) 9999-9999" class="form-control" required>
 											</div>		
 											<div class="col-sm-4 form-group">
 												<label>RG</label>
-												<input type="text" name="rg" placeholder="00.000.000-0" class="form-control" maxlength="12" required>
+												<input type="text" name="rg" pattern="[0-9]{2}.[0-9]{3}.[0-9]{3}.[0-9]{1}" placeholder="00.000.000-0" class="form-control" required>
 											</div>		
 											<div class="col-sm-4 form-group">
 												<label>CPF</label>
-												<input type="text" name="cpf" placeholder="000.000.000-00" class="form-control" maxlength="14" required>
+												<input type="text" name="cpf" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}.[0-9]{2}" placeholder="000.000.000-00" class="form-control" required>
 											</div>	
 										</div>
 										<div class="row">
@@ -65,24 +68,26 @@
 												<label>Cargo</label>
 												<select name="cargo" placeholder="Cargo do funcionário" class="form-control" required>
 													<option></option>
-													<option>Caixa</option>
-													<option>Cozinha</option>
-													<option>Fornecedor</option>
-													<option>Garçom</option>
-													<option>Recepção</option>
+													<option value='Cozinheiro'>Cozinheiro</option>
+													<option value='Garcom'>Garçom</option>
+													<option value='Caixa'>Caixa</option>
+													<option value='Gerente'>Gerente</option>
 												</select>
 											</div>
 											<div class="col-sm-4 form-group">
 												<label>Senha</label>
-												<input type="password" name="senha" placeholder="mínimo de 8 caracteres" class="form-control" maxlength="12" required>
+												<input type="password" name="senha" placeholder="mínimo de 8 caracteres" class="form-control" minlength="8" maxlength="12" required>
 											</div>	
 											<div class="col-sm-4 form-group">
 												<label>Confirmar senha</label>
-												<input type="password" placeholder="" id="senha_confirma" name="senha_confirma"  class="form-control" required>
+												<input type="password" name="confSenha"  minlength="8" maxlength="12" class="form-control" required>
 											</div>
 										</div>
 										<center>
 											<input class="btn" type="submit" name="salvar" value="Salvar" style="width: 100px; float: left;">				
+										</center>
+										<center>
+											<a href="crudFuncionario/listaFuncionarios.php"><input class="btn" type="button" name="salvar" value="Voltar" style="margin-left:20px;width: 100px; float: left;"></a>			
 										</center>
 									</div>
 								</form>
@@ -129,7 +134,81 @@
 		<script>
 			$('input[name=cpf]').mask('000.000.000-00', {reverse: true});
 			$('input[name=rg]').mask('00.000.000-0', {reverse: true});
-			$('input[name=numero]').mask('(00) 00000-0000');
+			$('input[name=numeroTelefone]').mask('(00) 00000-0000');
+
+			form = $("#formCadastro");
+
+			$(form).submit(function(evento){
+				evento.preventDefault();
+
+				var regExp = /\d{2}/;
+				var telefone = $('input[name=numeroTelefone]').val();
+				var ddd = regExp.exec(telefone);
+				
+				var regExp2 = /\d{5}-\d{4}/;
+				var numero = $('input[name=numeroTelefone]').val();
+				var telefone = regExp2.exec(numero);
+
+				$.ajax({
+					url: '../../controller/gerenteController/crudFuncionarioController/novoFuncionarioController.php',
+					method: 'POST',
+					data: {
+						nome: $('input[name=nome]').val(),
+						email: $('input[name=email]').val(),
+						cargo : $('select[name=cargo] option:selected').val(),
+						ddd : ddd[0],
+						numeroTel : telefone[0],
+						rg : $('input[name=rg]').val(),
+						cpf : $('input[name=cpf]').val(),
+						senha:$('input[name=senha]').val(),
+						confSenha:$('input[name=confSenha]').val()
+					}
+				}).done(function(resposta) {
+					console.log(resposta);
+					if(resposta == 0)
+						alertSenhaDesiguais();		
+					else if(resposta == 1)
+						alertaCadastroNaoRealizado();
+					else if(resposta == 2)	
+						alertaEmailBD();
+					else if(resposta == 3)
+						alertaCadastro();
+				});
+			});
+			
+			function alertSenhaDesiguais() {
+				alertify.alert("").setting({
+					transition : "zoom",
+					title : "Senhas não iguais",
+					message : "O campo de senha e confirma senha não estão iguais.",
+					movable : false
+				});
+			}
+
+			function alertaCadastroNaoRealizado(){
+				 alertify.error("Algum campo foi inserido de forma errada, tente novamente.");
+			}
+
+			function alertaEmailBD(){
+				alertify.alert("").setting({
+					transition : "zoom",
+					title : "E-mail já cadastrado",
+					message : "Esse e-mail já está cadastrado.",
+					movable : false
+				});
+			}
+
+			function alertaCadastro(){
+				alertify.success("Cadastrado com sucesso!");
+				$('input[name=nome]').val("");
+				$('input[name=email]').val("");
+				$('input[name=rg]').val("");
+				$('input[name=cpf]').val("");
+				$('input[name=senha]').val("");
+				$('input[name=confSenha]').val("");
+				$('input[name=numeroTelefone]').val("");
+			}
+
 		</script>
 	</body>
 </html>

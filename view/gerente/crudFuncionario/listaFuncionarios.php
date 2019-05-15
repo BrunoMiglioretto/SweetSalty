@@ -88,30 +88,6 @@
                                         //                 </div>
                                         //             </div>
                                         //         </div>";//Modal
-                                        // echo "  <div class='modal fade' id='Modal2$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
-                                        //             <div class='modal-dialog modal-dialog-centered' role='document'>
-                                        //                 <div class='modal-content'>
-                                        //                     <div class='modal-header'>
-                                        //                         <h5 class='modal-t'itle' id'='exampleModalLongTitle'>Mais informações sobre $nome</h5>
-                                        //                         <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                        //                             <span aria-hidden='true'>&times;</span>
-                                        //                         </button>
-                                        //                     </div>
-                                        //                     <div class='modal-body'>
-                                        //                         <h5>Nome completo:</h5>$nome $sobrenome
-                                        //                         <h5>Cargo:</h5>$cargo
-                                        //                         <h5>E-mail:</h5>$email
-                                        //                         <h5>Telefone residencial:</h5>$telefone
-                                        //                         <h5>Telefone celular:</h5>$celular
-                                        //                         <h5>CPF:</h5>$CPF
-                                        //                         <h5>RG:</h5>$RG
-                                        //                     </div>
-                                        //                     <div class='modal-footer'>
-                                        //                         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
-                                        //                     </div>
-                                        //                 </div>
-                                        //             </div>
-                                        //         </div>";//Modal
                                         // echo "</tr>";				
                                 ?>
 		                    </tbody>
@@ -154,6 +130,25 @@
 			    </div>
 		    </div>
 		</div>
+        <div class='modal fade' id='Modal$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+            <div class='modal-dialog modal-dialog-centered' role='document'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='exampleModalLongTitle'>Excluir</h5>
+                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                        </button>
+                    </div>
+                    <div class='modal-body'>
+                        Deseja excluir $nome"." $sobrenome Permanentemente?
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                        <a href='CRUD/Excluir_Funcionario.php?id_funcionario=$id&func=excluir'><button type='button' class='btn btn-primary'>Excluir</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php include '../footer.html'; ?>	
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -164,5 +159,9 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
+        <script>
+            
+        
+        </script>
 	</body>
 </html>

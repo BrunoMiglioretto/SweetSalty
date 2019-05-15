@@ -37,6 +37,23 @@ class Gerente extends Funcionario{
     }
     
     public function excluirFuncionario($idFuncionario){
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
 
+        $queryDeleteSenha = "DELETE FROM tb_senha WHERE id_cadastro = $idFuncionario";
+        $deleteSenha = $con->prepare($queryDeleteSenha);
+        $deleteSenha->execute();
+    
+        $queryDeleteTelefone = "DELETE FROM tb_telefone WHERE id_cadastro = $idFuncionario";
+        $deleteTelefone = $con->prepare($queryDeleteTelefone);
+        $deleteTelefone->execute();
+
+        $queryDeleteFuncionario = "DELETE FROM tb_funcionario WHERE id_cadastro = $idFuncionario";
+        $deleteFuncionario = $con->prepare($queryDeleteFuncionario);
+        $deleteFuncionario->execute();
+
+        $queryDeleteCadastro = "DELETE FROM tb_cadastro WHERE id_cadastro = $idFuncionario";
+        $deleteCadastro = $con->prepare($queryDeleteCadastro);
+        $deleteCadastro->execute();
     }
 }

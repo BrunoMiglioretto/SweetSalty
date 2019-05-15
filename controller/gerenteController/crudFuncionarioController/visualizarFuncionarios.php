@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+chdir("../");
+
+include "verificacaoSessionGerenteController.php";
+
 include "../../model/Conexao.class.php";
 
 $funcionarios = $gerente->visualizarFuncionarios();
@@ -21,7 +27,7 @@ foreach($funcionarios as $funcionario) {
         </a>";
 
     $botaoExcluir = "
-        <a data-toggle='modal' data-target='#Modal".$funcionario["id_cadastro"]."'>
+        <a data-toggle='modal' data-target='#Modal' onclick=\"guardarIdCadastro(".$funcionario["id_cadastro"].",'".$funcionario["nome_completo"]."')\">
             <center>
                 <img src='../img/excluir.png' title='Excluir'>
             </center>

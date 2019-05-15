@@ -22,7 +22,7 @@
                 margin: 15px 0px 0px 0px;
                 height: 50px;
             }
-            p{
+            .campo p{
                 font-size: 19px;
                 float: left;
             }
@@ -56,40 +56,7 @@
 		    			       	</tr>
                             </thead>
 						     <tbody>
-                                <?php
-                                        include "../../controller/gerenteController/crudFuncionarioController/visualizarFuncionarios.php";
-
-                                        // $ver 			= "";
-                                        // $editar 		= "<a href='CRUD/Editar_Funcionario.php?id_funcionario=$id'><center><img src='../img/editar.png' title='Editar'></center></a>";
-                                        // $excluir 		= "<a data-toggle='modal' data-target='#Modal$id'><center><img src='../img/excluir.png' title='Excluir'></center></a>";
-                                        // echo "<tr>";
-                                        // echo "<td>".$nome."</td>";
-                                        // echo "<td>".$sobrenome."</td>";
-                                        // echo "<td>".$cargo."</td>";
-                                        // echo "<td align='center'>".$ver."</td>";
-                                        // echo "<td>".$editar."</td>";
-                                        // echo "<td>".$excluir."</td>";
-                                        // echo "  <div class='modal fade' id='Modal$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
-                                        //             <div class='modal-dialog modal-dialog-centered' role='document'>
-                                        //                 <div class='modal-content'>
-                                        //                     <div class='modal-header'>
-                                        //                         <h5 class='modal-t'itle' id'='exampleModalLongTitle'>Excluir</h5>
-                                        //                         <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                        //                             <span aria-hidden='true'>&times;</span>
-                                        //                         </button>
-                                        //                     </div>
-                                        //                     <div class='modal-body'>
-                                        //                         Deseja excluir $nome"." $sobrenome Permanentemente?
-                                        //                     </div>
-                                        //                     <div class='modal-footer'>
-                                        //                         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-                                        //                         <a href='CRUD/Excluir_Funcionario.php?id_funcionario=$id&func=excluir'><button type='button' class='btn btn-primary'>Excluir</button></a>
-                                        //                     </div>
-                                        //                 </div>
-                                        //             </div>
-                                        //         </div>";//Modal
-                                        // echo "</tr>";				
-                                ?>
+                               
 		                    </tbody>
             	        </table>
           	        </div>
@@ -130,21 +97,21 @@
 			    </div>
 		    </div>
 		</div>
-        <div class='modal fade' id='Modal$id' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+        <div class='modal fade' id='Modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
             <div class='modal-dialog modal-dialog-centered' role='document'>
                 <div class='modal-content'>
                     <div class='modal-header'>
-                        <h5 class='modal-title' id='exampleModalLongTitle'>Excluir</h5>
+                        <p class='modal-title' id='tituloModal'></p>
                         <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span>
                         </button>
                     </div>
                     <div class='modal-body'>
-                        Deseja excluir $nome"." $sobrenome Permanentemente?
+                        <p id="mensagemModal"></p>
                     </div>
                     <div class='modal-footer'>
                         <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-                        <a href='CRUD/Excluir_Funcionario.php?id_funcionario=$id&func=excluir'><button type='button' class='btn btn-primary'>Excluir</button></a>
+                        <button type='button' class='btn btn-primary' data-dismiss='modal' onclick="deletarFuncionario()">Excluir</button>
                     </div>
                 </div>
             </div>
@@ -160,7 +127,40 @@
 		<script src="../js/sb-admin-datatables.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
         <script>
-            
+            function guardarIdCadastro(idCadastroSelecionado, nomeSelecionado){
+				idCadastro = idCadastroSelecionado;
+				nome = nomeSelecionado;
+
+				titulo = "Excluir " + nome.toLowerCase();
+				mensagem = `Deseja mesmo excluir ${nome}?`;
+
+				$("#tituloModal").html(titulo);
+				$("#mensagemModal").html(mensagem);
+			}
+
+            function deletarFuncionario() {
+                $.ajax({
+                    url : "../../controller/gerenteController/crudFuncionarioController/deletarFuncionarioController.php",
+                    method : "POST",
+                    data : {
+                        idFuncionario : idCadastro
+                    }
+                }).done(function() {
+                    atualizarTabela();
+                });
+            }
+
+            function atualizarTabela() {
+                $.ajax({
+                    url : "../../controller/gerenteController/crudFuncionarioController/visualizarFuncionarios.php"
+                }).done(function(n) {
+                    $("tbody").html(n);
+                });
+            }
+
+            $(document).ready(function() {
+                atualizarTabela();
+            });
         
         </script>
 	</body>

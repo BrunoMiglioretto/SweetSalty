@@ -207,6 +207,7 @@
 				$('input[name=senha]').val("");
 				$('input[name=confSenha]').val("");
 				$('input[name=numeroTelefone]').val("");
+				$('input[name=nome]').focus();
 			}
 
 		</script>

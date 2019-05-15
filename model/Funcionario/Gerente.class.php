@@ -21,7 +21,7 @@ class Gerente extends Funcionario{
     public function visualizarFuncionarios(){
         $queryFuncionarios = "SELECT * FROM tb_funcionario, tb_senha, tb_cadastro, tb_telefone WHERE tb_funcionario.id_cadastro = tb_cadastro.id_cadastro AND tb_senha.id_cadastro = tb_cadastro.id_cadastro AND tb_cadastro.id_cadastro = tb_cadastro.id_cadastro AND tb_telefone.id_cadastro = tb_cadastro.id_cadastro";
         $conexao = new Conexao;
-        $con = $Conexao->conexaoPDO();
+        $con = $conexao->conexaoPDO();
         $funcionarios = $con->prepare($queryFuncionarios);
         $funcionarios->execute();
         return $funcionarios;

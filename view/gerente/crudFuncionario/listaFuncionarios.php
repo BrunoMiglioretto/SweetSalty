@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="../img/logo.png" type="image/x-icon">
-        <title>Colaborador | Sweet Salty</title>
+        <title>Funcionário | Sweet Salty</title>
         <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -45,7 +45,7 @@
           		</div>
 	    		<div class="card-body" class='print'>
 	    			<div class="table-responsive" class='print' style="margin-top: 15px;">
-                    	<table class="table table-bordered" id="tabela" width="100%" class='print'>
+                    	<table class="table table-bordered" id="dataTable" width="100%" class='print'>
                             <thead>
                                 <tr>
                                     <th>Nome</th>
@@ -116,6 +116,41 @@
                 </div>
             </div>
         </div>
+        <div class='modal fade' id='modalMaisDados' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+            <div class='modal-dialog modal-dialog-centered' role='document'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='exampleModalLongTitle'></h5>
+                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                        </button>
+                    </div>
+                    <div class='modal-body'>
+                        <div class='campo'>
+                            <p><b>Nome completo:</b></p><input type='text' id="nome" disabled>
+                        </div>
+                        <div class='campo'>
+                            <p><b>Cargo:</b></p><input type='text' id="cargo" disabled>
+                        </div>
+                        <div class='campo'>
+                            <p><b>E-mail:</b></p><input type='text' id="email" disabled>
+                        </div>
+                        <div class='campo'>
+                            <p><b>Telefone:</b></p><input type='text' id="telefone" disabled>
+                        </div>
+                        <div class='campo'>
+                            <p><b>CPF:</b></p><input type='text' id="cpf" disabled>
+                        </div>
+                        <div class='campo'>
+                            <p><b>RG:</b></p><input type='text' id="rg" disabled>
+                        </div>
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php include '../footer.html'; ?>	
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -161,6 +196,24 @@
             $(document).ready(function() {
                 atualizarTabela();
             });
+
+            function maisDados(idCadastro) {
+				let d = $(`#dados${idCadastro}`).val();
+
+                dado = JSON.parse(d);
+
+                console.log(dado.data);
+
+                $("#nome").val(dado.data.nome);
+                $("#cargo").val(dado.data.cargo);
+                $("#email").val(dado.data.email);
+                $("#telefone").val(dado.data.numero);
+                $("#cpf").val(dado.data.cpf);
+                $("#rg").val(dado.data.rg);
+                $("#exampleModalLongTitle").html("Mais informações sobre " + dado.data.nome);
+
+                $("#modalMaisDados").modal();
+			}
         
         </script>
 	</body>

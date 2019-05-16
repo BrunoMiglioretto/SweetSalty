@@ -10,17 +10,18 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
 	<head>
+		<base href="../">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="icon" href="../../img/logo.png" type="image/x-icon">
+		<link rel="icon" href="../img/logo.png" type="image/x-icon">
 		<title>Editar | Sweet Salty</title>
-		<link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-		<link href="../../css/sb-admin.css" rel="stylesheet">
-		<link href="../../alertifyjs/css/alertify.min.css" rel="stylesheet">
-		<link href="../../alertifyjs/css/themes/default.min.css" rel="stylesheet">
-		<script src="../../alertifyjs/alertify.min.js"></script>
+		<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+		<link href="../css/sb-admin.css" rel="stylesheet">
+		<link href="../alertifyjs/css/alertify.min.css" rel="stylesheet">
+		<link href="../alertifyjs/css/themes/default.min.css" rel="stylesheet">
+		<script src="../alertifyjs/alertify.min.js"></script>
 		<style>
 			@media print {
 				.print{
@@ -78,9 +79,9 @@
 											<div class="col-sm-4 form-group">
 												<label>Cargo</label>
 												<select name='cargo' class="form-control" required>
-													<option <?PHP if($cargo == 'Caixa'){ 			echo "selected";}?>   value='Caixa'>Caixa</option>
-													<option <?PHP if($cargo == 'Cozinha'){			echo "selected";}?>   value='Cozinha'>Cozinha</option>
+													<option <?PHP if($cargo == 'Cozinheiro'){			echo "selected";}?>   value='Cozinha'>Cozinheiro</option>
 													<option <?PHP if($cargo == 'Garcom'){			echo "selected";}?>   value='Garcom'>Garçom</option>
+													<option <?PHP if($cargo == 'Caixa'){ 			echo "selected";}?>   value='Caixa'>Caixa</option>
 													<option <?PHP if($cargo == 'Gerente'){		echo "selected";}?>   value='Gerente'>Gerente</option>
 												</select>					
 											</div>
@@ -124,16 +125,16 @@
 			</div>
 		</div>
 		<?php include '../footer.html' ?>	
-		<script src="../../vendor/jquery/jquery.min.js"></script>
-		<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
-		<script src="../../vendor/chart.js/Chart.min.js"></script>
-		<script src="../../vendor/datatables/jquery.dataTables.js"></script>
-		<script src="../../vendor/datatables/dataTables.bootstrap4.js"></script>
-		<script src="../../js/sb-admin.min.js"></script>
-		<script src="../../js/sb-admin-datatables.js"></script>
-		<script src="../../js/sb-admin-charts.min.js"></script>
-		<script src="../../js/jquery.mask.min.js"></script>
+		<script src="../vendor/jquery/jquery.min.js"></script>
+		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+		<script src="../vendor/chart.js/Chart.min.js"></script>
+		<script src="../vendor/datatables/jquery.dataTables.js"></script>
+		<script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+		<script src="../js/sb-admin.min.js"></script>
+		<script src="../js/sb-admin-datatables.js"></script>
+		<script src="../js/sb-admin-charts.min.js"></script>
+		<script src="../js/jquery.mask.min.js"></script>
 		<script>
 		
 			$('input[name=cpf]').mask('000.000.000-00', {reverse: true});
@@ -203,7 +204,9 @@
 			}
 
 			function alertaCadastro(){
-				alertify.alert("").setting({
+				alertify.alert("", function() {
+					window.location = "listaFuncionarios.php";
+				}).setting({
 					transition : "zoom",
 					title : "Editado com sucesso!",
 					message : "Esse perfil foi editado com sucesso.",

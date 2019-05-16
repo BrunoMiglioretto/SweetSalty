@@ -42,7 +42,7 @@
                         <a href="lista_clientes.php">Clientes</a>
                     </li>
                     <li>
-                        <a href="Lista_Funcionarios.php">Colaboradores</a>
+                        <a href="crudFuncionario/listaFuncionarios.php">Funcionários</a>
                     </li>
                     <li>
                         <a href="lista_cardapio.php">Cardápio</a>

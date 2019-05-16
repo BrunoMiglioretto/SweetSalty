@@ -20,7 +20,7 @@ foreach($funcionarios as $funcionario) {
         </a>";
 
     $botaoEditar = "
-        <a href='CRUD/Editar_Funcionario.php?id_funcionario=".$funcionario["id_cadastro"]."'>
+        <a href='crudFuncionario/editarFuncionario.php?id=".$funcionario["id_cadastro"]."'>
             <center>
                 <img src='../img/editar.png' title='Editar'>
             </center>

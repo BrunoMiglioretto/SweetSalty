@@ -63,6 +63,67 @@ abstract class Funcionario extends Usuario{
         return 3;
     }
 
+    public function editarPerfil($informacoes) {
+        $fun = new Gerente;
+
+        $fun->setIdUsuario($informacoes[9]);
+
+        $fun->setNomeCompleto($informacoes[0]);
+        if($fun->getNomeCompleto() == false)
+            return 1;
+        $fun->setEmail($informacoes[1]);
+        if($fun->getEmail() == false)
+            return 1;
+        $fun->setDdd($informacoes[3]);
+        if($fun->getDdd() == false)
+            return 1;
+        $fun->setNumeroTelefone($informacoes[4]);
+        if($fun->getNumeroTelefone() == false)
+            return 1;
+        $fun->setCargo($informacoes[2]);
+        if($fun->getCargo() == false)
+            return 1;
+        $fun->setCpf($informacoes[6]);
+        if($fun->getCpf() == false)
+            return 1;
+        $fun->setRg($informacoes[5]);
+        if($fun->getRg() == false)
+            return 1;
+        $fun->setSenha($informacoes[7]);
+        if($fun->getSenha() == false)
+            return 1;
+        $fun->setSenha(md5($informacoes[8]));
+
+
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+
+        $verifEmail = "SELECT * FROM tb_cadastro WHERE email = '".$fun->getEmail()."' AND id_cadastro != ".$fun->getIdUsuario();
+        $funcionario = $con->prepare($verifEmail);
+        $funcionario->execute();
+        $contLinha = $funcionario->rowCount();
+        if($contLinha > 0)
+            return 2;
+        
+        $sql1 = "UPDATE tb_cadastro SET nome_completo = '".$fun->getNomeCompleto()."', email = '".$fun->getEmail()."' WHERE id_cadastro = ".$fun->getIdUsuario();
+        $funcionario = $con->prepare($sql1);
+        $funcionario->execute();
+        
+        $sql2 = "UPDATE tb_senha SET senha = '".$fun->getSenha()."' WHERE id_cadastro = ".$fun->getIdUsuario();
+        $funcionario = $con->prepare($sql2);
+        $funcionario->execute();
+        
+        $sql3 = "UPDATE tb_funcionario SET rg = '".$fun->getRg()."', cpf = '".$fun->getCpf()."', cargo = '".$fun->getCargo()."' WHERE id_cadastro =".$fun->getIdUsuario();
+        $funcionario = $con->prepare($sql3);
+        $funcionario->execute();
+        
+        $sql4 = "UPDATE tb_telefone SET ddd = ".$fun->getDdd().", numero = '".$fun->getNumeroTelefone()."' WHERE id_cadastro =".$fun->getIdUsuario();
+        $funcionario = $con->prepare($sql4);
+        $funcionario->execute();
+
+        return $fun;
+    }
+
     public function getCargo(){
         return $this->cargo;
     }

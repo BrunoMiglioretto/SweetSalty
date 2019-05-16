@@ -12,7 +12,7 @@ class Gerente extends Funcionario{
         tb_senha.id_cadastro = $idFuncionario AND tb_telefone.id_cadastro = tb_cadastro.id_cadastro AND tb_telefone.id_cadastro = $idFuncionario AND tb_cadastro.id_cadastro = $idFuncionario;
         ";
         $conexao = new Conexao;
-        $con = $Conexao->conexaoPDO();
+        $con = $conexao->conexaoPDO();
         $funcionario = $con->prepare($queryFuncionario);
         $funcionario->execute();
         return $funcionario;

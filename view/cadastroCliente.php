@@ -7,7 +7,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<title>Cadastro de cliente | Sweet Salty</title>
-		<link rel="icon" href="../food_premium/img/logo.png" type="image/x-icon">
+		<link rel="icon" href="../food_premium/img/logo-min.png" type="image/x-icon">
 		<link href="../food_premium/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../food_premium/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="../food_premium/css/sb-admin.css" rel="stylesheet">
@@ -26,7 +26,7 @@
         </style>
 	</head>
 	<body class="">
-		<a href="logar.php"><nav id="nav"><img src="../food_premium/img/logo.png" class="img"></nav></a>
+		<a href="logar.php"><nav id="nav"><img src="img/logo-min.png" class="img"></nav></a>
 		<br><center><h1>Cadastro de cliente</h1></center>
 		<div class="container-fluid">
 			<div class="card mb-3">

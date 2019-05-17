@@ -115,9 +115,6 @@
                     <li title="Juntar mesas">
                         <a href="../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php">Juntar mesas</a>
                     </li>
-                    <li title="Manual do Usuário">
-                        <a href="">Manual do Usuário</a>
-                    </li>
                 </ul>
             </li>
         </ul>

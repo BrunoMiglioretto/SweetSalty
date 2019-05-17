@@ -13,7 +13,7 @@
         <link href="../css/sb-admin.css" rel="stylesheet">
         <script type="text" src="Cliente/pace.min.js"></script>
         <title>Página Inicial | Sweet Salty</title>
-        <link rel="icon" href="../img/logo.png" type="image/x-icon">
+        <link rel="icon" href="../img/logo-min.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -14,7 +14,7 @@
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <link href="../css/sb-admin.css" rel="stylesheet">
-        <link rel="icon" href="../img/logo.png" type="image/x-icon">
+        <link rel="icon" href="../img/logo-min.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <script src="../alertifyjs/alertify.min.js"></script>
 		<link rel="stylesheet" href="../alertifyjs/css/alertify.min.css">

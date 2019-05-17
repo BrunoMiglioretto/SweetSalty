@@ -45,7 +45,7 @@
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <!-- Estilo Template-->
         <link href="../css/sb-admin.css" rel="stylesheet">
-        <link rel="icon" href="../img/logo.png" type="image/x-icon">
+        <link rel="icon" href="../img/logo-min.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <style>
             .dataTables_filter, .dataTables_length, .dataTables_info, .pagination{

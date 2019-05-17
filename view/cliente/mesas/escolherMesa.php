@@ -18,7 +18,7 @@ if($v)
     <head>
         <meta charset="utf-8">
         <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="icon" href="../../img/logo.png" type="image/x-icon">
+        <link rel="icon" href="../../img/logo-min.png" type="image/x-icon">
         <title>Mesas | Sweet Salty</title>
         <link href='mesaStyle.css' rel='stylesheet'>
         <link rel="stylesheet" href="../../alertifyjs/css/alertify.min.css">

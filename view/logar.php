@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Login | Sweet Salty</title>
-        <link rel="icon" href="img/logo.png" type="image/x-icon">
+        <link rel="icon" href="img/logo-min.png" type="image/x-icon">
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/sb-admin.css" rel="stylesheet">
@@ -27,7 +27,7 @@
         </style>
     </head>
     <body class="">
-        <nav id="nav"><a href="../index.php"><img src="img/logo.png" class="img"></a></nav>
+        <nav id="nav"><a href="../index.php"><img src="img/logo-min.png" class="img"></a></nav>
         <div class="container" style="height:400px">
             <div class="card card-login mx-auto mt-5">
                 <center><div class="card-header">Entre com e-mail e senha</div></center>

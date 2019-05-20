@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-                <a class="nav-link" href="../Gerente/Grafico_estoque.php" title="Acesse os gráficos">
+                <a class="nav-link" href="graficos/graficos.php" title="Acesse os gráficos">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">Gráficos</span>
                 </a>
@@ -39,16 +39,13 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                     <li>
-                        <a href="lista_clientes.php">Clientes</a>
-                    </li>
-                    <li>
                         <a href="crudFuncionario/listaFuncionarios.php">Funcionários</a>
                     </li>
                     <li>
-                        <a href="lista_cardapio.php">Cardápio</a>
+                        <a href="">Clientes</a>
                     </li>
                     <li>
-                        <a href="Estoque1.php">Estoque</a>
+                        <a href="">Cardápio</a>
                     </li>
                 </ul>
             </li>

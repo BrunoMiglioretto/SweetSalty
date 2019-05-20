@@ -23,4 +23,15 @@ class Cardapio extends Alimento{
 		$cardapio->execute();
 		return $cardapio;
 	}
+
+	public static function visualizarTodosAlimentos(){
+		$sql = "SELECT * FROM tb_cardapio INNER JOIN tb_cardapio_subcat
+				ON tb_cardapio.id_cardapio_subcat = tb_cardapio_subcat.id_cardapio_subcat INNER JOIN tb_cardapio_cat
+				ON tb_cardapio_subcat.id_cardapio_cat = tb_cardapio_cat.id_cardapio_cat";
+		$conexao = new Conexao;
+		$con = $conexao->conexaoPDO();
+		$cardapio = $con->prepare($sql);
+		$cardapio->execute();
+		return $cardapio;
+	}
 }

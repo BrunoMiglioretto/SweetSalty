@@ -79,7 +79,7 @@
 											<div class="col-sm-4 form-group">
 												<label>Cargo</label>
 												<select name='cargo' class="form-control" required>
-													<option <?PHP if($cargo == 'Cozinheiro'){			echo "selected";}?>   value='Cozinha'>Cozinheiro</option>
+													<option <?PHP if($cargo == 'Cozinheiro'){			echo "selected";}?>   value='Cozinheiro'>Cozinheiro</option>
 													<option <?PHP if($cargo == 'Garcom'){			echo "selected";}?>   value='Garcom'>Garçom</option>
 													<option <?PHP if($cargo == 'Caixa'){ 			echo "selected";}?>   value='Caixa'>Caixa</option>
 													<option <?PHP if($cargo == 'Gerente'){		echo "selected";}?>   value='Gerente'>Gerente</option>
@@ -155,7 +155,7 @@
 				var telefone = regExp2.exec(numero);
 
 				$.ajax({
-					url: '../../../controller/gerenteController/crudFuncionarioController/atualizarFuncionarioController.php',
+					url: '../../controller/gerenteController/crudFuncionarioController/atualizarFuncionarioController.php',
 					method: 'POST',
 					data: {
 						nome: $('input[name=nome]').val(),
@@ -205,7 +205,7 @@
 
 			function alertaCadastro(){
 				alertify.alert("", function() {
-					window.location = "listaFuncionarios.php";
+					window.location = "crudFuncionario/listaFuncionarios.php";
 				}).setting({
 					transition : "zoom",
 					title : "Editado com sucesso!",

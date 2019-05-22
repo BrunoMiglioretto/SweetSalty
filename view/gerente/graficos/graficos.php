@@ -57,7 +57,7 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-7">
-                                                            <div class="grafico" style="width: 350px; height: 350px;">
+                                                            <div class="grafico" id="graficoPizza" style="width: 350px; height: 300px;">
 
                                                             </div>
                                                         </div>
@@ -143,18 +143,19 @@
                                         <div class="col-12">
 
                                             <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Mostrar vendas desdo inicio de(a)</label>
+                                                <label for="exampleFormControlSelect1">Mostrar vendas</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
-                                                            <input type="radio" name="dataVenda" aria-label="Radio button for following text input" checked>
+                                                            <input type="radio" value="select" name="radioDataComeco" aria-label="Radio button for following text input" checked>
                                                         </div>
                                                     </div>
-                                                    <select class="form-control" id="exampleFormControlSelect1">
-                                                        <option>semana</option>
-                                                        <option>mês</option>
-                                                        <option>bimestre</option>
-                                                        <option>trimestre</option>
+                                                    <select class="form-control" id="selectDataComeco">
+                                                        <option value='hoje'>Hoje</option>
+                                                        <option value='semana'>Semana</option>
+                                                        <option value='mes'>Mês</option>
+                                                        <option value='bimestre'>Bimestre</option>
+                                                        <option value='trimestre'>Trimestre</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -171,10 +172,10 @@
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
-                                                            <input type="radio" name="dataVenda" aria-label="Radio button for following text input">
+                                                            <input type="radio" value="inputDate" name="radioDataComeco" aria-label="Radio button for following text input">
                                                         </div>
                                                     </div>
-                                                    <input type="date" class="form-control" placeholder="15/02/2019">
+                                                    <input type="date" class="form-control" id="inputDataComeco" placeholder="15/02/2019">
                                                 </div>
                                             </div>
                                         </div>
@@ -185,7 +186,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="gerarGrafico()">Atualizar</button>
                     </div>
                 </div>
             </div>
@@ -227,8 +228,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Voltar</button>
                     </div>
                 </div>
             </div>
@@ -269,8 +269,8 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
-        <script src="graficos/graficosJs.js"></script>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="graficos/graficosJs.js"></script>
         <script>
         
             $(document).ready(function() {

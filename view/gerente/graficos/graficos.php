@@ -257,6 +257,70 @@
             </div>
         </div>
 
+        <!--------------------------- Modal Pizza Cliente --------------------------->
+        <div class="modal fade bd-example-modal-lg" id="modalPizzaClientes" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Configurações do gráfico pizza</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="">Cadastros</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="radio" value="cadastros" name="radioClientes" aria-label="Radio button for following text input" checked>
+                                                        </div>
+                                                    </div>
+                                                    <input type="text" class="form-control" value="Quatidade de cadastros por sexo" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                                <div class="col-5">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="">Faixa etária</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="radio" value="faixaEtaria" name="radioClientes" aria-label="Radio button for following text input">
+                                                        </div>
+                                                    </div>
+                                                    <select class="form-control" id="faixaEtaria">
+                                                        <option value='anos1020'>10 - 20</option>
+                                                        <option value='anos2030'>20 - 30</option>
+                                                        <option value='anos3040'>30 - 40</option>
+                                                        <option value='anosMais40'>Mais de 40</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="gerarGrafico()">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
 

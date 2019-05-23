@@ -14,7 +14,7 @@ function modalPizzaProdutos() {
 
 function modalPizzaClientes() {
     grafico = "pizzaClientes";
-    console.log("modalPizzaClientes");
+    $('#modalPizzaClientes').modal();
 }
 
 
@@ -162,6 +162,11 @@ function gerarGrafico() {
         case "pizzaProdutos":
             gerarGraficoPizzaProdutos();
             break;
+        case "pizzaClientes":
+            gerarGraficoPizzaClientes();
+            break;
+        default:
+            console.log("Gráfico não inclementado");
     }
 
     /* Verifica se tem item selecionado */
@@ -203,6 +208,13 @@ function alertaDataInvalida() {
 function alertaSemItensVendidos() {
     console.log("Sem itens vendidos");
 }
+
+
+
+// ------------------------ Especificações do s gráficos ------------------------ //
+
+
+// -- Gráfico de pizza -- //
 
 function gerarGraficoPizzaProdutos() {
     conjunto = $("input[name=radioItemGraficoPizzaProduto]:checked").val();
@@ -264,6 +276,22 @@ function gerarGraficoPizzaProdutos() {
             graficoPizza(n);
     });
 }
+
+
+
+
+function gerarGraficoPizzaClientes() {
+    escolhaDado = $("input[name=radioClientes]:checked").val();
+    if(escolhaDado == "cadastros") {
+        $.ajax({
+            url : "../../controller/gerenteController/graficoController/graficoPizzaClientesController/graficoPizzaClientesCadastroController.php",
+        }).done(function(n) {
+            graficoPizza(n);
+        });
+    }
+}
+
+
 
 
 // ------------------------ Google Charts ------------------------ //

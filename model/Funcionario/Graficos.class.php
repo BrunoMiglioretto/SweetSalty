@@ -34,6 +34,17 @@ class Grafico {
         return $dados;
     }
 
+    public function capturarDadosGraficosPizzaClientesCadastro() {
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        
+        $queryCadastros = "SELECT sexo, count(sexo) AS quantidade FROM tb_cliente GROUP BY sexo";
+        $cadastros = $con->prepare($queryCadastros);
+        $cadastros->execute();
+
+        return $cadastros;
+    }
+
     public function capturarDadosGraficosColunas() {
         // $conexao = new Conexao;
         // $con = $conexao->conexaoPDO();

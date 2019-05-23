@@ -2,32 +2,64 @@
 
 class Grafico {
 
-    public function capturarDadosGraficosPizza($listaItens, $dataComeco) {
+    public function capturarDadosGraficosPizzaProdutos($conjunto, $dataComeco) {
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();
-        
-        $itensString = "";
-        
-        foreach($listaItens as $key => $item) {
-
-            if(isset($listaItens[$key + 1]))
-                $parteComando = "tb_historico_alimento_pedido.id_cardapio = $item OR ";
-            else
-                $parteComando = "tb_historico_alimento_pedido.id_cardapio = $item";
-
-            $itensString = $itensString.$parteComando;
+    
+        if($conjunto == "categorias") {
+            $queryDados = "SELECT tb_cardapio_cat.nome_cardapio_cat, SUM(quant) AS quantidade  
+                FROM tb_historico_alimento_pedido INNER JOIN tb_cardapio 
+                ON tb_historico_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio INNER JOIN tb_cardapio_subcat
+                ON tb_cardapio.id_cardapio_subcat = tb_cardapio_subcat.id_cardapio_subcat INNER JOIN tb_cardapio_cat
+                ON tb_cardapio_subcat.id_cardapio_cat = tb_cardapio_cat.id_cardapio_cat INNER JOIN tb_historico_pedido
+                ON tb_historico_pedido.id_historico_pedido = tb_historico_alimento_pedido.id_historico_pedido
+                WHERE date_historico > '$dataComeco'
+                GROUP BY tb_cardapio_cat.id_cardapio_cat";
         }
 
-        $queryGraficoPizza = "SELECT tb_historico_alimento_pedido.id_cardapio, tb_cardapio.nome, SUM(quant) AS quantidade  
-            FROM tb_historico_alimento_pedido INNER JOIN tb_cardapio ON
-            tb_historico_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio
-            WHERE $itensString 
-            GROUP BY tb_historico_alimento_pedido.id_cardapio";
-       
-        $graficoPizza = $con->prepare($queryGraficoPizza);
-        $graficoPizza->execute();
+        else{
+            $queryDados = "SELECT tb_cardapio_subcat.nome_cardapio_subcat, SUM(quant) AS quantidade  
+                FROM tb_historico_alimento_pedido INNER JOIN tb_cardapio 
+                ON tb_historico_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio INNER JOIN tb_cardapio_subcat
+                ON tb_cardapio.id_cardapio_subcat = tb_cardapio_subcat.id_cardapio_subcat INNER JOIN tb_cardapio_cat
+                ON tb_cardapio_subcat.id_cardapio_cat = tb_cardapio_cat.id_cardapio_cat INNER JOIN tb_historico_pedido
+                ON tb_historico_pedido.id_historico_pedido = tb_historico_alimento_pedido.id_historico_pedido
+                WHERE tb_cardapio_cat.nome_cardapio_cat = '$conjunto' AND date_historico > '$dataComeco'
+                GROUP BY tb_cardapio_subcat.id_cardapio_subcat";
+        }
 
-        return $graficoPizza;
+        $dados = $con->prepare($queryDados);
+        $dados->execute();
+
+        return $dados;
+    }
+
+    public function capturarDadosGraficosColunas() {
+        // $conexao = new Conexao;
+        // $con = $conexao->conexaoPDO();
+        
+        // $itensString = "";
+        
+        // foreach($listaItens as $key => $item) {
+
+        //     if(isset($listaItens[$key + 1]))
+        //         $parteComando = "tb_historico_alimento_pedido.id_cardapio = $item OR ";
+        //     else
+        //         $parteComando = "tb_historico_alimento_pedido.id_cardapio = $item";
+
+        //     $itensString = $itensString.$parteComando;
+        // }
+
+        // $queryGraficoPizza = "SELECT tb_historico_alimento_pedido.id_cardapio, tb_cardapio.nome, SUM(quant) AS quantidade  
+        //     FROM tb_historico_alimento_pedido INNER JOIN tb_cardapio ON
+        //     tb_historico_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio
+        //     WHERE $itensString 
+        //     GROUP BY tb_historico_alimento_pedido.id_cardapio";
+       
+        // $graficoPizza = $con->prepare($queryGraficoPizza);
+        // $graficoPizza->execute();
+
+        // return $graficoPizza;
     }
 
 }

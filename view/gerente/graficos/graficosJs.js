@@ -9,12 +9,12 @@ grafico = "pizzaProdutos";
 
 function modalPizzaProdutos() {
     grafico = "pizzaProdutos";
-    $('#modalPizza').modal();
+    $('#modalPizzaProdutos').modal();
 }
 
 function modalPizzaClientes() {
     grafico = "pizzaClientes";
-    console.log("modalClientes");
+    console.log("modalPizzaClientes");
 }
 
 
@@ -157,23 +157,61 @@ function removerItemGrafico(idCardapio, itensGrafico) {
 // ------------------------ gráfico ------------------------ //
 
 function gerarGrafico() {
-    let itensGrafico = escolhaListaItens(grafico);
-    let itensGraficoTamanho = 0;
 
-    for(let i = 0; i < itensGrafico.length; i++){
-        if(itensGrafico[i] != undefined)
-            itensGraficoTamanho++;
-    }
-    
-    if(itensGraficoTamanho < 2){
-        alertaSemItens();
-        return;
+    switch(grafico) {
+        case "pizzaProdutos":
+            gerarGraficoPizzaProdutos();
+            break;
     }
 
+    /* Verifica se tem item selecionado */
+
+    // let itensGrafico = escolhaListaItens(grafico);
+    // let itensGraficoTamanho = 0;
+
+    // for(let i = 0; i < itensGrafico.length; i++){
+    //     if(itensGrafico[i] != undefined)
+    //         itensGraficoTamanho++;
+    // }
     
+    // if(itensGraficoTamanho < 2){
+    //     alertaSemItens();
+    //     return;
+    // }
+
+    
+    // switch(grafico) {
+    //     case "pizzaProdutos":
+    //         gerarGraficoPizzaProdutos(dataComeco);
+    //         break;
+    //     case "pizzaClientes":
+    //         console.log("Gerar grafico clientes");
+    //         break;
+    // }
+}
+
+// ------------------------ Alertas ------------------------ //
+
+function alertaSemItens() {
+    console.log("Sem itens suficientes selecionados");
+}
+
+function alertaDataInvalida() {
+    console.log("Data invalida");
+}
+
+function alertaSemItensVendidos() {
+    console.log("Sem itens vendidos");
+}
+
+function gerarGraficoPizzaProdutos() {
+    conjunto = $("input[name=radioItemGraficoPizzaProduto]:checked").val();
+
+    if(conjunto != "categorias")
+        conjunto = $("#subCategoriaPizzaProdutos").val();
+    
+
     formaDataEscolha = $("input[name=radioDataComeco]:checked").val();
-    
-
     let d = new Date();
 
     if(formaDataEscolha == "select") {
@@ -198,7 +236,7 @@ function gerarGrafico() {
                 break;
         }
     } else {
-        let dataInput = $("#inputDataComeco").val();
+        let dataInput = $("#radioItemGraficoPizzaProduto").val();
 
         if(dataInput == "") {
             alertaDataInvalida();
@@ -209,39 +247,21 @@ function gerarGrafico() {
         d.setDate(d.getDate() + 1);
     }
 
-    dataComeco = `${d.getFullYear()}/${d.getMonth()}/${d.getDate()}`;
+    dataComeco = `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`;
 
-    switch(grafico) {
-        case "pizzaProdutos":
-            gerarGraficoPizzaProdutos(dataComeco);
-            break;
-        case "pizzaClientes":
-            console.log("Gerar grafico clientes");
-            break;
-    }
-}
 
-// ------------------------ Alertas ------------------------ //
-
-function alertaSemItens() {
-    console.log("Sem itens suficientes selecionados");
-}
-
-function alertaDataInvalida() {
-    console.log("Data invalida");
-}
-
-function gerarGraficoPizzaProdutos(dataComeco) {
-    
     $.ajax({
         url : "../../controller/gerenteController/graficoController/graficoPizzaProdutosController.php",
         method : "POST",
         data : {
-            itens : itensGraficoPizzaProdutos,
+            conjunto : conjunto,
             dataComeco : dataComeco
         }
     }).done(function(n) {
-        graficoPizza(n);
+        if((JSON.parse(n)).data == null)
+            alertaSemItensVendidos();
+        else
+            graficoPizza(n);
     });
 }
 

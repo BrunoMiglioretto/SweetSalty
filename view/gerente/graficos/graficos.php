@@ -42,11 +42,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-linha" role="tab" aria-controls="pills-linha" aria-selected="false">Linha</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-area" role="tab" aria-controls="pills-area" aria-selected="false">Área</a>
-                                </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
+
+
+                                <!--------------------------- Sessão Pizza  --------------------------->
+
                                 <div class="tab-pane fade show active" id="pills-pizza" role="tabpanel" aria-labelledby="pills-home-tab">    
                                     <div class="row">
                                         <div class="col-12">
@@ -88,9 +89,51 @@
                                         </div> 
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="pills-coluna" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+
+                                 <!--------------------------- Sessão Pizza  --------------------------->
+
+                                <div class="tab-pane fade" id="pills-coluna" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <!-- <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Gráfico de Pizza
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-7">
+                                                            <div class="grafico" id="graficoPizza" style="width: 350px; height: 300px;">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <div class="card" style="margin: 20px;">
+                                                                <div class="card-header">
+                                                                    Opções
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-12 text-center mt-2">
+                                                                            <div class="btn-group " data-toggle="buttons">
+                                                                                <label class="btn btn-primary active" onclick="modalPizzaProdutos()">
+                                                                                    Produtos
+                                                                                </label>
+                                                                                <label class="btn btn-primary" onclick="modalPizzaClientes()">
+                                                                                    Clientes
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div> -->
+                                </div>
                                 <div class="tab-pane fade" id="pills-linha" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-                                <div class="tab-pane fade" id="pills-area" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
                             </div>
                         </div>
                     </div>
@@ -107,8 +150,8 @@
 
 
 
-        <!--------------------------- Modal Pizza  --------------------------->
-        <div class="modal fade bd-example-modal-lg" id="modalPizza" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <!--------------------------- Modal Pizza Produtos --------------------------->
+        <div class="modal fade bd-example-modal-lg" id="modalPizzaProdutos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -123,25 +166,47 @@
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col-12">
-                                            <label>Itens no gráfico</label>
-                                            <div class="list-group" id="caixaDeItensGraficoPizzaProdutos">
-                                                <!-- <button type="button" class="list-group-item list-group-item-action" id="item160" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(160)">Barra de cereal</button>
-                                                <button type="button" class="list-group-item list-group-item-action" id="item161" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(161)">Cookies</button>
-                                                <button type="button" class="list-group-item list-group-item-action" id="item162" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(162)">Coxinha Assada</button> -->
+                                            <div class="form-group">
+                                                <label for="">Item do gráfico</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="radio" value="categorias" name="radioItemGraficoPizzaProduto" aria-label="Radio button for following text input" checked>
+                                                        </div>
+                                                    </div>
+                                                    <input type="text" class="form-control" value="Categorias" disabled>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-12">
-                                            <button class="btn btn-primary mt-3" onclick="$(`#modalItem`).modal()">Adicionar item</button>
+                                        <div class="col-12 text-center">
+                                            ou
                                         </div>
                                     </div>
-
+                                    <div class="row">
+                                        <div class="col-12 mt-4">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="radio" value="inputDate" name="radioItemGraficoPizzaProduto" aria-label="Radio button for following text input">
+                                                        </div>
+                                                    </div>
+                                                    <select class="form-control" id="subCategoriaPizzaProdutos">
+                                                        <option value='bebidas'>Bebidas</option>
+                                                        <option value='doces'>Doces</option>
+                                                        <option value='salgados'>Salgados</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-1"></div>
+                                <div class="col-5">
                                     <div class="row">
                                         <div class="col-12">
-
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Mostrar vendas</label>
                                                 <div class="input-group">

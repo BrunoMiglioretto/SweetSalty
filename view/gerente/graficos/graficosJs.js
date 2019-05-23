@@ -284,7 +284,18 @@ function gerarGraficoPizzaClientes() {
     escolhaDado = $("input[name=radioClientes]:checked").val();
     if(escolhaDado == "cadastros") {
         $.ajax({
-            url : "../../controller/gerenteController/graficoController/graficoPizzaClientesController/graficoPizzaClientesCadastroController.php",
+            url : "../../controller/gerenteController/graficoController/graficoPizzaClientesController/graficoPizzaClientesCadastroController.php"
+        }).done(function(n) {
+            graficoPizza(n);
+        });
+    } else {
+        faixaEtaria = $("#faixaEtaria").val();
+        $.ajax({
+            url : "../../controller/gerenteController/graficoController/graficoPizzaClientesController/graficoPizzaClientesFaixaEtariaController.php",
+            method : "POST",
+            data : {
+                faixaEtaria : faixaEtaria
+            }
         }).done(function(n) {
             graficoPizza(n);
         });

@@ -45,6 +45,37 @@ class Grafico {
         return $cadastros;
     }
 
+    public function capturarDadosGraficosPizzaClientesFaixaEtaria($faixa) {
+        $dataMinima = new DateTime();
+        $dataMaxina = new DateTime();
+        
+        if($faixa == "anos1020"){
+            $faixaMinima = $dataMinima->modify('-10 year');
+            $faixaMaxima = $dataMaxina->modify('-20 year');
+        }else if($faixa == "anos2030") {
+            $faixaMinima = $dataMinima->modify('-20 year');
+            $faixaMaxima = $dataMaxina->modify('-30 year');
+        }else if($faixa == "anos3040") {
+            $faixaMinima = $dataMinima->modify('-30 year');
+            $faixaMaxima = $dataMaxina->modify('-40 year');
+        }else if($faixa == "anosMais40") {
+            $faixaMinima = $dataMinima->modify('-40 year');
+            $faixaMaxima = $dataMaxina->modify('-120 year');
+        }
+
+        $minima = $faixaMinima->format('Y-m-d');
+        $maxima = $faixaMaxima->format('Y-m-d');
+
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+
+        $queryCadastros = "SELECT sexo, count(sexo) AS quantidade FROM tb_cliente WHERE data_nascimento > '$maxima' AND data_nascimento < '$minima' GROUP BY sexo";
+        $cadastros = $con->prepare($queryCadastros);
+        $cadastros->execute();
+
+        return $cadastros;
+    }
+
     public function capturarDadosGraficosColunas() {
         // $conexao = new Conexao;
         // $con = $conexao->conexaoPDO();

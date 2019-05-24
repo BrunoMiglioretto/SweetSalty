@@ -45,7 +45,7 @@
           		</div>
 	    		<div class="card-body" class='print'>
 	    			<div class="table-responsive" class='print' style="margin-top: 15px;">
-                    	<table class="table table-bordered" id="dataTable" width="100%" class='print'>
+                    	<table class="table table-bordered" id="" width="100%" class='print'>
                             <thead>
                                 <tr>
                                     <th>Nome</th>

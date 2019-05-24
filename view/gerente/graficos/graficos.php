@@ -17,6 +17,9 @@
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <link href="../css/sb-admin.css" rel="stylesheet">
+        <link href="../alertifyjs/css/alertify.min.css" rel="stylesheet">
+		<link href="../alertifyjs/css/themes/default.min.css" rel="stylesheet">
+		<script src="../alertifyjs/alertify.min.js"></script>
 	</head>
 	<body id="page-top">
 		<?php include 'menuLateral.php'?>
@@ -90,19 +93,19 @@
                                     </div>
                                 </div>
 
-                                 <!--------------------------- Sessão Pizza  --------------------------->
+                                 <!--------------------------- Sessão coluna  --------------------------->
 
                                 <div class="tab-pane fade" id="pills-coluna" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                    <!-- <div class="row">
+                                    <div class="row">
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    Gráfico de Pizza
+                                                    Gráfico de Coluna
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-7">
-                                                            <div class="grafico" id="graficoPizza" style="width: 350px; height: 300px;">
+                                                            <div class="grafico" id="graficoColuna" style="width: 500px; height: 300px;">
 
                                                             </div>
                                                         </div>
@@ -115,11 +118,8 @@
                                                                     <div class="row">
                                                                         <div class="col-12 text-center mt-2">
                                                                             <div class="btn-group " data-toggle="buttons">
-                                                                                <label class="btn btn-primary active" onclick="modalPizzaProdutos()">
+                                                                                <label class="btn btn-primary active" onclick="modalColunaProdutos()">
                                                                                     Produtos
-                                                                                </label>
-                                                                                <label class="btn btn-primary" onclick="modalPizzaClientes()">
-                                                                                    Clientes
                                                                                 </label>
                                                                             </div>
                                                                         </div>
@@ -131,7 +131,7 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-linha" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
                             </div>
@@ -321,6 +321,88 @@
             </div>
         </div>
 
+        <!--------------------------- Modal Coluna Produtos --------------------------->
+        <div class="modal fade bd-example-modal-lg" id="modalColunaProdutos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Configurações do gráfico coluna</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label>Itens no gráfico</label>
+                                        <div class="list-group" id="caixaDeItensGraficoColunaProdutos">
+                                                <!-- <button type="button" class="list-group-item list-group-item-action" id="item160" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(160)">Barra de cereal</button>
+                                                <button type="button" class="list-group-item list-group-item-action" id="item161" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(161)">Cookies</button>
+                                                <button type="button" class="list-group-item list-group-item-action" id="item162" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(162)">Coxinha Assada</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary mt-3" onclick="$(`#modalItem`).modal()">Adicionar item</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Mostrar vendas desdo inicio de(a)</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="radio" value="select" name="inputColunaProdutosDataComeco" aria-label="Radio button for following text input" checked>
+                                                        </div>
+                                                    </div>
+                                                    <select class="form-control" id="selectColunaProdutosDataComeco">
+                                                        <option value="hoje">Hoje</option>
+                                                        <option value="semana">Semana</option>
+                                                        <option value="mes">Mês</option>
+                                                        <option value="bimestre">Bimestre</option>
+                                                        <option value="trimestre">Trimestre</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            ou
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 mt-4">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="radio" name="inputColunaProdutosDataComeco" aria-label="Radio button for following text input">
+                                                        </div>
+                                                    </div>
+                                                    <input type="date" id="dataColunaProdutos" class="form-control" placeholder="15/02/2019">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="gerarGraficoColunaProdutos()">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

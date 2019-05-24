@@ -76,32 +76,35 @@ class Grafico {
         return $cadastros;
     }
 
-    public function capturarDadosGraficosColunas() {
-        // $conexao = new Conexao;
-        // $con = $conexao->conexaoPDO();
+    public function capturarDadosGraficosColunasProdutos($listaItens, $dataComeco) {
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
         
-        // $itensString = "";
+        $itensString = "";
         
-        // foreach($listaItens as $key => $item) {
+        foreach($listaItens as $key => $item) {
 
-        //     if(isset($listaItens[$key + 1]))
-        //         $parteComando = "tb_historico_alimento_pedido.id_cardapio = $item OR ";
-        //     else
-        //         $parteComando = "tb_historico_alimento_pedido.id_cardapio = $item";
+            if(isset($listaItens[$key + 1]))
+                $parteComando = "tb_historico_alimento_pedido.id_cardapio = $item OR ";
+            else
+                $parteComando = "tb_historico_alimento_pedido.id_cardapio = $item";
 
-        //     $itensString = $itensString.$parteComando;
-        // }
+            $itensString = $itensString.$parteComando;
+        }
 
-        // $queryGraficoPizza = "SELECT tb_historico_alimento_pedido.id_cardapio, tb_cardapio.nome, SUM(quant) AS quantidade  
-        //     FROM tb_historico_alimento_pedido INNER JOIN tb_cardapio ON
-        //     tb_historico_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio
-        //     WHERE $itensString 
-        //     GROUP BY tb_historico_alimento_pedido.id_cardapio";
+        $queryGraficoColuna = "SELECT tb_historico_alimento_pedido.id_cardapio, tb_cardapio.nome, 
+        SUM(CASE WHEN date_historico > '$dataComeco' THEN quant ELSE 0 END) AS quantidade  
+            FROM tb_historico_alimento_pedido INNER JOIN tb_cardapio ON
+            tb_historico_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio INNER JOIN tb_historico_pedido ON
+            tb_historico_alimento_pedido.id_historico_pedido = tb_historico_pedido.id_historico_pedido
+            WHERE $itensString
+            GROUP BY tb_historico_alimento_pedido.id_cardapio";
+        
        
-        // $graficoPizza = $con->prepare($queryGraficoPizza);
-        // $graficoPizza->execute();
+        $graficoColuna = $con->prepare($queryGraficoColuna);
+        $graficoColuna->execute();
 
-        // return $graficoPizza;
+        return $graficoColuna;
     }
 
 }

@@ -2,6 +2,7 @@
 
 itensGraficoPizzaProdutos = new Array;
 itensGraficoPizzaClientes = new Array;
+itensGraficoColunaProdutos = new Array;
 
 grafico = "pizzaProdutos";
 
@@ -15,6 +16,11 @@ function modalPizzaProdutos() {
 function modalPizzaClientes() {
     grafico = "pizzaClientes";
     $('#modalPizzaClientes').modal();
+}
+
+function modalColunaProdutos() {
+    grafico = "colunaProdutos";
+    $('#modalColunaProdutos').modal();
 }
 
 
@@ -53,6 +59,8 @@ function escolhaListaItens(grafico) {
             return itensGraficoPizzaProdutos;
         case "pizzaClientes":
             return itensGraficoPizzaClientes;
+        case "colunaProdutos":
+            return itensGraficoColunaProdutos;
     }
 }
 
@@ -65,6 +73,9 @@ function attArrayItens(itensGrafico, grafico) {
             break;
         case "pizzaClientes":
             itensGraficoPizzaClientes = itensGrafico;
+            break;
+        case "colunaProdutos":
+            itensGraficoColunaProdutos = itensGrafico;
             break;
     }
 }
@@ -100,11 +111,11 @@ function addSecondaryBtn(botao) {
 // ------------------------ ADD/REMOVE item lista ------------------------ //
 
 function addItemLista(idCardapio, nomeCardapio) {
-    $("#caixaDeItensGraficoPizzaProdutos").append(`<button type='button' class='list-group-item list-group-item-action' value='${idCardapio}' id='item${idCardapio}'>${nomeCardapio}</button>`);
+    $("#caixaDeItensGraficoColunaProdutos").append(`<button type='button' class='list-group-item list-group-item-action' value='${idCardapio}' id='item${idCardapio}'>${nomeCardapio}</button>`);
 
     $(`#item${idCardapio}`).click(function() {
         let idCardapio = $(this).val();
-        $(`#caixaDeItensGraficoPizzaProdutos #item${idCardapio}`).remove();
+        $(`#caixaDeItensGraficoColunaProdutos #item${idCardapio}`).remove();
         
         let itensGrafico = escolhaListaItens(grafico);
         removerItemGrafico(idCardapio, itensGrafico);
@@ -114,7 +125,7 @@ function addItemLista(idCardapio, nomeCardapio) {
 }
 
 function removerItemLista(idCardapio) {
-    $(`#caixaDeItensGraficoPizzaProdutos #item${idCardapio}`).remove();
+    $(`#caixaDeItensGraficoColunaProdutos #item${idCardapio}`).remove();
 }
 
 
@@ -124,8 +135,10 @@ function removerItemLista(idCardapio) {
 
 // ------------------------ ADD/REMOVE item gráfico ------------------------ //
 
-function addItemGrafico(idCardapio, itensGrafico) {
+function addItemGrafico(idCardapio, asdf) {
     let i = 0;
+
+    let itensGrafico = escolhaListaItens(grafico);
 
     while(1) {
         if(itensGrafico.length == 0 || itensGrafico[i] == undefined){
@@ -136,7 +149,7 @@ function addItemGrafico(idCardapio, itensGrafico) {
             i++;
     }
 
-    return itensGrafico;
+    attArrayItens(itensGrafico, grafico);
     
 }
 
@@ -199,14 +212,32 @@ function gerarGrafico() {
 
 function alertaSemItens() {
     console.log("Sem itens suficientes selecionados");
+    alertify.alert("").setting({
+        transition : "zoom",
+        title : "Sem item(s)",
+        message : "Sem itens suficientes selecionados",
+        movable : false
+    });
 }
 
 function alertaDataInvalida() {
     console.log("Data invalida");
+    alertify.alert("").setting({
+        transition : "zoom",
+        title : "Data invalida",
+        message : "A data selecionada é invalida",
+        movable : false
+    });
 }
 
 function alertaSemItensVendidos() {
     console.log("Sem itens vendidos");
+    alertify.alert("").setting({
+        transition : "zoom",
+        title : "Sem itens vendidos",
+        message : "Nenhum item do campo selecionado foi vendido desde a data definida",
+        movable : false
+    });
 }
 
 
@@ -304,6 +335,63 @@ function gerarGraficoPizzaClientes() {
 
 
 
+function gerarGraficoColunaProdutos() {
+
+    formaDataEscolha = $("input[name=inputColunaProdutosDataComeco]:checked").val();
+    let d = new Date();
+
+    if(formaDataEscolha == "select") {
+        
+        dataEscolha = $("#selectColunaProdutosDataComeco").val();
+        
+        switch(dataEscolha) {
+            case "hoje":
+                d.setDate(d.getDate());
+                break;
+            case "semana":
+                d.setDate(d.getDate() - 7);
+                break;
+            case "mes":
+                d.setMonth(d.getMonth() - 1);
+                break;
+            case "bimestre":
+                d.setMonth(d.getMonth() - 2);
+                break;
+            case "trimestre":
+                d.setMonth(d.getMonth() - 3);
+                break;
+        }
+    } else {
+        let dataInput = $("#dataColunaProdutos").val();
+
+        if(dataInput == "") {
+            alertaDataInvalida();
+            return;
+        }
+
+        d = new Date();
+        d.setDate(d.getDate() + 1);
+    }
+
+    dataComeco = `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`;
+
+    console.log(itensGraficoColunaProdutos);
+
+    $.ajax({
+        url : "../../controller/gerenteController/graficoController/graficoColunaProdutosController.php",
+        method : "POST",
+        data : {
+            itens : itensGraficoColunaProdutos,
+            dataComeco : dataComeco
+        }
+    }).done(function(n) {
+        console.log(n);
+        if((JSON.parse(n)).data == null)
+            alertaSemItensVendidos();
+        else
+            graficoColuna(n);
+    });
+}
 
 // ------------------------ Google Charts ------------------------ //
 
@@ -339,4 +427,41 @@ function graficoPizza(dados) {
 
         var chart = new google.visualization.PieChart(document.getElementById('graficoPizza'));
         chart.draw(data, options);
+}
+
+
+function graficoColuna(dados) {
+
+    
+    let itens = JSON.parse(dados);
+    let legenda = "[[\"Produto\", \"Vendas\"],";
+    let i = 0;
+
+    while(i < Object.keys(itens.data).length) {
+        legenda += `["${itens.data[i].nome}",`;
+        if((i + 1) < Object.keys(itens.data).length)
+            legenda += `${itens.data[i].quantidade}],`;
+        else
+            legenda += `${itens.data[i].quantidade}]`;
+        i++;
+    }
+
+    legenda += "]";
+
+    console.log(legenda);
+    
+    jsonLegenda = JSON.parse(legenda);
+
+    var data = google.visualization.arrayToDataTable(jsonLegenda);
+
+    var options = {
+        title: itens.titulo,
+        'width':500,
+        'height':300
+    };
+
+    var chart = new google.visualization.ColumnChart(
+        document.getElementById('graficoColuna'));
+
+    chart.draw(data, options);
 }

@@ -1,4 +1,10 @@
+ErrorDocument 404 https://sweetsalty.net.br/view/paginaErro/404.html
+
+
 RewriteEngine On
-    RewriteCond %{HTTPS} off
-    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} ^/404/$
+RewriteRule ^(.*)$ 404.html [L]
+
 

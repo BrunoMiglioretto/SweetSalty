@@ -668,8 +668,8 @@ input::-ms-input-placeholder {
     z-index: 2;
 }
 .main_home{
-    padding-top: 250px;
-    padding-bottom: 250px;
+    padding-top: 30vh;
+    padding-bottom: 25vh;
     display: block;
 }
 

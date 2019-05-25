@@ -7,16 +7,16 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<title>Cadastro de cliente | Sweet Salty</title>
-		<link rel="icon" href="../food_premium/img/logo-min.png" type="image/x-icon">
-		<link href="../food_premium/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="../food_premium/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="../food_premium/css/sb-admin.css" rel="stylesheet">
+		<link rel="icon" href="img/logo-min.png" type="image/x-icon">
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="css/sb-admin.css" rel="stylesheet">
 		<link href="alertifyjs/css/alertify.min.css" rel="stylesheet">
 		<link href="alertifyjs/css/themes/default.min.css" rel="stylesheet">
 		<script src="alertifyjs/alertify.min.js"></script>
-		<script src="../food_premium/vendor/jquery/jquery.min.js"></script>
-		<script src="../food_premium/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="../food_premium/vendor/jquery-easing/jquery.easing.min.js"></script>
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 		<script src="vendor/jquery.mask.min.js"></script>		
 		    <style>
             .img{

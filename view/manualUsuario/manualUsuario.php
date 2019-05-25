@@ -45,7 +45,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mt-4 mb-4">
-                    <h1 style="font-family: 'Raleway', sans-serif; font-size:40px;">Manual do Usário</h1>
+                    <h1 style="font-family: 'Raleway', sans-serif; font-size:40px;">Manual do Usuário</h1>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <p class="lead">
-                                                        2° Clique no botão "Preencha todos os campos corretamente".
+                                                        2° Preencha todos os campos corretamente e clique em "Salvar".
                                                     </p>
                                                 </div>
                                             </div>
@@ -95,7 +95,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <p class="lead">
-                                                        3° Valide seu cadastro indo na caixa de e-mails."
+                                                        3° Para validar a sua conta, clique em "Confirmar identificação" no e-mail que enviamos para você.
                                                     </p>
                                                 </div>
                                             </div>
@@ -123,7 +123,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <p class="lead">
-                                                        1° alternativa: Preencha os campos e clique em entrar.
+                                                        1° Alternativa: Na tela de login, preencha os campos e-mail e senha, após isso, clique em entrar.
                                                     </p>
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <p class="lead">
-                                                        2° alternativa: Faça login com o Google clicando no botão Google.
+                                                        2° Alternativa: Faça login com o Google clicando no botão Google.
                                                     </p>
                                                 </div>
                                             </div>
@@ -148,13 +148,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Como juntar mesas? -->
+                                <!-- Como juntar mesa? -->
 
                                 <div class="card">
                                     <div class="card-header" id="heading3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"> 
                                         <h5 class="mb-0">
                                             <button class="btn collapsed" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >
-                                                Como juntar mesas?
+                                                Como juntar mesa?
                                             </button>
                                         </h5>
                                     </div>

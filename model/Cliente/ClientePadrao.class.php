@@ -85,6 +85,8 @@ class ClientePadrao extends Cliente{
         if($cb->getSenha() == false)
             return false;
 
+        $cb->encriptSenha($informacoes[6]);
+
 
         $conexao = new Conexao;
         $con = $conexao->conexaoPDO();

@@ -119,7 +119,7 @@
 
 			function enviarMundacasPerfil() {
 
-				numeroTodo = $("#numeroTelefone").val();
+				numeroTodo = $("input[name=numeroTelefone]").val();
 
 				var regExp = /\d{2}/;
 				var ddd = regExp.exec(numeroTodo);
@@ -137,8 +137,8 @@
 						nomeCompleto : $('input[name=nomeCompleto').val(),
 						email : $('input[name=email]').val(),
 						sexo : $("input:checked").val(),
-						ddd : ddd,
-						numeroTel : numeroTel,
+						ddd : ddd[0],
+						numeroTel : numeroTel[0],
 						dataNascimento : $('input[name=dataNascimento]').val(),
 					}
 				}).done(function(n) {

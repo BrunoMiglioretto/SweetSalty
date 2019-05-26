@@ -132,16 +132,13 @@
 
 			function enviarMundacasPerfil() {
 
-				numeroTodo = $("#numeroTelefone").val();
+				numeroTodo = $("input[name=numeroTelefone]").val();
 				
 				var regExp = /\d{2}/;
 				var ddd = regExp.exec(numeroTodo);
-				// console.log(ddd);
 
 				var regExp2 = /\d{5}-\d{4}/;
-				var numero = $('input[name=numeroTelefone]').val();
 				var numeroTel = regExp2.exec(numeroTodo);
-				// console.log(numeroTel);
 
 				$.ajax({
 					url: '../../controller/clienteController/editarPerfilPadraoController.php',
@@ -150,13 +147,16 @@
 						nomeCompleto : $('input[name=nomeCompleto').val(),
 						email : $('input[name=email]').val(),
 						sexo : $("input:checked").val(),
-						ddd : ddd,
-						numeroTel : numeroTel,
+						ddd : ddd[0],
+						numeroTel : numeroTel[0],
 						dataNascimento : $('input[name=dataNascimento]').val(),
 						senha : $('input[name=senha]').val(),
 						confSenha : $('input[name=confSenha]').val()
 					}
 				}).done(function(n) {
+
+					console.log(n);
+
 					if(n == "true") {
 						alertify.alert("Editado com Sucesso","Seu perfil foi editado com sucesso!", function() {
 							window.location = "index.php";

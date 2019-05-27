@@ -30,7 +30,7 @@ if($v)
     </head>
     <body style="background-color:#FFF">
         <div class="topo">
-            <p class="titulo">Em qual mesa você está?</p>
+            <p class="titulo trn">Em qual mesa você está?</p>
         </div>
         <div class="container">
             <div class="row">
@@ -56,6 +56,8 @@ if($v)
                 </div>
             </div>
         </div>
+        <script src="../../dicionario/jquery.translate.js"></script>
+        <script src="../../dicionario/loginCadastroManualCliente.js"></script>
         <script>
             function enviarMesa(mesa){
                 $.ajax({
@@ -79,6 +81,10 @@ if($v)
                     'movable' : false
                 });
             }
+
+            $(document).ready(function() {
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
+            });
         </script>
     </body>
 </html>

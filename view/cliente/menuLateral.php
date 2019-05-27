@@ -42,7 +42,7 @@
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <a class="navbar-brand desktop" style="overflow:hidden; width:auto" href="../cliente/index.php" title="Sweet Salty | Voltar para página inicial">
-        <h6 class='desktop-t'>Sweet Salty | Seja bem vindo(a), <?= $nomeCompleto?></h6>
+        <h6 class='desktop-t trn'>Sweet Salty | Seja bem vindo(a), <?= $nomeCompleto?></h6>
     </a>
     <a class="navbar-brand moble" href="" title="Sweet Salty | Voltar para página inicial">
         <h6 class='moble-m'>Sweet Salty</h6>
@@ -55,49 +55,49 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Acesse o cardápio">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" title="Cardápio" href="#collapseExamplePages" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-book" ></i>
-                    <span class="nav-link-text">Cardápio</span>
+                    <span class="nav-link-text trn">Cardápio</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                     <li title="Bebidas">
-                        <a href="listasCardapio/listaBebidas.php">Bebidas</a>
+                        <a href="listasCardapio/listaBebidas.php" class="trn">Bebidas</a>
                     </li>
                     <li title="Doces">
-                        <a href="listasCardapio/listaDoces.php">Doces</a>
+                        <a href="listasCardapio/listaDoces.php" trn="trn">Doces</a>
                     </li>
                     <li title="Salgados">
-                        <a href="listasCardapio/listaSalgados.php">Salgados</a>
+                        <a href="listasCardapio/listaSalgados.php" class="trn">Salgados</a>
                     </li>
                 </ul>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
                 <a class='nav-link' href='pedidos/pedidos.php' title='Pedido'>
                     <i class='fa fa-shopping-cart'></i>
-                    <span class='nav-link-text'>Pedidos</span>
+                    <span class='nav-link-text trn'>Pedidos</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
                 <a class='nav-link' href='pedidos/pedidosEnviados.php' title='Pedidos enviados'>
                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                    <span class='nav-link-text'>Pedidos Enviados</span>
+                    <span class='nav-link-text trn'>Pedidos Enviados</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>
             <li class='nav-item' data-toggle='tooltip' data-placement='right'>
                 <a class='nav-link' href='' title='Realidade Aumentada'>
                     <i class='fa fa-camera'></i>
-                    <span class='nav-link-text' >Realidade Aumentada</span>
+                    <span class='nav-link-text trn' >Realidade Aumentada</span>
                     <span class='badge badge-primary badge-pill' style='background:#F15821;float:right;'></span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Acesse mais informações">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" title="Mais botões" href="#collapseMais" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-plus" ></i>
-                    <span class="nav-link-text">Mais</span>
+                    <span class="nav-link-text trn">Mais</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMais">
                     <li title="Perfil">
-                        <a 
+                        <a
                             href="
                                 <?php
                                     if($tipo == "ClientePadrao")
@@ -106,14 +106,13 @@
                                         echo "perfil/perfilGF.php";
                                 ?>
                             "
-                        >Perfil
-                        </a>
+                            class="trn">Perfil</a>
                     </li>
                     <li title="Mudar de mesa">
-                        <a href="mesas/mudarMesa.php">Mudar de mesa</a>
+                        <a href="mesas/mudarMesa.php" class="trn">Mudar de mesa</a>
                     </li>
                     <li title="Juntar mesas">
-                        <a href="../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php">Juntar mesas</a>
+                        <a href="../../controller/clienteController/juncaoMesas/verificarSolicitacaoMesaController.php" class="trn">Juntar mesas</a>
                     </li>
                 </ul>
             </li>
@@ -128,7 +127,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal" title="Sair">
-                    <i class="fa fa-fw fa-sign-out"></i>Sair
+                    <i class="fa fa-fw fa-sign-out"></i><i class="trn" style="font-style: normal;">Sair</i>
                 </a>
             </li>
         </ul>

@@ -1,3 +1,8 @@
+<?php
+	session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -23,11 +28,15 @@
                 margin: 10px;
                 width: 150px;
             }
+
+			.sexo{
+				font-style: normal;
+			}
         </style>
 	</head>
 	<body class="">
 		<a href="logar.php"><nav id="nav"><img src="img/logo-min.png" class="img"></nav></a>
-		<br><center><h1>Cadastro de cliente</h1></center>
+		<br><center><h1 class="trn">Cadastro de cliente</h1></center>
 		<div class="container-fluid">
 			<div class="card mb-3">
 				<div class="card-header">
@@ -37,43 +46,43 @@
 								<div class="col-sm-12">
 									<div class="row">
 										<div class="col-lg-6 col-sm-12 form-group">
-											<label>Nome completo *</label>
+											<label class="trn">Nome completo *</label>
 											<input type="text" name="nome" placeholder="" class="form-control" required autofocus>
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
-											<label>E-mail *</label>
+											<label class="trn">E-mail *</label>
 											<input type="email" name="email" placeholder="Insira seu e-mail" class="form-control">
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-4 col-sm-12 form-group">
-											<label>Sexo *</label><br>
-											<input type="radio" name="sexo" value="F"required /> Feminino
-											<input type="radio" name="sexo" value="M"/> Masculino
+											<label class="trn">Sexo *</label><br>
+											<input type="radio" name="sexo" value="F"required /> <i class="trn sexo">Feminino</i>
+											<input type="radio" name="sexo" value="M"/> <i class="trn sexo">Masculino</i>
 										</div>
 										<div class="col-lg-4 col-sm-6 form-group">
-											<label>Telefone celular *</label>
+											<label class="trn">Telefone celular *</label>
 											<input type="tel" pattern="\(..\) [0-9]{5}-[0-9]{4}" name="numeroTelefone" placeholder="Ex: (41) 9999-9999" class="form-control phone_with_ddd" title="Telefone celular">
 										</div>
 										<div class="col-lg-4 col-sm-6 form-group">
-											<label>Data de nascimento *</label>
+											<label class="trn">Data de nascimento *</label>
 											<input type="date" min="1900-01-01" max="<?= date("Y-m-d", strtotime('-10 year', time())) ?>" name="dataNascimento" placeholder="" class="form-control" required>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-6 col-sm-12 form-group">
-											<label>Senha *</label>
+											<label class="trn">Senha *</label>
 											<input type="password" name="senha" placeholder="mínimo de 8 caracteres" class="form-control" maxlength="12" minlength="8" required>
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
-											<label>Confirmar senha *</label>
+											<label class="trn">Confirmar senha *</label>
 											<input type="password" id="confSenha" name="confSenha"  class="form-control" maxlength='12' minlength='8'required>
 										</div>
 																		
-									</div>*Campo obrigatório<br>
+									</div><p class="trn">*Campo obrigatório</p><br>
 									
 									<center>
-										<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" type="submit" id="salvar" value="Salvar">				
+										<button class="btn btn-primary btn-block trn" style="width:100px;" type="submit" id="salvar">Salvar</button>			
 									</center>
 								</div>
 							</form>
@@ -82,6 +91,8 @@
 				</div>
 			</div>
 		</div>
+		<script src="dicionario/jquery.translate.js"></script>
+        <script src="dicionario/loginCadastroManualCliente.js"></script>
 		<script type="text/javascript">
 
 			$('.phone_with_ddd').mask('(00) 00000-0000');
@@ -172,6 +183,14 @@
 					movable : false
 				});
 			}
+
+			function traduzir() {
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
+			}
+			
+			$(document).ready(function() {
+				traduzir();
+			});
 
 		</script>
 	</body>

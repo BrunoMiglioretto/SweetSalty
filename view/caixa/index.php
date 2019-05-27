@@ -33,6 +33,7 @@
 								<th>Mesa</th>
 								<!-- <th>Quantidade de Itens</th> -->
 								<th>Forma Pagamento</th>
+								<th>Valor (R$)</th>
 								<th>Troco (R$)</th>
 								<th>Finalizar</th>
 				       		</tr>
@@ -117,8 +118,8 @@
 					columns: [
 						{ data : 'nome_completo'},
 						{ data : 'mesa'},
-						// { data : 'quant_itens'},
 						{ data : 'forma_pagamento'},
+						{ data : 'subtotal'},
 						{ data : 'troco'},
 						{ data : 'botao'}
 					]

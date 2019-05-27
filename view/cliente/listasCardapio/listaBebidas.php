@@ -28,7 +28,7 @@
     </head>
     <body id="page-top">
         <?php include 'menuLateral.php'?>
-        <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Bebidas</h1></center>
+        <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;" class="trn">Bebidas</h1></center>
         <div class="content-wrapper">
             <div class="container-fluid">
                 <div class="card mb-3">
@@ -40,7 +40,7 @@
                                             <div class="card animacao" style="background:#71A149;">
                                                 <div class="card-header" id="headingSix" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"> 
                                                     <h5 class="mb-0">
-                                                        <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse"  aria-expanded="false" >
+                                                        <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse"  aria-expanded="false" >
                                                             Suco com água (350 ml)
                                                         </button>
                                                     </h5>
@@ -99,7 +99,7 @@
                                             <div class="card" style="background:#71A149;">
                                                 <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> 
                                                     <h5 class="mb-0">
-                                                        <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse"  aria-expanded="false" >
+                                                        <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse"  aria-expanded="false" >
                                                             Suco com leite semi desnatado (350 ml)
                                                         </button>
                                                     </h5>
@@ -158,7 +158,7 @@
                                             <div class="card" style="background:#71A149;">
                                                 <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                     <h5 class="mb-0">
-                                                        <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse" aria-expanded="false">
+                                                        <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse" aria-expanded="false">
                                                             Água (500 ml)
                                                         </button>
                                                     </h5>
@@ -217,7 +217,7 @@
                                         <div class="card" style="background:#71A149;">
                                             <div class="card-header" id="headingFor" data-toggle="collapse" data-target="#collapseFor" aria-expanded="false" aria-controls="collapseFor">
                                                 <h5 class="mb-0">
-                                                    <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse" aria-expanded="false" >
+                                                    <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse" aria-expanded="false" >
                                                         Shake Whey Protein (350 ml)
                                                     </button>
                                                 </h5>
@@ -277,7 +277,7 @@
                                         <div class="card" style="background:#71A149;">
                                             <div class="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                                 <h5 class="mb-0">
-                                                    <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse"  aria-expanded="false">
+                                                    <button type="button" style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse"  aria-expanded="false">
                                                         Suco Detox (350 ml)
                                                     </button>
                                                 </h5>
@@ -352,7 +352,7 @@
                         <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
+                    <div class="modal-body trn">Ao clicar em "Sair" você será deslogado do sistema</div>
                         <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                         <a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
@@ -367,6 +367,13 @@
         <script src="../js/sb-admin.min.js"></script>
         <script src="../js/sb-admin-datatables.min.js"></script>
         <script src="../js/sb-admin-charts.min.js"></script>
+        <script src="../dicionario/jquery.translate.js"></script>
+        <script src="../dicionario/loginCadastroManualCliente.js"></script>
+        <script>
+            $(document).ready(function() {
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
+            });
+        </script>
         <script type="text/javascript">
 			function id( el ){
 				return document.getElementById( el );

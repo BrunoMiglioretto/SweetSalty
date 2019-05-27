@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -30,28 +35,30 @@
         <nav id="nav"><a href="../index.php"><img src="img/logo-min.png" class="img"></a></nav>
         <div class="container" style="height:400px">
             <div class="card card-login mx-auto mt-5">
-                <center><div class="card-header">Entre com e-mail e senha</div></center>
+                <center><div class="card-header trn">Entre com e-mail e senha</div></center>
                 <div class="card-body" style="padding: 30px 15px 20px 15px">
                     <form id="form_login" action="" method="POST">
                         <div class="form-group">
                             <input class="form-control" id="exampleInputEmail1" name="email" type="text" aria-describedby="emailHelp" placeholder="E-mail" autofocus required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="exampleInputPassword1" name="senha" type="password" placeholder="Senha" required>
+                            <input class="form-control trn" id="exampleInputPassword1" name="senha" type="password" placeholder="Senha" required>
                         </div>
-                        <input class="btn btn-primary btn-block" type="submit" name="Salvar" value="Entrar"><br>
+                        <button class="btn btn-primary btn-block trn" type="submit" name="Salvar">Entrar</button><br>
                         <div class="row text-center" style="margin-left: 50px;"> 
                              <div class="g-signin2" data-onsuccess="onSignIn" style="width:300%; height:40px; margin-left:-6%;"></div><p id='msg'></p>
                         </div>
                     </form>
-                    <a href="cadastroCliente.php" style="text-decoration:none;"><button class="btn btn-primary btn-block"  type="button">Quero me cadastrar</button></a><br>
-                    <a href="manualUsuario/manualUsuario.php" style="text-decoration:none;"><button class="btn btn-primary btn-block"  type="button">Manual do usuário</button></a>
+                    <a href="cadastroCliente.php" style="text-decoration:none;"><button class="btn btn-primary btn-block trn"  type="button">Quero me cadastrar</button></a><br>
+                    <a href="manualUsuario/manualUsuario.php" style="text-decoration:none;"><button class="btn btn-primary btn-block trn"  type="button">Manual do usuário</button></a>
                 </div>
             </div>
         </div>
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="dicionario/jquery.translate.js"></script>
+        <script src="dicionario/loginCadastroManualCliente.js"></script>
         <script>
 
             $(document).ready(function() {
@@ -88,6 +95,8 @@
                     });
 
                 });
+
+                traduzir();
             });
 
             function alertaContaNaoCadastrada() {
@@ -158,6 +167,10 @@
                         window.location = 'cliente/mesas/escolherMesa.php';
                         break;
                 }
+            }
+
+            function traduzir() {
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
             }
 
         </script>

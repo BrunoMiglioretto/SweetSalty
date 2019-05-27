@@ -50,8 +50,8 @@
                                         <h1>SWEET SALTY</h1>
                                         <div class="separator"></div>
                                         <div class="home_btn">
-                                            <a href="view/logar.php" class="btn btn-default">PORTUGUÊS</a>
-                                            <a href="teste.php" class="btn btn-default">ENGLISH</a>
+                                            <button value="pt" class="btn btn-default btn-idioma">PORTUGUÊS</button>
+                                            <button value="en" class="btn btn-default btn-idioma">ENGLISH</button>
                                         </div>
                                     </div>
                                 </div>           
@@ -77,5 +77,20 @@
 
         <script src="view/assets/js/plugins.js"></script>
         <script src="view/assets/js/main.js"></script>
+        <script>
+            $(".btn-idioma").click(function() {
+                let linguagem = $(this).val();
+
+                $.ajax({
+                    url : "controller/escolherIdiomaController.php",
+                    method : "POST",
+                    data : {
+                        linguagem : linguagem
+                    }
+                }).done(function(n) {
+                    window.location = "view/logar.php";
+                });
+            });
+        </script>
     </body>
 </html>

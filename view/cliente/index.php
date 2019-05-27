@@ -21,7 +21,7 @@
 	</head>
 	<body id="page-top">
         <?php include "menuLateral.php"?>
-		<br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Cardápio</h1></center>
+		<br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;" class="trn">Cardápio</h1></center>
         <div class="content-wrapper">
             <div class="container-fluid">
                 <div class="card mb-3">
@@ -34,7 +34,7 @@
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>
-                                                    <a href="listasCardapio/listaBebidas.php" style="color:#71A140;">Bebidas</a>
+                                                    <a href="listasCardapio/listaBebidas.php" class="trn" style="color:#71A140;">Bebidas</a>
                                                 </center>
                                             </h4>
                                         </div>
@@ -46,7 +46,7 @@
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>
-                                                    <a href="listasCardapio/listaSalgados.php" style="color:#71A140;">Salgados</a>
+                                                    <a href="listasCardapio/listaSalgados.php" class="trn" style="color:#71A140;">Salgados</a>
                                                 </center>
                                             </h4>
                                         </div>
@@ -58,7 +58,7 @@
                                         <div class="card-body">
                                             <h4 class="card-title">
                                                 <center>
-                                                    <a href="listasCardapio/listaDoces.php" style="color:#71A140;">Doces</a>
+                                                    <a href="listasCardapio/listaDoces.php" class="trn" style="color:#71A140;">Doces</a>
                                                 </center>
                                             </h4>
                                         </div>
@@ -75,15 +75,15 @@
 		    <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			        <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+				        <h5 class="modal-title trn" id="exampleModalLabel">Você tem certeza?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
 			        </div>
-			        <div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
+			        <div class="modal-body"><p class="trn">Ao clicar em "Sair" você será deslogado do sistema</p></div>
 			        <div class="modal-footer">
-				        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-				        <a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
+				        <button class="btn btn-secondary trn" type="button" data-dismiss="modal">Cancelar</button>
+				        <a class="btn btn-primary trn" href="../../controller/clienteController/sairController.php">Sair</a>
 			        </div>
     		    </div>
 	    	</div>
@@ -95,5 +95,12 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
+        <script src="../dicionario/jquery.translate.js"></script>
+        <script src="../dicionario/loginCadastroManualCliente.js"></script>
+        <script>
+            $(document).ready(function() {
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
+            });
+        </script>
 	</body>
 </html>

@@ -32,7 +32,7 @@
         <?php include 'menuLateral.php'?>	
 		<br><br><br>
 		<center>
-			<h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Salgados</h1>
+			<h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;" class="trn">Salgados</h1>
 		</center>
 		<div class="content-wrapper">
     		<div class="container-fluid">
@@ -45,9 +45,7 @@
                                         <div class="card" style="background:#71A149;">
                                             <div class="card-header" id="headingSix" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"> 
                                                 <h5 class="mb-0">
-                                                    <button style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse"  aria-expanded="false" >
-                                                        Coxinha
-                                                    </button>
+                                                    <button style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse"  aria-expanded="false" >Coxinha</button>
                                                 </h5>
                                             </div>
                                             <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
@@ -61,9 +59,9 @@
 															$cardapio_subcategoria       = $cardapio["nome_cardapio_subcat"];
 															$cardapio_cat 				 = $cardapio["nome_cardapio_cat"];
 															$calorias                    = $cardapio["calorias"];
-                                                            echo "<a class='list-group-item' style='color:#F15821;'><h6>".$cardapio_desc."<p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
+                                                            echo "<a class='list-group-item' style='color:#F15821;'><h6><span class='trn'>".$cardapio_desc."</span><p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
                                                        ?>
-                                                        <input class='btn btn-primary' type='BUTTON' class='btn btn-info btn-lg' value='Adicionar' type='button' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'></h6></p></a>
+                                                        <button class='btn btn-primary trn' type='BUTTON' class='btn btn-info btn-lg' type='button' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'>Adicionar</button></h6></p></a>
 														<div class="col-lg-6">
                                                             <div class="panel panel-default">
                                                                 <div class="panel-heading"></div>
@@ -104,9 +102,7 @@
 										<div class="card" style="background:#71A149;">
 											<div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 												<h5 class="mb-0">
-													<button style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse"  aria-expanded="false">
-														Pastel Assado
-													</button>
+													<button style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse"  aria-expanded="false">Pastel Assado</button>
 												</h5>
 											</div>
 											<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -120,9 +116,9 @@
                                                             $cardapio_subcategoria       = $cardapio["nome_cardapio_subcat"];
                                                             $ardapio_cat                 = $cardapio["nome_cardapio_cat"];       
                                                             $calorias                    = $cardapio["calorias"];
-															echo "<a class='list-group-item' style='color:#F15821;'><h6>".$cardapio_desc."<p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
+															echo "<a class='list-group-item' style='color:#F15821;'><h6><span class='trn'>".$cardapio_desc."</span><p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
 														?>
-														<input class='btn btn-primary' type='BUTTON' class='btn btn-info btn-lg' value='Adicionar' type='button' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id?>'></h6></p></a>
+														<button class='btn btn-primary trn' type='BUTTON' class='btn btn-info btn-lg' type='button' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'>Adicionar</button></h6></p></a>
 															<div class="col-lg-6">
 																<div class="panel panel-default">
 																	<div class="panel-heading"></div>
@@ -164,9 +160,7 @@
 										<div class="card" style="background:#71A149;">
 											<div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 												<h5 class="mb-0">
-													<button style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse"  aria-expanded="false" >
-												         Sanduíche Natural
-													</button>
+													<button style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse"  aria-expanded="false" >Sanduíche Natural</button>
 												</h5>
 											</div>
 											<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
@@ -180,9 +174,9 @@
                                                             $cardapio_subcategoria       = $cardapio["nome_cardapio_subcat"];
                                                             $ardapio_cat                 = $cardapio["nome_cardapio_cat"];       
                                                             $calorias                    = $cardapio["calorias"];
-															echo "<a class='list-group-item' style='color:#F15821;'><h6>".$cardapio_desc."<p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
+															echo "<a class='list-group-item' style='color:#F15821;'><h6><span class='trn'>".$cardapio_desc."</span><p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
 													?>
-													<input class='btn btn-primary' type='BUTTON' class='btn btn-info btn-lg' value='Adicionar' type='button' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'></h6></p></a>
+													<button class='btn btn-primary trn' type='BUTTON' class='btn btn-info btn-lg' type='button' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'>Adicionar</button></h6></p></a>
 														<div class="col-lg-6">
 												            <div class="panel panel-default">
 																<div class="panel-heading"></div>
@@ -224,9 +218,7 @@
 										<div class="card" style="background:#71A149;">
 											<div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTw" aria-expanded="false" aria-controls="collapseTwo">
 												<h5 class="mb-0">
-													<button style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse"  aria-expanded="false">
-														Empada
-													</button>
+													<button style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse"  aria-expanded="false">Empada</button>
 												</h5>
 											</div>
 											<div id="collapseTw" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -240,9 +232,9 @@
                                                             $cardapio_subcategoria       = $cardapio["nome_cardapio_subcat"];
                                                             $ardapio_cat                 = $cardapio["nome_cardapio_cat"];       
                                                             $calorias                    = $cardapio["calorias"];
-															echo "<a class='list-group-item' style='color:#F15821;'><h6>".$cardapio_desc."<p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
+															echo "<a class='list-group-item' style='color:#F15821;'><h6><span class='trn'>".$cardapio_desc."</span><p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
 													?>
-													<input class='btn btn-primary' type='BUTTON' class='btn btn-info btn-lg' value='Adicionar' type='button' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'></h6></p></a>
+													<button class='btn btn-primary trn' type='BUTTON' class='btn btn-info btn-lg' type='button' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'>Adicionar</button></h6></p></a>
 														<div class="col-lg-6">
 															<div class="panel panel-default">
 																<div class="panel-heading"></div>
@@ -351,14 +343,28 @@
                         quant : quantidade
                     }
                 }).done(function(itemColocado){
-					if(itemColocado == "true"){
+					if(itemColocado == "true" && "<?= $_SESSION["linguagem"]?>" == "pt"){
+
                         alertify.set('notifier','position', 'bottom-center');
                         alertify.success('Adicionado aos pedidos', 'success', 5);
-                    }else{
+                    }else if(itemColocado == "true" && "<?= $_SESSION["linguagem"]?>" == "en"){
+
+                        alertify.set('notifier','position', 'bottom-center');
+                        alertify.success('Added to orders', 'success', 5);
+                    }else if("<?= $_SESSION["linguagem"]?>" == "pt"){
+
                         alertify.alert("").setting({
+
                             transition : 'zoom',
                             title : "Quantidade Limite",
                             message : "Não é permitido colocar mais de 10 unidades por item"
+                        });
+                    }else{
+                        alertify.alert("").setting({
+
+                            transition : 'zoom',
+                            title : "Quantity Limit",
+                            message : "It is not allowed to place more than 10 units per item"
                         });
                     }
 				});

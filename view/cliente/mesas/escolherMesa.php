@@ -69,14 +69,23 @@ if($v)
                 }).done(function(v) {
                     if(v == "true")
                         window.location = "../";
-                    else
+                    else if("<?= $_SESSION["linguagem"]?>" == "pt")
                         alertaMesaOcupada();
+                    else
+                        alertBusyTeble();
                     console.log(v);
                 });
             }
 
             function alertaMesaOcupada() {
-                alertify.alert("Mesa ocupada", "Essa mesa já esta sendo usada ").set({
+                alertify.alert("Mesa ocupada", "Essa mesa já esta sendo usada.").set({
+                    transition : "zoom",
+                    'movable' : false
+                });
+            }
+
+            function alertBusyTeble() {
+                alertify.alert("Busy Table", "This table is already being used.").set({
                     transition : "zoom",
                     'movable' : false
                 });

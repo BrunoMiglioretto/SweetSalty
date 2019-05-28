@@ -32,16 +32,16 @@
         <?php include 'menuLateral.php' ?>	
         <div class='content-wrapper'>	
             <div class='container-fluid'>
-                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Pedidos Enviados</h1></center>
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;" class="trn">Pedidos Enviados</h1></center>
                 <div class='card mb-3'>
                     <div class='card-header'>
                         <div class="row mb-3">
                             <div class="col-6">
-                                <button type='button' class='btn btn-primary' style='position:absolute;bottom: 0;left: 30px;' onclick="validarFecharConta()">Finalizar Pedido</button>
+                                <button type='button' class='btn btn-primary trn' style='position:absolute;bottom: 0;left: 30px;' onclick="validarFecharConta()">Finalizar Pedido</button>
                             </div>
                             <div class="col-6">
                                 <input type='text' readonly='readonly' id='campoTotal' value='' style='float:right;width:100px;color:#F15821; height:50px; background-color: #F7F7F7;font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
-                                <input type='text' value='Valor total:' readonly='readonly' style='background-color: #F7F7F7;float:right;width:100px; height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
+                                <input type='text' value='<?= ($_SESSION["linguagem"]=="pt"?"Valor total":"Amount")?>:' readonly='readonly' style='background-color: #F7F7F7;float:right;width:100px; height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
                             </div>
                         </div>
                         <div class='card-body'>
@@ -49,11 +49,11 @@
                                 <table class='table table-bordered' id='tabela' width='100%' cellspacing='0' class='print'>
                                     <thead>
                                         <tr>
-                                            <th>Pedido</th>
-                                            <th>Categoria</th>
-                                            <th>Quantidade</th>
-                                            <th>Subtotal</th>
-                                            <th>Situação</th>
+                                            <th class="trn">Pedido</th>
+                                            <th class="trn">Categoria</th>
+                                            <th class="trn">Quantidade</th>
+                                            <th class="trn">Subtotal</th>
+                                            <th class="trn">Situação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -191,6 +191,13 @@
                 });
             }
 
+        </script>
+        <script src="../dicionario/jquery.translate.js"></script>
+        <script src="../dicionario/loginCadastroManualCliente.js"></script>
+        <script>
+            $(document).ready(function() {
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
+            });
         </script>
 	</body>
 </html>

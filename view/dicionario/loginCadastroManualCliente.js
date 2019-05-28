@@ -104,6 +104,11 @@ var dict = {
         en: "Create"
     },
 
+    "salvar": {
+        pt: "Salvar",
+        en: "Save"
+    },
+
     "Campo(s) incorretos": {
         pt: "Campo(s) incorretos",
         en: "Incorrect fields"
@@ -187,11 +192,6 @@ var dict = {
     "1° Clique em uma das imagens ou vá em cardápio no menu lateral.": {
         pt: "1° Clique em uma das imagens ou vá em cardápio no menu lateral.",
         en: "1st Click on one of the images or go to menu in the side menu."
-    },
-
-    "2° Siga a sequência para fazer um pedido: Cardápio => Bebidas => Suco de laranja => adicionar. Após ter adicionado, vá em pedidos e clique em Enviar para cozinha.": {
-        pt: "2° Siga o exemplo para fazer um pedido: Cardápio => Bebidas => Suco de Laranja => Adicionar. Após ter adicionado, vá em pedidos e clique em Enviar para Cozinha.",
-        en: "2 ° Follow the exemple to make an order: Menu => Drinks => Orange Juice => Add. Once you have added it, go to Orders and click Submit to Kitchen."
     },
 
     "2° Siga": {
@@ -636,5 +636,10 @@ var dict = {
     "Qual mesa deseja se juntar?": {
         pt: "Qual mesa deseja se juntar?",
         en: "Which table do you want to join?"
+    },
+
+    "Seja bem vindo(a)": {
+        pt: "Seja bem vindo(a)",
+        en: "Welcome"
     }
 }

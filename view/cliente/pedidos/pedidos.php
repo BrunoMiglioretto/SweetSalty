@@ -56,6 +56,7 @@
                     campoSubtotal = document.getElementById("campoSubtotal");
                     valor = document.getElementsByClassName("subtotal")[0].value;
                     campoSubtotal.value = "R$ " + valor;
+                    translator.lang("<?= $_SESSION["linguagem"]?>");
                 });
             }
 
@@ -113,6 +114,7 @@
             }
 
             $(document).ready(function() {
+                translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
                 atualizarListaPedido();
             });
             
@@ -136,13 +138,13 @@
         <?php include 'menuLateral.php' ?>
         <div class="content-wrapper">
             <div class="container-fluid">
-                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Meu Pedido</h1></center>
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;" class="trn">Meu Pedido</h1></center>
                 <div class="card mb-3">
         			<div class="card-header">
                         <div class="row mb-3">
                             <div class="col-12">
                                 <input type='text' readonly='readonly' id='campoSubtotal' value='' style='float:right;width:100px;color:#F15821; height:50px; background-color: #F7F7F7;font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
-                                <input type='text' value='Valor total:' readonly='readonly' style='background-color: #F7F7F7;float:right;width:100px; height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
+                                <input type='text' value='<?= ($_SESSION["linguagem"]=="pt"?"Valor total:":"Amount:")?>' readonly='readonly' style='background-color: #F7F7F7;float:right;width:100px; height:50px; font-size:20px;border-radius: 5px; border: 1px solid transparent;' disabled>
                             </div>
                         </div>
         				<div class="card-body">
@@ -153,11 +155,11 @@
             								<table class="table table-bordered" width="100%" cellspacing="0" class='print'>
                                                 <thead>
     							                	<tr>
-                                                        <th>Pedido</th>
-                                                        <th>Categoria</th>
-                                                        <th>Quantidade</th>
-                                                        <th>Valor unitário</th>
-                                                        <th>Excluir</th>
+                                                        <th class="trn">Pedido</th>
+                                                        <th class="trn">Categoria</th>
+                                                        <th class="trn">Quantidade</th>
+                                                        <th class="trn">Valor unitário</th>
+                                                        <th class="trn">Excluir</th>
                                                    </tr>
                                                 </thead>
                                                 <tbody id="tabelaPedidos">
@@ -166,24 +168,20 @@
             							    </table>
           								</div>
           								<div style='float: right;'>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cozinha">
-                                                Enviar para Cozinha
-                                            </button>
+                                            <button type="button" class="btn btn-primary trn" data-toggle="modal" data-target="#cozinha">Enviar para Cozinha</button>
                                             <div class="modal fade" id="cozinha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Enviar</h5>
+                                                            <h5 class="modal-title trn" id="exampleModalLabel">Enviar</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Deseja mesmo enviar para a cozinha?
-                                                        </div>
+                                                        <div class="modal-body trn">Deseja mesmo enviar para a cozinha?</div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                                            <button type="button" class="btn btn-primary" onclick="enviarPedidos()" data-dismiss="modal">Enviar</button>
+                                                            <button type="button" class="btn btn-secondary trn" data-dismiss="modal">Não</button>
+                                                            <button type="button" class="btn btn-primary trn" onclick="enviarPedidos()" data-dismiss="modal">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -206,7 +204,7 @@
             <div class='modal-dialog modal-dialog-centered' role='document'>
                 <div class='modal-content'>
                     <div class='modal-header'>
-                        <h5 class='modal-title' id='exampleModalLongTitle'>Excluir</h5>
+                        <h5 class='modal-title trn' id='exampleModalLongTitle'>Excluir</h5>
                         <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span>
                         </button>
@@ -215,8 +213,8 @@
                         <p id="nomeProdudoModal"></p>
                     </div>
                     <div class='modal-footer'>
-                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-                        <a data-dismiss='modal'><button onclick='excluirPedido()' class='btn btn-primary'>Excluir</button></a>
+                        <button type='button' class='btn btn-secondary trn' data-dismiss='modal'>Cancelar</button>
+                        <a data-dismiss='modal'><button onclick='excluirPedido()' class='btn btn-primary trn'>Excluir</button></a>
                         <input type="hidden" id='idPedido' value=''>
                         <input type="hidden" id='idCardapio' value=''>
                     </div>
@@ -229,15 +227,15 @@
 		    <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			        <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+				        <h5 class="modal-title trn" id="exampleModalLabel">Você tem certeza?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-			        <div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
+			        <div class="modal-body trn">Ao clicar em "Sair" você será deslogado do sistema</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
+                        <button class="btn btn-secondary trn" type="button" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary trn" href="../../controller/clienteController/sairController.php">Sair</a>
                     </div>
                 </div>
             </div>
@@ -249,5 +247,7 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
+        <script src="../dicionario/jquery.translate.js"></script>
+        <script src="../dicionario/loginCadastroManualCliente.js"></script>
 	</body>
 </html>

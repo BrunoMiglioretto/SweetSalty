@@ -42,7 +42,7 @@
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <a class="navbar-brand desktop" style="overflow:hidden; width:auto" href="../cliente/index.php" title="Sweet Salty | Voltar para página inicial">
-        <h6 class='desktop-t trn'>Sweet Salty | Seja bem vindo(a), <?= $nomeCompleto?></h6>
+        <h6 class='desktop-t'>Sweet Salty | <span class="trn" style="font-style: normal;">Seja bem vindo(a)</span>, <?= $nomeCompleto?></h6>
     </a>
     <a class="navbar-brand moble" href="" title="Sweet Salty | Voltar para página inicial">
         <h6 class='moble-m'>Sweet Salty</h6>

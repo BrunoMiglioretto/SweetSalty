@@ -18,8 +18,8 @@ foreach($pedidos as $lista){
     $valor 			= $lista["valor_unitario"];
     $situacao       = $lista["situacao"];
     echo "<tr>";
-    echo "<td>".$nome."</td>";                                                            
-    echo "<td>".$categoria."</td>";
+    echo "<td class='trn'>".$nome."</td>";                                                            
+    echo "<td class='trn'>".$categoria."</td>";
     echo "
         <td>
             <input type='text' class='inputQuant' value='".$quantidade."' disabled>
@@ -28,7 +28,7 @@ foreach($pedidos as $lista){
         <td>
             R$ ".number_format($quantidade * $valor,2,",",".")."
         </td>";
-    echo "<td>";
+    echo "<td class='trn'>";
     
     if($situacao == 2)
     echo "Preparando";

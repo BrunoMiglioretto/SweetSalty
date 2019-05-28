@@ -64,3 +64,7 @@ if($tipo == "ClienteGoogleFacebook"){
         </script>
     ";
 }
+
+session_start();
+
+$_SESSION["linguagem"] = "pt";

@@ -65,9 +65,7 @@
                                 <div class="card">
                                     <div class="card-header" id="heading1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1"> 
                                         <h5 class="mb-0">
-                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >
-                                                Como se cadastrar?
-                                            </button>
+                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >Como se cadastrar?</button>
                                         </h5>
                                     </div>
                                     <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion" >
@@ -84,9 +82,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        2° Preencha todos os campos corretamente e clique em "Salvar".
-                                                    </p>
+                                                    <p class="lead trn">2° Preencha todos os campos corretamente e clique em "Salvar".</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -96,9 +92,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        3° Para validar a sua conta, clique em "Confirmar identificação" no e-mail que enviamos para você.
-                                                    </p>
+                                                    <p class="lead trn">3° Para validar a sua conta, clique em "Confirmar identificação" no e-mail que enviamos para você.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -115,18 +109,14 @@
                                 <div class="card">
                                     <div class="card-header" id="heading2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"> 
                                         <h5 class="mb-0">
-                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >
-                                                Como fazer login?
-                                            </button>
+                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >Como fazer login?</button>
                                         </h5>
                                     </div>
                                     <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion" >
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        1° Alternativa: Na tela de login, preencha os campos e-mail e senha, após isso, clique em entrar.
-                                                    </p>
+                                                    <p class="lead trn">1° Alternativa: Na tela de login, preencha os campos e-mail e senha, após isso, clique em entrar.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -136,9 +126,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        2° Alternativa: Faça login com o Google clicando no botão Google.
-                                                    </p>
+                                                    <p class="lead trn">2° Alternativa: Faça login com o Google clicando no botão Google.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -155,18 +143,14 @@
                                 <div class="card">
                                     <div class="card-header" id="heading3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"> 
                                         <h5 class="mb-0">
-                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >
-                                                Como juntar mesa?
-                                            </button>
+                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >Como juntar mesa?</button>
                                         </h5>
                                     </div>
                                     <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion" >
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        Observação: só é possível juntar com uma mesa caso não tenha feito nenhum pedido e a mesas esteja ocupada.
-                                                    </p>
+                                                    <p class="lead trn">Observação: só é possível juntar com uma mesa caso não tenha feito nenhum pedido e a mesas esteja ocupada.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -176,9 +160,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        Pedido de junção de mesa enviado.
-                                                    </p>
+                                                    <p class="lead trn">Pedido de junção de mesa enviado.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -195,18 +177,14 @@
                                 <div class="card">
                                     <div class="card-header" id="heading4" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4"> 
                                         <h5 class="mb-0">
-                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >
-                                                Como fazer um pedido?
-                                            </button>
+                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >Como fazer um pedido?</button>
                                         </h5>
                                     </div>
                                     <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion" >
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        1° Clique em uma das imagens ou vá em cardápio no menu lateral.
-                                                    </p>
+                                                    <p class="lead trn">1° Clique em uma das imagens ou vá em cardápio no menu lateral.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -216,9 +194,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        2° Siga a sequência para fazer um pedido: Cardápio => Bebidas => Suco de laranja => adicionar. Após ter adicionado, vá em pedidos e clique em Enviar para cozinha."
-                                                    </p>
+                                                    <p class="lead trn">2° Siga</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -235,18 +211,14 @@
                                 <div class="card">
                                     <div class="card-header" id="heading5" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5"> 
                                         <h5 class="mb-0">
-                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >
-                                                Como mudar de mesas?
-                                            </button>
+                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >Como mudar de mesas?</button>
                                         </h5>
                                     </div>
                                     <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion" >
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        Observação: só é possível mudar de mesa caso a mesa esteja desocupada.
-                                                    </p>
+                                                    <p class="lead trn">Observação: só é possível mudar de mesa caso a mesa esteja desocupada.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -256,9 +228,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        Irá aparecer um aviso falando que foi alterado a mesa.
-                                                    </p>
+                                                    <p class="lead trn">Irá aparecer um aviso falando que foi alterado a mesa.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -275,18 +245,14 @@
                                 <div class="card">
                                     <div class="card-header" id="heading6" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6"> 
                                         <h5 class="mb-0">
-                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >
-                                                Como editar meu perfil?
-                                            </button>
+                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >Como editar meu perfil?</button>
                                         </h5>
                                     </div>
                                     <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion" >
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        1° clique no menu lateral, clique sobre " + Mais", depois clique em Perfil.
-                                                    </p>
+                                                    <p class="lead trn">1° clique no menu lateral, clique sobre " + Mais", depois clique em Perfil.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -296,9 +262,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        Observação: Preencher todos os campos antes de salvar.
-                                                    </p>
+                                                    <p class="lead trn">Observação: Preencher todos os campos antes de salvar.</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -315,18 +279,14 @@
                                 <div class="card">
                                     <div class="card-header" id="heading7" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7"> 
                                         <h5 class="mb-0">
-                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >
-                                                Como visualizar os meus pedidos já feitos?
-                                            </button>
+                                            <button class="btn collapsed trn" style="font-size:20px;" data-toggle="collapse"  aria-expanded="false" >Como visualizar os meus pedidos já feitos?</button>
                                         </h5>
                                     </div>
                                     <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion" >
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        1° Vá até o menu lateral, em seguida clique em "Pedidos Enviados".
-                                                    </p>
+                                                    <p class="lead trn">1° Vá até o menu lateral, em seguida clique em "Pedidos Enviados".</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -336,9 +296,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">
-                                                        Listará todos os pedidos anteriormente feitos, com o situação do(s) mesmo(s).
-                                                    </p>
+                                                    <p class="lead trn">Listará todos os pedidos anteriormente feitos, com o situação do(s) mesmo(s).</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -360,9 +318,8 @@
         <script>
             $(document).ready(function() {
 
-                setTimeout(() => {
-                    var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
-                }, 2000);
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
+                
             });
         </script>
     </body>

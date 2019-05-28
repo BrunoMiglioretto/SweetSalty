@@ -133,7 +133,47 @@
                                         </div> 
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="pills-linha" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+
+                                 <!--------------------------- Sessão Linha  --------------------------->
+
+                                <div class="tab-pane fade" id="pills-linha" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Gráfico de Linha
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-7">
+                                                            <div class="grafico" id="graficoLinha" style="width: 500px; height: 300px;">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <div class="card" style="margin: 20px;">
+                                                                <div class="card-header">
+                                                                    Opções
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-12 text-center mt-2">
+                                                                            <div class="btn-group " data-toggle="buttons">
+                                                                                <label class="btn btn-primary active" onclick="modalLinhaProdutos()">
+                                                                                    Produtos
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -338,16 +378,14 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <label>Itens no gráfico</label>
-                                        <div class="list-group" id="caixaDeItensGraficoColunaProdutos">
-                                                <!-- <button type="button" class="list-group-item list-group-item-action" id="item160" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(160)">Barra de cereal</button>
-                                                <button type="button" class="list-group-item list-group-item-action" id="item161" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(161)">Cookies</button>
-                                                <button type="button" class="list-group-item list-group-item-action" id="item162" onclick="removerItemCaixaDeItensGraficoPizzaProdutos(162)">Coxinha Assada</button> -->
+                                            <div class="list-group" id="caixaDeItensGraficoColunaProdutos">
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
-                                            <button class="btn btn-primary mt-3" onclick="$(`#modalItem`).modal()">Adicionar item</button>
+                                            <button class="btn btn-primary mt-3" onclick="$(`#modalItemColuna`).modal()">Adicionar item</button>
                                         </div>
                                     </div>
                                 </div>
@@ -404,12 +442,49 @@
             </div>
         </div>
 
+        <!--------------------------- Modal Linha Produtos --------------------------->
+        <div class="modal fade bd-example-modal-lg" id="modalLinhaProdutos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Configurações do gráfico linha</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label>Itens no gráfico</label>
+                                            <div class="list-group" id="caixaDeItensGraficoLinhaProdutos">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary mt-3" onclick="$(`#modalItemLinha`).modal()">Adicionar item</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="gerarGraficoLinhaProdutos()">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
-
-<!--------------------------- Modal Excolha Item  --------------------------->
-        <div class="modal fade bd-example-modal-lg" id="modalItem">
+<!--------------------------- Modal Excolha Item Coluna --------------------------->
+        <div class="modal fade bd-example-modal-lg" id="modalItemColuna">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -420,7 +495,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="table-responsive" class='print' id="atualiza">
-                            <table class="table table-bordered" id="tabela" width="100%" cellspacing="0" class='print'>
+                            <table class="table table-bordered" id="tabelaColuna" width="100%" cellspacing="0" class='print'>
                                 <thead>
                                     <tr>
                                         <th style="width: 50%;">Nome</th>
@@ -431,7 +506,44 @@
                                 <tbody>
                                         
                                     <?php 
-                                        include "../../controller/gerenteController/crudCardapioController/visualizarCardapioController.php"; 
+                                        include "../../controller/gerenteController/graficoController/crudCardapioController/visualizarCardapioController.php"; 
+                                    ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Voltar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--------------------------- Modal Excolha Item Linhas --------------------------->
+        <div class="modal fade bd-example-modal-lg" id="modalItemLinha">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Selecione os produtos</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive" class='print' id="atualiza">
+                            <table class="table table-bordered" id="tabelaLinha" width="100%" cellspacing="0" class='print'>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 50%;">Nome</th>
+                                        <th style="width: 25%;">Categoria</th>
+                                        <th style="width: 25%;">Adicionar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        
+                                    <?php 
+                                        include "controller/gerenteController/graficoController/crudCardapioController/visualizarCardapioLinhaController.php"; 
                                     ?>
 
                                 </tbody>
@@ -470,7 +582,7 @@
 			    </div>
 		    </div>
 		</div>   
-		<?php include 'footer.html'?>	
+		<?php include 'view/footer.html'?>	
 		<script src="../vendor/jquery/jquery.min.js"></script>
 		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -485,7 +597,34 @@
         <script>
         
             $(document).ready(function() {
-                $("#tabela").DataTable({
+                $("#tabelaColuna").DataTable({
+                    language :{
+						"decimal":        "",
+						"emptyTable":     "Nenhum pedido",
+						"info":           "Mostrando _START_ de _END_ dos _TOTAL_ pedidos",
+						"infoEmpty":      "Mostrando 0 de 0 dos 0 pedidos",
+						"infoFiltered":   "(filtered from _MAX_ total entries)",
+						"infoPostFix":    "",
+						"thousands":      ".",
+						"lengthMenu":     "Mostando _MENU_ pedidos",
+						"loadingRecords": "Carregando...",
+						"processing":     "Processando...",
+						"search":         "Perquisar:",
+						"zeroRecords":    "Nenhum registro correspondente encontrado",
+						"paginate": {
+							"first":      "Primeiro",
+							"last":       "Ultimo",
+							"next":       "Próximo",
+							"previous":   "Anterior"
+						},
+						"aria": {
+							"sortAscending":  ": activate to sort column ascending",
+							"sortDescending": ": activate to sort column descending"
+						}
+					}
+                });
+
+                $("#tabelaLinha").DataTable({
                     language :{
 						"decimal":        "",
 						"emptyTable":     "Nenhum pedido",

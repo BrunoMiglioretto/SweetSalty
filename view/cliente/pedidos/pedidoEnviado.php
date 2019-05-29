@@ -29,19 +29,17 @@
 		
         <div class="content-wrapper">
             <div class="container-fluid">
-                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Seu pedido está sendo preparado</h1></center>
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;" class="trn">Seu pedido está sendo preparado</h1></center>
                 <br><br>
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p class="lead" style="padding-bottom: 50px;">
-                            Seu pedido foi enviado para a cozinha. Agora, que tal ver os seus pedidos em realidade aumentada enquanto eles são preparedos?
-                        </p>
+                        <p class="lead trn" style="padding-bottom: 50px;">Seu pedido foi enviado para a cozinha. Agora, que tal ver os seus pedidos em realidade aumentada enquanto eles são preparedos?</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-center">
                         <div>
-                            <button type="button" class="btn btn-primary btn-lg">Ver realidade aumentada!</button>
+                            <button type="button" class="btn btn-primary btn-lg trn">Ver realidade aumentada!</button>
                         </div>
                     </div>
                 </div>
@@ -51,15 +49,15 @@
 		    <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			        <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+				        <h5 class="modal-title trn" id="exampleModalLabel">Você tem certeza?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
 			        </div>
-			        <div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
+			        <div class="modal-body trn">Ao clicar em "Sair" você será deslogado do sistema</div>
 			        <div class="modal-footer">
-				        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-				        <a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
+				        <button class="btn btn-secondary trn" type="button" data-dismiss="modal">Cancelar</button>
+				        <a class="btn btn-primary trn" href="../../controller/clienteController/sairController.php">Sair</a>
 			        </div>
     		    </div>
 	    	</div>
@@ -71,5 +69,12 @@
 		<script src="../js/sb-admin.min.js"></script>
 		<script src="../js/sb-admin-datatables.min.js"></script>
 		<script src="../js/sb-admin-charts.min.js"></script>
+        <script src="../dicionario/jquery.translate.js"></script>
+        <script src="../dicionario/loginCadastroManualCliente.js"></script>
+        <script>
+            $(document).ready(function() {
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
+            });
+        </script>
 	</body>
 </html>

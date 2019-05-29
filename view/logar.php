@@ -42,7 +42,7 @@
                             <input class="form-control" id="exampleInputEmail1" name="email" type="text" aria-describedby="emailHelp" placeholder="E-mail" autofocus required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control trn" id="exampleInputPassword1" name="senha" type="password" placeholder="Senha" required>
+                            <input class="form-control trn" id="exampleInputPassword1" name="senha" type="password" placeholder="<?php echo $_SESSION["linguagem"] == "en" ? "Password": "Senha"?>" required>
                         </div>
                         <button class="btn btn-primary btn-block trn" type="submit" name="Salvar">Entrar</button><br>
                         <div class="row text-center" style="margin-left: 50px;"> 

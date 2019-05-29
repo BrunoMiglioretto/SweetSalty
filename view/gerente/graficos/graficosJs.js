@@ -3,6 +3,7 @@
 itensGraficoPizzaProdutos = new Array;
 itensGraficoPizzaClientes = new Array;
 itensGraficoColunaProdutos = new Array;
+itensGraficoLinhaProdutos = new Array;
 
 grafico = "pizzaProdutos";
 
@@ -23,11 +24,19 @@ function modalColunaProdutos() {
     $('#modalColunaProdutos').modal();
 }
 
+function modalLinhaProdutos() {
+    grafico = "linhaProdutos";
+    $('#modalLinhaProdutos').modal();
+}
+
 
 function adicionarItem(idCardapio, nomeCardapio) {
 
-    
-    let botao = $(`#botaoItem${idCardapio}`);
+    if(grafico == "colunaProdutos")
+        botao = $(`#botaoItemColuna${idCardapio}`);
+    else if(grafico == "linhaProdutos")
+        botao = $(`#botaoItem${idCardapio}`);
+
 
     if(botao.html() == "Adicionar") {
 
@@ -61,6 +70,8 @@ function escolhaListaItens(grafico) {
             return itensGraficoPizzaClientes;
         case "colunaProdutos":
             return itensGraficoColunaProdutos;
+        case "linhaProdutos":
+            return itensGraficoLinhaProdutos;
     }
 }
 
@@ -77,6 +88,8 @@ function attArrayItens(itensGrafico, grafico) {
         case "colunaProdutos":
             itensGraficoColunaProdutos = itensGrafico;
             break;
+        case "linhaProdutos":
+            itensGraficoLinhaProdutos = itensGrafico;
     }
 }
 
@@ -111,16 +124,26 @@ function addSecondaryBtn(botao) {
 // ------------------------ ADD/REMOVE item lista ------------------------ //
 
 function addItemLista(idCardapio, nomeCardapio) {
-    $("#caixaDeItensGraficoColunaProdutos").append(`<button type='button' class='list-group-item list-group-item-action' value='${idCardapio}' id='item${idCardapio}'>${nomeCardapio}</button>`);
+    if(grafico == "colunaProdutos")
+        $("#caixaDeItensGraficoColunaProdutos").append(`<button type='button' class='list-group-item list-group-item-action' value='${idCardapio}' id='item${idCardapio}'>${nomeCardapio}</button>`);
+    else
+        $("#caixaDeItensGraficoLinhaProdutos").append(`<button type='button' class='list-group-item list-group-item-action' value='${idCardapio}' id='item${idCardapio}'>${nomeCardapio}</button>`);
 
     $(`#item${idCardapio}`).click(function() {
         let idCardapio = $(this).val();
-        $(`#caixaDeItensGraficoColunaProdutos #item${idCardapio}`).remove();
-        
-        let itensGrafico = escolhaListaItens(grafico);
-        removerItemGrafico(idCardapio, itensGrafico);
+        if(grafico == "colunaProdutos"){
+            $(`#caixaDeItensGraficoColunaProdutos #item${idCardapio}`).remove();
+            let itensGrafico = escolhaListaItens(grafico);
+            removerItemGrafico(idCardapio, itensGrafico);
+            addPrimaryBtn($(`#botaoItemColuna${idCardapio}`));
+        }
+        else{
+            $(`#caixaDeItensGraficoLinhaProdutos #item${idCardapio}`).remove();
+            let itensGrafico = escolhaListaItens(grafico);
+            removerItemGrafico(idCardapio, itensGrafico);
+            addPrimaryBtn($(`#botaoItem${idCardapio}`));
+        }
 
-        addPrimaryBtn($(`#botaoItem${idCardapio}`));
     });
 }
 
@@ -393,6 +416,18 @@ function gerarGraficoColunaProdutos() {
     });
 }
 
+function gerarGraficoLinhaProdutos() {
+    $.ajax({
+        url : "../../controller/gerenteController/graficoController/graficoLinhaProdutosController.php",
+        method : "POST",
+        data : {
+            itens : itensGraficoLinhaProdutos,
+        }
+    }).done(function(n) {
+        graficoLinha(n);
+    });
+}
+
 // ------------------------ Google Charts ------------------------ //
 
 google.charts.load('current', {'packages':['corechart']});
@@ -463,5 +498,69 @@ function graficoColuna(dados) {
     var chart = new google.visualization.ColumnChart(
         document.getElementById('graficoColuna'));
 
+    chart.draw(data, options);
+}
+
+
+function graficoLinha(dados) {
+
+    let itens = JSON.parse(dados);
+    let legenda = "[";
+    let i = 0;
+
+    while(i < Object.keys(itens.data).length) {
+
+        if(itens.quantItens == 1) {
+            if(i == Object.keys(itens.data).length - 1)
+                legenda += `[${i}, ${itens.data[i].quantidade}]`;
+            else 
+                legenda += `[${i}, ${itens.data[i].quantidade}], `;
+        } else {
+            
+            legenda += `[${i}, ${itens.data[i].quantidade},`;
+    
+            for(o = 1; o < itens.quantItens-1; o += 1) {
+                
+                legenda += `${itens.data[i + o].quantidade},`;
+    
+            }
+    
+            if(i == Object.keys(itens.data).length-itens.quantItens)
+                legenda += `${itens.data[i + itens.quantItens - 1].quantidade}]`;
+            else
+                legenda += `${itens.data[i + itens.quantItens - 1].quantidade}],`;
+        }
+
+
+        i += itens.quantItens;
+    }
+
+    legenda += "]";
+
+    jsonLegenda = JSON.parse(legenda);
+
+    console.log(itens);
+
+    var data = new google.visualization.DataTable();
+
+    data.addColumn('number', 'X');
+    for(p = 0; p < itens.quantItens; p++) {
+        data.addColumn('number', `${itens.data[p].nome}`);
+    }
+    
+
+    data.addRows(jsonLegenda);
+
+
+    var options = {
+        hAxis: {
+            title: 'Semanas'
+        },
+        vAxis: {
+            title: 'Vendas'
+        }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('graficoLinha'));
     chart.draw(data, options);
 }

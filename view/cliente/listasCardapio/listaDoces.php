@@ -28,7 +28,7 @@
 	</head>
 	<body id="page-top">
 		<?php include 'menuLateral.php'?>	
-		<br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Doces</h1></center>
+		<br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;" class="trn">Doces</h1></center>
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<div class="card mb-3">
@@ -39,9 +39,7 @@
 									<div class="card" style="background:#71A149;">
 										<div class="card-header" id="headingSix" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"> 
 											<h5 class="mb-0">
-												<button style="color:#fff; font-size:20px;" class="btn btn-link collapsed" data-toggle="collapse" aria-expanded="false" >
-													Doces
-												</button>
+												<button style="color:#fff; font-size:20px;" class="btn btn-link collapsed trn" data-toggle="collapse" aria-expanded="false" >Doces</button>
 											</h5>
 										</div>
 										<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
@@ -55,9 +53,9 @@
 														$cardapio_subcategoria       = $cardapio["nome_cardapio_subcat"];
 														$cardapio_cat 				 = $cardapio["nome_cardapio_cat"];
 														$calorias                    = $cardapio["calorias"];
-														echo "<a class='list-group-item' style='color:#F15821;'><h6>".$cardapio_desc."<p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
+														echo "<a class='list-group-item' style='color:#F15821;'><h6><span class='trn'>".$cardapio_desc."</span><p style='margin-top:0px; float: right;'><i>$calorias cal</i>&nbsp&nbsp&nbspR$". $cardapio_valor."  &nbsp;";
 												?>
-													<input class='btn btn-primary' type='BUTTON' class='btn btn-info btn-lg' value='Adicionar' type='button' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'></h6></p></a>
+													<button class='btn btn-primary trn' type='BUTTON' class='btn btn-info btn-lg' type='button' data-toggle='modal' data-target='#myModal<?php echo $cardapio_id;?>'>Adicionar</button></h6></p></a>
 													<div class="col-lg-6">
 														<div class="panel panel-default">
 															<div class="panel-heading"></div>
@@ -110,15 +108,15 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+						<h5 class="modal-title trn" id="exampleModalLabel">Você tem certeza?</h5>
 						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
 					</div>
-					<div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
+					<div class="modal-body trn">Ao clicar em "Sair" você será deslogado do sistema</div>
 					<div class="modal-footer">
-						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-						<a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
+						<button class="btn btn-secondary trn" type="button" data-dismiss="modal">Cancelar</button>
+						<a class="btn btn-primary trn" href="../../controller/clienteController/sairController.php">Sair</a>
 					</div>
 				</div>
 			</div>
@@ -168,14 +166,28 @@
                     }
                 }).done(function(itemColocado){
 
-					if(itemColocado == "true"){
+					if(itemColocado == "true" && "<?= $_SESSION["linguagem"]?>" == "pt"){
+
                         alertify.set('notifier','position', 'bottom-center');
                         alertify.success('Adicionado aos pedidos', 'success', 5);
-                    }else{
+                    }else if(itemColocado == "true" && "<?= $_SESSION["linguagem"]?>" == "en"){
+
+                        alertify.set('notifier','position', 'bottom-center');
+                        alertify.success('Added to orders', 'success', 5);
+                    }else if("<?= $_SESSION["linguagem"]?>" == "pt"){
+
                         alertify.alert("").setting({
+
                             transition : 'zoom',
                             title : "Quantidade Limite",
                             message : "Não é permitido colocar mais de 10 unidades por item"
+                        });
+                    }else{
+                        alertify.alert("").setting({
+
+                            transition : 'zoom',
+                            title : "Quantity Limit",
+                            message : "It is not allowed to place more than 10 units per item"
                         });
                     }
                 });

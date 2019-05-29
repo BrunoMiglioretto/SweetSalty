@@ -28,8 +28,8 @@ foreach($pedidos as $lista){
     $idCardapio     = $lista["id_cardapio"];
     $selecionado[$quantidade] = "selected";
     echo "<tr>";
-    echo "<td>".$pedido."</td>";                                                            
-    echo "<td>".$categoria."</td>";
+    echo "<td class='trn'>".$pedido."</td>";                                                            
+    echo "<td class='trn'>".$categoria."</td>";
     echo "
         <td>
             <select class='inputQuant' id='".$id."' onchange='atualizarPedido(this, ".$idCardapio.")' value='".$quantidade."'>
@@ -58,9 +58,14 @@ foreach($pedidos as $lista){
 }
 
 if($pedidos->rowCount() == 0){
+    if($_SESSION["linguagem"] == "pt")
+        $mensagem = "Nenhum item adicionado";
+    else
+        $mensagem = "No items added";
+
     echo "
         <tr class='odd'>
-            <td valign='top' colspan='5' value='1' class='dataTables_empty'><p style='text-align:center; margin: 0;;'>Nenhum item adicionado</p>
+            <td valign='top' colspan='5' value='1' class='dataTables_empty'><p style='text-align:center; margin: 0;;'>$mensagem</p>
                 <input type='hidden' value='".$subtotal."' class='subtotal'>
             </td>
         </tr>";

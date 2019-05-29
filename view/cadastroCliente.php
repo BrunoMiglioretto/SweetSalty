@@ -51,7 +51,7 @@
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
 											<label class="trn">E-mail *</label>
-											<input type="email" name="email" placeholder="Insira seu e-mail" class="form-control">
+											<input type="email" name="email" class="form-control">
 										</div>
 									</div>
 									<div class="row">
@@ -72,7 +72,7 @@
 									<div class="row">
 										<div class="col-lg-6 col-sm-12 form-group">
 											<label class="trn">Senha *</label>
-											<input type="password" name="senha" placeholder="mínimo de 8 caracteres" class="form-control" maxlength="12" minlength="8" required>
+											<input type="password" name="senha" placeholder="<?= ($_SESSION["linguagem"] == "pt")? "mínimo de 8 caracteres":"minimum of 8 characters"?>" class="form-control" maxlength="12" minlength="8" required>
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
 											<label class="trn">Confirmar senha *</label>

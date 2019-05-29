@@ -30,24 +30,24 @@
 		
         <div class="content-wrapper">
             <div class="container-fluid">
-                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;">Solicitação de junção de mesas</h1></center>
+                <br><br><br><center><h1 style="font-family: 'Raleway', sans-serif; font-size:50px; color:#F15821;" class="trn">Solicitação de junção de mesas</h1></center>
                 <br><br>
                 <div class="row">
                     <div class="col-12 text-center">
-                    <p class="lead" style="padding-bottom: 50px;">
+                        <p class="lead" style="padding-bottom: 50px;">
 
-                    </p>
+                        </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 text-center">
                         <div>
-                            <button onclick="cancelar()" type="button" class="btn btn-secondary btn-lg">Negar</button>
+                            <button onclick="cancelar()" type="button" class="btn btn-secondary btn-lg trn">Negar</button>
                         </div>
                     </div>
                     <div class="col-6 text-center">
                         <div>
-                            <button onclick="aceitar()" type="button" class="btn btn-primary btn-lg">Aceitar</button>
+                            <button onclick="aceitar()" type="button" class="btn btn-primary btn-lg trn">Aceitar</button>
                         </div>
                     </div>
                 </div>
@@ -58,15 +58,15 @@
 		    <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			        <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+				        <h5 class="modal-titl trne" id="exampleModalLabel">Você tem certeza?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
 			        </div>
-			        <div class="modal-body">Ao clicar em "Sair" você será deslogado do sistema</div>
+			        <div class="modal-body trn">Ao clicar em "Sair" você será deslogado do sistema</div>
 			        <div class="modal-footer">
-				        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-				        <a class="btn btn-primary" href="../../controller/clienteController/sairController.php">Sair</a>
+				        <button class="btn btn-secondary trn" type="button" data-dismiss="modal">Cancelar</button>
+				        <a class="btn btn-primary trn" href="../../controller/clienteController/sairController.php">Sair</a>
 			        </div>
     		    </div>
 	    	</div>
@@ -116,6 +116,13 @@
 
             $(document).ready(function() {
                 pegarSolicitacao()
+            });
+        </script>
+        <script src="../dicionario/jquery.translate.js"></script>
+        <script src="../dicionario/loginCadastroManualCliente.js"></script>
+        <script>
+            $(document).ready(function() {
+                var translator = $('body').translate({lang: "<?= $_SESSION["linguagem"]?>", t: dict});
             });
         </script>
 	</body>

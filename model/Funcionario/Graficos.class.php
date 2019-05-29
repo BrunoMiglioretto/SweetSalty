@@ -204,3 +204,22 @@ class Grafico {
     }
 
 }
+
+// Não funciona
+"SELECT tb_cardapio_cat.nome_cardapio_cat, SUM(quant) AS quantidade  
+FROM tb_historico_alimento_pedido INNER JOIN tb_cardapio 
+ON tb_historico_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio INNER JOIN tb_cardapio_subcat
+ON tb_cardapio.id_cardapio_subcat = tb_cardapio_subcat.id_cardapio_subcat INNER JOIN tb_cardapio_cat
+ON tb_cardapio_subcat.id_cardapio_cat = tb_cardapio_cat.id_cardapio_cat INNER JOIN tb_historico_pedido
+ON tb_historico_pedido.id_historico_pedido = tb_historico_alimento_pedido.id_historico_pedido
+WHERE date_historico > '2019/5/30'
+GROUP BY tb_cardapio_cat.id_cardapio_cat 
+
+SELECT tb_cardapio_cat.nome_cardapio_cat, SUM(quant) AS quantidade  
+    FROM tb_historico_alimento_pedido INNER JOIN tb_cardapio 
+    ON tb_historico_alimento_pedido.id_cardapio = tb_cardapio.id_cardapio INNER JOIN tb_cardapio_subcat
+    ON tb_cardapio.id_cardapio_subcat = tb_cardapio_subcat.id_cardapio_subcat INNER JOIN tb_cardapio_cat
+    ON tb_cardapio_subcat.id_cardapio_cat = tb_cardapio_cat.id_cardapio_cat INNER JOIN tb_historico_pedido
+    ON tb_historico_pedido.id_historico_pedido = tb_historico_alimento_pedido.id_historico_pedido
+    WHERE date_historico > '2019/4/29'
+    GROUP BY tb_cardapio_cat.id_cardapio_cat"; // funciona

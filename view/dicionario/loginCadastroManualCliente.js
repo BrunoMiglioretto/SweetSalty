@@ -25,7 +25,7 @@ var dict = {
     },
 
     "Quero me cadastrar": {
-        pt: "Criar Conta",
+        pt: "Quero me cadastrar",
         en: "Create Account"
     },
 
@@ -135,12 +135,12 @@ var dict = {
     },
 
     "Como se cadastrar?": {
-        pt: "Como se Cadastrar?",
+        pt: "Como se cadastrar?",
         en: "How to Sign In?"
     },
 
     "1° Clique no botão \"Quero me cadastrar\".": {
-        pt: "1° Clique no botão \"Criar Conta\".",
+        pt: "1° Clique no botão \"Quero me cadastrar\".",
         en: "1st Click on the \"Create Account\" button."
     },
 
@@ -174,9 +174,9 @@ var dict = {
         en: "How to join tables?"
     },
 
-    "Observação: só é possível juntar com uma mesa caso não tenha feito nenhum pedido e a mesas esteja ocupada.": {
-        pt: "Observação: só é possível juntar uma mesa com a outra caso não tenha feito nenhum pedido e a mesas estejam desocupadas.",
-        en: "Note: You can only join a table with other if you haven\"t made a request and the tables are unoccupied."
+    "Observação: só é possível juntar com outra mesa caso nenhuma delas tenha enviado pedidos para cozinha e a mesa esteja não esteja desocupada.": {
+        pt: "Observação: só é possível juntar com outra mesa caso nenhuma delas tenha enviado pedidos para cozinha e a mesa esteja não esteja desocupada.",
+        en: "Note: You can only join a table with other if you haven't made a request and the tables are unoccupied."
     },
 
     "Pedido de junção de mesa enviado.": {
@@ -583,8 +583,8 @@ var dict = {
         en: "Your order is being prepared."
     },
 
-    "Seu pedido foi enviado para a cozinha. Agora, que tal ver os seus pedidos em realidade aumentada enquanto eles são preparedos?": {
-        pt: "Seu pedido foi enviado para a cozinha. Agora, que tal ver os seus pedidos em realidade aumentada enquanto eles estão sendo preparedos?",
+    "Seu pedido foi enviado para a cozinha. Agora, que tal ver os seus pedidos em realidade aumentada enquanto eles são preparados?": {
+        pt: "Seu pedido foi enviado para a cozinha. Agora, que tal ver os seus pedidos em realidade aumentada enquanto eles estão sendo preparados?",
         en: "Your order has been sent to the kitchen. Now, how about seeing your order in augmented reality while they are being prepared?"
     },
 

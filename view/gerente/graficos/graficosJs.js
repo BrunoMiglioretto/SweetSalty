@@ -302,14 +302,14 @@ function gerarGraficoPizzaProdutos() {
                 break;
         }
     } else {
-        let dataInput = $("#radioItemGraficoPizzaProduto").val();
+        let dataInput = $("#inputDataComeco").val();
 
         if(dataInput == "") {
             alertaDataInvalida();
             return;
         }
 
-        d = new Date();
+        d = new Date(dataInput);
         d.setDate(d.getDate() + 1);
     }
 
@@ -360,6 +360,19 @@ function gerarGraficoPizzaClientes() {
 
 function gerarGraficoColunaProdutos() {
 
+    let itensGrafico = escolhaListaItens(grafico);
+    let itensGraficoTamanho = 0;
+
+    for(let i = 0; i < itensGrafico.length; i++){
+        if(itensGrafico[i] != undefined)
+            itensGraficoTamanho++;
+    }
+    
+    if(itensGraficoTamanho < 1){
+        alertaSemItens();
+        return;
+    }
+
     formaDataEscolha = $("input[name=inputColunaProdutosDataComeco]:checked").val();
     let d = new Date();
 
@@ -392,7 +405,7 @@ function gerarGraficoColunaProdutos() {
             return;
         }
 
-        d = new Date();
+        d = new Date(dataInput);
         d.setDate(d.getDate() + 1);
     }
 
@@ -417,6 +430,20 @@ function gerarGraficoColunaProdutos() {
 }
 
 function gerarGraficoLinhaProdutos() {
+
+    let itensGrafico = escolhaListaItens(grafico);
+    let itensGraficoTamanho = 0;
+
+    for(let i = 0; i < itensGrafico.length; i++){
+        if(itensGrafico[i] != undefined)
+            itensGraficoTamanho++;
+    }
+    
+    if(itensGraficoTamanho < 1){
+        alertaSemItens();
+        return;
+    }
+
     $.ajax({
         url : "../../controller/gerenteController/graficoController/graficoLinhaProdutosController.php",
         method : "POST",

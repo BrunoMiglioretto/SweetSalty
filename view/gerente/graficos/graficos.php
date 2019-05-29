@@ -280,7 +280,7 @@
                                                             <input type="radio" value="inputDate" name="radioDataComeco" aria-label="Radio button for following text input">
                                                         </div>
                                                     </div>
-                                                    <input type="date" class="form-control" id="inputDataComeco" placeholder="15/02/2019">
+                                                    <input type="date" class="form-control" id="inputDataComeco" max="<?= date("Y-m-d", strtotime(time())) ?>" min="1900-01-01">
                                                 </div>
                                             </div>
                                         </div>

@@ -32,30 +32,3 @@ foreach($dados as $d) {
 $array["titulo"] = "Vendas de produtos";
 
 echo json_encode($array);
-
-
-
-
-
-
-
-
-
-// $grafico = new Grafico;
-
-// $dados = $grafico->capturarDadosGraficosPizza($conjunto, $dataComeco);
-
-// foreach($dados as $d) {
-
-//     $nome = $d["nome"];
-
-//     $tmpArray["id_cardapio"] = $d["id_cardapio"];
-//     $tmpArray["quantidade"] = $d["quantidade"];
-//     $tmpArray["nome"] = (string)$nome;
-
-//     $array["data"][] = $tmpArray;
-// }
-
-// $array["titulo"] = "Vendas de produtos";
-
-// echo json_encode($array);

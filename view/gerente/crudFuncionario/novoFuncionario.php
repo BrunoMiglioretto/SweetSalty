@@ -84,10 +84,12 @@
 											</div>
 										</div>
 										<center>
-											<input class="btn" type="submit" name="salvar" value="Salvar" style="width: 100px; float: left;">				
+											<input class="btn btn-primary" type="submit" name="salvar" value="Salvar" style="width: 100px; float: left;">				
 										</center>
 										<center>
-											<a href="crudFuncionario/listaFuncionarios.php"><input class="btn" type="button" name="salvar" value="Voltar" style="margin-left:20px;width: 100px; float: left;"></a>			
+											<a href="crudFuncionario/listaFuncionarios.php">
+												<input class="btn btn-primary" type="button" name="salvar" value="Voltar" style="margin-left:20px;width: 100px; float: left;">
+											</a>			
 										</center>
 									</div>
 								</form>

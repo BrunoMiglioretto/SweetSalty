@@ -26,14 +26,14 @@
         				<div class="card-body">
               				<div class="table-responsive">
 								<ul class="list-group" style="width:100%;">
-									<a href="crudCliente/listaClientes.php" style="color:#000;">
-										<li class="list-group-item d-flex justify-content-between align-items-center">
-											Clientes
-										</li>
-									</a>
 									<a href="crudFuncionario/listaFuncionarios.php" style="color:#000;">
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											Funcionários
+										</li>
+									</a>
+									<a href="crudCliente/listaClientes.php" style="color:#000;">
+										<li class="list-group-item d-flex justify-content-between align-items-center">
+											Clientes
 										</li>
 									</a>
 									<a href="lista_clientes.php" style="color:#000;">
@@ -42,7 +42,6 @@
 										</li>
 									</a>
 								</ul>
-								<div id="piechart" style="background-color:#F7F7F7;width: 50%; height: 400px;"></div>
 							</div>
 						</div>
                     </div>

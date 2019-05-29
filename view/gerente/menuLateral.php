@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-                <a class="nav-link" href="Perfil.php" title="Acesse seu perfil">
+                <a class="nav-link" href="" title="Acesse seu perfil">
                     <i class="fa fa-user-circle-o"></i>
                     <span class="nav-link-text">Perfil</span>
                 </a>

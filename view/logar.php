@@ -39,7 +39,7 @@
                 <div class="card-body" style="padding: 30px 15px 20px 15px">
                     <form id="form_login" action="" method="POST">
                         <div class="form-group">
-                            <input class="form-control" id="exampleInputEmail1" name="email" type="text" aria-describedby="emailHelp" placeholder="E-mail" autofocus required>
+                            <input class="form-control" id="exampleInputEmail1" name="email" type="email" aria-describedby="emailHelp" placeholder="E-mail" autofocus required>
                         </div>
                         <div class="form-group">
                             <input class="form-control trn" id="exampleInputPassword1" name="senha" type="password" placeholder="<?php echo $_SESSION["linguagem"] == "en" ? "Password": "Senha"?>" required>

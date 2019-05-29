@@ -150,7 +150,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <p class="lead trn">Observação: só é possível juntar com uma mesa caso não tenha feito nenhum pedido e a mesas esteja ocupada.</p>
+                                                    <p class="lead trn">Observação: só é possível juntar com outra mesa caso nenhuma delas tenha enviado pedidos para cozinha e a mesa esteja não esteja desocupada.</p>
                                                 </div>
                                             </div>
                                             <div class="row">

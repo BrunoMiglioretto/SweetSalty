@@ -90,7 +90,7 @@
 						"emptyTable":     "Nenhum pedido",
 						"info":           "Mostrando _START_ de _END_ dos _TOTAL_ pedidos",
 						"infoEmpty":      "Mostrando 0 de 0 dos 0 pedidos",
-						"infoFiltered":   "(filtered from _MAX_ total entries)",
+						"infoFiltered":   "(filtrado de _MAX_ registros totais)",
 						"infoPostFix":    "",
 						"thousands":      ".",
 						"lengthMenu":     "Mostando _MENU_ pedidos",

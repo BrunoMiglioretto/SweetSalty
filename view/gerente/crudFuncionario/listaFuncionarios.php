@@ -37,7 +37,7 @@
 	</head>
 	<body id="page-top">
         <?php include 'menuLateral.php'; ?>	
-        <br><br><br><br><center><h1>Colaboradores Cadastrados</h1></center>
+        <br><br><br><br><center><h1>Funcionários Cadastrados</h1></center>
         <div class="content-wrapper" class='print'>	
 	    	<div class="container-fluid" class='print'>
 	    		<div class="card-header">		

@@ -49,7 +49,7 @@
                 <div style='width: 1000px;height:300px;background-color: rgb(255, 255, 255)'>
                 <img src='www.sweetsalty.net.br/view/img/logo.png'style='width: 150px;height: 80px;padding-left:250px'>
                 <div style='width: 340px;height: 180px; background-color: white;margin-left: 155px'>
-                    <p style='font-family: sans-serif;font-size:18px;text-align: center;color:rgb(41, 38, 38)'>Nova identificação na Sweetsalty</p>
+                    <p style='font-family: sans-serif;font-size:18px;text-align: center;color:rgb(41, 38, 38)'>Confirmação de e-mail</p>
                     <p style='font-family: sans-serif;font-size:14px;text-align: center;color:rgb(41, 38, 38)'>Para segurança adicional, por favor confirme esta identificação.</p>
                     <a href='www.sweetsalty.net.br/controller/confirmaTokenController.php?token=$tokenUrl&email=$email'
                         style='
@@ -61,7 +61,7 @@
                         padding-right: 5px;
                         padding-left: 5px;
                         text-decoration:none;
-                        background-color:#47E74E;
+                        background-color:#71A140;
                         color:white;
                         font-family: sans-serif;
                         font-size:15px;

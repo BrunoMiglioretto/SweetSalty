@@ -39,14 +39,14 @@
             </header> <!--End of header -->
         </div>
         <!--home Section -->
-        <section id="home" class="home">
-            <div class="home_skew_border">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 ">
-                            <div class="main_home_slider text-center">
-                                <div class="single_home_slider">
-                                    <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+        <section id="home" class="home" disabled>
+            <div class="home_skew_border" disabled>
+                <div class="container" disabled>
+                    <div class="row" disabled>
+                        <div class="col-sm-12 " disabled>
+                            <div class="text-center" disabled>
+                                <div>
+                                    <div class="main_home wow fadeInUp" data-wow-duration="700ms" disabled>
                                         <h1>SWEET SALTY</h1>
                                         <div class="separator"></div>
                                         <div class="home_btn">

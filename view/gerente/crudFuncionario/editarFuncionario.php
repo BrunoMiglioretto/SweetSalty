@@ -42,7 +42,7 @@
 			include 'menuLateral.php';
 			include "../../controller/gerenteController/crudFuncionarioController/visualizarFuncionarioController.php";
 		?>	
-		<br><br><br><br><center><h1>Editar Colaborador</h1></center>
+		<br><br><br><br><center><h1>Editar Funcionário</h1></center>
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<div class="card mb-3">
@@ -94,8 +94,14 @@
 												<input type="password" name="confSenha"  minlength="8" maxlength="12" class="form-control" required>
 											</div>			
 										</div>
-										<input type="hidden" placeholder="Senha" name="Senha"  class="form-control" required>
-										<input class="btn btn-primary" type="submit" name="salvar" value="Salvar" style="width: 100px;float: left;">
+										<center>
+											<input class="btn btn-primary" type="submit" name="salvar" value="Salvar" style="width: 100px; float: left;">				
+										</center>
+										<center>
+											<a href="crudFuncionario/listaFuncionarios.php">
+												<input class="btn btn-primary" type="button" name="salvar" value="Voltar" style="margin-left:20px;width: 100px; float: left;">
+											</a>			
+										</center>
 									</div>
 								</form>
 							</div>

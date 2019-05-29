@@ -100,10 +100,10 @@
 			        </div>
 			        <div class="modal-body" style="float:right;">
 			      	    <p>
-                            <button style="padding:16px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('m')"><img src="img/pagamento/dinheiro.png">&nbsp Dinheiro</button>
-                            <button style="padding:16px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('d')"><img src='img/pagamento/debito.png'>&nbsp Débito</button>
-                            <button style="padding:16px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('c')"><img src="img/pagamento/credito.png">&nbsp Crédito</button>
-                            <button style="padding:16px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('r')"><img src="img/pagamento/alimentacao.png">&nbsp Refeição</button>
+                            <button style="padding:15px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('m')"><img src="img/pagamento/dinheiro.png">&nbsp Dinheiro</button>
+                            <button style="padding:15px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('d')"><img src='img/pagamento/debito.png'>&nbsp Débito</button>
+                            <button style="padding:15px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('c')"><img src="img/pagamento/credito.png">&nbsp Crédito</button>
+                            <button style="padding:15px; background:transparent; border-radius:5px; border:solid 1px #c5c5c5;" onclick="enviarSolicitacaoDeFinalizar('r')"><img src="img/pagamento/alimentacao.png">&nbsp Refeição</button>
                         </p>
 			        </div>
                     <div class="modal-footer">

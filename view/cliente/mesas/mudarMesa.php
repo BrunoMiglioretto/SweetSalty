@@ -96,7 +96,6 @@
                 }).done(function(v) {
                     if(v == "true")
                         alertaMudarMesa();
-                        // window.location = "index.php";
                     if(v == "false")
                         alertaMesaOcupada();
                 });
@@ -110,7 +109,9 @@
             }
 
             function alertaMudarMesa(){
-                alertify.alert("Mudando de mesa", "Mudança de mesa efetuada com sucesso.").set({
+                alertify.alert("Mudando de mesa", "Mudança de mesa efetuada com sucesso.",function() {
+                    window.location = "index.php";
+                }).set({
                         transition:"zoom",
                         'movable' : false,
                     });

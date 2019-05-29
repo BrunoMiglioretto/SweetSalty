@@ -61,11 +61,11 @@
                     <li title="Bebidas">
                         <a href="listasCardapio/listaBebidas.php" class="trn">Bebidas</a>
                     </li>
-                    <li title="Doces">
-                        <a href="listasCardapio/listaDoces.php" trn="trn">Doces</a>
-                    </li>
                     <li title="Salgados">
                         <a href="listasCardapio/listaSalgados.php" class="trn">Salgados</a>
+                    </li>
+                    <li title="Doces">
+                        <a href="listasCardapio/listaDoces.php" trn="trn">Doces</a>
                     </li>
                 </ul>
             </li>

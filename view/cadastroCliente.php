@@ -51,7 +51,7 @@
 										</div>
 										<div class="col-lg-6 col-sm-12 form-group">
 											<label class="trn">E-mail *</label>
-											<input type="email" name="email" class="form-control">
+											<input type="email" name="email" class="form-control" required>
 										</div>
 									</div>
 									<div class="row">

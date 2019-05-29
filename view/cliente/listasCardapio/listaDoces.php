@@ -78,8 +78,8 @@
 																					<?= "<p>Tipo: ".$cardapio_subcategoria."</p>"?>
                                                                                 </div>
                                                                                 <div class="modal-footer">
-                                                                                    <input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
                                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                    <input type="button" class="btn btn-primary" name="salvar" data-dismiss="modal" onclick="addProduto(<?= $cardapio_id?>)" value="Adicionar">
                                                                                 </div>
                                                                             </div>
                                                                         </div>

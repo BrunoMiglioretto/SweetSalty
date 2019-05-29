@@ -34,7 +34,10 @@ foreach($funcionarios as $funcionario) {
         </a>";
 
     $dados["data"]["nome"] = $funcionario["nome_completo"];
-    $dados["data"]["cargo"] = $funcionario["cargo"];
+    if($funcionario["cargo"] == "Garcom")
+        $dados["data"]["cargo"] = "Garçom";
+    else
+        $dados["data"]["cargo"] = $funcionario["cargo"];        
     $dados["data"]["email"] = $funcionario["email"];
     $dados["data"]["numero"] = "(".$funcionario["ddd"].") ".$funcionario["numero"];
     $dados["data"]["cpf"] = $funcionario["cpf"];
@@ -47,7 +50,7 @@ foreach($funcionarios as $funcionario) {
     echo "
         <tr>
             <td>".$funcionario["nome_completo"]."</td>
-            <td>".$funcionario["cargo"]."</td>
+            <td>".$dados["data"]["cargo"]."</td>
             <td>$botaoMais</td>
             <td>$botaoEditar</td>
             <td>$botaoExcluir</td>

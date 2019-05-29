@@ -26,7 +26,7 @@
         				<div class="card-body">
               				<div class="table-responsive">
 								<ul class="list-group" style="width:100%;">
-									<a href="Lista_Funcionarios.php" style="color:#000;">
+									<a href="crudCliente/listaClientes.php" style="color:#000;">
 										<li class="list-group-item d-flex justify-content-between align-items-center">
 											Clientes
 										</li>

@@ -80,7 +80,6 @@
 										</div>
 																		
 									</div><p class="trn">*Campo obrigatório</p><br>
-									
 									<center>
 										<button class="btn btn-primary btn-block trn" style="width:100px;" type="submit" id="salvar">Salvar</button>			
 									</center>

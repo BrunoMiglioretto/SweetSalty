@@ -56,4 +56,22 @@ class Gerente extends Funcionario{
         $deleteCadastro = $con->prepare($queryDeleteCadastro);
         $deleteCadastro->execute();
     }
+
+    public function visualizarClientes(){
+        $queryClientes =  "SELECT * FROM tb_cadastro, tb_senha, tb_cliente, tb_telefone WHERE tb_cliente.id_cadastro = tb_cadastro.id_cadastro AND tb_senha.id_cadastro = tb_cadastro.id_cadastro AND tb_telefone.id_cadastro = tb_cadastro.id_cadastro";
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $clientes = $con->prepare($queryClientes);
+        $clientes->execute();
+        return $clientes;
+    }
+
+    public function visualizarCliente($idCliente){
+        $queryCliente = "SELECT * FROM tb_cliente, tb_senha, tb_cadastro, tb_telefone WHERE tb_cliente.id_cadastro = tb_senha.id_cadastro AND tb_cliente.id_cadastro = $idCliente AND tb_telefone.id_cadastro = tb_cadastro.id_cadastro AND tb_telefone.id_cadastro = $idCliente";
+        $conexao = new Conexao;
+        $con = $conexao->conexaoPDO();
+        $cliente = $con->prepare($queryCliente);
+        $cliente->execute();
+        return $cliente;
+    }
 }

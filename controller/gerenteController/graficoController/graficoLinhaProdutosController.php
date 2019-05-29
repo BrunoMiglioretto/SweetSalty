@@ -10,21 +10,24 @@ include "../../model/Funcionario/Graficos.class.php";
 include "../../model/Conexao.class.php";
 
 $listaItens = $_POST["itens"];
-$dataComeco = $_POST["dataComeco"];
 
 $grafico = new Grafico;
 
-$dados = $grafico->capturarDadosGraficosColunasProdutos($listaItens, $dataComeco);
+
+$dados = $grafico->capturarDadosGraficosLinhaProdutos($listaItens);
 
 
 foreach($dados as $d) {
 
     $nome = $d["nome"];
-    $tmpArray["quantidade"] = $d["quantidade"];
+    $tmpArray["data"] = $d["date_historico"];
+    $tmpArray["quantidade"] = $d["quant"];
     $tmpArray["nome"] = $nome;
 
     $array["data"][] = $tmpArray;
 }
+
+$array["quantItens"] = sizeof($listaItens);
 
 
 echo json_encode($array);

@@ -145,12 +145,12 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-7">
-                                                            <div class="grafico" id="graficoLinha" style="width: 500px; height: 300px;">
+                                                        <div class="col-8">
+                                                            <div class="grafico" id="graficoLinha" style="width: 550px; height: 300px;">
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-5">
+                                                        <div class="col-4">
                                                             <div class="card" style="margin: 20px;">
                                                                 <div class="card-header">
                                                                     Opções

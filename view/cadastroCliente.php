@@ -115,7 +115,7 @@
 					data: {
 						nome: $('input[name=nome]').val(),
 						email: $('input[name=email]').val(),
-						sexo: $('input[name=sexo]').val(),
+						sexo: $('input[name=sexo]:checked').val(),
 						ddd : ddd[0],
 						numeroTel : telefone[0],
 						dataNascimento:$('input[name=dataNascimento]').val(),

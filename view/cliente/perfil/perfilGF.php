@@ -65,7 +65,7 @@
 										</div>
 									</div>
 									<center>
-										<input class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" type="submit" name="salvar" value="Salvar">	
+										<button class="btn btn-primary btn-block" style="width:100px;" class="btn btn-info btn-lg" type="submit" name="salvar" onclick="enviarMundacasPerfil()">Salvar</button>
 									</center>
 								</div>
 							</div>

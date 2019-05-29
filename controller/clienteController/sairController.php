@@ -22,6 +22,9 @@ $tipo = get_class($cliente);
 
 session_destroy();
 
+session_start();
+
+$_SESSION["linguagem"] = "pt";
 
 echo "
     <script>
@@ -64,7 +67,3 @@ if($tipo == "ClienteGoogleFacebook"){
         </script>
     ";
 }
-
-session_start();
-
-$_SESSION["linguagem"] = "pt";

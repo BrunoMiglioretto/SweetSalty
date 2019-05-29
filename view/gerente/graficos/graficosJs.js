@@ -205,30 +205,6 @@ function gerarGrafico() {
             console.log("Gráfico não inclementado");
     }
 
-    /* Verifica se tem item selecionado */
-
-    // let itensGrafico = escolhaListaItens(grafico);
-    // let itensGraficoTamanho = 0;
-
-    // for(let i = 0; i < itensGrafico.length; i++){
-    //     if(itensGrafico[i] != undefined)
-    //         itensGraficoTamanho++;
-    // }
-    
-    // if(itensGraficoTamanho < 2){
-    //     alertaSemItens();
-    //     return;
-    // }
-
-    
-    // switch(grafico) {
-    //     case "pizzaProdutos":
-    //         gerarGraficoPizzaProdutos(dataComeco);
-    //         break;
-    //     case "pizzaClientes":
-    //         console.log("Gerar grafico clientes");
-    //         break;
-    // }
 }
 
 // ------------------------ Alertas ------------------------ //

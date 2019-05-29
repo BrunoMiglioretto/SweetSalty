@@ -97,7 +97,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 text-center">
-                                                    <img src="../img/validarCadastro-min.jpg" class="image"> 
+                                                    <img src="../img/validarCadastro-min.jpg" style="width:400px; margin: 20px;"> 
                                                 </div>
                                             </div>
                                         </div>

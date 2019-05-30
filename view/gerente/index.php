@@ -36,11 +36,6 @@
 											Clientes
 										</li>
 									</a>
-									<a href="lista_clientes.php" style="color:#000;">
-										<li class="list-group-item d-flex justify-content-between align-items-center">
-											Cardápio
-										</li>
-									</a>
 								</ul>
 							</div>
 						</div>

@@ -21,12 +21,6 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-                <a class="nav-link" href="" title="Acesse seu perfil">
-                    <i class="fa fa-user-circle-o"></i>
-                    <span class="nav-link-text">Perfil</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" >
                 <a class="nav-link" href="graficos/graficos.php" title="Acesse os gráficos">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">Gráficos</span>
@@ -43,9 +37,6 @@
                     </li>
                     <li>
                         <a href="crudCliente/listaClientes.php">Clientes</a>
-                    </li>
-                    <li>
-                        <a href="">Cardápio</a>
                     </li>
                 </ul>
             </li>
